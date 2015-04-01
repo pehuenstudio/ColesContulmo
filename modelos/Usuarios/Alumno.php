@@ -3,7 +3,6 @@ echo "<br/>".dirname(__FILE__)."\\".basename(__FILE__)."<br/>";
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/modelos/Usuarios/Usuario.php");
 
-
 class Alumno extends Usuario{
     private $fecha_nacimiento;
     private $nees;
@@ -79,6 +78,8 @@ class Alumno extends Usuario{
             $this->fecha_nacimiento = NULL;
             return FALSE;
         }
+
+        return true;
     }
 
     //VALIDAR NEES
@@ -96,6 +97,8 @@ class Alumno extends Usuario{
             $this->nees = NULL;
             return false;
         }
+
+        return true;
     }
 
 

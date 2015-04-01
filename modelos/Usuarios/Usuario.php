@@ -202,6 +202,8 @@ class Usuario{
 			$this->apellido2 = NULL;
 			return FALSE;
 		}
+
+        return true;
 	}
 
 }

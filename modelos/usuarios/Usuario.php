@@ -1,5 +1,5 @@
 <?php
-echo "<br/>".dirname(__FILE__)."\\".basename(__FILE__)."<br/>";
+echo __FILE__."<br/>";
 header('Content-Type: text/html; charset=UTF-8'); 
 
 class Usuario{

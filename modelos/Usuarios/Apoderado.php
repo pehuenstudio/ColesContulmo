@@ -1,4 +1,7 @@
 <?php
+echo "<br/>".dirname(__FILE__)."\\".basename(__FILE__)."<br/>";
+require_once($_SERVER["DOCUMENT_ROOT"]."/modelos/Usuarios/Usuario.php");
+
 class Apoderado extends Usuario{
     private $telefono_fijo;
     private $telefono_celular;
@@ -139,9 +142,26 @@ class Apoderado extends Usuario{
             $this->direccion_id_comuna = NULL;
             return FALSE;
         }
-
-
-
     }
 }
+$apoderadoVacio = new Apoderado();
+$apoderadoParametrizado = new Apoderado("166890837","RODRIGO","AlBERTO","SEPULVEDA","CASTRO","123456","123456789","mi calle","123",NULL,"mi sector","1");
+echo var_dump($apoderadoVacio);
+echo var_dump($apoderadoParametrizado);
+$apoderadoVacio->validar_run();
+$apoderadoParametrizado->validar_run();
+echo var_dump($apoderadoVacio);
+echo var_dump($apoderadoParametrizado);
+/*
+$apoderadoVacio = new Apoderado();
+$apoderadoParametrizado = new Apoderado("166890837","RODRIGO","AlBERTO","SEPULVEDA","CASTRO","123456","123456789","mi calle","123",NULL,"mi sector","1");
+echo var_dump($apoderadoVacio);
+echo var_dump($apoderadoParametrizado);
+$apoderadoVacio->validar_run();
+$apoderadoParametrizado->validar_run();
+echo var_dump($apoderadoVacio);
+echo var_dump($apoderadoParametrizado);
+*/
+
+
 ?>

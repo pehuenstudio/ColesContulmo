@@ -121,14 +121,5 @@ class Alumno extends Usuario{
 
 
 }
-/*hyolaaaa
-$alumnoVacio= new Alumno();
-$alumnoParametrizado = new Alumno("00000000-0","RODRIGO","AlBERTO","SEPULVEDA","CASTRO","28051988",1);
-echo var_dump($alumnoVacio);
-echo var_dump($alumnoParametrizado);
-$alumnoVacio->validar_run();
-$alumnoParametrizado->validar_run();
-echo var_dump($alumnoVacio);
-echo var_dump($alumnoParametrizado);
-*/
+
 ?>

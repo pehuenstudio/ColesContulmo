@@ -101,6 +101,24 @@ class Alumno extends Usuario{
         return true;
     }
 
+    //VALIDADOR MAESTRO
+    public function validar(){
+        $return = true;
+
+        if(!$this->validarIdentidad()){
+            $return = false;
+        }
+        if(!$this->validar_fecha_nacimiento()){
+            $return = false;
+        }
+        if(!$this->validar_nees()){
+            $return = false;
+        }
+        return $return;
+
+    }
+
+
 
 }
 /*hyolaaaa

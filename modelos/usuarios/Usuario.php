@@ -99,113 +99,178 @@ class Usuario{
 
 	//VALIDAR RUN
 	public function validar_run(){
-		$r = $this->run;
-		if((!$r) or (is_array($r))){
-			$this->run = NULL;
-			return false; /* Hace falta el rut */
-		}
-		if(!$r = preg_replace('|[^0-9kK]|i', '', $r)){
-			$this->run = NULL;
-			return false; /* Era código basura */
-		}
-		if(!((strlen($r) == 8) or (strlen($r) == 9))){
-			$this->run = NULL;
-			return false; /* La cantidad de carácteres no es válida. */
-		}
-		$v = strtoupper(substr($r, -1));
-		if(!$r = substr($r, 0, -1)){
-			$this->run = NULL;
-			return false; 
-		}
-		if(!((int)$r > 0)){
-			$this->run = NULL;
-			return false; /* No es un valor numérico */
-		}
-		$x = 2; $s = 0;
-		for($i = (strlen($r) - 1); $i >= 0; $i--){
-			if($x > 7)
-				$x = 2;
-			$s += ($r[$i] * $x);
-			$x++;
-		}
-		$dv=11-($s % 11);
-		if($dv == 10)
-			$dv = 'K';
-		if($dv == 11)
-			$dv = '0';
-		if($dv == $v){
-			$this->run = number_format($r, 0, '', '.').'-'.$v; /* Formatea el RUT */
-			return true;
-		}else{
-			$this->run = NULL;
-			return false;
-		}
-	}
-	
-	//VALIDAR NOMBRE COMPLETO
-	function validar_nombre_completo(){
-		$n1 = $this->nombre1;
-		$n2 = $this->nombre2;
-		$a1 = $this->apellido1;
-		$a2 = $this->apellido2;
-		
-		//SI NO SON INGRESADOS
-		if(empty($n1)){
-			$this->nombre1 = NULL;
-			return FALSE;
-		}
-		if(empty($n2)){
-			$this->nombre2 = NULL;
-			return FALSE;
-		}
-		if(empty($a1)){
-			$this->apellido1 = NULL;
-			return FALSE;
-		}
-		if(empty($a2)){
-			$this->apellido2 = NULL;
-			return FALSE;
-		}
-		
-		//SI SON MUY CORTOS O MUY LARGOS
-		if(strlen($n1)<3 or strlen($n1)>30){
-			$this->nombre1 = NULL;
-			return FALSE;
-		}
-		if(strlen($n2)<3 or strlen($n2)>30){
-			$this->nombre2 = NULL;
-			return FALSE;
-		}
-		if(strlen($a1)<3 or strlen($a1)>30){
-			$this->apellido1 = NULL;
-			return FALSE;
-		}
-		if(strlen($a2)<3 or strlen($a2)>30){
-			$this->apellido2 = NULL;
-			return FALSE;
-		}
-		
-		// SI CONTIENEN CARACTERES QUE NO SON LETRAS
-		if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $n1))){
-			$this->nombre1 = NULL;
-			return FALSE;
-		}
-		if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $n2))){
-			$this->nombre2 = NULL;
-			return FALSE;
-		}
-		if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $a1))){
-			$this->apellido1 = NULL;
-			return FALSE;
-		}
-		if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $a2))){
-			$this->apellido2 = NULL;
-			return FALSE;
-		}
+        $r = $this->run;
+
+        $r = str_replace(".","",$r);
+        $r = str_replace("-","",$r);
+        $r = str_replace(" ","",$r);
+        $r = strtoupper($r);
+
+        $numero = substr($r,0,strlen($r)-1);
+        $digito_verificador = substr($r,strlen($r)-1,1);
+
+        $serie = array(2,3,4,5,6,7);
+        $digitos = array();
+        $productos = array();
+        $sumatoria = 0;
+        $resto = 0;
+        $j = 0;
+
+        //VERIFICAR LONGITUD DEL NUMERO
+        if(strlen($numero)<7 or strlen($numero)>8){
+            //echo "<p>muy corto o my7 lartgo</p>";
+            $this->run = NULL;
+            return false;
+        }
+
+        //VERIFICAR SI SON SOLO NUMEROS ANTES DEL GUION
+        if(!is_numeric($numero)){
+            //echo "<p>hay letras antes del guion $numero</p>";
+            $this->run = NULL;
+            return false;
+        }
+
+        //VERIFICAR QUE SEAN NUMEROS O K DESPUES DEL GUION
+        if(!is_numeric($digito_verificador) and $digito_verificador!="K"){
+            $this->run = NULL;
+            //echo "<br>ni numero k</br>";
+            return false;
+        }
+
+        //VALIDART DIGITO VERIFICADOR
+        for($i = (strlen($numero)-1); $i>=0; $i--){
+            $digitos[$i] = substr($numero,$i,1);
+            $productos[$i] = $digitos[$i]*$serie[$j];
+            $sumatoria = $sumatoria + $productos[$i];
+            $j++;
+            if($j > 5){
+                $j=0;
+            }
+        }
+        $resto = $sumatoria % 11;
+        switch ($digito_verificador) {
+            case "0":
+                $digito_verificador = "11";
+                break;
+            case "K":
+                $digito_verificador = "10";
+                break;
+            default:
+                break;
+        }
+        if((11-$resto) != $digito_verificador){
+            echo "<p>rut no valido</p>";
+
+            return false;
+        }
+        //echo $numero."<br/>".$digito_verificador;
 
         return true;
-	}
+    }
+	
+    function validar_nombre1(){
+        //SI ES INGRESADO
+        $n = str_replace(" ","",$this->nombre1);
+        if(empty($n)){
+            $this->nombre1 = NULL;
+            return FALSE;
+        }
 
+        //SI TIENE LA LONGITUD CORRECTA
+        if(strlen($this->nombre1)<3 or strlen($this->nombre1)>30){
+            $this->nombre1 = NULL;
+            return FALSE;
+        }
+        // VALIDAR SOLO LETRAS
+        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->nombre1))){
+            $this->nombre1 = NULL;
+            return FALSE;
+        }
+        return true;
+    }
+    function validar_nombre2(){
+        //SI ES INGRESADO
+        $n = str_replace(" ","",$this->nombre2);
+        if(empty($n)){
+            $this->nombre2 = NULL;
+            return FALSE;
+        }
+
+        //SI TIENE LA LONGITUD CORRECTA
+        if(strlen($this->nombre2)<3 or strlen($this->nombre2)>30){
+            $this->nombre2 = NULL;
+            return FALSE;
+        }
+        // VALIDAR SOLO LETRAS
+        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->nombre2))){
+            $this->nombre2 = NULL;
+            return FALSE;
+        }
+        return true;
+    }
+    function validar_apellido1(){
+        //SI ES INGRESADO
+        $n = str_replace(" ","",$this->apellido1);
+        if(empty($n)){
+            $this->apellido1 = NULL;
+            return FALSE;
+        }
+
+        //SI TIENE LA LONGITUD CORRECTA
+        if(strlen($this->apellido1)<3 or strlen($this->apellido1)>30){
+            $this->apellido1 = NULL;
+            return FALSE;
+        }
+        // VALIDAR SOLO LETRAS
+        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->apellido1))){
+            $this->apellido1 = NULL;
+            return FALSE;
+        }
+        return true;
+    }
+    function validar_apellido2(){
+        //SI ES INGRESADO
+        $n = str_replace(" ","",$this->apellido2);
+        if(empty($n)){
+            $this->apellido2 = NULL;
+            return FALSE;
+        }
+
+        //SI TIENE LA LONGITUD CORRECTA
+        if(strlen($this->apellido2)<3 or strlen($this->apellido2)>30){
+            $this->apellido2 = NULL;
+            return FALSE;
+        }
+        // VALIDAR SOLO LETRAS
+        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->apellido2))){
+            $this->apellido2 = NULL;
+            return FALSE;
+        }
+        return true;
+    }
+
+    //VALIDADOR MAESTRO
+    public function validarIdentidad(){
+        $return = true;
+
+        if (!$this->validar_run()){
+            $return = false;
+        }
+        if(!$this->validar_nombre1()){
+            $return = false;
+        }
+        if(!$this->validar_nombre2()){
+            $return = false;
+        }
+        if(!$this->validar_apellido1()){
+            $return = false;
+        }
+        if(!$this->validar_apellido2()){
+            $return = false;
+        }
+
+        return $return;
+    }
 }
 
 

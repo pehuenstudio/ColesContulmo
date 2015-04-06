@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="MySQL - coles_data@localhost" uuid="533e777f-9cb2-459a-b29f-0697feaf46b3">
+    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="coles_data"/>
+    <table name="alumnos" schema="" catalog="coles_data" type="TABLE">
+      <column name="run_alumno" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="id_usuario_movil" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="id_joomla" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="nombre1" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="nombre2" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="apellido1" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="apellido2" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="fecha_nacimiento" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="nees" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <column name="avatar" sqlType="VARCHAR" length="0" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="run_alumno"/>
+      <foreign-key name="fk_reference_34" columns="id_usuario_movil" ref-table="usuarios_moviles" ref-schema="" ref-catalog="coles_data" ref-columns="id_usuario_movil" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_esta_formado" table="asociacion_alumno_curso" schema="" catalog="coles_data" columns="run_alumno"/>
+      <exported-key name="fk_son_sometidos" table="evaluaciones" schema="" catalog="coles_data" columns="run_alumno"/>
+      <exported-key name="fk_identifica" table="matriculas" schema="" catalog="coles_data" columns="run_alumno"/>
+    </table>
+    <table name="anotaciones" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_anotacion" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="run_profesor" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="id_asociacion_alumno_curso" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="fecha" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="descripcion" sqlType="VARCHAR" length="400" precision="0" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_anotacion"/>
+      <foreign-key name="fk_redacta" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_r16" columns="id_asociacion_alumno_curso" ref-table="asociacion_alumno_curso" ref-schema="" ref-catalog="coles_data" ref-columns="id_asociacion_alumno_curso" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="apoderados" schema="" catalog="coles_data" type="TABLE">
+      <column name="run_apoderado" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="id_joomla" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="id_usuario_movil" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="nombre1" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="nombre2" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="apellido1" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="apellido2" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="telefono_fijo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="telefono_celular" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="id_direccion" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="run_apoderado"/>
+      <foreign-key name="fk_reference_32" columns="id_usuario_movil" ref-table="usuarios_moviles" ref-schema="" ref-catalog="coles_data" ref-columns="id_usuario_movil" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_r7" columns="id_direccion" ref-table="direcciones" ref-schema="" ref-catalog="coles_data" ref-columns="id_direccion" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_asigna" table="matriculas" schema="" catalog="coles_data" columns="run_apoderado"/>
+    </table>
+    <table name="asignatura_por_nivel" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_asignatura_por_nivel" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_asignatura" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="id_nivel_educacional" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_asignatura_por_nivel"/>
+      <foreign-key name="fk_agrupa2" columns="id_asignatura" ref-table="asignaturas" ref-schema="" ref-catalog="coles_data" ref-columns="id_asignatura" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_agrupa" columns="id_nivel_educacional" ref-table="niveles_educacionales" ref-schema="" ref-catalog="coles_data" ref-columns="id_nivel_educacional" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="asignaturas" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_asignatura" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_duracion" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="descripcion" sqlType="VARCHAR" length="500" precision="0" nullable="true" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_asignatura"/>
+      <foreign-key name="fk_r17" columns="id_duracion" ref-table="duraciones" ref-schema="" ref-catalog="coles_data" ref-columns="id_duracion" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_agrupa2" table="asignatura_por_nivel" schema="" catalog="coles_data" columns="id_asignatura"/>
+      <exported-key name="fk_se_imparte" table="clases" schema="" catalog="coles_data" columns="id_asignatura"/>
+      <exported-key name="fk_forman_parte" table="evaluaciones" schema="" catalog="coles_data" columns="id_asignatura"/>
+    </table>
+    <table name="asociacion_alumno_curso" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_asociacion_alumno_curso" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_curso" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="run_alumno" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_asociacion_alumno_curso"/>
+      <foreign-key name="fk_esta_formado2" columns="id_curso" ref-table="cursos" ref-schema="" ref-catalog="coles_data" ref-columns="id_curso" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_esta_formado" columns="run_alumno" ref-table="alumnos" ref-schema="" ref-catalog="coles_data" ref-columns="run_alumno" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_r16" table="anotaciones" schema="" catalog="coles_data" columns="id_asociacion_alumno_curso"/>
+    </table>
+    <table name="clases" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_clases" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="run_profesor" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="id_curso" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="id_asignatura" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_clases"/>
+      <foreign-key name="fk_se_realizan" columns="id_curso" ref-table="cursos" ref-schema="" ref-catalog="coles_data" ref-columns="id_curso" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_realiza" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_se_imparte" columns="id_asignatura" ref-table="asignaturas" ref-schema="" ref-catalog="coles_data" ref-columns="id_asignatura" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="comunas" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_comuna" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_provincia" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_comuna"/>
+      <foreign-key name="fk_r2" columns="id_provincia" ref-table="provincias" ref-schema="" ref-catalog="coles_data" ref-columns="id_provincia" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_r3" table="direcciones" schema="" catalog="coles_data" columns="id_comuna"/>
+    </table>
+    <table name="cursos" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_curso" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="run_profesor" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="id_establecimiento" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="id_nivel_educacional" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="grupo" sqlType="VARCHAR" length="30" precision="0" nullable="true" jdbcType="12"/>
+      <column name="nees" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_curso"/>
+      <foreign-key name="fk_se_compone" columns="id_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="id_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_corresponde" columns="id_nivel_educacional" ref-table="niveles_educacionales" ref-schema="" ref-catalog="coles_data" ref-columns="id_nivel_educacional" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_esta_acargo" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_esta_formado2" table="asociacion_alumno_curso" schema="" catalog="coles_data" columns="id_curso"/>
+      <exported-key name="fk_se_realizan" table="clases" schema="" catalog="coles_data" columns="id_curso"/>
+    </table>
+    <table name="direcciones" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_direccion" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="calle" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="numero" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="depto" sqlType="VARCHAR" length="10" precision="0" nullable="true" jdbcType="12"/>
+      <column name="sector" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="id_comuna" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_direccion"/>
+      <foreign-key name="fk_r3" columns="id_comuna" ref-table="comunas" ref-schema="" ref-catalog="coles_data" ref-columns="id_comuna" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_r7" table="apoderados" schema="" catalog="coles_data" columns="id_direccion"/>
+      <exported-key name="fk_r5" table="establecimientos" schema="" catalog="coles_data" columns="id_direccion"/>
+    </table>
+    <table name="duraciones" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_duracion" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_periodo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="fecha_inicio" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="fecha_termino" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_duracion"/>
+      <foreign-key name="fk_r18" columns="id_periodo" ref-table="periodos" ref-schema="" ref-catalog="coles_data" ref-columns="id_periodo" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_r17" table="asignaturas" schema="" catalog="coles_data" columns="id_duracion"/>
+    </table>
+    <table name="establecimientos" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_establecimiento" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" length="40" precision="0" nullable="false" jdbcType="12"/>
+      <column name="telefono_fijo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="id_direccion" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_establecimiento"/>
+      <foreign-key name="fk_r5" columns="id_direccion" ref-table="direcciones" ref-schema="" ref-catalog="coles_data" ref-columns="id_direccion" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_se_compone" table="cursos" schema="" catalog="coles_data" columns="id_establecimiento"/>
+      <exported-key name="fk_recibe" table="matriculas" schema="" catalog="coles_data" columns="id_establecimiento"/>
+      <exported-key name="fk_ofrece2" table="niveles_por_establecimietno" schema="" catalog="coles_data" columns="id_establecimiento"/>
+    </table>
+    <table name="estados_de_notas" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_estado_de_notas" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_evaluacion" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="tipo" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_estado_de_notas"/>
+      <foreign-key name="fk_reference_31" columns="id_evaluacion" ref-table="evaluaciones" ref-schema="" ref-catalog="coles_data" ref-columns="id_evaluacion" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="evaluaciones" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_evaluacion" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="run_profesor" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="run_alumno" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="id_asignatura" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="fecha" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="periodo" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="nota" sqlType="FLOAT" length="2" precision="1" nullable="false" jdbcType="7"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id_evaluacion"/>
+      <foreign-key name="fk_son_sometidos" columns="run_alumno" ref-table="alumnos" ref-schema="" ref-catalog="coles_data" ref-columns="run_alumno" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_crea" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_forman_parte" columns="id_asignatura" ref-table="asignaturas" ref-schema="" ref-catalog="coles_data" ref-columns="id_asignatura" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_reference_31" table="estados_de_notas" schema="" catalog="coles_data" columns="id_evaluacion"/>
+    </table>
+    <table name="matriculas" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_matricula" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_establecimiento" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="run_alumno" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="run_apoderado" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="fecha" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_matricula"/>
+      <foreign-key name="fk_recibe" columns="id_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="id_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_asigna" columns="run_apoderado" ref-table="apoderados" ref-schema="" ref-catalog="coles_data" ref-columns="run_apoderado" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_identifica" columns="run_alumno" ref-table="alumnos" ref-schema="" ref-catalog="coles_data" ref-columns="run_alumno" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="niveles_educacionales" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_nivel_educacional" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ano" sqlType="SMALLINT" length="5" precision="0" nullable="false" jdbcType="5"/>
+      <column name="id_tipo_de_nivel_educacional" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_nivel_educacional"/>
+      <foreign-key name="fk_r19" columns="id_tipo_de_nivel_educacional" ref-table="tipos_de_nivel_educacional" ref-schema="" ref-catalog="coles_data" ref-columns="id_tipo_de_nivel_educacional" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_agrupa" table="asignatura_por_nivel" schema="" catalog="coles_data" columns="id_nivel_educacional"/>
+      <exported-key name="fk_corresponde" table="cursos" schema="" catalog="coles_data" columns="id_nivel_educacional"/>
+      <exported-key name="fk_ofrece" table="niveles_por_establecimietno" schema="" catalog="coles_data" columns="id_nivel_educacional"/>
+    </table>
+    <table name="niveles_por_establecimietno" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_niveles_por_establecimiento" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="id_establecimiento" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="id_nivel_educacional" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id_niveles_por_establecimiento"/>
+      <foreign-key name="fk_ofrece2" columns="id_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="id_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_ofrece" columns="id_nivel_educacional" ref-table="niveles_educacionales" ref-schema="" ref-catalog="coles_data" ref-columns="id_nivel_educacional" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="periodos" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_periodo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nombre" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="num_meses" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_periodo"/>
+      <exported-key name="fk_r18" table="duraciones" schema="" catalog="coles_data" columns="id_periodo"/>
+    </table>
+    <table name="profesores" schema="" catalog="coles_data" type="TABLE">
+      <column name="run_profesor" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
+      <column name="id_usuario_movil" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="id_joomla" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="nombre1" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="nombre2" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="apellido1" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="apellido2" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="run_profesor"/>
+      <foreign-key name="fk_reference_33" columns="id_usuario_movil" ref-table="usuarios_moviles" ref-schema="" ref-catalog="coles_data" ref-columns="id_usuario_movil" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_redacta" table="anotaciones" schema="" catalog="coles_data" columns="run_profesor"/>
+      <exported-key name="fk_realiza" table="clases" schema="" catalog="coles_data" columns="run_profesor"/>
+      <exported-key name="fk_esta_acargo" table="cursos" schema="" catalog="coles_data" columns="run_profesor"/>
+      <exported-key name="fk_crea" table="evaluaciones" schema="" catalog="coles_data" columns="run_profesor"/>
+    </table>
+    <table name="provincias" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_provincia" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_region" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_provincia"/>
+      <foreign-key name="fk_r1" columns="id_region" ref-table="regiones" ref-schema="" ref-catalog="coles_data" ref-columns="id_region" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_r2" table="comunas" schema="" catalog="coles_data" columns="id_provincia"/>
+    </table>
+    <table name="regiones" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_region" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="numero_romano" sqlType="VARCHAR" length="5" precision="0" nullable="true" jdbcType="12"/>
+      <column name="nombre" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_region"/>
+      <exported-key name="fk_r1" table="provincias" schema="" catalog="coles_data" columns="id_region"/>
+    </table>
+    <table name="tipos_de_nivel_educacional" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_tipo_de_nivel_educacional" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="tipo" sqlType="VARCHAR" length="30" precision="0" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id_tipo_de_nivel_educacional"/>
+      <exported-key name="fk_r19" table="niveles_educacionales" schema="" catalog="coles_data" columns="id_tipo_de_nivel_educacional"/>
+    </table>
+    <table name="usuarios_moviles" schema="" catalog="coles_data" type="TABLE">
+      <column name="id_usuario_movil" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="password" sqlType="VARCHAR" length="100" precision="0" nullable="false" jdbcType="12"/>
+      <column name="password_cambio" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="fecha_creacion" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="fecha_ultima_visita" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="avatar" sqlType="VARCHAR" length="400" precision="0" nullable="true" jdbcType="12"/>
+      <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id_usuario_movil"/>
+      <exported-key name="fk_reference_34" table="alumnos" schema="" catalog="coles_data" columns="id_usuario_movil"/>
+      <exported-key name="fk_reference_32" table="apoderados" schema="" catalog="coles_data" columns="id_usuario_movil"/>
+      <exported-key name="fk_reference_33" table="profesores" schema="" catalog="coles_data" columns="id_usuario_movil"/>
+    </table>
+    <procedure name="insertarAlumno" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumnos" sqlType="VARCHAR" length="9" precision="9" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="p_nombre1" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="p_nombre2" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="p_apellido1" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="p_apellido2" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="p_fecha_nacimiento" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="6"/>
+        <parameter name="p_nees" sqlType="BOOL" length="0" precision="0" nullable="true" jdbcType="1111" type="1" index="7"/>
+      </prototype>
+    </procedure>
+  </data-source>
+</component>

@@ -269,6 +269,17 @@
       <exported-key name="fk_reference_32" table="apoderados" schema="" catalog="coles_data" columns="id_usuario_movil"/>
       <exported-key name="fk_reference_33" table="profesores" schema="" catalog="coles_data" columns="id_usuario_movil"/>
     </table>
+    <procedure name="alumnosActualizar" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR" length="9" precision="9" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="p_nombre1" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="p_nombre2" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="p_apellido1" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="p_apellido2" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="p_fecha_nacimiento" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="6"/>
+        <parameter name="p_nees" sqlType="BOOL" length="0" precision="0" nullable="true" jdbcType="1111" type="1" index="7"/>
+      </prototype>
+    </procedure>
     <procedure name="alumnosExistencia" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="p_run_alumno" sqlType="VARCHAR" length="9" precision="9" nullable="true" jdbcType="12" type="1" index="1"/>

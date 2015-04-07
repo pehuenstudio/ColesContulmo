@@ -107,7 +107,7 @@ class Usuario{
 
 	 //GETTERS Y SETTERS
 
-	//VALIDAR RUN
+///////////////////////////////////////VALIDADORES///////////////////////////////////////////////////////////////
 	public function validar_run(){
         $this->run = str_replace(".","",$this->run);
         $this->run = str_replace("-","",$this->run);
@@ -167,13 +167,13 @@ class Usuario{
                 break;
         }
         if((11-$resto) != $digito_verificador){
-            echo INFO.CALSE_USUARIO. "RUN DIGITO VERIFICADOR NO COINCIDE CON NUMERO <br/>";
+            echo ERRORCITO.CLASE_USUARIO. "RUN DIGITO VERIFICADOR NO COINCIDE CON NUMERO <br/>";
             $this->run = NULL;
             return false;
         }
         echo INFO.CLASE_USUARIO." RUN INGRESADO CORRECTAMENTE ".$this->get_run()."<br/>";
         return true;
-    }
+    }//VALIDAR RUN
 	
     function validar_nombre1(){
         //SI ES INGRESADO
@@ -199,7 +199,7 @@ class Usuario{
         echo INFO.CLASE_USUARIO."NOMBRE1 INGRESADO CORRECTAMENTE <br/>";
         $this->nombre1 = ucwords(strtolower($this->nombre1));
         return true;
-    }
+    }//VALIDAR NOMBRE1
 
     function validar_nombre2(){
         //SI ES INGRESADO
@@ -225,7 +225,7 @@ class Usuario{
         echo INFO.CLASE_USUARIO."NOMBRE2 INGRESADO CORRECTAMENTE <br/>";
         $this->nombre2 = ucwords(strtolower($this->nombre2));
         return true;
-    }
+    }//VALIDAR NOMBRE2
 
     function validar_apellido1(){
         //SI ES INGRESADO
@@ -252,7 +252,7 @@ class Usuario{
         O CORRECTAMENTE <br/>";
         $this->apellido1 = ucwords(strtolower($this->apellido1));
         return true;
-    }
+    }//VALIDAR APELLIDO1
 
     function validar_apellido2(){
         //SI ES INGRESADO
@@ -278,9 +278,8 @@ class Usuario{
         echo INFO.CLASE_USUARIO."APELLIDO2 INGRESADO CORRECTAMENTE <br/>";
         $this->apellido2 = ucwords(strtolower($this->apellido2));
         return true;
-    }
+    }//VALIDAR APELLIDO2
 
-    //VALIDADOR MAESTRO
     public function validar_identidad(){
         $return = true;
 
@@ -301,10 +300,10 @@ class Usuario{
         }
 
         return $return;
-    } //VALIDADORES
+    }//VALIDADOR MAESTRO
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
-
-
 
 
 

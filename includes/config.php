@@ -4,12 +4,12 @@ echo __FILE__."<br/>";
 //DEFINICION DE CONSTANTES
 define("ROOT_MODELOS",$_SERVER["DOCUMENT_ROOT"]."/_code/modelos/");
 define("ROOT_MODELOS_USUARIOS",$_SERVER["DOCUMENT_ROOT"]."/_code/modelos/usuarios/");
-define("INFO","INFO");
-define("ERRORCITO","ERROR");
-define("CLASE_USUARIO"," &nbsp;CLASE_USUARIO:&nbsp; ");
-define("CLASE_ALUMNO"," &nbsp;CLASE_ALUMNO:&nbsp; ");
-define("CLASE_APODERADO"," &nbsp;CLASE_APODERADO:&nbsp; ");
-define("CLASE_PROFESOR"," &nbsp;CLASE_PREFESOR:&nbsp; ");
+define("INFO","<strong style=\"color:blue\">INFO&nbsp;&nbsp;&nbsp;&nbsp;</strong>");
+define("ERRORCITO","<strong style=\"color:red\">ERROR</strong>");
+define("CLASE_USUARIO"," <strong style=\"color:firebrick\">&nbsp;CLASE_USUARIO:&nbsp;</strong> ");
+define("CLASE_ALUMNO"," <strong style=\"color:green\">&nbsp;CLASE_ALUMNO:&nbsp;</strong> ");
+define("CLASE_APODERADO"," <strong style=\"color:orange\">&nbsp;CLASE_APODERADO:&nbsp;</strong> ");
+define("CLASE_PROFESOR"," <strong style=\"color:mediumvioletred\">&nbsp;CLASE_PREFESOR:&nbsp;</strong> ");
 
 //echo $_SERVER["SERVER_NAME"]."<br/>";
 

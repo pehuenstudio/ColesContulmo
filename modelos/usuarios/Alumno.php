@@ -49,6 +49,7 @@ class Alumno extends Usuario{
     }
     //GETTERS Y SETTERS
 
+////////////////////////VALIDACIONES//////////////////////////////////////////////////////////////////////////////////
     //VALIDAR FECHA NACIMIENTO
     public function validar_fecha_nacimiento(){
         $a = substr($this->fecha_nacimiento,0,4);
@@ -124,9 +125,12 @@ class Alumno extends Usuario{
         }
         return $return;
 
-    } //VALIDACIONES
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //MANEJO DE DATOS
+
+
+//////////////////////MANEJO DE DATOS/////////////////////////////////////////////////////////////////////////////////
     //VERIFICAR EXISTENCIA
     public function db_verificar_existencia(){
         echo INFO.CLASE_ALUMNO."VERIFICANDO EXISTENCIA DE RUN<br/>";
@@ -145,7 +149,7 @@ class Alumno extends Usuario{
 
     //INSERTAR ALUMNO
     public function db_ingresar(){
-        echo INFO.CLASE_ALUMNO."INGRESANDO NUEVO USUARIO ".$this->get_run()."<br>";
+        echo INFO.CLASE_ALUMNO."INGRESANDO NUEVO ALUMNO ".$this->get_run()."<br>";
         global $myPDO;
         $comando = $myPDO->prepare("CALL alumnosInsertar(?,?,?,?,?,?,?)");
         $comando->bindValue(1,$this->get_run());
@@ -156,10 +160,10 @@ class Alumno extends Usuario{
         $comando->bindValue(6,$this->get_fecha_nacimiento());
         $comando->bindValue(7,$this->get_nees());
         $comando->execute();
-        echo INFO.CLASE_ALUMNO."NUEVO USUARIO INGRESADO<br>";
+        echo INFO.CLASE_ALUMNO."NUEVO ALUMNO INGRESADO<br>";
     }
 
-    //POBLAR PARAMETRO DE ALUMNO
+    //POBLAR PARAMETROS DE ALUMNO
     public function db_poblar(){
         echo INFO.CLASE_ALUMNO."BUSCANDO DATOS DE ".$this->get_run()."<br/>";
         global $myPDO;
@@ -168,7 +172,7 @@ class Alumno extends Usuario{
         $comando->bindValue(1,$this->get_run());
         $comando->execute();
         $alumno = $comando->fetch(PDO::FETCH_ASSOC);
-        echo INFO.CLASE_ALUMNO."POBLANDO DATOS DE USUARIO<br>";
+        echo INFO.CLASE_ALUMNO."POBLANDO DATOS DE ALUMNO<br>";
         $this->set_id_usuario_movil($alumno["id_usuario_movil"]);
         $this->set_id_joomla($alumno["id_joomla"]);
         $this->set_nombre1($alumno["nombre1"]);
@@ -181,9 +185,31 @@ class Alumno extends Usuario{
         var_dump($this);
     }
 
+    //ACTUALIZAR PARAMETROS DE ALUMNO
+    public function db_actualizar(){
+        echo INFO.CLASE_ALUMNO."ACTUALIZANDO DATOS DE ".$this->get_run()."<br/>";
+        global $myPDO;
+        $comando = $myPDO->prepare("CALL alumnosActualizar(?,?,?,?,?,?,?)");
+        $comando->bindValue(1,$this->get_run());
+        $comando->bindValue(2,$this->get_nombre1());
+        $comando->bindValue(3,$this->get_nombre2());
+        $comando->bindValue(4,$this->get_apellido1());
+        $comando->bindValue(5,$this->get_apellido2());
+        $comando->bindValue(6,$this->get_fecha_nacimiento());
+        $comando->bindValue(7,$this->get_nees());
+        if($comando->execute()){
+            echo INFO.CLASE_ALUMNO."DATOS DE ALUMNO ACTUALIZADOS EXITOSAMENTE<br/>";
+            return true;
+        }
+        echo ERRORCITO.CLASE_ALUMNO."DATOS NO PUDIERON SER ACTUALIZADOS<br/>";
+        return false;
+
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
+//echo INFO.CLASE."<br/>";
+//echo INFO.ERRORCITO."<br/>";
 }
 
 ?>

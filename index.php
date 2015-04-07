@@ -6,7 +6,7 @@ require_once ROOT_MODELOS_USUARIOS."Apoderado.php";
 require_once ROOT_MODELOS_USUARIOS."Alumno.php";
 
 
-$alumnoParametrizado = new Alumno("00.000.000-0","IVAN","EDUARDO","CUEVAS","HOGER","19880528",1);
+$alumnoParametrizado = new Alumno("11.111.111-1","angelica","maria","saavedra","torres","19880528",1);
 
 
 if($alumnoParametrizado->validar()){
@@ -15,9 +15,9 @@ if($alumnoParametrizado->validar()){
 
         $alumnoParametrizado->db_ingresar();
 
+    }else{
+        $alumnoParametrizado->db_actualizar();
     }
-}else{
-    echo "<p>ERROR DE VALIDACION</p>";
 }/*
 $miAlumno = new Alumno();
 $miAlumno->set_run("00.000.000-0");

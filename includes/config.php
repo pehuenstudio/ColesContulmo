@@ -4,6 +4,12 @@ echo __FILE__."<br/>";
 //DEFINICION DE CONSTANTES
 define("ROOT_MODELOS",$_SERVER["DOCUMENT_ROOT"]."/_code/modelos/");
 define("ROOT_MODELOS_USUARIOS",$_SERVER["DOCUMENT_ROOT"]."/_code/modelos/usuarios/");
+define("INFO","INFO");
+define("ERRORCITO","ERROR");
+define("CLASE_USUARIO"," &nbsp;CLASE_USUARIO:&nbsp; ");
+define("CLASE_ALUMNO"," &nbsp;CLASE_ALUMNO:&nbsp; ");
+define("CLASE_APODERADO"," &nbsp;CLASE_APODERADO:&nbsp; ");
+define("CLASE_PROFESOR"," &nbsp;CLASE_PREFESOR:&nbsp; ");
 
 //echo $_SERVER["SERVER_NAME"]."<br/>";
 
@@ -21,12 +27,7 @@ if ($_SERVER["SERVER_NAME"] == "colescontulmo.local"){
     define("DB_PASS","20150402");//CONTRASEÑA DE BBDD
 }
 
-try{
-    $myPDO = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,DB_PASS);
-    //echo "<br/>ÉXITO EN LA CONEXIÓN BBDD<BR/>";
 
-}catch(PDOException $e){
-    print "<br/>ERROR: ".$e->getMessage()." <br/>";
-    die();
-}
+
+
 ?>

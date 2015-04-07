@@ -95,71 +95,111 @@ class Apoderado extends Usuario{
         $this->direccion_id_comuna = $direccion_id_comuna;
     }
 
-    //VALIDAR TELEFONOS
-    public function validar_telefonos(){
-        $tf = $this->telefono_fijo;
-        $tc = $this->telefono_celular;
-
+   //VALIDAR TELEFONO FIJO
+    public function validtar_telefono_fijo(){
         //SI SON NUMEROS Y SI SE ENVIO
-        if(!preg_match("/^[0-9]{7,8}+$/",str_replace(' ', '', $tf))){
+        if(!preg_match("/^[0-9]{7,8}+$/",str_replace(' ', '', $this->telefono_fijo))){
             $this->telefono_fijo = NULL;
-            return FALSE;
+            return false;
         }
-        if(!preg_match("/^[0-9]{8}+$/",str_replace(' ', '', $tc))){
+        return true;
+    }
+
+    //VALIDAR TELEFONO CELULAR
+    public function validar_telefono_celular(){
+        //SI SON NUMEROS Y SI SE ENVIOS
+        if(!preg_match("/^[0-9]{8}+$/",str_replace(' ', '', $this->telefono_celular))){
             $this->telefono_celular = NULL;
             return FALSE;
         }
-
         return true;
     }
 
-    //VALIDAR DIRECCION
-    public function validar_direccion(){
-        $dc = $this->direccion_calle;
-        $dn = $this->direccion_numero;
-        $dd = $this->direccion_depto;
-        $ds = $this->direccion_sector;
-        $di = $this->direccion_id_comuna;
 
-        if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]{1,40}$/",str_replace(' ', '', $dc))){
+    //VALIDAR DIRECCION CALLE
+    public function validar_direccion_calle(){
+        if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]{1,40}$/",str_replace(' ', '', $this->direccion_calle))){
             $this->direccion_calle = NULL;
-            return FALSE;
+            return false;
         }
+        return true;
+    }
 
-        if(!preg_match("/^[0-9]+$/",str_replace(' ', '', $dn))){
+    //VALIDAR DIRECCION NUMERO
+    public function validar_direccion_numero(){
+        if(!preg_match("/^[0-9]+$/",str_replace(' ', '', $this->direccion_numero))){
             $this->direccion_numero = NULL;
-            return FALSE;
+            return false;
         }
+        return true;
+    }
 
-        if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]{1,10}$/",str_replace(' ', '', $dd))){
-            $this->direccion_depto = NULL;
-            return FALSE;
+    //VALIDAR DIRECCION DEPTO
+    public function validar_direccion_depto(){
+        if(!is_null($this->direccion_depto)){
+            if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]{1,10}$/",str_replace(' ', '', $this->direccion_depto))){
+                //var_dump(is_null($this->direccion_depto));
+                $this->direccion_depto = NULL;
+                return false;
+            }
         }
+        return true;
+    }
 
-        if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]{1,40}+$/",str_replace(' ', '', $ds))){
+    //VALIDAR DIRECCION SECTOR
+    public function validar_direccion_sector(){
+        if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]{1,40}+$/",str_replace(' ', '', $this->direccion_sector))){
             $this->direccion_sector = NULL;
-            return FALSE;
+            return false;
         }
+        return true;
+    }
 
-        if(!preg_match("/^[0-9]+$/",str_replace(' ', '', $di))){
+    //VALIDAR DIRECCION ID COMUNA
+    public function  validar_direccion_id_comuna(){
+        if(!preg_match("/^[0-9]+$/",str_replace(' ', '', $this->direccion_id_comuna))){
             $this->direccion_id_comuna = NULL;
             return FALSE;
         }
-
         return true;
     }
+
+
+    //VALIDADOR MAESTRO
+    public function validar(){
+        $return = true;
+
+        if(!$this->validar_identidad()){
+            $return = false;
+        }
+        if(!$this->validtar_telefono_fijo()){
+            $return = false;
+        }
+        if(!$this->validar_telefono_celular()){
+            $return = false;
+        }
+        if(!$this->validar_direccion_calle()){
+            $return = false;
+        }
+        if(!$this->validar_direccion_numero()){
+            $return = false;
+        }
+        if(!$this->validar_direccion_depto()){
+            $return = false;
+        }
+        if(!$this->validar_direccion_sector()){
+            $return = false;
+        }
+        if(!$this->validar_direccion_id_comuna()){
+            $return = false;
+        }
+
+        return $return;
+
+    }
+
 }
 
-/*
-$apoderadoVacio = new Apoderado();
-$apoderadoParametrizado = new Apoderado("166890837","RODRIGO","AlBERTO","SEPULVEDA","CASTRO","123456","123456789","mi calle","123",NULL,"mi sector","1");
-echo var_dump($apoderadoVacio);
-echo var_dump($apoderadoParametrizado);
-$apoderadoVacio->validar_run();
-$apoderadoParametrizado->validar_run();
-echo var_dump($apoderadoVacio);
-echo var_dump($apoderadoParametrizado);
-*/
 
 
 ?>

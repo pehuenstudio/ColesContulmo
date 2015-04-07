@@ -18,7 +18,6 @@
       <column name="fecha_nacimiento" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
       <column name="nees" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
-      <column name="avatar" sqlType="VARCHAR" length="0" precision="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="run_alumno"/>
       <foreign-key name="fk_reference_34" columns="id_usuario_movil" ref-table="usuarios_moviles" ref-schema="" ref-catalog="coles_data" ref-columns="id_usuario_movil" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_esta_formado" table="asociacion_alumno_curso" schema="" catalog="coles_data" columns="run_alumno"/>
@@ -33,8 +32,8 @@
       <column name="descripcion" sqlType="VARCHAR" length="400" precision="0" nullable="false" jdbcType="12"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_anotacion"/>
-      <foreign-key name="fk_redacta" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_r16" columns="id_asociacion_alumno_curso" ref-table="asociacion_alumno_curso" ref-schema="" ref-catalog="coles_data" ref-columns="id_asociacion_alumno_curso" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_redacta" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="apoderados" schema="" catalog="coles_data" type="TABLE">
       <column name="run_apoderado" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
@@ -49,8 +48,8 @@
       <column name="id_direccion" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="run_apoderado"/>
-      <foreign-key name="fk_reference_32" columns="id_usuario_movil" ref-table="usuarios_moviles" ref-schema="" ref-catalog="coles_data" ref-columns="id_usuario_movil" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_r7" columns="id_direccion" ref-table="direcciones" ref-schema="" ref-catalog="coles_data" ref-columns="id_direccion" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_reference_32" columns="id_usuario_movil" ref-table="usuarios_moviles" ref-schema="" ref-catalog="coles_data" ref-columns="id_usuario_movil" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_asigna" table="matriculas" schema="" catalog="coles_data" columns="run_apoderado"/>
     </table>
     <table name="asignatura_por_nivel" schema="" catalog="coles_data" type="TABLE">
@@ -59,8 +58,8 @@
       <column name="id_nivel_educacional" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_asignatura_por_nivel"/>
-      <foreign-key name="fk_agrupa2" columns="id_asignatura" ref-table="asignaturas" ref-schema="" ref-catalog="coles_data" ref-columns="id_asignatura" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_agrupa" columns="id_nivel_educacional" ref-table="niveles_educacionales" ref-schema="" ref-catalog="coles_data" ref-columns="id_nivel_educacional" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_agrupa2" columns="id_asignatura" ref-table="asignaturas" ref-schema="" ref-catalog="coles_data" ref-columns="id_asignatura" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="asignaturas" schema="" catalog="coles_data" type="TABLE">
       <column name="id_asignatura" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -80,8 +79,8 @@
       <column name="run_alumno" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_asociacion_alumno_curso"/>
-      <foreign-key name="fk_esta_formado2" columns="id_curso" ref-table="cursos" ref-schema="" ref-catalog="coles_data" ref-columns="id_curso" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_esta_formado" columns="run_alumno" ref-table="alumnos" ref-schema="" ref-catalog="coles_data" ref-columns="run_alumno" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_esta_formado2" columns="id_curso" ref-table="cursos" ref-schema="" ref-catalog="coles_data" ref-columns="id_curso" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_r16" table="anotaciones" schema="" catalog="coles_data" columns="id_asociacion_alumno_curso"/>
     </table>
     <table name="clases" schema="" catalog="coles_data" type="TABLE">
@@ -91,9 +90,9 @@
       <column name="id_asignatura" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_clases"/>
-      <foreign-key name="fk_se_realizan" columns="id_curso" ref-table="cursos" ref-schema="" ref-catalog="coles_data" ref-columns="id_curso" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_realiza" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_se_imparte" columns="id_asignatura" ref-table="asignaturas" ref-schema="" ref-catalog="coles_data" ref-columns="id_asignatura" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_se_realizan" columns="id_curso" ref-table="cursos" ref-schema="" ref-catalog="coles_data" ref-columns="id_curso" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="comunas" schema="" catalog="coles_data" type="TABLE">
       <column name="id_comuna" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -113,9 +112,9 @@
       <column name="nees" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_curso"/>
-      <foreign-key name="fk_se_compone" columns="id_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="id_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_corresponde" columns="id_nivel_educacional" ref-table="niveles_educacionales" ref-schema="" ref-catalog="coles_data" ref-columns="id_nivel_educacional" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_esta_acargo" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_se_compone" columns="id_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="id_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_esta_formado2" table="asociacion_alumno_curso" schema="" catalog="coles_data" columns="id_curso"/>
       <exported-key name="fk_se_realizan" table="clases" schema="" catalog="coles_data" columns="id_curso"/>
     </table>
@@ -172,9 +171,9 @@
       <column name="nota" sqlType="FLOAT" length="2" precision="1" nullable="false" jdbcType="7"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id_evaluacion"/>
-      <foreign-key name="fk_son_sometidos" columns="run_alumno" ref-table="alumnos" ref-schema="" ref-catalog="coles_data" ref-columns="run_alumno" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_crea" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_forman_parte" columns="id_asignatura" ref-table="asignaturas" ref-schema="" ref-catalog="coles_data" ref-columns="id_asignatura" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_son_sometidos" columns="run_alumno" ref-table="alumnos" ref-schema="" ref-catalog="coles_data" ref-columns="run_alumno" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_reference_31" table="estados_de_notas" schema="" catalog="coles_data" columns="id_evaluacion"/>
     </table>
     <table name="matriculas" schema="" catalog="coles_data" type="TABLE">
@@ -185,9 +184,9 @@
       <column name="fecha" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_matricula"/>
-      <foreign-key name="fk_recibe" columns="id_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="id_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_asigna" columns="run_apoderado" ref-table="apoderados" ref-schema="" ref-catalog="coles_data" ref-columns="run_apoderado" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_identifica" columns="run_alumno" ref-table="alumnos" ref-schema="" ref-catalog="coles_data" ref-columns="run_alumno" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_recibe" columns="id_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="id_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="niveles_educacionales" schema="" catalog="coles_data" type="TABLE">
       <column name="id_nivel_educacional" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -206,8 +205,8 @@
       <column name="id_nivel_educacional" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id_niveles_por_establecimiento"/>
-      <foreign-key name="fk_ofrece2" columns="id_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="id_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_ofrece" columns="id_nivel_educacional" ref-table="niveles_educacionales" ref-schema="" ref-catalog="coles_data" ref-columns="id_nivel_educacional" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_ofrece2" columns="id_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="id_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="periodos" schema="" catalog="coles_data" type="TABLE">
       <column name="id_periodo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -270,15 +269,25 @@
       <exported-key name="fk_reference_32" table="apoderados" schema="" catalog="coles_data" columns="id_usuario_movil"/>
       <exported-key name="fk_reference_33" table="profesores" schema="" catalog="coles_data" columns="id_usuario_movil"/>
     </table>
-    <procedure name="insertarAlumno" schema="" catalog="coles_data" type="1">
+    <procedure name="alumnosExistencia" schema="" catalog="coles_data" type="1">
       <prototype>
-        <parameter name="p_run_alumnos" sqlType="VARCHAR" length="9" precision="9" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="p_run_alumno" sqlType="VARCHAR" length="9" precision="9" nullable="true" jdbcType="12" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="alumnosInsertar" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR" length="9" precision="9" nullable="true" jdbcType="12" type="1" index="1"/>
         <parameter name="p_nombre1" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="2"/>
         <parameter name="p_nombre2" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="3"/>
         <parameter name="p_apellido1" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="4"/>
         <parameter name="p_apellido2" sqlType="VARCHAR" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="5"/>
         <parameter name="p_fecha_nacimiento" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="6"/>
         <parameter name="p_nees" sqlType="BOOL" length="0" precision="0" nullable="true" jdbcType="1111" type="1" index="7"/>
+      </prototype>
+    </procedure>
+    <procedure name="alumnosSeleccionar" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR" length="9" precision="9" nullable="true" jdbcType="12" type="1" index="1"/>
       </prototype>
     </procedure>
   </data-source>

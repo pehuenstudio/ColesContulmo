@@ -1,6 +1,9 @@
 <?php
 echo __FILE__."<br/>";
-header('Content-Type: text/html; charset=UTF-8'); 
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/config.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/connect.php";
+
+header('Content-Type: text/html; charset=UTF-8');
 
 class Usuario{
 	private $run;
@@ -11,10 +14,15 @@ class Usuario{
 	private $apellido1;
 	private $apellido2;
 	private $estado;
+    //public  $mipdo;
 
-	//CONSTRUCTORES 
+
+
 	//MANEJO DE MÚLTIPLES CONSTRUCTORES
-	public function __construct(){ 
+	public function __construct(){
+        //$this->$mipdo = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,DB_PASS);
+
+
 		$a = func_get_args(); 
         $i = func_num_args(); 
         if (method_exists($this,$f='__construct'.$i)) { 
@@ -45,10 +53,9 @@ class Usuario{
 		$this->apellido1        = $apellido1;
 		$this->apellido2        = $apellido2;
 		$this->estado           = "1";
-	}
-	
-	//GETTERS Y SETTERS
-	public function get_run(){ 
+	}//CONSTRUCTORES
+
+	public function get_run(){
 		return $this->run; 
 	}
 	public function set_run($run){ 
@@ -93,21 +100,22 @@ class Usuario{
 	public function get_estado(){ 
 		return $this->estado; 
 	}
-	public function set_estado($estado){ 
+	public function set_estado($estado)
+    {
 		$this->estado = $estado; 
 	}
 
+	 //GETTERS Y SETTERS
+
 	//VALIDAR RUN
 	public function validar_run(){
-        $r = $this->run;
+        $this->run = str_replace(".","",$this->run);
+        $this->run = str_replace("-","",$this->run);
+        $this->run = str_replace(" ","",$this->run);
+        $this->run = strtoupper($this->run);
 
-        $r = str_replace(".","",$r);
-        $r = str_replace("-","",$r);
-        $r = str_replace(" ","",$r);
-        $r = strtoupper($r);
-
-        $numero = substr($r,0,strlen($r)-1);
-        $digito_verificador = substr($r,strlen($r)-1,1);
+        $numero = substr($this->run,0,strlen($this->run)-1);
+        $digito_verificador = substr($this->run,strlen($this->run)-1,1);
 
         $serie = array(2,3,4,5,6,7);
         $digitos = array();
@@ -118,14 +126,14 @@ class Usuario{
 
         //VERIFICAR LONGITUD DEL NUMERO
         if(strlen($numero)<7 or strlen($numero)>8){
-            //echo "<p>muy corto o my7 lartgo</p>";
+            echo ERRORCITO.CLASE_USUARIO."RUN DEMASIADO LAROGO O DEMASIADO CORTO<br/>";
             $this->run = NULL;
             return false;
         }
 
         //VERIFICAR SI SON SOLO NUMEROS ANTES DEL GUION
         if(!is_numeric($numero)){
-            //echo "<p>hay letras antes del guion $numero</p>";
+            echo ERRORCITO.CLASE_USUARIO."RUN CONTIENE LETRAS ANTES DEL GUION<br/>";
             $this->run = NULL;
             return false;
         }
@@ -133,11 +141,11 @@ class Usuario{
         //VERIFICAR QUE SEAN NUMEROS O K DESPUES DEL GUION
         if(!is_numeric($digito_verificador) and $digito_verificador!="K"){
             $this->run = NULL;
-            //echo "<br>ni numero k</br>";
+            echo ERRORCITO.CLASE_USUARIO."RUN TIENE UN DIGITO VERIFICADOR QUE NO ES DIGITO NI K<br/>";
             return false;
         }
 
-        //VALIDART DIGITO VERIFICADOR
+        //VALIDAR DIGITO VERIFICADOR
         for($i = (strlen($numero)-1); $i>=0; $i--){
             $digitos[$i] = substr($numero,$i,1);
             $productos[$i] = $digitos[$i]*$serie[$j];
@@ -159,12 +167,11 @@ class Usuario{
                 break;
         }
         if((11-$resto) != $digito_verificador){
-            echo "<p>rut no valido</p>";
-
+            echo INFO.CALSE_USUARIO. "RUN DIGITO VERIFICADOR NO COINCIDE CON NUMERO <br/>";
+            $this->run = NULL;
             return false;
         }
-        //echo $numero."<br/>".$digito_verificador;
-
+        echo INFO.CLASE_USUARIO." RUN INGRESADO CORRECTAMENTE ".$this->get_run()."<br/>";
         return true;
     }
 	
@@ -172,85 +179,109 @@ class Usuario{
         //SI ES INGRESADO
         $n = str_replace(" ","",$this->nombre1);
         if(empty($n)){
+            echo ERRORCITO.CLASE_USUARIO."NOMBRE1 NO INGRESADO <br/>";
             $this->nombre1 = NULL;
             return FALSE;
         }
 
         //SI TIENE LA LONGITUD CORRECTA
         if(strlen($this->nombre1)<3 or strlen($this->nombre1)>30){
+            echo ERRORCITO.CLASE_USUARIO."NOMBRE1 DEMACIADO LARGO O DEMACIADO CORTO <br/>";
             $this->nombre1 = NULL;
             return FALSE;
         }
         // VALIDAR SOLO LETRAS
         if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->nombre1))){
+            echo ERRORCITO.CLASE_USUARIO."EL NOMBRE1 CONTIENE CARACTERES NO PERMITIDOS <br/>";
             $this->nombre1 = NULL;
             return FALSE;
         }
+        echo INFO.CLASE_USUARIO."NOMBRE1 INGRESADO CORRECTAMENTE <br/>";
+        $this->nombre1 = ucwords(strtolower($this->nombre1));
         return true;
     }
+
     function validar_nombre2(){
         //SI ES INGRESADO
         $n = str_replace(" ","",$this->nombre2);
         if(empty($n)){
+            echo ERRORCITO.CLASE_USUARIO."NOMBRE2 NO INGRESADO <br/>";
             $this->nombre2 = NULL;
             return FALSE;
         }
 
         //SI TIENE LA LONGITUD CORRECTA
         if(strlen($this->nombre2)<3 or strlen($this->nombre2)>30){
+            echo ERRORCITO.CLASE_USUARIO."NOMBRE2 DEMASIADO LARGO O DEMASIDO CORTO <br/>";
             $this->nombre2 = NULL;
             return FALSE;
         }
         // VALIDAR SOLO LETRAS
         if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->nombre2))){
+            echo ERRORCITO.CLASE_USUARIO."NOMBRE2 CONTIENE CARACTERES NO PERMITIDOS <br/>";
             $this->nombre2 = NULL;
             return FALSE;
         }
+        echo INFO.CLASE_USUARIO."NOMBRE2 INGRESADO CORRECTAMENTE <br/>";
+        $this->nombre2 = ucwords(strtolower($this->nombre2));
         return true;
     }
+
     function validar_apellido1(){
         //SI ES INGRESADO
-        $n = str_replace(" ","",$this->apellido1);
-        if(empty($n)){
+        $a = str_replace(" ","",$this->apellido1);
+        if(empty($a)){
+            echo ERRORCITO.CLASE_USUARIO."APELLIDO1 NO INGRESADO <br/>";
             $this->apellido1 = NULL;
             return FALSE;
         }
 
         //SI TIENE LA LONGITUD CORRECTA
         if(strlen($this->apellido1)<3 or strlen($this->apellido1)>30){
+            echo ERRORCITO.CLASE_USUARIO."APELLIDO1 ES DEMASIADO LARGO O DEMASIADO CORTO <br/>";
             $this->apellido1 = NULL;
             return FALSE;
         }
         // VALIDAR SOLO LETRAS
         if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->apellido1))){
+            echo ERRORCITO.CLASE_USUARIO."APELLIDO1 CONTIENE CARACTERES NO PERMITIDOS <br/>";
             $this->apellido1 = NULL;
             return FALSE;
         }
+        echo INFO.CLASE_USUARIO."APELIIDO1 INGRESAD
+        O CORRECTAMENTE <br/>";
+        $this->apellido1 = ucwords(strtolower($this->apellido1));
         return true;
     }
+
     function validar_apellido2(){
         //SI ES INGRESADO
-        $n = str_replace(" ","",$this->apellido2);
-        if(empty($n)){
+        $a = str_replace(" ","",$this->apellido2);
+        if(empty($a)){
+            echo ERRORCITO.CLASE_USUARIO."APELLIDO2 NO INGRESADO <br/>";
             $this->apellido2 = NULL;
             return FALSE;
         }
 
         //SI TIENE LA LONGITUD CORRECTA
         if(strlen($this->apellido2)<3 or strlen($this->apellido2)>30){
+            echo ERRORCITO.CLASE_USUARIO."APELLIDO2 ES DEMASIADO LARGOP O DEMASIADO CORTO <br/>";
             $this->apellido2 = NULL;
             return FALSE;
         }
         // VALIDAR SOLO LETRAS
         if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->apellido2))){
+            echo ERRORCITO.CLASE_USUARIO."APELLIDO2 CONTIENE CARACTERES NO PERMITIDOS <br/>";
             $this->apellido2 = NULL;
             return FALSE;
         }
+        echo INFO.CLASE_USUARIO."APELLIDO2 INGRESADO CORRECTAMENTE <br/>";
+        $this->apellido2 = ucwords(strtolower($this->apellido2));
         return true;
     }
 
     //VALIDADOR MAESTRO
-    public function validarIdentidad(){
+    public function validar_identidad(){
         $return = true;
 
         if (!$this->validar_run()){
@@ -270,7 +301,7 @@ class Usuario{
         }
 
         return $return;
-    }
+    } //VALIDADORES
 }
 
 

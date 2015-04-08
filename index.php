@@ -5,8 +5,10 @@ require_once ROOT_MODELOS_USUARIOS."Profesor.php";
 require_once ROOT_MODELOS_USUARIOS."Apoderado.php";
 require_once ROOT_MODELOS_USUARIOS."Alumno.php";
 
-
-$alumnoParametrizado = new Alumno("11.111.111-1","angelica","maria","saavedra","torres","19880528",1);
+$apoderadoParametrizado = new Apoderado("166890837","RODRIGO","AlBERTO","SEPULVEDA","CASTRO","1234567","12345678","mi calle","1234",NULL,"mi sector","1");
+$apoderadoParametrizado->validar();
+/*
+$alumnoParametrizado = new Alumno("11.111.111-1","clau","ma jose","saavedra","torres","19880528",1);
 
 
 if($alumnoParametrizado->validar()){

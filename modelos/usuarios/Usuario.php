@@ -176,23 +176,8 @@ class Usuario{
     }//VALIDAR RUN
 	
     function validar_nombre1(){
-        //SI ES INGRESADO
-        $n = str_replace(" ","",$this->nombre1);
-        if(empty($n)){
-            echo ERRORCITO.CLASE_USUARIO."NOMBRE1 NO INGRESADO <br/>";
-            $this->nombre1 = NULL;
-            return FALSE;
-        }
-
-        //SI TIENE LA LONGITUD CORRECTA
-        if(strlen($this->nombre1)<3 or strlen($this->nombre1)>30){
-            echo ERRORCITO.CLASE_USUARIO."NOMBRE1 DEMACIADO LARGO O DEMACIADO CORTO <br/>";
-            $this->nombre1 = NULL;
-            return FALSE;
-        }
-        // VALIDAR SOLO LETRAS
-        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->nombre1))){
-            echo ERRORCITO.CLASE_USUARIO."EL NOMBRE1 CONTIENE CARACTERES NO PERMITIDOS <br/>";
+        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ\s]{3,30}$/",$this->nombre1)){
+            echo ERRORCITO.CLASE_USUARIO."EL NOMBRE1 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->nombre1 = NULL;
             return FALSE;
         }
@@ -202,23 +187,9 @@ class Usuario{
     }//VALIDAR NOMBRE1
 
     function validar_nombre2(){
-        //SI ES INGRESADO
-        $n = str_replace(" ","",$this->nombre2);
-        if(empty($n)){
-            echo ERRORCITO.CLASE_USUARIO."NOMBRE2 NO INGRESADO <br/>";
-            $this->nombre2 = NULL;
-            return FALSE;
-        }
-
-        //SI TIENE LA LONGITUD CORRECTA
-        if(strlen($this->nombre2)<3 or strlen($this->nombre2)>30){
-            echo ERRORCITO.CLASE_USUARIO."NOMBRE2 DEMASIADO LARGO O DEMASIDO CORTO <br/>";
-            $this->nombre2 = NULL;
-            return FALSE;
-        }
         // VALIDAR SOLO LETRAS
-        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->nombre2))){
-            echo ERRORCITO.CLASE_USUARIO."NOMBRE2 CONTIENE CARACTERES NO PERMITIDOS <br/>";
+        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ\s]{3,30}$/",$this->nombre2)){
+            echo ERRORCITO.CLASE_USUARIO."NOMBRE2 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->nombre2 = NULL;
             return FALSE;
         }
@@ -228,50 +199,19 @@ class Usuario{
     }//VALIDAR NOMBRE2
 
     function validar_apellido1(){
-        //SI ES INGRESADO
-        $a = str_replace(" ","",$this->apellido1);
-        if(empty($a)){
-            echo ERRORCITO.CLASE_USUARIO."APELLIDO1 NO INGRESADO <br/>";
+       if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ\s]{3,30}$/",$this->apellido1)){
+            echo ERRORCITO.CLASE_USUARIO."APELLIDO1 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->apellido1 = NULL;
             return FALSE;
         }
-
-        //SI TIENE LA LONGITUD CORRECTA
-        if(strlen($this->apellido1)<3 or strlen($this->apellido1)>30){
-            echo ERRORCITO.CLASE_USUARIO."APELLIDO1 ES DEMASIADO LARGO O DEMASIADO CORTO <br/>";
-            $this->apellido1 = NULL;
-            return FALSE;
-        }
-        // VALIDAR SOLO LETRAS
-        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->apellido1))){
-            echo ERRORCITO.CLASE_USUARIO."APELLIDO1 CONTIENE CARACTERES NO PERMITIDOS <br/>";
-            $this->apellido1 = NULL;
-            return FALSE;
-        }
-        echo INFO.CLASE_USUARIO."APELIIDO1 INGRESAD
-        O CORRECTAMENTE <br/>";
+        echo INFO.CLASE_USUARIO."APELIIDO1 INGRESADO CORRECTAMENTE <br/>";
         $this->apellido1 = ucwords(strtolower($this->apellido1));
         return true;
     }//VALIDAR APELLIDO1
 
     function validar_apellido2(){
-        //SI ES INGRESADO
-        $a = str_replace(" ","",$this->apellido2);
-        if(empty($a)){
-            echo ERRORCITO.CLASE_USUARIO."APELLIDO2 NO INGRESADO <br/>";
-            $this->apellido2 = NULL;
-            return FALSE;
-        }
-
-        //SI TIENE LA LONGITUD CORRECTA
-        if(strlen($this->apellido2)<3 or strlen($this->apellido2)>30){
-            echo ERRORCITO.CLASE_USUARIO."APELLIDO2 ES DEMASIADO LARGOP O DEMASIADO CORTO <br/>";
-            $this->apellido2 = NULL;
-            return FALSE;
-        }
-        // VALIDAR SOLO LETRAS
-        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]+$/",str_replace(' ', '', $this->apellido2))){
-            echo ERRORCITO.CLASE_USUARIO."APELLIDO2 CONTIENE CARACTERES NO PERMITIDOS <br/>";
+        if(!preg_match("/^[a-zA-ZñÑöÖáéíóúÁÉÍÓÚ\s]{3,30}$/",$this->apellido2)){
+            echo ERRORCITO.CLASE_USUARIO."APELLIDO2 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->apellido2 = NULL;
             return FALSE;
         }

@@ -1,6 +1,6 @@
 <?php
 echo __FILE__."<br/>";
-
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/config.php";
 require_once ROOT_MODELOS_USUARIOS."Usuario.php";
 
 class Apoderado extends Usuario{
@@ -95,74 +95,80 @@ class Apoderado extends Usuario{
         $this->direccion_id_comuna = $direccion_id_comuna;
     }
 
-   //VALIDAR TELEFONO FIJO
+
     public function validtar_telefono_fijo(){
         //SI SON NUMEROS Y SI SE ENVIO
-        if(!preg_match("/^[0-9]{7,8}+$/",str_replace(' ', '', $this->telefono_fijo))){
+        if(!preg_match("/^[0-9]{7,8}$/",$this->telefono_fijo)){
+            echo ERRORCITO.CLASE_APODERADO."TELEFONO FIJO MUY CORTO O MUY LARGO<br/>";
             $this->telefono_fijo = NULL;
             return false;
         }
+        echo INFO.CLASE_APODERADO."TELEFONO FIJO INGRESADO CORRECTAMENTE <br/>";
         return true;
-    }
+    }//VALIDAR TELEFONO FIJO
 
-    //VALIDAR TELEFONO CELULAR
     public function validar_telefono_celular(){
         //SI SON NUMEROS Y SI SE ENVIOS
-        if(!preg_match("/^[0-9]{8}+$/",str_replace(' ', '', $this->telefono_celular))){
+        if(!preg_match("/^[0-9]{8}$/",$this->telefono_celular)){
+            echo ERRORCITO.CLASE_APODERADO."TELEFO CELULAR MUY CORTO O MUY LARGO<br/>";
             $this->telefono_celular = NULL;
             return FALSE;
         }
+        echo INFO.CLASE_APODERADO."TELEFONO CELULAR INGRESADO CORRECTAMENTE <br/>";
         return true;
-    }
+    }//VALIDAR TELEFONO CELULAR
 
-
-    //VALIDAR DIRECCION CALLE
     public function validar_direccion_calle(){
-        if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]{1,40}$/",str_replace(' ', '', $this->direccion_calle))){
+        if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ\s]{1,40}$/",$this->direccion_calle)){
+            echo ERRORCITO.CLASE_APODERADO."DIRECCION CALLE VACIA O MUY LARGO <br/>";
             $this->direccion_calle = NULL;
             return false;
         }
+        echo INFO.CLASE_APODERADO."DIRECCION CALLE INGRESADA CORRECTAMENTE <br/>";
         return true;
-    }
+    }//VALIDAR DIRECCION CALLE
 
-    //VALIDAR DIRECCION NUMERO
     public function validar_direccion_numero(){
-        if(!preg_match("/^[0-9]+$/",str_replace(' ', '', $this->direccion_numero))){
+        if(!preg_match("/^[0-9]{1,5}$/",$this->direccion_numero)){
+            echo ERRORCITO.CLASE_APODERADO."DIRECCION NUMERO VACIA O MUY LARGO <br/>";
             $this->direccion_numero = NULL;
             return false;
         }
+        echo INFO.CLASE_APODERADO."DIRECCION NUMERO INGRESADA CORRECTAMENTE<br/>";
         return true;
-    }
+    }//VALIDAR DIRECCION NUMERO
 
-    //VALIDAR DIRECCION DEPTO
     public function validar_direccion_depto(){
         if(!is_null($this->direccion_depto)){
-            if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]{1,10}$/",str_replace(' ', '', $this->direccion_depto))){
-                //var_dump(is_null($this->direccion_depto));
+            if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ\]{1,10}$/",$this->direccion_depto)){
+                echo ERRORCITO.CLASE_APODERADO."DIRECCION DEPTO TIENE CARACTERES NO PERMITIDOS<br/>";
                 $this->direccion_depto = NULL;
                 return false;
             }
         }
+        echo INFO.CLASE_APODERADO."DIRECCION DEPTO INGRESADO CORRECTAMENTE<br/>";
         return true;
-    }
+    } //VALIDAR DIRECCION DEPTO
 
-    //VALIDAR DIRECCION SECTOR
     public function validar_direccion_sector(){
-        if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ]{1,40}+$/",str_replace(' ', '', $this->direccion_sector))){
+        if(!preg_match("/^[0-9a-zA-ZñÑöÖáéíóúÁÉÍÓÚ\s]{1,40}$/",$this->direccion_sector)){
+            echo ERRORCITO.CLASE_APODERADO."DIRECCION SECTOR ES MUY CORTO O MUY LARGO<br/>";
             $this->direccion_sector = NULL;
             return false;
         }
+        echo INFO.CLASE_APODERADO."DIRECCION SECTOR INGRESADO CORRECTAMENTE<br/>";
         return true;
-    }
+    }//VALIDAR DIRECCION SECTOR
 
-    //VALIDAR DIRECCION ID COMUNA
     public function  validar_direccion_id_comuna(){
-        if(!preg_match("/^[0-9]+$/",str_replace(' ', '', $this->direccion_id_comuna))){
+        if(!preg_match("/^[0-9]+$/",$this->direccion_id_comuna)){
+            echo ERRORCITO.CLASE_APODERADO."DIRECCION ID NO ES NUMERO";
             $this->direccion_id_comuna = NULL;
             return FALSE;
         }
+        echo INFO.CLASE_APODERADO."DIRECCION ID COMUNA INGRESADO CORRECTAMENTE<br/>";
         return true;
-    }
+    }//VALIDAR DIRECCION ID COMUNA
 
 
     //VALIDADOR MAESTRO
@@ -193,7 +199,7 @@ class Apoderado extends Usuario{
         if(!$this->validar_direccion_id_comuna()){
             $return = false;
         }
-
+        var_dump($this);
         return $return;
 
     }

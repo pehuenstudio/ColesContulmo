@@ -33,7 +33,7 @@ class Alumno extends Usuario{
         $this->fecha_nacimiento = $fecha_nacimiento;
         $this->nees             = $nees;
     }
-    //CONSTRUCTORES
+
 
     public function get_fecha_nacimiento(){
         return $this->fecha_nacimiento;
@@ -47,7 +47,7 @@ class Alumno extends Usuario{
     public function set_nees($nees){
         $this->nees = $nees;
     }
-    //GETTERS Y SETTERS
+
 
 ////////////////////////VALIDACIONES//////////////////////////////////////////////////////////////////////////////////
     //VALIDAR FECHA NACIMIENTO
@@ -91,22 +91,12 @@ class Alumno extends Usuario{
 
     //VALIDAR NEES
     function validar_nees(){
-        $this->nees = str_replace(" ","",$this->nees);
-
-        //SI SE ENVIO
-        if(empty($this->nees)){
-            echo ERRORCITO.CLASE_ALUMNO."NESS NO INGRESADO<br/>";
+        if(!preg_match("/^[0-1]{1}$/",$this->nees)){
+            echo ERRORCITO.CLASE_ALUMNO."NESS NO INGRESADO O ES DISTINTO DE 0|1<br/>";
             $this->nees = NULL;
             return false;
         }
-
-        //SI ES 1|0
-        if($this->nees != "1" and $this->nees != "0"){
-            echo ERRORCITO.CLASE_ALUMNO."NEES ES DISTINTO DE 0|1<br/>";
-            $this->nees = NULL;
-            return false;
-        }
-        echo INFO.CLASE_ALUMNO."NESS INGRESADO CORRECTAMENTE<br/>";
+           echo INFO.CLASE_ALUMNO."NESS INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 

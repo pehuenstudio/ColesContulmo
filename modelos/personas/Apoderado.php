@@ -79,8 +79,9 @@ class Apoderado extends Persona{
     }
 
 }
+/*
 $a = new Apoderado();
 $a->set_identidad("166890837", "RodÏrigo", "Alberto", "Sepúlveda", "Castro", "M",123456789,564994127);
 $a->validar();
-var_dump($a);
+var_dump($a);*/
 ?> 

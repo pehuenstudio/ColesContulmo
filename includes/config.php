@@ -11,6 +11,11 @@ define("CLASE_PERSONA"," <strong style=\"color:firebrick\">&nbsp;CLASE_PERSONA:&
 define("CLASE_ALUMNO"," <strong style=\"color:green\">&nbsp;CLASE_ALUMNO:&nbsp;</strong> ");
 define("CLASE_APODERADO"," <strong style=\"color:orange\">&nbsp;CLASE_APODERADO:&nbsp;</strong> ");
 define("CLASE_PROFESOR"," <strong style=\"color:mediumvioletred\">&nbsp;CLASE_PREFESOR:&nbsp;</strong> ");
+define("CLASE_MATRICULA"," <strong style=\"color:darkorchid\">&nbsp;CLASE_MATRICULA:&nbsp;</strong> ");
+define("CLASE_TIPOENSENANZA"," <strong style=\"color:palevioletred\">&nbsp;CLASE_TIPOENSENANZA:&nbsp;</strong> ");
+define("CLASE_DIRECCION"," <strong style=\"color:greenyellow\">&nbsp;CLASE_DIRECCION:&nbsp;</strong> ");
+define("CLASE_ESTABLECIMIENTO"," <strong style=\"color:tan\">&nbsp;CLASE_ESTABLECIMIENTO:&nbsp;</strong> ");
+//TipoEnsenanza
 
 //echo $_SERVER["SERVER_NAME"]."<br/>";
 

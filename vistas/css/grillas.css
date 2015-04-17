@@ -1,0 +1,53 @@
+.contenedor_grillas {
+    width: 90% !important;
+    margin:auto !important;
+}
+.contenedor_grillas div {
+    float: left !important;
+    display: inline !important;
+    margin-bottom: 5px !important;
+    padding:0 !important;
+}
+.contenedor_grillas div h3{
+    width:100%;
+    text-align:center;
+}
+.grilla1 {
+    width: 8% !important;
+}
+.grilla9 {
+    width: 90% !important;
+}
+.grilla2 {
+    width: 18% !important;
+}
+.grilla8 {
+    width: 80% !important;
+}
+.grilla3 {
+    width: 28% !important;
+}
+.grilla7 {
+    width: 70% !important;
+}
+.grilla4 {
+    width: 38% !important;
+}
+.grilla6 {
+    width: 60% !important;
+}
+.grilla5 {
+    width: 49% !important;
+}
+.grilla10 {
+    width: 100% !important;
+}
+
+.contenedor .grilla5.derecha{
+    margin-left: 1% !important;
+
+}
+.contenedor .grilla5.izquierda{
+    margin-right: 1% !important;
+
+}

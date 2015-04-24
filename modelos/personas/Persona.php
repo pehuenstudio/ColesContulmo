@@ -1,9 +1,9 @@
 <?php
 namespace personas;
-use validaciones\Validacion;
 
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/config.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/validaciones/Validacion.php";
+
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS."Direccion.php";
 echo __FILE__."<br/>";
 
@@ -298,14 +298,14 @@ class Persona {
 
 
 
-/*
+
 $p = new Persona();
 $p->set_identidad_nueva("166890837", "RodÏrigo", "Alberto", "Sepúlveda", "Castro", "M");
-$p->set_direccion("Esmeralda", 1234, null, "Villa Rivas", 1);
+$p->set_direccion(new \Direccion("Esmeralda", 1234, null, "Villa Rivas", 1));
 $p->validar_identidad();
 $p->validar_direccion();
 $p->set_contrasena_movil("galatea198");
 $p->validar_contrasena_movil();
 var_dump($p);
-*/
+
 ?>

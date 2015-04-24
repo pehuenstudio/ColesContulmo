@@ -1,5 +1,5 @@
 .contenedor_grillas {
-    width: 90% !important;
+    width: 100% !important;
     margin:auto !important;
 }
 .contenedor_grillas div {
@@ -7,6 +7,7 @@
     display: inline !important;
     margin-bottom: 5px !important;
     padding:0 !important;
+
 }
 .contenedor_grillas div h3{
     width:100%;
@@ -43,11 +44,11 @@
     width: 100% !important;
 }
 
-.contenedor .grilla5.derecha{
+.grilla5.derecha{
     margin-left: 1% !important;
 
 }
-.contenedor .grilla5.izquierda{
+.grilla5.izquierda{
     margin-right: 1% !important;
 
 }

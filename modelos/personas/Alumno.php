@@ -2,8 +2,8 @@
 
 namespace personas;
 
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/config.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/validaciones/Validacion.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS_PERSONAS."Persona.php";
 echo __FILE__."<br/>";
 class Alumno extends Persona {
@@ -142,8 +142,8 @@ class Alumno extends Persona {
     }
 
     //
-    public function validar_identidad()
-    {   $result = true;
+    public function validar_identidad(){
+        $result = true;
 
         if(!parent::validar_identidad()){
             $result = false;
@@ -184,8 +184,8 @@ $a->set_grado_educacional_padres(1,2);
 $a->set_direccion(new \Direccion("Esmeralda", 1234, null, "Villa Rivas", 1));
 $a->validar_identidad();
 $a->validar_direccion();
-var_dump($a->to_jj());*/
+var_dump($a->to_jj());
 //print_r( $a->to_jj());
 //echo json_encode(print_r($a));
-
+*/
 ?> 

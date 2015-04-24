@@ -4,160 +4,117 @@ echo __FILE__."<br/>";
 
 ?>
 
-<style>
-
-    .contenedor_grillas {
-        width: 90% !important;
-        margin:auto !important;
-    }
-    .contenedor_grillas div {
-        float: left !important;
-        display: inline !important;
-        margin-bottom: 5px !important;
-        padding:0 !important;
-    }
-    .contenedor_grillas div h3{
-        width:100%;
-        text-align:center;
-    }
-    .grilla1 {
-        width: 8% !important;
-    }
-    .grilla9 {
-        width: 90% !important;
-    }
-    .grilla2 {
-        width: 18% !important;
-    }
-    .grilla8 {
-        width: 80% !important;
-    }
-    .grilla3 {
-        width: 28% !important;
-    }
-    .grilla7 {
-        width: 70% !important;
-    }
-    .grilla4 {
-        width: 38% !important;
-    }
-    .grilla6 {
-        width: 60% !important;
-    }
-    .grilla5 {
-        width: 49% !important;
-    }
-    .grilla10 {
-        width: 100% !important;
-    }
-
-    .grilla5.derecha{
-        margin-left: 1% !important;
-
-    }
-    .grilla5.izquierda{
-        margin-right: 1% !important;
-
-    }
-</style>
-
-<style>
-    #matricula_formulario {
-        width:100% !important;
-    }
-    #matricula_formulario div{
-
-    }
-    #matricula_formulario div.titulo{
-        margin-bottom:1px !important;
-        padding:0 !important;
-    }
-    #matricula_formulario div.titulo h3{
-        margin:0 !important;
-        height:60px;
-
-    }
-    #matricula_formulario input, #matricula_formulario select, #matricula_formulario textarea{
-        width:100% !important;
-        height:30px !important;
-        margin:0 !important;
-    }
-
-    #matricula_formulario div.error{
-        font-size:small !important;
-        font-style:italic !important;
-        color:red !important;
-        margin-top:-10px !important;
-    }
-
-    #matricula_formulario div.error p{
-        margin: 0 !important;
-    }
-</style>
-
-
-
-
-<form id="matricula_formulario">
+<div id="contenedor_apoderado">
     <div class="contenedor_grillas">
         <div class="grilla5 izquierda">
             <div class="grilla10 titulo"><h3>Datos Personales</h3></div>
-            <div class="grilla10">RUN</div>
-            <div class="grilla10"> <input type="text"></div>
-            <div class="grilla10 error">aquierror</div>
-            <div class="grilla10">Nombres</div>
-            <div class="grilla5 izquierda"> <input type="text"></div><div class="grilla5 derecha"> <input type="text"></div>
-            <div class="grilla5 error izquierda">aquierror</div><div class="grilla5 error derecha">aquierror</div>
-            <div class="grilla10">Apellidos</div>
-            <div class="grilla5 izquierda"> <input type="text"></div><div class="grilla5 derecha"> <input type="text"></div>
-            <div class="grilla5 error izquierda">aquierror</div><div class="grilla5 error derecha">aquierror</div>
-            <div class="grilla10">Sexo</div>
-            <div class="grilla10"> <select><option>Seleccione Sexo</option><option>Femenino</option><option>Masculino</option></select></div>
-            <div class="grilla10 error">aquierror</div>
-            <div class="grilla10">Avatar</div>
-            <div class="grilla2"> <img src="#" alt="Avatar Alumno"></div><div class="grilla8"> <input type="file"></div>
-            <div class="grilla10 error">aquierror</div>
+            <div class="grilla10">RUN<strong>*</strong></div>
+            <div class="grilla10">
+                <input type="text" name="run_apoderado" id="run_apoderado" placeholder="ej. 12.345.678-k" maxlength="12">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla10">Nombres<strong>*</strong></div>
+            <div class="grilla5 izquierda">
+                <input type="text" name="nombre1_apoderado" id="nombre1_apoderado" placeholder="Primer Nombre" maxlength="45">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla5 derecha">
+                <input type="text" name="nombre2_apoderado" id="nombre2_apoderado" placeholder="Segundo Nombre" maxlength="45">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla10">Apellidos<strong>*</strong></div>
+            <div class="grilla5 izquierda">
+                <input type="text" name="apellido1_apoderado" id="apellido1_apoderado" placeholder="Apellido Paterno" maxlength="45">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla5 derecha">
+                <input type="text" name="apellido2_apoderado" id="apellido2_apoderado" placeholder="Apellido Materno" maxlength="45">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla10">Sexo<strong>*</strong></div>
+            <div class="grilla10">
+                <select name="sexo_apoderado" id="sexo_apoderado">
+                    <option value="0">Seleccione Sexo</option>
+                    <option value="1">Femenino</option>
+                    <option value="2">Masculino</option>
+                </select>
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
             <div class="grilla10">Email</div>
-            <div class="grilla10"><input type="email"></div>
-            <div class="grilla10 error">aquierror</div>
+            <div class="grilla10">
+                <input type="email" name="email_apoderado" id="email_apoderado" placeholder="ej. yomi\@mail.com" maxlength="100">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla10">Avatar</div>
+            <div class="grilla10"> <img src="/_code/vistas/img/user.png" alt="Avatar Alumno" id="avatar_apoderado_preview"></div>
+            <div class="grilla10"> <input type="file" name="avatar_apoderado" id="avatar_apoderado" accept="image/png,image/jpeg"></div>
+            
         </div>
         <!--PANEL DE DIRECCIONES-->
         <div class="grilla5 derecha">
-            <div class="grilla10 titulo"><h3>Direccion</h3></div>
-            <div class="grilla10">Calle</div>
-            <div class="grilla10"> <input type="text"></div>
-            <div class="grilla10 error">aquierror</div>
-            <div class="grilla10">Numero</div>
-            <div class="grilla10"> <input type="number"></div>
-            <div class="grilla10 error">aquierror</div>
+            <div class="grilla10 titulo"><h3>Dirección</h3></div>
+            <div class="grilla10">Calle<strong>*</strong></div>
+            <div class="grilla10">
+                <input type="text" name="calle_apoderado" id="calle_apoderado" placeholder="ej. Los Tilos" maxlength="60">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla10">Numero<strong>*</strong></div>
+            <div class="grilla10">
+                <input type="text" name="numero_apoderado" id="numero_apoderado" placeholder="ej. 234" maxlength="5">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
             <div class="grilla10">Depto</div>
-            <div class="grilla10"> <input type="text"></div>
-            <div class="grilla10 error">aquierror</div>
-            <div class="grilla10">Regi&oacute;n</div>
-            <div class="grilla10"> <select><option>Seleccione Regi&oacute;n</option></select></div>
-            <div class="grilla10 error">aquierror</div>
-            <div class="grilla10">Provincia</div>
-            <div class="grilla10"> <select></select></div>
-            <div class="grilla10 error">aquierror</div>
-            <div class="grilla10">Comuna</div>
-            <div class="grilla10"><select></select></div>
-            <div class="grilla10 error">aquierror</div>
-            <div class="grilla10">Sector</div>
-            <div class="grilla10"><input type="text"></div>
-            <div class="grilla10 error">aquierror</div>
+            <div class="grilla10">
+                <input type="text" name="depto_apoderado" id="depto_apoderado" placeholder="ej. 678" maxlength="5">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            
+            <div class="grilla10">Región<strong>*</strong></div>
+            <div class="grilla10">
+                <select name="id_region_apoderado" id="id_region_apoderado">
+                    <option value="0">Seleccione Región</option>
+                </select>
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            
+            <div class="grilla10">Provincia<strong>*</strong></div>
+            <div class="grilla10">
+                <select name="id_provincia_apoderado" id="id_provincia_apoderado" disabled="disabled">
+                    <option value="0">Seleecione Provincia</option>
+                </select>
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            
+            <div class="grilla10">Comuna<strong>*</strong></div>
+            <div class="grilla10">
+                <select name="id_comuna_apoderado" id="id_comuna_apoderado" disabled="disabled">
+                    <option value="0">Seleecione Comuna</option>
+                </select>
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla10">Sector<strong>*</strong></div>
+            <div class="grilla10">
+                <input type="text" name="sector_apoderado" id="sector_apoderado" placeholder="ej. Villa Rivas" maxlength="60">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            
             <div class="grilla10"></div>
         </div>
         <div class="grilla10 titulo"><h3>Datos De Contacto</h3></div>
         <div class="grilla5 izquierda">
-            <div class="grilla10">Tel&eacute;fono Fijo</div>
-            <div class="grilla10"><input type="number"></div>
-            <div class="grilla10 error">aquierror</div>
+            <div class="grilla10">Teléfono Fijo</div>
+            <div class="grilla10">
+                <input type="text" name="telefono_fijo_apoderado" id="telefono_fijo_apoderado" placeholder="ej. 412123456" maxlength="9">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
         </div>
         <div class="grilla5 derecha">
-            <div class="grilla10">Tel&eacute;fono Celular</div>
-            <div class="grilla10"><input type="number"></div>
-            <div class="grilla10 error">aquierror</div>
+            <div class="grilla10">Teléfono Celular<strong>*</strong></div>
+            <div class="grilla10">
+                <input type="text" name="telefono_celular_apoderado" id="telefono_celular_apoderado" placeholder="ej. 912345678" maxlength="9">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            
         </div>
     </div>
-</form>
-
+</div>

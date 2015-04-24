@@ -2,8 +2,8 @@
 
 namespace personas;
 
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/config.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/validaciones/Validacion.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS_PERSONAS."Persona.php";
 echo __FILE__."<br/>";
 class Apoderado extends Persona{

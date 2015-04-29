@@ -19,7 +19,7 @@ echo __FILE__."<br/>";
                 <div class="grilla10 error">&nbsp;</div>
             </div>
             <div class="grilla5 derecha">
-                <input name=nombre2_alumno" id="nombre2_alumno" placeholder="Segundo Nombre" type="text" maxlength="45">
+                <input name="nombre2_alumno" id="nombre2_alumno" placeholder="Segundo Nombre" type="text" maxlength="45">
                 <div class="grilla10 error">&nbsp;</div>
             </div>
             <div class="grilla10">Apellidos<strong>*</strong></div>
@@ -110,7 +110,7 @@ echo __FILE__."<br/>";
             </div>
             <div class="grilla10">Sector</div>
             <div class="grilla10">
-                <input type="text" name="sector_alumno" id="sector_alumno" placeholder="ej. Calebu" maxlength="60">
+                <input type="text" name="sector_alumno" id="sector_alumno" placeholder="ej. Calebu" maxlength="60"/>
                 <div class="grilla10 error">&nbsp;</div>
             </div>
 
@@ -120,22 +120,34 @@ echo __FILE__."<br/>";
 
         <!--PANEL DE DATOS ADICIONALES-->
         <div class="grilla10 titulo"><h3>Datos Adicionales Del Alumno </h3></div>
-        <div class="grilla10">¿Problemas De Aprendizaje?<strong>*</strong></div>
-        <div class="grilla10">
-            <select name="pde" id="pde">
-                <option value="0">Seleccione Una Opción</option>
-                <option value="1">Si</option>
-                <option value="2">No</option>
-            </select>
-            <div class="grilla10 error">&nbsp;</div>
+        <div class="grilla5 izquierda">
+            <div class="grilla10">Establecimiento De Procedencia </div>
+            <div class="grilla10">
+                <input id="establecimiento_procedencia" name="establecimiento_procedencia">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla10">Grados Repetidos</div>
+            <div class="grilla10">
+            <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula.formulario.repeticiones.php"?>
+            </div>
         </div>
-        <div class="grilla10">Religion<strong>*</strong></div>
-        <div class="grilla10">
-            <select name="id_religion_alumno" id="id_religion_alumno">
-                <option value="0">Ninguna</option>
-            </select>
+        <div class="grilla5 derecha">
+            <div class="grilla10">¿Problemas De Aprendizaje?<strong>*</strong></div>
+            <div class="grilla10">
+                <select name="pde" id="pde">
+                    <option value="0">Seleccione Una Opción</option>
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
+            <div class="grilla10">Religion<strong>*</strong></div>
+            <div class="grilla10">
+                <select name="id_religion_alumno" id="id_religion_alumno">
+                    <option value="0">Ninguna</option>
+                </select>
+            </div>
         </div>
-
         <div class="grilla10">&nbsp;</div>
 
         <!--PANEL DE LOS PADRES-->

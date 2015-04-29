@@ -3,6 +3,7 @@ namespace personas;
 
 
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS."Direccion.php";
 echo __FILE__."<br/>";
@@ -151,6 +152,7 @@ class Persona {
             $this->run = null;
             return false;
         }
+        $this->run = str_replace("-","",$this->run);
         echo INFO.CLASE_PERSONA." RUN INGRESADO CORRECTAMENTE ".$this->get_run()."<br/>";
         return true;
     }
@@ -185,7 +187,7 @@ class Persona {
     function validar_apellido1(){
         global $v;
         if(!$v->validar_texto($this->apellido1,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."APELLIDO1 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
+            echo ERRORCITO.CLASE_PERSONA."APELLIDO1 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO ".$this->apellido1."<br/>";
             $this->apellido1 = null;
             return false;
         }
@@ -254,6 +256,9 @@ class Persona {
         if(!$this->validar_sexo()){
             $return = false;
         }
+        if(!$this->validar_direccion()){
+            $return = false;
+        }
 
         return $return;
     }
@@ -291,11 +296,13 @@ class Persona {
         $json = json_encode($json);
         return $json;
     }
+
+    //
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-
+/*
 
 
 
@@ -307,5 +314,5 @@ $p->validar_direccion();
 $p->set_contrasena_movil("galatea198");
 $p->validar_contrasena_movil();
 var_dump($p);
-
+*/
 ?>

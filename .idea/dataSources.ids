@@ -43,7 +43,7 @@
       <column name="id_tipo_ensenanza" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="cantidad" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
-      <primary-key name="PRIMARY" columns="run_alumno"/>
+      <primary-key name="PRIMARY" columns="run_alumno,id_grado,id_tipo_ensenanza"/>
       <foreign-key name="fk_alumnos_grados_repetidos_alumnos1" columns="run_alumno" ref-table="alumnos" ref-schema="" ref-catalog="coles_data" ref-columns="run_alumno" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_alumnos_grados_repetidos_grados1" columns="id_grado,id_tipo_ensenanza" ref-table="grados" ref-schema="" ref-catalog="coles_data" ref-columns="id_grado,id_tipo_ensenanza" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_alumnos_grados_repetidos_alumnos1_idx" unique="false" columns="run_alumno"/>
@@ -237,7 +237,7 @@
       <column name="rbd_establecimiento" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="run_apoderado" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
       <column name="id_curso" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
-      <column name="esblecimiento_procedencia" sqlType="VARCHAR" length="60" precision="0" nullable="false" jdbcType="12"/>
+      <column name="establecimiento_procedencia" sqlType="VARCHAR" length="60" precision="0" nullable="false" jdbcType="12"/>
       <column name="fecha_incorporacion" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
       <column name="fecha_retiro" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91"/>
       <column name="causa_retiro" sqlType="VARCHAR" length="100" precision="0" nullable="true" jdbcType="12"/>
@@ -303,23 +303,47 @@
       <exported-key name="fk_grados_grados_tipos1" table="grados" schema="" catalog="coles_data" columns="id_tipo_ensenanza"/>
       <exported-key name="fk_matriculas_grados_tipos1" table="matriculas" schema="" catalog="coles_data" columns="id_tipo_ensenanza"/>
     </table>
+    <procedure name="count_matriculas" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="p_periodo" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_total" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+      </prototype>
+    </procedure>
+    <procedure name="get_alumno" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="get_apoderado" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_apoderado" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+      </prototype>
+    </procedure>
     <procedure name="get_comunas" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="in_id_provincia" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
       </prototype>
     </procedure>
-    <procedure name="get_establecimientos" schema="" catalog="coles_data" type="1"/>
-    <procedure name="get_establecimientos_cursos" schema="" catalog="coles_data" type="1">
+    <procedure name="get_curso_id" schema="" catalog="coles_data" type="1">
       <prototype>
-        <parameter name="in_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
-        <parameter name="in_id_grado" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
-        <parameter name="in_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="p_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="p_id_grado" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
       </prototype>
     </procedure>
+    <procedure name="get_establecimientos" schema="" catalog="coles_data" type="1"/>
     <procedure name="get_establecimientos_grados" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="in_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
         <parameter name="in_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="get_establecimientos_grados_grupos" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="in_id_grado" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="in_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
       </prototype>
     </procedure>
     <procedure name="get_establecimientos_tipos_ensenanza" schema="" catalog="coles_data" type="1">
@@ -327,7 +351,21 @@
         <parameter name="in_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
       </prototype>
     </procedure>
+    <procedure name="get_grado_repetido" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="p_id_grado" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+      </prototype>
+    </procedure>
     <procedure name="get_grados_educacionales" schema="" catalog="coles_data" type="1"/>
+    <procedure name="get_grados_repetidos" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="p_id_grado" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+      </prototype>
+    </procedure>
     <procedure name="get_provincias" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="in_id_region" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
@@ -335,5 +373,116 @@
     </procedure>
     <procedure name="get_regiones" schema="" catalog="coles_data" type="1"/>
     <procedure name="get_religiones" schema="" catalog="coles_data" type="1"/>
+    <procedure name="set_alumno" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="p_nombre1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="2"/>
+        <parameter name="p_nombre2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="3"/>
+        <parameter name="p_apellido1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="4"/>
+        <parameter name="p_apellido2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="5"/>
+        <parameter name="p_sexo" sqlType="VARCHAR" length="1" precision="1" nullable="true" jdbcType="12" type="1" index="6"/>
+        <parameter name="p_fecha_nacimiento" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="7"/>
+        <parameter name="p_pde" sqlType="TINYINT" length="3" precision="3" nullable="true" jdbcType="-6" type="1" index="8"/>
+        <parameter name="p_id_direccion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="9"/>
+        <parameter name="p_id_religion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="10"/>
+        <parameter name="p_grado_educacional_madre" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="11"/>
+        <parameter name="p_grado_educacional_padre" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="12"/>
+        <parameter name="p_persona_vive" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="13"/>
+      </prototype>
+    </procedure>
+    <procedure name="set_apoderado" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_apoderado" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="p_nombre1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="2"/>
+        <parameter name="p_nombre2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="3"/>
+        <parameter name="p_apellido1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="4"/>
+        <parameter name="p_apellido2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="5"/>
+        <parameter name="p_sexo" sqlType="VARCHAR" length="1" precision="1" nullable="true" jdbcType="12" type="1" index="6"/>
+        <parameter name="p_id_direccion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="7"/>
+        <parameter name="p_telefono_fijo" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="8"/>
+        <parameter name="p_telefono_celular" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="9"/>
+      </prototype>
+    </procedure>
+    <procedure name="set_direccion" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_calle" sqlType="VARCHAR" length="60" precision="60" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="p_numero" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_depto" sqlType="VARCHAR" length="5" precision="5" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="p_sector" sqlType="VARCHAR" length="60" precision="60" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="p_id_comuna" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="5"/>
+        <parameter name="id_direccion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="6"/>
+      </prototype>
+    </procedure>
+    <procedure name="set_grados_repetidos" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="p_id_grado" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="p_cantidad" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
+      </prototype>
+    </procedure>
+    <procedure name="set_matricula" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="p_periodo" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="3"/>
+        <parameter name="p_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
+        <parameter name="p_run_apoderado" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="5"/>
+        <parameter name="p_id_curso" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="6"/>
+        <parameter name="p_establecimiento_procedencia" sqlType="VARCHAR " length="60" precision="60" nullable="true" jdbcType="1111" type="1" index="7"/>
+        <parameter name="p_fecha_incorporacion" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="8"/>
+      </prototype>
+    </procedure>
+    <procedure name="upd_alumno" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="p_nombre1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="2"/>
+        <parameter name="p_nombre2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="3"/>
+        <parameter name="p_apellido1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="4"/>
+        <parameter name="p_apellido2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="5"/>
+        <parameter name="p_sexo" sqlType="VARCHAR" length="1" precision="1" nullable="true" jdbcType="12" type="1" index="6"/>
+        <parameter name="p_fecha_nacimiento" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="7"/>
+        <parameter name="p_pde" sqlType="TINYINT" length="3" precision="3" nullable="true" jdbcType="-6" type="1" index="8"/>
+        <parameter name="p_id_direccion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="9"/>
+        <parameter name="p_id_religion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="10"/>
+        <parameter name="p_grado_educacional_madre" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="11"/>
+        <parameter name="p_grado_educacional_padre" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="12"/>
+        <parameter name="p_persona_vive" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="13"/>
+        <parameter name="p_estado" sqlType="VARCHAR " length="1" precision="1" nullable="true" jdbcType="1111" type="1" index="14"/>
+      </prototype>
+    </procedure>
+    <procedure name="upd_apoderado" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_apoderado" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="p_nombre1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="2"/>
+        <parameter name="p_nombre2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="3"/>
+        <parameter name="p_apellido1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="4"/>
+        <parameter name="p_apellido2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="5"/>
+        <parameter name="p_sexo" sqlType="VARCHAR" length="1" precision="1" nullable="true" jdbcType="12" type="1" index="6"/>
+        <parameter name="p_id_direccion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="7"/>
+        <parameter name="p_telefono_fijo" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="8"/>
+        <parameter name="p_telefono_celular" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="9"/>
+        <parameter name="p_estado" sqlType="VARCHAR " length="1" precision="1" nullable="true" jdbcType="1111" type="1" index="10"/>
+      </prototype>
+    </procedure>
+    <procedure name="upd_direccion" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_id_direccion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="p_calle" sqlType="VARCHAR" length="60" precision="60" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="p_numero" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="p_depto" sqlType="VARCHAR" length="5" precision="5" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="p_sector" sqlType="VARCHAR" length="60" precision="60" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="p_id_comuna" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="6"/>
+        <parameter name="p_estado" sqlType="VARCHAR " length="1" precision="1" nullable="true" jdbcType="1111" type="1" index="7"/>
+      </prototype>
+    </procedure>
+    <procedure name="upd_grados_repetidos" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="p_id_grado" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_id_tipo_ensenanza" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="p_cantidad" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
+      </prototype>
+    </procedure>
   </data-source>
 </component>

@@ -9,73 +9,74 @@ echo __FILE__."<br/>";
 class Alumno extends Persona {
     private $fecha_nacimiento;
     private $pde;
-    private $grado_educacional_madre;
+    private $id_religion;
     private $grado_educacional_padre;
+    private $grado_educacional_madre;
     private $persona_vive;
-
 
     //CONSTRUCTOR
     function __construct(){
 
     }
 
-
-
     //GETTER y SETTER
-    public function set_fecha_nacimiento($fecha_nacimiento)
-    {
-        $this->fecha_nacimiento = $fecha_nacimiento;
-    }
     public function get_fecha_nacimiento()
     {
         return $this->fecha_nacimiento;
     }
-    public function set_grado_eduacional_madre($grado_eduacional_madre)
+    public function set_fecha_nacimiento($fecha_nacimiento)
     {
-        $this->grado_eduacional_madre = $grado_eduacional_madre;
+        $this->fecha_nacimiento = $fecha_nacimiento;
     }
-    public function get_grado_eduacional_madre()
+    public function get_grado_educacional_madre()
     {
-        return $this->grado_eduacional_madre;
+        return $this->grado_educacional_madre;
     }
-    public function set_grado_educacional_padre($grado_educacional_padre)
+    public function set_grado_educacional_madre($grado_educacional_madre)
     {
-        $this->grado_educacional_padre = $grado_educacional_padre;
+        $this->grado_educacional_madre = $grado_educacional_madre;
     }
     public function get_grado_educacional_padre()
     {
         return $this->grado_educacional_padre;
     }
-    public function set_pde($pde)
+    public function set_grado_educacional_padre($grado_educacional_padre)
     {
-        $this->pde = $pde;
+        $this->grado_educacional_padre = $grado_educacional_padre;
     }
     public function get_pde()
     {
         return $this->pde;
     }
-    public function set_persona_vive($persona_vive)
+    public function set_pde($pde)
     {
-        $this->persona_vive = $persona_vive;
+        $this->pde = $pde;
     }
     public function get_persona_vive()
     {
         return $this->persona_vive;
     }
-
-
-
-
-    public function set_identidad($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $fecha_nacimiento, $pde, $persona_vive){
-        parent::set_identidad_nueva($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo);
-        $this->fecha_nacimiento = $fecha_nacimiento;
-        $this->pde              = $pde;
-        $this->persona_vive     = $persona_vive;
+    public function set_persona_vive($persona_vive)
+    {
+        $this->persona_vive = $persona_vive;
+    }
+    public function get_id_religion()
+    {
+        return $this->id_religion;
+    }
+    public function set_id_religion($id_religion)
+    {
+        $this->id_religion = $id_religion;
     }
 
-    public function set_grado_educacional_padres($grado_educacional_madre,$grado_educacional_padre){
+    public function set_identidad($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $fecha_nacimiento, $pde, $id_religion, $persona_vive,$grado_educacional_madre, $grado_educacional_padre){
+        parent::set_identidad_nueva($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo);
+        $this->fecha_nacimiento        = $fecha_nacimiento;
+        $this->pde                     = $pde;
+        $this->id_religion                = $id_religion;
         $this->grado_educacional_madre = $grado_educacional_madre;
         $this->grado_educacional_padre = $grado_educacional_padre;
+        $this->persona_vive            = $persona_vive;
     }
 
 //+++++++++++++++++++++++++++++++++++++++++VALIDACIONES++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -121,11 +122,51 @@ class Alumno extends Persona {
     public function validar_pde(){
         global $v;
         if(!$v->validar_formato_verdadero_falso($this->pde)){
-            echo INFO.CLASE_ALUMNO." PDE INGRESADO INCORECTAMENTE<br/>";
+            echo ERRORCITO.CLASE_ALUMNO." PDE INGRESADO INCORECTAMENTE<br/>";
             $this->pde = null;
             return false;
         }
         echo INFO.CLASE_ALUMNO." PDE INGRESADO CORRECTAMENTE<br/>";
+        return true;
+    }
+
+    //VALIDAR ID_RELIGION
+    public function validar_id_religion(){
+        global $v;
+        $result = true;
+        if(!$v->validar_formato_numero($this->id_religion,1,1)){
+            echo ERRORCITO.CLASE_ALUMNO." ID_RELIGION INGRESADO INCORRECTAMENTE<br/>";
+            $this->id_religion = null;
+            return false;
+        }
+        echo INFO.CLASE_ALUMNO." ID_RELIGION INGRESADO CORRECTAMENTE<br/>";
+        if($this->id_religion == "0"){
+            $this->id_religion = null;
+        }
+        return true;
+    }
+
+    //VALIDAR GRADO EDUCACIONAL PADRE
+    public function validar_grado_educacional_padre(){
+        global $v;
+        if(!$v->validar_grado_educacional($this->grado_educacional_padre)){
+            echo ERRORCITO.CLASE_ALUMNO." GEP INGRESADO INCORRECTAMENTE<br/>";
+            $this->grado_educacional_padre = null;
+            return false;
+        }
+        echo INFO.CLASE_ALUMNO." GEP INGRESADO CORRECTAMENTE<br/>";
+        return true;
+    }
+
+    //VALIDAR GRADO EDUCACIONAL MADRW
+    public function validar_grado_educacional_madre(){
+        global $v;
+        if(!$v->validar_grado_educacional($this->grado_educacional_madre)){
+            echo ERRORCITO.CLASE_ALUMNO." GEM INGRESADO INCORRECTAMENTE<br/>";
+            $this->grado_educacional_madre = null;
+            return false;
+        }
+        echo INFO.CLASE_ALUMNO." GEM INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -142,7 +183,7 @@ class Alumno extends Persona {
     }
 
     //
-    public function validar_identidad(){
+    public function validar(){
         $result = true;
 
         if(!parent::validar_identidad()){
@@ -152,6 +193,15 @@ class Alumno extends Persona {
             $result = false;
         }
         if(!$this->validar_pde()){
+            $result = false;
+        }
+        if(!$this->validar_id_religion()){
+            $result = false;
+        }
+        if(!$this->validar_grado_educacional_padre()){
+            $result = false;
+        }
+        if(!$this->validar_grado_educacional_madre()){
             $result = false;
         }
 
@@ -175,17 +225,114 @@ class Alumno extends Persona {
         return json_encode($persona);
     }
 
+    //++++++++++++++++++++++++++++++++++++++++++++INGRESO BBDD++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    public function db_existencia(){
+        global $myPDO;
+        $run = $this->get_run();
+        $sentencia = $myPDO->prepare("CALL get_alumno(?)");
+        $sentencia->bindParam(1, $run, \PDO::PARAM_STR, 9);
+        $sentencia->execute();
+
+        if($sentencia->rowCount()>=1){
+            echo INFO.CLASE_ALUMNO." DDBB FILA EXISTENTE <br/>";
+            return true;
+        }
+        echo INFO.CLASE_ALUMNO." DDBB FILA INEXISTENTE <br/>";
+        return false;
+    }
+
+    public function db_actualizar(){
+        global $myPDO;
+
+        $run = $this->get_run();
+        $nombre1 = $this->get_nombre1();
+        $nombre2 = $this->get_nombre2();
+        $apellido1 = $this->get_apellido1();
+        $apellido2 = $this->get_apellido2();
+        $sexo = $this->get_sexo();
+        $id_direccion = $this->get_direccion()->db_get_direccion_id("alumnos","alumno",$run);
+
+
+        $estado = "1";
+
+        $sentencia = $myPDO->prepare("CALL upd_alumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $sentencia->bindParam(1,$run);
+        $sentencia->bindParam(2,$nombre1);
+        $sentencia->bindParam(3,$nombre2);
+        $sentencia->bindParam(4,$apellido1);
+        $sentencia->bindParam(5,$apellido2);
+        $sentencia->bindParam(6,$sexo);
+        $sentencia->bindParam(7,$this->fecha_nacimiento);
+        $sentencia->bindParam(8,$this->pde);
+        $sentencia->bindParam(9,$id_direccion);
+        $sentencia->bindParam(10,$this->id_religion);
+        $sentencia->bindParam(11,$this->grado_educacional_madre);
+        $sentencia->bindParam(12,$this->grado_educacional_padre);
+        $sentencia->bindParam(13,$this->persona_vive);
+        $sentencia->bindParam(14,$estado);
+        $result = $sentencia->execute();
+
+        $this->get_direccion()->set_id_direccion($id_direccion);
+        $this->get_direccion()->db_actualizar();
+
+       // $sentencia = $myPDO->prepare("CALL upd_direccion(?,?,?,?,?,?,?)");
+
+
+        if(!$result){
+            echo ERRORCITO.CLASE_ALUMNO." DDBB ERROR EN ACTUALIZACION! <br/>";
+            return true;
+        }
+        echo INFO.CLASE_ALUMNO." DDBB EXITO EN ACTUALIZACION! <br/>";
+        return false;
+    }
+
+    public function db_ingresar(){
+        global $myPDO;
+        $existencia = $this->db_existencia();
+        if($existencia){
+            $this->db_actualizar();
+            return true;
+        }
+
+        $run = $this->get_run();
+        $nombre1 = $this->get_nombre1();
+        $nombre2 = $this->get_nombre2();
+        $apellido1 = $this->get_apellido1();
+        $apellido2 = $this->get_apellido2();
+        $sexo = $this->get_sexo();
+        $id_direccion = $this->get_direccion()->db_ingresar();
+        if(empty($id_direccion)){
+            echo ERRORCITO.CLASE_ALUMNO."DIRECCION INGRESADA INCORRECTAMENTE EN BBDD";
+            return false;
+        }
+
+
+        $sentencia = $myPDO->prepare("CALL set_alumno(?,?,?,?,?,?,?,?,?,?,?,?,?);");
+        $sentencia->bindParam(1,$run);
+        $sentencia->bindParam(2,$nombre1);
+        $sentencia->bindParam(3,$nombre2);
+        $sentencia->bindParam(4,$apellido1);
+        $sentencia->bindParam(5,$apellido2);
+        $sentencia->bindParam(6,$sexo);
+        $sentencia->bindParam(7,$this->fecha_nacimiento);
+        $sentencia->bindParam(8,$this->pde);
+        $sentencia->bindParam(9,$id_direccion);
+        $sentencia->bindParam(10,$this->id_religion);
+        $sentencia->bindParam(11,$this->grado_educacional_madre);
+        $sentencia->bindParam(12,$this->grado_educacional_padre);
+        $sentencia->bindParam(13,$this->persona_vive);
+        $result = $sentencia->execute();
+
+        if(!$result){
+            echo ERRORCITO.CLASE_ALUMNO."ALUMNO INGRESADO INCORRECTAMENTE EN BBDD";
+            $sentencia = $myPDO->query("DELETE FROM direcciones WHERE id_direccion = ".$id_direccion."");
+            return $result;
+        }
+        return $result;
+
+    }
 
 }
-/*
-$a = new Alumno();
-$a->set_identidad("166890837", "Rodrigo", "Alberto", "Sepúlveda", "Castro", "M", "1988-12-10",0,"con toda la familia");
-$a->set_grado_educacional_padres(1,2);
-$a->set_direccion(new \Direccion("Esmeralda", 1234, null, "Villa Rivas", 1));
-$a->validar_identidad();
-$a->validar_direccion();
-var_dump($a->to_jj());
-//print_r( $a->to_jj());
-//echo json_encode(print_r($a));
-*/
+
 ?> 

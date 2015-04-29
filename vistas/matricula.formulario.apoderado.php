@@ -35,8 +35,8 @@ echo __FILE__."<br/>";
             <div class="grilla10">
                 <select name="sexo_apoderado" id="sexo_apoderado">
                     <option value="0">Seleccione Sexo</option>
-                    <option value="1">Femenino</option>
-                    <option value="2">Masculino</option>
+                    <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
                 </select>
                 <div class="grilla10 error">&nbsp;</div>
             </div>

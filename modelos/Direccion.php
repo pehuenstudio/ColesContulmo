@@ -1,5 +1,6 @@
 <?php
-
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 echo __FILE__."<br/>";
 class Direccion {
 
@@ -84,10 +85,11 @@ class Direccion {
         global $v;
         if(!$v->validar_texto($this->calle,5,60)){
             echo ERRORCITO.CLASE_DIRECCION."DIRECCION CALLE VACIA O MUY LARGO <br/>";
-            $this->direccion_calle = NULL;
+            $this->calle = null;
             return false;
         }
         echo INFO.CLASE_DIRECCION."DIRECCION CALLE INGRESADA CORRECTAMENTE <br/>";
+        $this->calle =  ucwords(strtolower($this->calle));
         return true;
     }
 
@@ -112,7 +114,7 @@ class Direccion {
         }
         if(!$v->validar_formato_numero_texto($this->depto,2,5)){
             echo ERRORCITO.CLASE_DIRECCION."DIRECCION DEPTO TIENE CARACTERES NO PERMITIDOS<br/>";
-            $this->direccion_depto = NULL;
+            $this->depto = NULL;
             return false;
         }
         echo INFO.CLASE_DIRECCION."DIRECCION DEPTO INGRESADO CORRECTAMENTE<br/>";
@@ -124,17 +126,18 @@ class Direccion {
         global $v;
         if(!$v->validar_texto($this->sector,5,60)){
             echo ERRORCITO.CLASE_DIRECCION."DIRECCION SECTOR ES MUY CORTO O MUY LARGO<br/>";
-            $this->direccion_sector = NULL;
+            $this->sector = null;
             return false;
         }
         echo INFO.CLASE_DIRECCION."DIRECCION SECTOR INGRESADO CORRECTAMENTE<br/>";
+        $this->sector = ucwords(strtolower($this->sector));
         return true;
     }
 
     //VALIDAR ID COMUNA
     public function validar_id_comuna(){
         global $v;
-        if(!$v->validar_formato_numero($this->id_comuna,1,3)){
+        if(!$v->validar_formato_numero($this->id_comuna,1,5)){
             echo ERRORCITO.CLASE_DIRECCION."DIRECCION ID NO ES NUMERO<br/>";
             $this->id_comuna = null;
             return FALSE;
@@ -165,5 +168,51 @@ class Direccion {
         return $result;
     }
 
+    //++++++++++++++++++++++++++++++++++++++++MANEJO DE BBDD+++++++++++++++++++++++++++++++++++++
+
+    public function db_get_direccion_id($tabla,$persona,$run){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("SELECT id_direccion FROM ".$tabla." WHERE run_".$persona." = ?");
+        $sentencia->bindParam(1, $run, \PDO::PARAM_STR, 9);
+        $sentencia->execute();
+
+        $id_direccion = $sentencia->fetchColumn();
+        return $id_direccion;
+    }
+
+    public function db_actualizar(){
+        global $myPDO;
+
+        $sentencia = $myPDO->prepare("CALL upd_direccion(?,?,?,?,?,?,?);");
+        $sentencia->bindParam(1, $this->numero, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $this->calle, \PDO::PARAM_STR, 60);
+        $sentencia->bindParam(3, $this->numero, \PDO::PARAM_INT);
+        $sentencia->bindParam(4, $this->depto, \PDO::PARAM_STR, 5);
+        $sentencia->bindParam(5, $this->sector, \PDO::PARAM_STR, 60);
+        $sentencia->bindParam(6, $this->id_comuna , \PDO::PARAM_INT);
+        $sentencia->bindParam(7, $this->estado , \PDO::PARAM_STR, 1);
+        $result = $sentencia->execute();
+
+        if(!$result){
+            echo ERRORCITO.CLASE_DIRECCION. " DDBB ERROR EN LA ACTUALIZACION<br/>";
+            return false;
+        }
+        echo INFO.CLASE_DIRECCION. "DDBB EXITO EN LA ACTUALIZACION <br/>";
+        return true;
+    }
+    public function db_ingresar(){
+        global $myPDO;
+
+        $sentencia = $myPDO->prepare("CALL set_direccion(?,?,?,?,?,@id_direccion);");
+        $sentencia->bindParam(1, $this->calle, \PDO::PARAM_STR, 60);
+        $sentencia->bindParam(2, $this->numero, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $this->depto, \PDO::PARAM_STR, 5);
+        $sentencia->bindParam(4, $this->sector, \PDO::PARAM_STR, 60);
+        $sentencia->bindParam(5, $this->id_comuna , \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $id_direccion = $myPDO->query("SELECT @id_direccion")->fetchColumn();
+        return $id_direccion;
+    }
 }
 ?> 

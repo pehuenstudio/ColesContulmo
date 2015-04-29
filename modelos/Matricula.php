@@ -1,19 +1,21 @@
 <?php
 
-namespace matriculas;
+
 
 use personas\Alumno;
 
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS_PERSONAS."Persona.php";
 require_once ROOT_MODELOS_PERSONAS."Alumno.php";
 require_once ROOT_MODELOS_PERSONAS."Apoderado.php";
-
+echo __FILE__."<br/>";
 
 class Matricula {
     private $id_matricula;
     private $id_tipo_ensenanza;
+    private $periodo;
     private $run_alumno;
     private $rbd_establecimiento;
     private $run_apoderado;
@@ -25,123 +27,153 @@ class Matricula {
     private $fecha_egreso;
     private $estado = 1;
 
-
-
     //CONSTRUCTOR
-    function __construct()
-    {
 
-    }
-
-    //GETTERS Y SETTERS
-    public function set_establecimiento_procedencia($establecimiento_procedencia)
-    {
-        $this->establecimiento_procedencia = $establecimiento_procedencia;
-    }
-    public function get_establecimiento_procedencia()
-    {
-        return $this->establecimiento_procedencia;
-    }
-    public function set_estado($estado)
-    {
-        $this->estado = $estado;
-    }
-    public function get_estado()
-    {
-        return $this->estado;
-    }
-    public function set_fecha_egreso($fecha_egreso)
-    {
-        $this->fecha_egreso = $fecha_egreso;
-    }
-    public function get_fecha_egreso()
-    {
-        return $this->fecha_egreso;
-    }
-    public function set_fecha_incorporacion($fecha_incorporacion)
-    {
-        $this->fecha_incorporacion = $fecha_incorporacion;
-    }
-    public function get_fecha_incorporacion()
-    {
-        return $this->fecha_incorporacion;
-    }
-    public function set_fecha_retiro($fecha_retiro)
-    {
-        $this->fecha_retiro = $fecha_retiro;
-    }
-    public function get_fecha_retiro()
-    {
-        return $this->fecha_retiro;
-    }
-    public function set_id_curso($id_curso)
-    {
-        $this->id_curso = $id_curso;
-    }
-    public function get_id_curso()
-    {
-        return $this->id_curso;
-    }
-    public function set_id_matricula($id_matricula)
-    {
-        $this->id_matricula = $id_matricula;
-    }
-    public function get_id_matricula()
-    {
-        return $this->id_matricula;
-    }
-    public function set_id_tipo_ensenanza($id_tipo_ensenanza)
-    {
-        $this->id_tipo_ensenanza = $id_tipo_ensenanza;
-    }
-    public function get_id_tipo_ensenanza()
-    {
-        return $this->id_tipo_ensenanza;
-    }
-    public function set_rbd_establecimiento($rbd_establecimiento)
-    {
-        $this->rbd_establecimiento = $rbd_establecimiento;
-    }
-    public function get_rbd_establecimiento()
-    {
-        return $this->rbd_establecimiento;
-    }
-    public function set_run_alumno($run_alumno)
-    {
-        $this->run_alumno = $run_alumno;
-    }
-    public function get_run_alumno()
-    {
-        return $this->run_alumno;
-    }
-    public function set_run_apoderado($run_apoderado)
+    function __construct($id_tipo_ensenanza, $periodo, $run_alumno, $rbd_establecimiento, $run_apoderado, $id_curso,
+                         $establecimiento_procedencia, $fecha_incorporacion)
     {
         $this->run_apoderado = $run_apoderado;
+        $this->id_curso = $id_curso;
+        $this->run_alumno = $run_alumno;
+        $this->rbd_establecimiento = $rbd_establecimiento;
+        $this->periodo = $periodo;
+        $this->id_tipo_ensenanza = $id_tipo_ensenanza;
+        $this->fecha_incorporacion = $fecha_incorporacion;
+        $this->establecimiento_procedencia = $establecimiento_procedencia;
+
     }
-    public function get_run_apoderado()
+
+
+
+
+    //GETTERS Y SETTERS
+    public function get_causa_retiro()
     {
-        return $this->run_apoderado;
+        return $this->causa_retiro;
     }
     public function set_causa_retiro($causa_retiro)
     {
         $this->causa_retiro = $causa_retiro;
     }
-    public function get_causa_retiro()
+    public function get_establecimiento_procedencia()
     {
-        return $this->causa_retiro;
+        return $this->establecimiento_procedencia;
+    }
+    public function set_establecimiento_procedencia($establecimiento_procedencia)
+    {
+        $this->establecimiento_procedencia = $establecimiento_procedencia;
+    }
+    public function get_estado()
+    {
+        return $this->estado;
+    }
+    public function set_estado($estado)
+    {
+        $this->estado = $estado;
+    }
+    public function get_fecha_egreso()
+    {
+        return $this->fecha_egreso;
+    }
+    public function set_fecha_egreso($fecha_egreso)
+    {
+        $this->fecha_egreso = $fecha_egreso;
+    }
+    public function get_fecha_incorporacion()
+    {
+        return $this->fecha_incorporacion;
+    }
+    public function set_fecha_incorporacion($fecha_incorporacion)
+    {
+        $this->fecha_incorporacion = $fecha_incorporacion;
+    }
+    public function get_fecha_retiro()
+    {
+        return $this->fecha_retiro;
+    }
+    public function set_fecha_retiro($fecha_retiro)
+    {
+        $this->fecha_retiro = $fecha_retiro;
+    }
+    public function get_id_curso()
+    {
+        return $this->id_curso;
+    }
+    public function set_id_curso($id_curso)
+    {
+        $this->id_curso = $id_curso;
+    }
+    public function get_id_matricula()
+    {
+        return $this->id_matricula;
+    }
+    public function set_id_matricula($id_matricula)
+    {
+        $this->id_matricula = $id_matricula;
+    }
+    public function get_id_tipo_ensenanza()
+    {
+        return $this->id_tipo_ensenanza;
+    }
+    public function set_id_tipo_ensenanza($id_tipo_ensenanza)
+    {
+        $this->id_tipo_ensenanza = $id_tipo_ensenanza;
+    }
+    public function get_periodo()
+    {
+        return $this->periodo;
+    }
+    public function set_periodo($periodo)
+    {
+        $this->periodo = $periodo;
+    }
+    public function get_rbd_establecimiento()
+    {
+        return $this->rbd_establecimiento;
+    }
+    public function set_rbd_establecimiento($rbd_establecimiento)
+    {
+        $this->rbd_establecimiento = $rbd_establecimiento;
+    }
+    public function get_run_alumno()
+    {
+        return $this->run_alumno;
+    }
+    public function set_run_alumno($run_alumno)
+    {
+        $this->run_alumno = $run_alumno;
+    }
+    public function get_run_apoderado()
+    {
+        return $this->run_apoderado;
+    }
+    public function set_run_apoderado($run_apoderado)
+    {
+        $this->run_apoderado = $run_apoderado;
     }
 
+    //VALIDAR PERIODO
 
+    public function validar_periodo(){
+        global $v;
+        if(!$v->validar_formato_numero($this->periodo,4,4)){
+            echo ERRORCITO.CLASE_MATRICULA." PERIODO INGRESADO INCORRECTAMENTE<br/>";
+            $this->periodo = null;
+            return false;
+        }
+        echo INFO.CLASE_MATRICULA." PERIODO INGRESADO CORRECTAMENTE<br/>";
+        return true;
+    }
 
     //VALIDAR ESTABLECIMEINTO PROCEDENCIA
     public function validar_establecimiento_porcedencia(){
         global $v;
         if(!$v->validar_formato_numero_texto($this->establecimiento_procedencia,3,60)){
             echo ERRORCITO.CLASE_MATRICULA." ESTABLECIMIENTO PROCEDENCIA INGRESADO INCORRECTAMENTE<br/>";
-            $this->establecimiento_procedencia;
+            $this->establecimiento_procedencia = null;
             return false;
         }
-        echo INFO.CLASE_MATRICULA." ESTABLECIMIENTO PROCEDENCIA INGRESADO INCORRECTAMENTE<br/>";
+        echo INFO.CLASE_MATRICULA." ESTABLECIMIENTO PROCEDENCIA INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -161,7 +193,7 @@ class Matricula {
     public function validar_fecha_retiro(){
         global $v;
         if(!empty($this->causa_retiro)){
-            if(!$v->validar_formato_fecha($this->fecha_incorporacion)){
+            if(!$v->validar_formato_fecha($this->fecha_retiro)){
                 echo ERRORCITO.CLASE_MATRICULA."FECHA DE RETIRO INGRESADA ICORRECTAMENTE<br/>";
                 $this->fecha_retiro = false;
                 return false;
@@ -169,6 +201,8 @@ class Matricula {
             echo INFO.CLASE_MATRICULA."FECHA DE RETIRO INGRESADA CORRECTAMENTE <br/>";
             return true;
         }
+        echo INFO.CLASE_MATRICULA."FECHA DE RETIRO INGRESADA CORRECTAMENTE <br/>";
+        return true;
     }
 
     //validar causa retiro
@@ -195,9 +229,70 @@ class Matricula {
             echo INFO.CLASE_MATRICULA." FECHA DE EGRESO INGRESADA CORRECTAMENTE <br/>";
             return true;
         }
+        echo INFO.CLASE_MATRICULA." FECHA DE EGRESO INGRESADA CORRECTAMENTE <br/>";
+        return true;
     }
 
+    //VALIDADOR MAESTRO
+    public function  validar(){
+        $result = true;
+        if(!$this->validar_periodo()){
+            $result = false;
+        }
+        if(!$this->validar_establecimiento_porcedencia()){
+            $result = false;
+        }
+        if(!$this->validar_fecha_incorporacion()){
+            $result = false;
+        }
+        if(!$this->validar_fecha_retiro()){
 
+            $result = false;
+        }
+        if(!$this->validar_causa_retiro()){
+            $result = false;
+        }
+        if(!$this->validar_fecha_egreso()){
+            $result = false;
+        }
+        return $result;
+    }
+
+    //+++++++++++++++++++++++++++++++++++++++++++MANEJO DE BBDD++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public function db_existencia(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("SELECT id_matricula FROM matriculas WHERE run_alumno = ? AND periodo = ?");
+        $sentencia->bindParam(1, $this->run_alumno, \PDO::PARAM_STR,9);
+        $sentencia->bindParam(2, $this->periodo, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        if($sentencia->rowCount() >= 1){
+            echo ERRORCITO.CLASE_MATRICULA."ESTE ALUMNO YA REGISTRA MATRICULA PARA ESTE PERIODO<br/>";
+            return true;
+        }
+
+        return false;
+    }
+
+    public function db_ingresar(){
+        global $myPDO;
+
+        $sentencia = $myPDO->prepare("CALL set_matricula(?,?,?,?,?,?,?,?,@foo)");
+        $sentencia->bindParam(1, $this->id_tipo_ensenanza, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $this->periodo, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $this->run_alumno, \PDO::PARAM_STR, 9);
+        $sentencia->bindParam(4, $this->rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(5, $this->run_apoderado, \PDO::PARAM_STR, 9);
+        $sentencia->bindParam(6, $this->id_curso, \PDO::PARAM_INT);
+        $sentencia->bindParam(7, $this->establecimiento_procedencia, \PDO::PARAM_STR, 60);
+        $sentencia->bindParam(8, $this->fecha_incorporacion, \PDO::PARAM_STR, 10);
+
+        $result = $sentencia->execute();
+
+        $sentencia = $myPDO->query("SELECT @foo;");
+        $foo = $sentencia->fetchColumn();
+        var_dump($foo);
+    }
 
 }
 ?> 

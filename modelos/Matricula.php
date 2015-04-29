@@ -277,7 +277,7 @@ class Matricula {
     public function db_ingresar(){
         global $myPDO;
 
-        $sentencia = $myPDO->prepare("CALL set_matricula(?,?,?,?,?,?,?,?,@foo)");
+        $sentencia = $myPDO->prepare("CALL set_matricula(?,?,?,?,?,?,?,?,@id_matricula)");
         $sentencia->bindParam(1, $this->id_tipo_ensenanza, \PDO::PARAM_INT);
         $sentencia->bindParam(2, $this->periodo, \PDO::PARAM_INT);
         $sentencia->bindParam(3, $this->run_alumno, \PDO::PARAM_STR, 9);
@@ -289,9 +289,9 @@ class Matricula {
 
         $result = $sentencia->execute();
 
-        $sentencia = $myPDO->query("SELECT @foo;");
-        $foo = $sentencia->fetchColumn();
-        var_dump($foo);
+        $sentencia = $myPDO->query("SELECT @id_matricula;");
+        $this->id_matricula = $sentencia->fetchColumn(0);
+
     }
 
 }

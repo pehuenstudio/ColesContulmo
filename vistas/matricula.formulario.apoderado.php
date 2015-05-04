@@ -1,6 +1,6 @@
 <?php
 
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 
 ?>
 
@@ -47,7 +47,9 @@ echo __FILE__."<br/>";
             </div>
             <div class="grilla10">Avatar</div>
             <div class="grilla10"> <img src="/_code/vistas/img/user.png" alt="Avatar Alumno" id="avatar_apoderado_preview"></div>
-            <div class="grilla10"> <input type="file" name="avatar_apoderado" id="avatar_apoderado" accept="image/png,image/jpeg"></div>
+            <div class="grilla10"> <input type="file" name="avatar_apoderado" id="avatar_apoderado" accept="image/png,image/jpeg">
+                <div class="grilla10 error">&nbsp;</div>
+            </div>
             
         </div>
         <!--PANEL DE DIRECCIONES-->

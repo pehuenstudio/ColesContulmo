@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 
 class TipoEnsenanza {
     private $id_tipo_ensenanza;

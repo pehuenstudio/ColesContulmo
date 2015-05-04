@@ -2,7 +2,7 @@
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 class GradoRepetido {
     private $run_alumno;
     private $id_grado;

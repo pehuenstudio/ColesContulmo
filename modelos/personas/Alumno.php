@@ -1,11 +1,14 @@
 <?php
 
 namespace personas;
-
+use \Direccion;
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS_PERSONAS."Persona.php";
-echo __FILE__."<br/>";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Direccion.php";
+//echo __FILE__."<br/>";
+
+
 class Alumno extends Persona {
     private $fecha_nacimiento;
     private $pde;
@@ -69,14 +72,15 @@ class Alumno extends Persona {
         $this->id_religion = $id_religion;
     }
 
-    public function set_identidad($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $fecha_nacimiento, $pde, $id_religion, $persona_vive,$grado_educacional_madre, $grado_educacional_padre){
-        parent::set_identidad_nueva($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo);
+    public function set_identidad($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $email, $fecha_nacimiento, $pde, $id_religion, $persona_vive,$grado_educacional_madre, $grado_educacional_padre){
+        parent::set_identidad_nueva($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $email);
         $this->fecha_nacimiento        = $fecha_nacimiento;
         $this->pde                     = $pde;
         $this->id_religion                = $id_religion;
         $this->grado_educacional_madre = $grado_educacional_madre;
         $this->grado_educacional_padre = $grado_educacional_padre;
         $this->persona_vive            = $persona_vive;
+
     }
 
 //+++++++++++++++++++++++++++++++++++++++++VALIDACIONES++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -122,11 +126,11 @@ class Alumno extends Persona {
     public function validar_pde(){
         global $v;
         if(!$v->validar_formato_verdadero_falso($this->pde)){
-            echo ERRORCITO.CLASE_ALUMNO." PDE INGRESADO INCORECTAMENTE<br/>";
+            echo ERRORCITO.CLASE_ALUMNO." PDE ".$this->pde." INGRESADO INCORECTAMENTE<br/>";
             $this->pde = null;
             return false;
         }
-        echo INFO.CLASE_ALUMNO." PDE INGRESADO CORRECTAMENTE<br/>";
+        echo INFO.CLASE_ALUMNO." PDE ".$this->pde." INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -140,9 +144,9 @@ class Alumno extends Persona {
             return false;
         }
         echo INFO.CLASE_ALUMNO." ID_RELIGION INGRESADO CORRECTAMENTE<br/>";
-        if($this->id_religion == "0"){
+        /*if($this->id_religion == "0"){
             $this->id_religion = null;
-        }
+        }*/
         return true;
     }
 
@@ -205,24 +209,29 @@ class Alumno extends Persona {
             $result = false;
         }
 
+        if(!$this->validar_persona_vive()){
+            $result = false;
+        }
+
         return $result;
     }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public function to_jj()
+    public function to_json()
     {
 
-        $persona = json_decode(parent::to_json(),true);
+        $persona = json_decode(parent::to_json0(),true);
         $persona["identidad"]["fecha_nacimiento"] = $this->fecha_nacimiento;
         $persona["identidad"]["pde"] =$this->pde;
+        $persona["identidad"]["id_religion"] =$this->id_religion;
         $persona["identidad"]["grado_educacional_madre"] = $this->grado_educacional_madre;
         $persona["identidad"]["grado_educacional_padre"] = $this->grado_educacional_padre;
         $persona["identidad"]["persona_vive"] = $this->persona_vive;
-        $persona["identidad"]["text"] = "hola mundo!";
+
 
         //array_push($persona,$alumno);
-        //var_dump($persona);
-        return json_encode($persona);
+        //Svar_dump($persona);
+        return json_encode($persona,JSON_UNESCAPED_UNICODE);
     }
 
     //++++++++++++++++++++++++++++++++++++++++++++INGRESO BBDD++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -235,10 +244,10 @@ class Alumno extends Persona {
         $sentencia->execute();
 
         if($sentencia->rowCount()>=1){
-            echo INFO.CLASE_ALUMNO." DDBB FILA EXISTENTE <br/>";
+            //echo INFO.CLASE_ALUMNO." DDBB FILA EXISTENTE <br/>";
             return true;
         }
-        echo INFO.CLASE_ALUMNO." DDBB FILA INEXISTENTE <br/>";
+        //echo INFO.CLASE_ALUMNO." DDBB FILA INEXISTENTE <br/>";
         return false;
     }
 
@@ -251,26 +260,30 @@ class Alumno extends Persona {
         $apellido1 = $this->get_apellido1();
         $apellido2 = $this->get_apellido2();
         $sexo = $this->get_sexo();
-        $id_direccion = $this->get_direccion()->db_get_direccion_id("alumnos","alumno",$run);
-
+        $email = $this->get_email();
+        $direccion = $this->get_direccion();
+        //var_dump($direccion->db_get_id("alumnos","alumno",$run));
+        $id_direccion = $this->get_direccion()->db_get_id("alumnos","alumno",$run);
+        //var_dump($this->get_direccion());
 
         $estado = "1";
 
-        $sentencia = $myPDO->prepare("CALL upd_alumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $sentencia = $myPDO->prepare("CALL upd_alumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $sentencia->bindParam(1,$run);
         $sentencia->bindParam(2,$nombre1);
         $sentencia->bindParam(3,$nombre2);
         $sentencia->bindParam(4,$apellido1);
         $sentencia->bindParam(5,$apellido2);
         $sentencia->bindParam(6,$sexo);
-        $sentencia->bindParam(7,$this->fecha_nacimiento);
-        $sentencia->bindParam(8,$this->pde);
-        $sentencia->bindParam(9,$id_direccion);
-        $sentencia->bindParam(10,$this->id_religion);
-        $sentencia->bindParam(11,$this->grado_educacional_madre);
-        $sentencia->bindParam(12,$this->grado_educacional_padre);
-        $sentencia->bindParam(13,$this->persona_vive);
-        $sentencia->bindParam(14,$estado);
+        $sentencia->bindParam(7,$email);
+        $sentencia->bindParam(8,$this->fecha_nacimiento);
+        $sentencia->bindParam(9,$this->pde);
+        $sentencia->bindParam(10,$id_direccion);
+        $sentencia->bindParam(11,$this->id_religion);
+        $sentencia->bindParam(12,$this->grado_educacional_madre);
+        $sentencia->bindParam(13,$this->grado_educacional_padre);
+        $sentencia->bindParam(14,$this->persona_vive);
+        $sentencia->bindParam(15,$estado);
         $result = $sentencia->execute();
 
         $this->get_direccion()->set_id_direccion($id_direccion);
@@ -301,6 +314,7 @@ class Alumno extends Persona {
         $apellido1 = $this->get_apellido1();
         $apellido2 = $this->get_apellido2();
         $sexo = $this->get_sexo();
+        $email = $this->get_email();
         $id_direccion = $this->get_direccion()->db_ingresar();
         if(empty($id_direccion)){
             echo ERRORCITO.CLASE_ALUMNO."DIRECCION INGRESADA INCORRECTAMENTE EN BBDD";
@@ -308,20 +322,21 @@ class Alumno extends Persona {
         }
 
 
-        $sentencia = $myPDO->prepare("CALL set_alumno(?,?,?,?,?,?,?,?,?,?,?,?,?);");
+        $sentencia = $myPDO->prepare("CALL set_alumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
         $sentencia->bindParam(1,$run);
         $sentencia->bindParam(2,$nombre1);
         $sentencia->bindParam(3,$nombre2);
         $sentencia->bindParam(4,$apellido1);
         $sentencia->bindParam(5,$apellido2);
         $sentencia->bindParam(6,$sexo);
-        $sentencia->bindParam(7,$this->fecha_nacimiento);
-        $sentencia->bindParam(8,$this->pde);
-        $sentencia->bindParam(9,$id_direccion);
-        $sentencia->bindParam(10,$this->id_religion);
-        $sentencia->bindParam(11,$this->grado_educacional_madre);
-        $sentencia->bindParam(12,$this->grado_educacional_padre);
-        $sentencia->bindParam(13,$this->persona_vive);
+        $sentencia->bindParam(7,$email);
+        $sentencia->bindParam(8,$this->fecha_nacimiento);
+        $sentencia->bindParam(9,$this->pde);
+        $sentencia->bindParam(10,$id_direccion);
+        $sentencia->bindParam(11,$this->id_religion);
+        $sentencia->bindParam(12,$this->grado_educacional_madre);
+        $sentencia->bindParam(13,$this->grado_educacional_padre);
+        $sentencia->bindParam(14,$this->persona_vive);
         $result = $sentencia->execute();
 
         if(!$result){
@@ -330,6 +345,41 @@ class Alumno extends Persona {
             return $result;
         }
         return $result;
+
+    }
+
+    function db_get_datos(){
+        global $myPDO;
+        $run_alumno = $this->get_run();
+        $sentencia = $myPDO->prepare("CALL get_alumno(?)");
+        $sentencia->bindParam(1, $run_alumno, \PDO::PARAM_STR, 9);
+        $result = $sentencia->execute();
+        $data = $sentencia->fetchAll();
+
+        foreach($data as $row){
+            $this->set_run($row["run_alumno"]);
+            $this->set_nombre1($row["nombre1"]);
+            $this->set_nombre2($row["nombre2"]);
+            $this->set_apellido1($row["apellido1"]);
+            $this->set_apellido2($row["apellido2"]);
+            $this->set_sexo($row["sexo"]);
+            $this->set_email($row["email"]);
+            $this->set_id_direccion($row["id_direccion"]);
+            $this->set_fecha_nacimiento($row["fecha_nacimiento"]);
+            $this->set_pde($row["pde"]);
+            $this->set_id_religion($row["id_religion"]);
+            $this->set_grado_educacional_madre($row["grado_educacional_madre"]);
+            $this->set_grado_educacional_padre($row["grado_educacional_padre"]);
+            $this->set_persona_vive($row["persona_vive"]);
+        }
+
+        return $result;
+    }
+
+    function db_borrar(){
+        global $myPDO;
+
+
 
     }
 

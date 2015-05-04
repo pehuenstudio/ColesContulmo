@@ -6,7 +6,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS_PERSONAS."Persona.php";
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 class Apoderado extends Persona{
     private $telefono_fijo;
     private $telefono_celular;
@@ -26,15 +26,15 @@ class Apoderado extends Persona{
     }
     public function set_telefono_fijo($telefono_fijo)
     {
-        $this->telfono_fijo = $telefono_fijo;
+        $this->telefono_fijo = $telefono_fijo;
     }
     public function get_telefono_fijo()
     {
         return $this->telefono_fijo;
     }
 
-    public function set_identidad($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $telefono_fijo,$telefono_celular){
-        parent::set_identidad_nueva($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo);
+    public function set_identidad($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo,$email , $telefono_fijo,$telefono_celular){
+        parent::set_identidad_nueva($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $email);
         $this->telefono_fijo = $telefono_fijo;
         $this->telefono_celular = $telefono_celular;
     }
@@ -79,6 +79,17 @@ class Apoderado extends Persona{
         return $result;
     }
 
+    public function to_json(){
+        $persona = json_decode(parent::to_json0(),true);
+        $persona["identidad"]["telefono_fijo"] = $this->telefono_fijo;
+        $persona["identidad"]["telefono_celular"] =$this->telefono_celular;
+
+        //array_push($persona,$alumno);
+        //Svar_dump($persona);
+        return json_encode($persona,JSON_UNESCAPED_UNICODE);
+    }
+
+
     //++++++++++++++++++++++++++++++++++++++++++++++++++++MENJO EN BBDD+++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -90,10 +101,10 @@ class Apoderado extends Persona{
         $sentencia->execute();
 
         if($sentencia->rowCount()>=1){
-            echo INFO.CLASE_APODERADO." DDBB FILA EXISTENTE <br/>";
+            //echo INFO.CLASE_APODERADO." DDBB FILA EXISTENTE <br/>";
             return true;
         }
-        echo INFO.CLASE_APODERADO." DDBB FILA INEXISTENTE <br/>";
+        //echo INFO.CLASE_APODERADO." DDBB FILA INEXISTENTE <br/>";
         return false;
     }
 
@@ -106,21 +117,23 @@ class Apoderado extends Persona{
         $apellido1 = $this->get_apellido1();
         $apellido2 = $this->get_apellido2();
         $sexo = $this->get_sexo();
-        $id_direccion = $this->get_direccion()->db_get_direccion_id("apoderados","apoderado",$run);
+        $email = $this->get_email();
+        $id_direccion = $this->get_direccion()->db_get_id("apoderados","apoderado",$run);
 
         $estado = "1";
 
-        $sentencia = $myPDO->prepare("CALL upd_apoderado(?,?,?,?,?,?,?,?,?,?)");
+        $sentencia = $myPDO->prepare("CALL upd_apoderado(?,?,?,?,?,?,?,?,?,?,?)");
         $sentencia->bindParam(1,$run);
         $sentencia->bindParam(2,$nombre1);
         $sentencia->bindParam(3,$nombre2);
         $sentencia->bindParam(4,$apellido1);
         $sentencia->bindParam(5,$apellido2);
         $sentencia->bindParam(6,$sexo);
-        $sentencia->bindParam(7,$id_direccion);
-        $sentencia->bindParam(8,$this->telefono_fijo);
-        $sentencia->bindParam(9,$this->telefono_celular);
-        $sentencia->bindParam(10,$estado);
+        $sentencia->bindParam(7,$email);
+        $sentencia->bindParam(8,$id_direccion);
+        $sentencia->bindParam(9,$this->telefono_fijo);
+        $sentencia->bindParam(10,$this->telefono_celular);
+        $sentencia->bindParam(11,$estado);
         $result = $sentencia->execute();
 
         $this->get_direccion()->set_id_direccion($id_direccion);
@@ -148,23 +161,24 @@ class Apoderado extends Persona{
         $apellido1 = $this->get_apellido1();
         $apellido2 = $this->get_apellido2();
         $sexo = $this->get_sexo();
-
+        $email = $this->get_email();
         $id_direccion = $this->get_direccion()->db_ingresar();
         if(empty($id_direccion)){
             echo ERRORCITO.CLASE_APODERADO."DIRECCION INGRESADA INCORRECTAMENTE EN BBDD";
             return false;
         }
 
-        $sentencia = $myPDO->prepare("CALL set_apoderado(?,?,?,?,?,?,?,?,?);");
+        $sentencia = $myPDO->prepare("CALL set_apoderado(?,?,?,?,?,?,?,?,?,?);");
         $sentencia->bindParam(1,$run);
         $sentencia->bindParam(2,$nombre1);
         $sentencia->bindParam(3,$nombre2);
         $sentencia->bindParam(4,$apellido1);
         $sentencia->bindParam(5,$apellido2);
         $sentencia->bindParam(6,$sexo);
-        $sentencia->bindParam(7,$id_direccion);
-        $sentencia->bindParam(8,$this->telefono_fijo);
-        $sentencia->bindParam(9,$this->telefono_celular);
+        $sentencia->bindParam(7,$email);
+        $sentencia->bindParam(8,$id_direccion);
+        $sentencia->bindParam(9,$this->telefono_fijo);
+        $sentencia->bindParam(10,$this->telefono_celular);
         $result = $sentencia->execute();
 
         if(!$result){
@@ -173,10 +187,29 @@ class Apoderado extends Persona{
             return $result;
         }
         return $result;
+    }
 
-
-
-
+    function db_get_datos(){
+        global $myPDO;
+        $run_apoderado = $this->get_run();
+        $sentencia = $myPDO->prepare("CALL get_apoderado(?)");
+        $sentencia->bindParam(1, $run_apoderado, \PDO::PARAM_STR, 9);
+        $result = $sentencia->execute();
+        $data = $sentencia->fetchAll();
+        //var_dump($data);
+        foreach($data as $row) {
+            $this->set_run($row["run_apoderado"]);
+            $this->set_nombre1($row["nombre1"]);
+            $this->set_nombre2($row["nombre2"]);
+            $this->set_apellido1($row["apellido1"]);
+            $this->set_apellido2($row["apellido2"]);
+            $this->set_sexo($row["sexo"]);
+            $this->set_email($row["email"]);
+            $this->set_id_direccion($row["id_direccion"]);
+            $this->set_telefono_fijo($row["telefono_fijo"]);
+            $this->set_telefono_celular($row["telefono_celular"]);
+        }
+        return $result;
     }
 }
 /*

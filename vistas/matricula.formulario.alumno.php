@@ -1,6 +1,6 @@
  <?php
 
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 
 ?>
 
@@ -10,7 +10,7 @@ echo __FILE__."<br/>";
             <div class="grilla10 titulo"><h3>Datos Personales</h3></div>
             <div class="grilla10">RUN<strong>*</strong></div>
             <div class="grilla10">
-                <input type="text"  name="run_alumno" id="run_alumno" title="ej. 12.345.678-8" placeholder="ej. 12.345.678-8" maxlength="12">
+                <input type="text" value="166890837" name="run_alumno" id="run_alumno" title="ej. 12.345.678-8" placeholder="ej. 12.345.678-8" maxlength="12">
                 <div class="grilla10 error">&nbsp;</div>
             </div>
             <div class="grilla10">Nombres<strong>*</strong></div>
@@ -60,6 +60,7 @@ echo __FILE__."<br/>";
             </div>
             <div class="grilla10">
                 <input type="file" name="avatar_alumno" id="avatar_alumno" accept="image/png,image/jpeg">
+                <div class="grilla10 error">&nbsp;</div>
             </div>
         </div>
 
@@ -121,14 +122,15 @@ echo __FILE__."<br/>";
         <!--PANEL DE DATOS ADICIONALES-->
         <div class="grilla10 titulo"><h3>Datos Adicionales Del Alumno </h3></div>
         <div class="grilla5 izquierda">
-            <div class="grilla10">Establecimiento De Procedencia </div>
+            <div class="grilla10">Establecimiento De Procedencia<strong>*</strong></div>
             <div class="grilla10">
-                <input id="establecimiento_procedencia" name="establecimiento_procedencia">
+                <input id="establecimiento_procedencia" name="establecimiento_procedencia" maxlength="60">
                 <div class="grilla10 error">&nbsp;</div>
             </div>
             <div class="grilla10">Grados Repetidos</div>
             <div class="grilla10">
             <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula.formulario.repeticiones.php"?>
+                <div class="grilla10 error" id="error_cantidad">&nbsp;</div>
             </div>
         </div>
         <div class="grilla5 derecha">

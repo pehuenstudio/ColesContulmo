@@ -6,7 +6,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS."Direccion.php";
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 
 class Persona {
     private $run;
@@ -15,11 +15,11 @@ class Persona {
     private $apellido1;
     private $apellido2;
     private $sexo;
+    private $id_direccion;
     private $direccion;
 
-    private $id_joomla;
     private $avatar;
-    private $contrasena_movil;
+    private $email;
 
     private $estado = "1";
 
@@ -28,9 +28,24 @@ class Persona {
 
     }
 
-
-
     //GETTERS Y SETTERS
+    public function get_email()
+    {
+        return $this->email;
+    }
+
+    public function set_email($email)
+    {
+        $this->email = $email;
+    }
+
+    public function set_id_direccion($id_direccion){
+        $this->id_direccion = $id_direccion;
+    }
+    public function get_id_direccion()
+    {
+        return $this->id_direccion;
+    }
     public function set_apellido1($apellido1)
     {
         $this->apellido1 = $apellido1;
@@ -55,14 +70,6 @@ class Persona {
     {
         return $this->avatar;
     }
-    public function set_contrasena_movil($contrasena_movil)
-    {
-        $this->contrasena_movil = $contrasena_movil;
-    }
-    public function get_contrasena_movil()
-    {
-        return $this->contrasena_movil;
-    }
     public function set_estado($estado)
     {
         $this->estado = $estado;
@@ -70,14 +77,6 @@ class Persona {
     public function get_estado()
     {
         return $this->estado;
-    }
-    public function set_id_joomla($id_joomla)
-    {
-        $this->id_joomla = $id_joomla;
-    }
-    public function get_id_joomla()
-    {
-        return $this->id_joomla;
     }
     public function set_nombre1($nombre1)
     {
@@ -114,13 +113,14 @@ class Persona {
 
 
    //AGREGAR DATOS DE IDENTIDAD
-    public function set_identidad_nueva($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo) {
+    public function set_identidad_nueva($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $email) {
         $this->run = $run;
         $this->nombre1 = $nombre1;
         $this->nombre2 = $nombre2;
         $this->apellido1 = $apellido1;
         $this->apellido2 = $apellido2;
         $this->sexo = $sexo;
+        $this->email = $email;
     }
 
     //AGREGAR DIRECCION
@@ -141,19 +141,20 @@ class Persona {
 
         //VERIFICAR LONGITUD DEL NUMERO
         if(!$v->validar_formato_run($this->run)){
-            echo ERRORCITO.CLASE_PERSONA."RUN DEMASIADO LARGO O DEMASIADO CORTO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."RUN DEMASIADO LARGO O DEMASIADO CORTO<br/>";
             $this->run = null;
             return false;
         }
 
         //VALIDAR DIGITO VERIFICADOR
         if(!$v->validar_digito_run($this->run)){
-            echo ERRORCITO.CLASE_PERSONA. "RUN DIGITO VERIFICADOR NO COINCIDE CON NUMERO <br/>";
+            //echo ERRORCITO.CLASE_PERSONA. "RUN DIGITO VERIFICADOR NO COINCIDE CON NUMERO <br/>";
             $this->run = null;
             return false;
         }
         $this->run = str_replace("-","",$this->run);
-        echo INFO.CLASE_PERSONA." RUN INGRESADO CORRECTAMENTE ".$this->get_run()."<br/>";
+        $this->run = str_replace(".","",$this->run);
+        //echo INFO.CLASE_PERSONA." RUN INGRESADO CORRECTAMENTE ".$this->get_run()."<br/>";
         return true;
     }
 
@@ -166,7 +167,7 @@ class Persona {
             return false;
         }
         echo INFO.CLASE_PERSONA."NOMBRE1 INGRESADO CORRECTAMENTE <br/>";
-        $this->nombre1 = ucwords(strtolower($this->nombre1));
+        $this->nombre1 = mb_convert_case($this->nombre1, MB_CASE_TITLE, "UTF-8");
         return true;
     }
 
@@ -179,7 +180,7 @@ class Persona {
             return false;
         }
         echo INFO.CLASE_PERSONA."NOMBRE2 INGRESADO CORRECTAMENTE <br/>";
-        $this->nombre2 = ucwords(strtolower($this->nombre2));
+        $this->nombre2 = mb_convert_case($this->nombre2, MB_CASE_TITLE, "UTF-8");
         return true;
     }
 
@@ -187,12 +188,12 @@ class Persona {
     function validar_apellido1(){
         global $v;
         if(!$v->validar_texto($this->apellido1,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."APELLIDO1 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO ".$this->apellido1."<br/>";
+            echo ERRORCITO.CLASE_PERSONA."APELLIDO1 ".$this->apellido1." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO ".$this->apellido1."<br/>";
             $this->apellido1 = null;
             return false;
         }
-        echo INFO.CLASE_PERSONA."APELIIDO1 INGRESADO CORRECTAMENTE <br/>";
-        $this->apellido1 = ucwords(strtolower($this->apellido1));
+        echo INFO.CLASE_PERSONA."APELIIDO11 ".$this->apellido1." INGRESADO CORRECTAMENTE <br/>";
+        $this->apellido1 = mb_convert_case($this->apellido1, MB_CASE_TITLE, "UTF-8");
         return true;
     }
 
@@ -200,12 +201,12 @@ class Persona {
     function validar_apellido2(){
         global $v;
         if(!$v->validar_texto($this->apellido2,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."APELLIDO2 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
+            echo ERRORCITO.CLASE_PERSONA."APELLIDO2 ".$this->apellido2." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->apellido2 = null;
             return false;
         }
-        echo INFO.CLASE_PERSONA."APELLIDO2 INGRESADO CORRECTAMENTE <br/>";
-        $this->apellido2 = ucwords(strtolower($this->apellido2));
+        echo INFO.CLASE_PERSONA."APELLIDO2 ".$this->apellido2." INGRESADO CORRECTAMENTE <br/>";
+        $this->apellido2 = mb_convert_case($this->apellido2, MB_CASE_TITLE, "UTF-8");
         return true;
     }
 
@@ -222,7 +223,18 @@ class Persona {
         return true;
     }
 
-    //VALIDAR CONTRASEÑA MOVIL
+    //VALIDAR EMAIL
+    public function validar_email(){
+        global $v;
+        if(!$v->validar_formato_email($this->email)){
+            echo ERRORCITO.CLASE_PERSONA. " EMAIL ".$this->email." INGRESADO INCORRECTAMENTE <br/>";
+            $this->email = null;
+            return false;
+        }
+        echo INFO.CLASE_PERSONA." EMAIL ".$this->email." INGRESADO CORRECTAMENTE <br/>";
+        return true;
+    }
+   /* //VALIDAR CONTRASEÑA MOVIL
     public function validar_contrasena_movil(){
         global $v;
         if(!$v->validar_formato_numero_texto($this->contrasena_movil,6,12)){
@@ -232,7 +244,7 @@ class Persona {
         }
         echo INFO.CLASE_PERSONA."CONTRASEÑA MOVIL INGREESADA CORECTAMENTE<br/>";
         return true;
-    }
+    }*/
 
     //VALIDADOR IDENTIDAD
     public function validar_identidad(){
@@ -260,6 +272,10 @@ class Persona {
             $return = false;
         }
 
+        if(!$this->validar_email()){
+            $return = false;
+        }
+
         return $return;
     }
 
@@ -275,8 +291,8 @@ class Persona {
     }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //PASAR JSON
-    public function to_json(){
-        $json = array(
+    public function to_json0(){
+       /* $json = array(
             "identidad"=> array(
                 "run" => $this->run,
                 "nombre1" => $this->nombre1,
@@ -292,8 +308,23 @@ class Persona {
                 "sector" => $this->direccion->get_sector(),
                 "id_comuna" => $this->direccion->get_id_comuna(),
             ),
-        );
-        $json = json_encode($json);
+        );*/
+        $json["identidad"]["run"]= $this->run;
+        $json["identidad"]["nombre1"]= $this->nombre1;
+        $json["identidad"]["nombre2"]= $this->nombre2;
+        $json["identidad"]["apellido1"]= $this->apellido1;
+        $json["identidad"]["apellido2"]= $this->apellido2;
+        $json["identidad"]["sexo"]= $this->sexo;
+        $json["identidad"]["email"]= $this->email;
+
+        $json["direccion"]["calle"] = $this->direccion->get_calle();
+        $json["direccion"]["numero"] = $this->direccion->get_numero();
+        $json["direccion"]["depto"] = $this->direccion->get_depto();
+        $json["direccion"]["sector"] = $this->direccion->get_sector();
+        $json["direccion"]["id_comuna"] = $this->direccion->get_id_comuna();
+       // var_dump($json);
+        $json = json_encode($json,JSON_UNESCAPED_UNICODE);
+       // var_dump($json);
         return $json;
     }
 

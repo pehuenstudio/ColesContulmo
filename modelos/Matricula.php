@@ -10,7 +10,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS_PERSONAS."Persona.php";
 require_once ROOT_MODELOS_PERSONAS."Alumno.php";
 require_once ROOT_MODELOS_PERSONAS."Apoderado.php";
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 
 class Matricula {
     private $id_matricula;
@@ -290,8 +290,10 @@ class Matricula {
         $result = $sentencia->execute();
 
         $sentencia = $myPDO->query("SELECT @id_matricula;");
+        //var_dump($sentencia->fetchColumn(0));
         $this->id_matricula = $sentencia->fetchColumn(0);
 
+        return $result;
     }
 
 }

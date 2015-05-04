@@ -2,7 +2,7 @@
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 class Curso {
     private $id_curso;
     private $rbd_establecimiento;
@@ -131,14 +131,19 @@ class Curso {
 //+++++++++++++++++++++++++++++++++++MANEJO DE BBDD+++++++++++++++++++++++++++++++++++++++++++
 
     public function db_get_curso_id(){
+
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_curso_id(?,?,?)");
+        $sentencia = $myPDO->prepare("CALL get_curso_id(?,?,?,?,@id_curso)");
         $sentencia->bindParam(1, $this->rbd_establecimiento, \PDO::PARAM_INT);
         $sentencia->bindParam(2, $this->id_grado, \PDO::PARAM_INT);
-        $sentencia->bindParam(3, $this->id_tipo_ensenanza, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $this->grupo, \PDO::PARAM_STR, 1);
+        $sentencia->bindParam(4, $this->id_tipo_ensenanza, \PDO::PARAM_INT);
         $sentencia->execute();
 
-        return $sentencia->fetchColumn();
+        $sentencia = $myPDO->query("SELECT @id_curso;");
+        $this->id_curso = $sentencia->fetchColumn(0);
+
+        return $this->id_curso;
     }
 }
 ?> 

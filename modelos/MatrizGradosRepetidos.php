@@ -3,7 +3,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoRepetido.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 class MatrizGradosRepetidos {
     private $matriz = array();
 
@@ -42,7 +42,19 @@ class MatrizGradosRepetidos {
 
     }
 
+    public function to_json(){
+        $json = array();
 
+        foreach($this->matriz as $row){
+            $data["id_grado"] = $row["id_grado"];
+            $data["id_tipo_ensenanza"] = $row["id_tipo_ensenanza"];
+            $data["cantidad"] = $row["cantidad"];
+            array_push($json,$data);
+        }
+        $json = json_encode($json,JSON_UNESCAPED_UNICODE);
+        //print_r($json);
+        return $json;
+    }
 
     // ++++++++++++++++++++++++++++++++++++++++++++++MANEJO DE BBDD++++++++++++++++++++++++++++++++++++++++++
     public function db_ingresar(){
@@ -57,6 +69,24 @@ class MatrizGradosRepetidos {
             if(!$grado_repetido->db_ingresar()){$result = false;};
         }
         return $result;
+    }
+
+    public function db_get_datos($run){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_grados_repetidos(?)");
+        $sentencia->bindParam(1, $run, \PDO::PARAM_STR, 9);
+        $sentencia->execute();
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $matriz = array(
+                "id_grado"=> $row["id_grado"],
+                "id_tipo_ensenanza" => $row["id_tipo_ensenanza"],
+                "cantidad" => $row["cantidad"]
+            );
+            array_push($this->matriz, $matriz);
+        }
+
+
     }
 }
 ?> 

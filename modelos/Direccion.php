@@ -1,7 +1,8 @@
 <?php
+
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
-echo __FILE__."<br/>";
+//echo __FILE__."<br/>";
 class Direccion {
 
     private $id_direccion;
@@ -12,7 +13,9 @@ class Direccion {
     private $id_comuna;
     private $estado = '1';
 
-    function __construct($calle, $numero, $depto, $sector, $id_comuna)
+    //function __construct(){}
+
+    public function set($calle, $numero, $depto, $sector, $id_comuna)
     {
         $this->calle = $calle;
         $this->depto = $depto;
@@ -25,7 +28,6 @@ class Direccion {
     {
         $this->id_direccion = $id_direccion;
     }
-
     public function get_id_direccion()
     {
         return $this->id_direccion;
@@ -89,7 +91,7 @@ class Direccion {
             return false;
         }
         echo INFO.CLASE_DIRECCION."DIRECCION CALLE INGRESADA CORRECTAMENTE <br/>";
-        $this->calle =  ucwords(strtolower($this->calle));
+        $this->calle =  mb_convert_case($this->calle, MB_CASE_TITLE, "UTF-8");
         return true;
     }
 
@@ -130,7 +132,7 @@ class Direccion {
             return false;
         }
         echo INFO.CLASE_DIRECCION."DIRECCION SECTOR INGRESADO CORRECTAMENTE<br/>";
-        $this->sector = ucwords(strtolower($this->sector));
+        $this->sector = mb_convert_case($this->sector, MB_CASE_TITLE, "UTF-8");
         return true;
     }
 
@@ -169,8 +171,25 @@ class Direccion {
     }
 
     //++++++++++++++++++++++++++++++++++++++++MANEJO DE BBDD+++++++++++++++++++++++++++++++++++++
+    public function db_get_datos(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_direccion(?)");
+        $sentencia->bindParam(1, $this->id_direccion);
+        $result = $sentencia->execute();
+        $data = $sentencia->fetchAll();
 
-    public function db_get_direccion_id($tabla,$persona,$run){
+        foreach($data as $row){
+            $this->calle = $row["calle"];
+            $this->numero = $row["numero"];
+            $this->depto = $row["depto"];
+            $this->sector = $row["sector"];
+            $this->id_comuna = $row["id_comuna"];
+        }
+
+        return $result;
+    }
+
+    public function db_get_id($tabla,$persona,$run){
         global $myPDO;
         $sentencia = $myPDO->prepare("SELECT id_direccion FROM ".$tabla." WHERE run_".$persona." = ?");
         $sentencia->bindParam(1, $run, \PDO::PARAM_STR, 9);
@@ -184,7 +203,7 @@ class Direccion {
         global $myPDO;
 
         $sentencia = $myPDO->prepare("CALL upd_direccion(?,?,?,?,?,?,?);");
-        $sentencia->bindParam(1, $this->numero, \PDO::PARAM_INT);
+        $sentencia->bindParam(1, $this->id_direccion, \PDO::PARAM_INT);
         $sentencia->bindParam(2, $this->calle, \PDO::PARAM_STR, 60);
         $sentencia->bindParam(3, $this->numero, \PDO::PARAM_INT);
         $sentencia->bindParam(4, $this->depto, \PDO::PARAM_STR, 5);
@@ -214,5 +233,29 @@ class Direccion {
         $id_direccion = $myPDO->query("SELECT @id_direccion")->fetchColumn();
         return $id_direccion;
     }
+
+    public function db_get_ids_nombres(){
+        global $myPDO;
+
+        $sentencia = $myPDO->prepare("CALL get_comuna_provincia_region(?)");
+        $sentencia->bindParam(1, $this->id_comuna, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll();
+        $direccion["direccion"] = array();
+        foreach($data as $row){
+            $direccion["direccion_id"]["id_comuna"] = $row["id_comuna"];
+            $direccion["direccion_id"]["id_provincia"] = $row["id_provincia"];
+            $direccion["direccion_id"]["id_region"] = $row["id_region"];
+            $direccion["direccion_nombre"]["nombre_region"] = $row["nombre_comuna"];
+            $direccion["direccion_nombre"]["nombre_provincia"] = $row["nombre_provincia"];
+            $direccion["direccion_nombre"]["nombre_comuna"] = $row["nombre_comuna"];
+        }
+
+        $result = json_encode($direccion,JSON_UNESCAPED_UNICODE);
+
+        return $result;
+    }
 }
-?> 
+
+?>

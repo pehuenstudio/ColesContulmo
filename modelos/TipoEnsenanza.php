@@ -42,11 +42,11 @@ class TipoEnsenanza {
     public function validar_id_tipo_ensenanza(){
         global $v;
         if(!$v->validar_formato_numero($this->id_tipo_ensenanza,1,5)){
-            echo ERRORCITO.CLASE_TIPOENSENANZA." TIPO DE ENSEÑANZA INGRESADO INCORRECTAMENTE <br/>";
+            //echo ERRORCITO.CLASE_TIPOENSENANZA." TIPO DE ENSEÑANZA INGRESADO INCORRECTAMENTE <br/>";
             $this->id_tipo_ensenanza = null;
             return false;
         }
-        echo INFO.CLASE_TIPOENSENANZA." TIPO DE ENSEÑANZA INGRESADA CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_TIPOENSENANZA." TIPO DE ENSEÑANZA INGRESADA CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -54,11 +54,11 @@ class TipoEnsenanza {
     public function validar_nombre(){
         global $v;
         if(!$v->validar_texto($this->nombre,3,45)){
-            echo ERRORCITO.CLASE_TIPOENSENANZA." NOMBRE INGRESADO INCORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_TIPOENSENANZA." NOMBRE INGRESADO INCORRECTAMENTE<br/>";
             $this->nombre = null;
             return false;
         }
-        echo INFO.CLASE_TIPOENSENANZA." NOMBRE INGRESA CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_TIPOENSENANZA." NOMBRE INGRESA CORRECTAMENTE<br/>";
     }
 
     //VALIDADOR GENERAL

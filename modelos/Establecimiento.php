@@ -70,11 +70,11 @@ class Establecimiento {
     public function validar_rbd_establecimiento(){
         global $v;
         if(!$v->validar_formato_numero($this->rbd_establecimiento,5,5)){
-            echo ERRORCITO.CLASE_ESTABLECIMIENTO." RBD ESTABLECIMIENTO INGRESADO INCORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_ESTABLECIMIENTO." RBD ESTABLECIMIENTO INGRESADO INCORRECTAMENTE<br/>";
             $this->rbd_establecimiento = null;
             return false;
         }
-        echo INFO.CLASE_ESTABLECIMIENTO."RBD ESTABLECIMIENTO INGRESADO CORREECTAMENTE<br/>";
+        //echo INFO.CLASE_ESTABLECIMIENTO."RBD ESTABLECIMIENTO INGRESADO CORREECTAMENTE<br/>";
         return true;
     }
 
@@ -82,11 +82,11 @@ class Establecimiento {
     public  function validar_nombre(){
         global $v;
         if(!$v->validar_texto($this->nombre,3,45)){
-            echo ERRORCITO.CLASE_ESTABLECIMIENTO." NOMBRE INGRESADO INCORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_ESTABLECIMIENTO." NOMBRE INGRESADO INCORRECTAMENTE<br/>";
             $this->nombre = null;
             return false;
         }
-        echo ERRORCITO.CLASE_ESTABLECIMIENTO." NOMBRE INGRESADO CORRECTAMENTE<br/>";
+        //echo ERRORCITO.CLASE_ESTABLECIMIENTO." NOMBRE INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -94,11 +94,11 @@ class Establecimiento {
     public function validar_telefono(){
         global $v;
         if(!$v->validar_formato_numero($this->telefono,9,9)){
-            echo ERRORCITO.CLASE_ESTABLECIMIENTO." TELEFONO INGRESADO ICORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_ESTABLECIMIENTO." TELEFONO INGRESADO ICORRECTAMENTE<br/>";
             $this->telefono = null;
             return false;
         }
-        echo INFO.CLASE_CLASE_ESTABLECIMIENTO." TELEFONO FIJO INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_CLASE_ESTABLECIMIENTO." TELEFONO FIJO INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 

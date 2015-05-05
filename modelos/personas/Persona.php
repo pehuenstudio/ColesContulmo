@@ -141,20 +141,20 @@ class Persona {
 
         //VERIFICAR LONGITUD DEL NUMERO
         if(!$v->validar_formato_run($this->run)){
-            //echo ERRORCITO.CLASE_PERSONA."RUN DEMASIADO LARGO O DEMASIADO CORTO<br/>";
+            ////echo ERRORCITO.CLASE_PERSONA."RUN DEMASIADO LARGO O DEMASIADO CORTO<br/>";
             $this->run = null;
             return false;
         }
 
         //VALIDAR DIGITO VERIFICADOR
         if(!$v->validar_digito_run($this->run)){
-            //echo ERRORCITO.CLASE_PERSONA. "RUN DIGITO VERIFICADOR NO COINCIDE CON NUMERO <br/>";
+            ////echo ERRORCITO.CLASE_PERSONA. "RUN DIGITO VERIFICADOR NO COINCIDE CON NUMERO <br/>";
             $this->run = null;
             return false;
         }
         $this->run = str_replace("-","",$this->run);
         $this->run = str_replace(".","",$this->run);
-        //echo INFO.CLASE_PERSONA." RUN INGRESADO CORRECTAMENTE ".$this->get_run()."<br/>";
+        ////echo INFO.CLASE_PERSONA." RUN INGRESADO CORRECTAMENTE ".$this->get_run()."<br/>";
         return true;
     }
 
@@ -162,11 +162,11 @@ class Persona {
     function validar_nombre1(){
         global $v;
         if(!$v->validar_texto($this->nombre1,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."EL NOMBRE1 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."EL NOMBRE1 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->nombre1 = null;
             return false;
         }
-        echo INFO.CLASE_PERSONA."NOMBRE1 INGRESADO CORRECTAMENTE <br/>";
+        //echo INFO.CLASE_PERSONA."NOMBRE1 INGRESADO CORRECTAMENTE <br/>";
         $this->nombre1 = mb_convert_case($this->nombre1, MB_CASE_TITLE, "UTF-8");
         return true;
     }
@@ -175,11 +175,11 @@ class Persona {
     function validar_nombre2(){
         global $v;
         if(!$v->validar_texto($this->nombre2,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."NOMBRE2 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."NOMBRE2 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->nombre2 = null;
             return false;
         }
-        echo INFO.CLASE_PERSONA."NOMBRE2 INGRESADO CORRECTAMENTE <br/>";
+        //echo INFO.CLASE_PERSONA."NOMBRE2 INGRESADO CORRECTAMENTE <br/>";
         $this->nombre2 = mb_convert_case($this->nombre2, MB_CASE_TITLE, "UTF-8");
         return true;
     }
@@ -188,11 +188,11 @@ class Persona {
     function validar_apellido1(){
         global $v;
         if(!$v->validar_texto($this->apellido1,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."APELLIDO1 ".$this->apellido1." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO ".$this->apellido1."<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."APELLIDO1 ".$this->apellido1." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO ".$this->apellido1."<br/>";
             $this->apellido1 = null;
             return false;
         }
-        echo INFO.CLASE_PERSONA."APELIIDO11 ".$this->apellido1." INGRESADO CORRECTAMENTE <br/>";
+        //echo INFO.CLASE_PERSONA."APELIIDO11 ".$this->apellido1." INGRESADO CORRECTAMENTE <br/>";
         $this->apellido1 = mb_convert_case($this->apellido1, MB_CASE_TITLE, "UTF-8");
         return true;
     }
@@ -201,11 +201,11 @@ class Persona {
     function validar_apellido2(){
         global $v;
         if(!$v->validar_texto($this->apellido2,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."APELLIDO2 ".$this->apellido2." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."APELLIDO2 ".$this->apellido2." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->apellido2 = null;
             return false;
         }
-        echo INFO.CLASE_PERSONA."APELLIDO2 ".$this->apellido2." INGRESADO CORRECTAMENTE <br/>";
+        //echo INFO.CLASE_PERSONA."APELLIDO2 ".$this->apellido2." INGRESADO CORRECTAMENTE <br/>";
         $this->apellido2 = mb_convert_case($this->apellido2, MB_CASE_TITLE, "UTF-8");
         return true;
     }
@@ -215,11 +215,11 @@ class Persona {
         global $v;
         //$this->sexo = strtoupper($this->sexo);
         if(!$v->validar_formato_sexo($this->sexo)){
-            echo ERRORCITO.CLASE_PERSONA." SEXO NO INGRESADO O NO ES VALIDO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA." SEXO NO INGRESADO O NO ES VALIDO<br/>";
             $this->sexo = null;
             return false;
         }
-        echo INFO.CLASE_PERSONA." SEXO INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_PERSONA." SEXO INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -227,22 +227,22 @@ class Persona {
     public function validar_email(){
         global $v;
         if(!$v->validar_formato_email($this->email)){
-            echo ERRORCITO.CLASE_PERSONA. " EMAIL ".$this->email." INGRESADO INCORRECTAMENTE <br/>";
+            //echo ERRORCITO.CLASE_PERSONA. " EMAIL ".$this->email." INGRESADO INCORRECTAMENTE <br/>";
             $this->email = null;
             return false;
         }
-        echo INFO.CLASE_PERSONA." EMAIL ".$this->email." INGRESADO CORRECTAMENTE <br/>";
+        //echo INFO.CLASE_PERSONA." EMAIL ".$this->email." INGRESADO CORRECTAMENTE <br/>";
         return true;
     }
    /* //VALIDAR CONTRASEÑA MOVIL
     public function validar_contrasena_movil(){
         global $v;
         if(!$v->validar_formato_numero_texto($this->contrasena_movil,6,12)){
-            echo ERRORCITO.CLASE_PERSONA."CONTRASEÑA MOVIL ES MUY CORTA O MUY LAGRGA O NO CUMPLE REQUISITO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."CONTRASEÑA MOVIL ES MUY CORTA O MUY LAGRGA O NO CUMPLE REQUISITO<br/>";
             $this->contrasena_movil = null;
             return false;
         }
-        echo INFO.CLASE_PERSONA."CONTRASEÑA MOVIL INGREESADA CORECTAMENTE<br/>";
+        //echo INFO.CLASE_PERSONA."CONTRASEÑA MOVIL INGREESADA CORECTAMENTE<br/>";
         return true;
     }*/
 
@@ -316,6 +316,7 @@ class Persona {
         $json["identidad"]["apellido2"]= $this->apellido2;
         $json["identidad"]["sexo"]= $this->sexo;
         $json["identidad"]["email"]= $this->email;
+        $json["identidad"]["avatar"]= $this->avatar;
 
         $json["direccion"]["calle"] = $this->direccion->get_calle();
         $json["direccion"]["numero"] = $this->direccion->get_numero();

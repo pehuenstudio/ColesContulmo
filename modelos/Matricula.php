@@ -157,11 +157,11 @@ class Matricula {
     public function validar_periodo(){
         global $v;
         if(!$v->validar_formato_numero($this->periodo,4,4)){
-            echo ERRORCITO.CLASE_MATRICULA." PERIODO INGRESADO INCORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_MATRICULA." PERIODO INGRESADO INCORRECTAMENTE<br/>";
             $this->periodo = null;
             return false;
         }
-        echo INFO.CLASE_MATRICULA." PERIODO INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_MATRICULA." PERIODO INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -169,11 +169,11 @@ class Matricula {
     public function validar_establecimiento_porcedencia(){
         global $v;
         if(!$v->validar_formato_numero_texto($this->establecimiento_procedencia,3,60)){
-            echo ERRORCITO.CLASE_MATRICULA." ESTABLECIMIENTO PROCEDENCIA INGRESADO INCORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_MATRICULA." ESTABLECIMIENTO PROCEDENCIA INGRESADO INCORRECTAMENTE<br/>";
             $this->establecimiento_procedencia = null;
             return false;
         }
-        echo INFO.CLASE_MATRICULA." ESTABLECIMIENTO PROCEDENCIA INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_MATRICULA." ESTABLECIMIENTO PROCEDENCIA INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -181,11 +181,11 @@ class Matricula {
     public function validar_fecha_incorporacion(){
         global $v;
         if(!$v->validar_formato_fecha($this->fecha_incorporacion)){
-            echo ERRORCITO.CLASE_MATRICULA."<FECHA DE INCORPORACION INGRESADFA INCORRECTAMERNTEbr/>";
+            //echo ERRORCITO.CLASE_MATRICULA."<FECHA DE INCORPORACION INGRESADFA INCORRECTAMERNTEbr/>";
             $this->fecha_incorporacion = null;
             return false;
         }
-        echo INFO.CLASE_MATRICULA."FECHA DE INCORPORACION INGRESADA CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_MATRICULA."FECHA DE INCORPORACION INGRESADA CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -194,14 +194,14 @@ class Matricula {
         global $v;
         if(!empty($this->causa_retiro)){
             if(!$v->validar_formato_fecha($this->fecha_retiro)){
-                echo ERRORCITO.CLASE_MATRICULA."FECHA DE RETIRO INGRESADA ICORRECTAMENTE<br/>";
+                //echo ERRORCITO.CLASE_MATRICULA."FECHA DE RETIRO INGRESADA ICORRECTAMENTE<br/>";
                 $this->fecha_retiro = false;
                 return false;
             }
-            echo INFO.CLASE_MATRICULA."FECHA DE RETIRO INGRESADA CORRECTAMENTE <br/>";
+            //echo INFO.CLASE_MATRICULA."FECHA DE RETIRO INGRESADA CORRECTAMENTE <br/>";
             return true;
         }
-        echo INFO.CLASE_MATRICULA."FECHA DE RETIRO INGRESADA CORRECTAMENTE <br/>";
+        //echo INFO.CLASE_MATRICULA."FECHA DE RETIRO INGRESADA CORRECTAMENTE <br/>";
         return true;
     }
 
@@ -209,11 +209,11 @@ class Matricula {
     public function validar_causa_retiro(){
         global $v;
         if(!$v->validar_formato_numero_texto($this->causa_retiro,0,100)){
-            echo ERRORCITO.CLASE_MATRICULA."CUASA DE RETIRO INGRESADA INCORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_MATRICULA."CUASA DE RETIRO INGRESADA INCORRECTAMENTE<br/>";
             $this->causa_retiro = null;
             return false;
         }
-        echo INFO.CLASE_MATRICULA."CAUSA DE RETIRO INGRESADA CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_MATRICULA."CAUSA DE RETIRO INGRESADA CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -222,14 +222,14 @@ class Matricula {
         global $v;
         if(!empty($this->fecha_egreso)){
             if(!$v->validar_formato_fecha($this->fecha_egreso)){
-                echo ERRORCITO.CLASE_MATRICULA."FECHA DE EGRESO INGRESA INCORECTAMENTE<br/>";
+                //echo ERRORCITO.CLASE_MATRICULA."FECHA DE EGRESO INGRESA INCORECTAMENTE<br/>";
                 $this->fecha_egreso = null;
                 return true;
             }
-            echo INFO.CLASE_MATRICULA." FECHA DE EGRESO INGRESADA CORRECTAMENTE <br/>";
+            //echo INFO.CLASE_MATRICULA." FECHA DE EGRESO INGRESADA CORRECTAMENTE <br/>";
             return true;
         }
-        echo INFO.CLASE_MATRICULA." FECHA DE EGRESO INGRESADA CORRECTAMENTE <br/>";
+        //echo INFO.CLASE_MATRICULA." FECHA DE EGRESO INGRESADA CORRECTAMENTE <br/>";
         return true;
     }
 
@@ -267,7 +267,7 @@ class Matricula {
         $sentencia->execute();
 
         if($sentencia->rowCount() >= 1){
-            echo ERRORCITO.CLASE_MATRICULA."ESTE ALUMNO YA REGISTRA MATRICULA PARA ESTE PERIODO<br/>";
+            //echo ERRORCITO.CLASE_MATRICULA."ESTE ALUMNO YA REGISTRA MATRICULA PARA ESTE PERIODO<br/>";
             return true;
         }
 

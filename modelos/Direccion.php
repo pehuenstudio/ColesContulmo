@@ -86,11 +86,11 @@ class Direccion {
     public function validar_calle(){
         global $v;
         if(!$v->validar_texto($this->calle,5,60)){
-            echo ERRORCITO.CLASE_DIRECCION."DIRECCION CALLE VACIA O MUY LARGO <br/>";
+            //echo ERRORCITO.CLASE_DIRECCION."DIRECCION CALLE VACIA O MUY LARGO <br/>";
             $this->calle = null;
             return false;
         }
-        echo INFO.CLASE_DIRECCION."DIRECCION CALLE INGRESADA CORRECTAMENTE <br/>";
+        //echo INFO.CLASE_DIRECCION."DIRECCION CALLE INGRESADA CORRECTAMENTE <br/>";
         $this->calle =  mb_convert_case($this->calle, MB_CASE_TITLE, "UTF-8");
         return true;
     }
@@ -99,11 +99,11 @@ class Direccion {
     public function validar_numero(){
         global $v;
         if(!$v->validar_formato_numero($this->numero,2,4)){
-            echo ERRORCITO.CLASE_DIRECCION." DIRECCION NUMERO NO ES NUMERO O ES MUY CORTO O MUY LARGO<br/>";
+            //echo ERRORCITO.CLASE_DIRECCION." DIRECCION NUMERO NO ES NUMERO O ES MUY CORTO O MUY LARGO<br/>";
             $this->numero = null;
             return faLse;
         }
-        echo INFO.CLASE_DIRECCION." DIRECCION NUMERO INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_DIRECCION." DIRECCION NUMERO INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -111,15 +111,15 @@ class Direccion {
     public function validar_depto(){
         global $v;
         if(empty($this->depto)){
-            echo INFO.CLASE_DIRECCION."DIRECCION DEPTO INGRESADO CORRECTAMENTE<br/>";
+            //echo INFO.CLASE_DIRECCION."DIRECCION DEPTO INGRESADO CORRECTAMENTE<br/>";
             return true;
         }
         if(!$v->validar_formato_numero_texto($this->depto,2,5)){
-            echo ERRORCITO.CLASE_DIRECCION."DIRECCION DEPTO TIENE CARACTERES NO PERMITIDOS<br/>";
+            //echo ERRORCITO.CLASE_DIRECCION."DIRECCION DEPTO TIENE CARACTERES NO PERMITIDOS<br/>";
             $this->depto = NULL;
             return false;
         }
-        echo INFO.CLASE_DIRECCION."DIRECCION DEPTO INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_DIRECCION."DIRECCION DEPTO INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -127,11 +127,11 @@ class Direccion {
     public function validar_sector(){
         global $v;
         if(!$v->validar_texto($this->sector,5,60)){
-            echo ERRORCITO.CLASE_DIRECCION."DIRECCION SECTOR ES MUY CORTO O MUY LARGO<br/>";
+            //echo ERRORCITO.CLASE_DIRECCION."DIRECCION SECTOR ES MUY CORTO O MUY LARGO<br/>";
             $this->sector = null;
             return false;
         }
-        echo INFO.CLASE_DIRECCION."DIRECCION SECTOR INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_DIRECCION."DIRECCION SECTOR INGRESADO CORRECTAMENTE<br/>";
         $this->sector = mb_convert_case($this->sector, MB_CASE_TITLE, "UTF-8");
         return true;
     }
@@ -140,11 +140,11 @@ class Direccion {
     public function validar_id_comuna(){
         global $v;
         if(!$v->validar_formato_numero($this->id_comuna,1,5)){
-            echo ERRORCITO.CLASE_DIRECCION."DIRECCION ID NO ES NUMERO<br/>";
+            //echo ERRORCITO.CLASE_DIRECCION."DIRECCION ID NO ES NUMERO<br/>";
             $this->id_comuna = null;
             return FALSE;
         }
-        echo INFO.CLASE_DIRECCION."DIRECCION ID COMUNA INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_DIRECCION."DIRECCION ID COMUNA INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -213,10 +213,10 @@ class Direccion {
         $result = $sentencia->execute();
 
         if(!$result){
-            echo ERRORCITO.CLASE_DIRECCION. " DDBB ERROR EN LA ACTUALIZACION<br/>";
+            //echo ERRORCITO.CLASE_DIRECCION. " DDBB ERROR EN LA ACTUALIZACION<br/>";
             return false;
         }
-        echo INFO.CLASE_DIRECCION. "DDBB EXITO EN LA ACTUALIZACION <br/>";
+        //echo INFO.CLASE_DIRECCION. "DDBB EXITO EN LA ACTUALIZACION <br/>";
         return true;
     }
     public function db_ingresar(){

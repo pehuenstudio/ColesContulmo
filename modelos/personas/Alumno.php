@@ -89,7 +89,7 @@ class Alumno extends Persona {
     public function validar_fecha_nacimiento(){
         global $v;
         if(!$v->validar_formato_fecha($this->fecha_nacimiento)){
-            echo ERRORCITO.CLASE_ALUMNO." FECHA CON FORMATO INCORRECTO<br/>";
+            //echo ERRORCITO.CLASE_ALUMNO." FECHA CON FORMATO INCORRECTO<br/>";
             $this->fecha_nacimiento = null;
             return false;
         }
@@ -99,26 +99,26 @@ class Alumno extends Persona {
 
         //VALIDAR AÑO
         if((date("Y")-(int)$a)<3){
-            echo ERRORCITO.CLASE_ALUMNO."FECHA CON AÑO DE NACIMIENTO ES MUY RECIENTE<br/>";
+            //echo ERRORCITO.CLASE_ALUMNO."FECHA CON AÑO DE NACIMIENTO ES MUY RECIENTE<br/>";
             $this->fecha_nacimiento = NULL;
             return FALSE;
         }
 
         //VALIDAR MES
         if((int)$m<1 or (int)$m>12){
-            echo ERRORCITO.CLASE_ALUMNO."FECHA CON MES FUERA DE RANGO 1-12<br/>";
+            //echo ERRORCITO.CLASE_ALUMNO."FECHA CON MES FUERA DE RANGO 1-12<br/>";
             $this->fecha_nacimiento = NULL;
             return FALSE;
         }
 
         //VALIDAR DÍA
         if((int)$d<1 or (int)$d>cal_days_in_month(CAL_GREGORIAN, (int)$m, (int)$a)){
-            echo ERRORCITO.CLASE_ALUMNO."FECHA CON DIA QUE NO CORRESPONDE AL MES<br/>";
+            //echo ERRORCITO.CLASE_ALUMNO."FECHA CON DIA QUE NO CORRESPONDE AL MES<br/>";
             $this->fecha_nacimiento = NULL;
             return FALSE;
         }
 
-        echo INFO.CLASE_ALUMNO." FECHA INGRESADA CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_ALUMNO." FECHA INGRESADA CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -126,11 +126,11 @@ class Alumno extends Persona {
     public function validar_pde(){
         global $v;
         if(!$v->validar_formato_verdadero_falso($this->pde)){
-            echo ERRORCITO.CLASE_ALUMNO." PDE ".$this->pde." INGRESADO INCORECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_ALUMNO." PDE ".$this->pde." INGRESADO INCORECTAMENTE<br/>";
             $this->pde = null;
             return false;
         }
-        echo INFO.CLASE_ALUMNO." PDE ".$this->pde." INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_ALUMNO." PDE ".$this->pde." INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -139,11 +139,11 @@ class Alumno extends Persona {
         global $v;
         $result = true;
         if(!$v->validar_formato_numero($this->id_religion,1,1)){
-            echo ERRORCITO.CLASE_ALUMNO." ID_RELIGION INGRESADO INCORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_ALUMNO." ID_RELIGION INGRESADO INCORRECTAMENTE<br/>";
             $this->id_religion = null;
             return false;
         }
-        echo INFO.CLASE_ALUMNO." ID_RELIGION INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_ALUMNO." ID_RELIGION INGRESADO CORRECTAMENTE<br/>";
         /*if($this->id_religion == "0"){
             $this->id_religion = null;
         }*/
@@ -154,11 +154,11 @@ class Alumno extends Persona {
     public function validar_grado_educacional_padre(){
         global $v;
         if(!$v->validar_grado_educacional($this->grado_educacional_padre)){
-            echo ERRORCITO.CLASE_ALUMNO." GEP INGRESADO INCORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_ALUMNO." GEP INGRESADO INCORRECTAMENTE<br/>";
             $this->grado_educacional_padre = null;
             return false;
         }
-        echo INFO.CLASE_ALUMNO." GEP INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_ALUMNO." GEP INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -166,11 +166,11 @@ class Alumno extends Persona {
     public function validar_grado_educacional_madre(){
         global $v;
         if(!$v->validar_grado_educacional($this->grado_educacional_madre)){
-            echo ERRORCITO.CLASE_ALUMNO." GEM INGRESADO INCORRECTAMENTE<br/>";
+            //echo ERRORCITO.CLASE_ALUMNO." GEM INGRESADO INCORRECTAMENTE<br/>";
             $this->grado_educacional_madre = null;
             return false;
         }
-        echo INFO.CLASE_ALUMNO." GEM INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_ALUMNO." GEM INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -178,11 +178,11 @@ class Alumno extends Persona {
     public function validar_persona_vive(){
         global $v;
         if(!$v->validar_formato_numero_texto($this->persona_vive,3,100)){
-            echo ERRORCITO.CLASE_ALUMNO." PERSONA VIVE ES MUY CORTO O MUY LARGO O0 CONTIENE CARACTERES NO ADMITIDOS<br/>";
+            //echo ERRORCITO.CLASE_ALUMNO." PERSONA VIVE ES MUY CORTO O MUY LARGO O0 CONTIENE CARACTERES NO ADMITIDOS<br/>";
             $this->persona_vive = null;
             return false;
         }
-        echo INFO.CLASE_ALUMNO." PERSONA VIVE INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_ALUMNO." PERSONA VIVE INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -244,10 +244,10 @@ class Alumno extends Persona {
         $sentencia->execute();
 
         if($sentencia->rowCount()>=1){
-            //echo INFO.CLASE_ALUMNO." DDBB FILA EXISTENTE <br/>";
+            ////echo INFO.CLASE_ALUMNO." DDBB FILA EXISTENTE <br/>";
             return true;
         }
-        //echo INFO.CLASE_ALUMNO." DDBB FILA INEXISTENTE <br/>";
+        ////echo INFO.CLASE_ALUMNO." DDBB FILA INEXISTENTE <br/>";
         return false;
     }
 
@@ -293,10 +293,10 @@ class Alumno extends Persona {
 
 
         if(!$result){
-            echo ERRORCITO.CLASE_ALUMNO." DDBB ERROR EN ACTUALIZACION! <br/>";
+            //echo ERRORCITO.CLASE_ALUMNO." DDBB ERROR EN ACTUALIZACION! <br/>";
             return true;
         }
-        echo INFO.CLASE_ALUMNO." DDBB EXITO EN ACTUALIZACION! <br/>";
+        //echo INFO.CLASE_ALUMNO." DDBB EXITO EN ACTUALIZACION! <br/>";
         return false;
     }
 
@@ -317,7 +317,7 @@ class Alumno extends Persona {
         $email = $this->get_email();
         $id_direccion = $this->get_direccion()->db_ingresar();
         if(empty($id_direccion)){
-            echo ERRORCITO.CLASE_ALUMNO."DIRECCION INGRESADA INCORRECTAMENTE EN BBDD";
+            //echo ERRORCITO.CLASE_ALUMNO."DIRECCION INGRESADA INCORRECTAMENTE EN BBDD";
             return false;
         }
 
@@ -340,7 +340,7 @@ class Alumno extends Persona {
         $result = $sentencia->execute();
 
         if(!$result){
-            echo ERRORCITO.CLASE_ALUMNO."ALUMNO INGRESADO INCORRECTAMENTE EN BBDD";
+            //echo ERRORCITO.CLASE_ALUMNO."ALUMNO INGRESADO INCORRECTAMENTE EN BBDD";
             $sentencia = $myPDO->query("DELETE FROM direcciones WHERE id_direccion = ".$id_direccion."");
             return $result;
         }
@@ -363,6 +363,7 @@ class Alumno extends Persona {
             $this->set_apellido1($row["apellido1"]);
             $this->set_apellido2($row["apellido2"]);
             $this->set_sexo($row["sexo"]);
+            $this->set_avatar($row["avatar"]);
             $this->set_email($row["email"]);
             $this->set_id_direccion($row["id_direccion"]);
             $this->set_fecha_nacimiento($row["fecha_nacimiento"]);
@@ -372,15 +373,16 @@ class Alumno extends Persona {
             $this->set_grado_educacional_padre($row["grado_educacional_padre"]);
             $this->set_persona_vive($row["persona_vive"]);
         }
-
         return $result;
     }
 
-    function db_borrar(){
+    function db_actualizar_avatar($img){
         global $myPDO;
-
-
-
+        $run = $this->get_run();
+        $sentencia = $myPDO->prepare("UPDATE alumnos SET avatar = ? WHERE run_alumno = ? ");
+        $sentencia->bindParam(1, $img, \PDO::PARAM_STR, 13);
+        $sentencia->bindParam(2, $run, \PDO::PARAM_STR, 9);
+        $sentencia->execute();
     }
 
 }

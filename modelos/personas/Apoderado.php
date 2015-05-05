@@ -43,11 +43,11 @@ class Apoderado extends Persona{
     public function validar_telefono_fijo(){
         global $v;
         if(!$v->validar_formato_numero($this->telefono_fijo,9,9)){
-            echo ERRORCITO.CLASE_APODERADO." TELEFONO FIJO MUY CORTO O MUY LARGO O CONTIENE CARACTERES NO PERMITIDOS<br/>";
+            //echo ERRORCITO.CLASE_APODERADO." TELEFONO FIJO MUY CORTO O MUY LARGO O CONTIENE CARACTERES NO PERMITIDOS<br/>";
             $this->telefono_fijo = null;
             return false;
         }
-        echo INFO.CLASE_APODERADO." TELEFONO FIJO INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_APODERADO." TELEFONO FIJO INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -55,11 +55,11 @@ class Apoderado extends Persona{
     public function validar_telefono_celular(){
         global $v;
         if(!$v->validar_formato_numero($this->telefono_celular,9,9)){
-            echo ERRORCITO.CLASE_APODERADO." TELEFONO CELULAR MUY CORTO O MUY LARGO O CONTIENE CARACTERES NO PERMITIDOS<br/>";
+            //echo ERRORCITO.CLASE_APODERADO." TELEFONO CELULAR MUY CORTO O MUY LARGO O CONTIENE CARACTERES NO PERMITIDOS<br/>";
             $this->telefono_celular = null;
             return false;
         }
-        echo INFO.CLASE_APODERADO." TELEFONO CELULAR INGRESADO CORRECTAMENTE<br/>";
+        //echo INFO.CLASE_APODERADO." TELEFONO CELULAR INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
 
@@ -101,10 +101,10 @@ class Apoderado extends Persona{
         $sentencia->execute();
 
         if($sentencia->rowCount()>=1){
-            //echo INFO.CLASE_APODERADO." DDBB FILA EXISTENTE <br/>";
+            ////echo INFO.CLASE_APODERADO." DDBB FILA EXISTENTE <br/>";
             return true;
         }
-        //echo INFO.CLASE_APODERADO." DDBB FILA INEXISTENTE <br/>";
+        ////echo INFO.CLASE_APODERADO." DDBB FILA INEXISTENTE <br/>";
         return false;
     }
 
@@ -140,10 +140,10 @@ class Apoderado extends Persona{
         $this->get_direccion()->db_actualizar();
 
         if(!$result){
-            echo ERRORCITO.CLASE_APODERADO." DDBB ERROR EN ACTUALIZACION! <br/>";
+            //echo ERRORCITO.CLASE_APODERADO." DDBB ERROR EN ACTUALIZACION! <br/>";
             return true;
         }
-        echo INFO.CLASE_APODERADO." DDBB EXITO EN ACTUALIZACION! <br/>";
+        //echo INFO.CLASE_APODERADO." DDBB EXITO EN ACTUALIZACION! <br/>";
         return false;
     }
 
@@ -164,7 +164,7 @@ class Apoderado extends Persona{
         $email = $this->get_email();
         $id_direccion = $this->get_direccion()->db_ingresar();
         if(empty($id_direccion)){
-            echo ERRORCITO.CLASE_APODERADO."DIRECCION INGRESADA INCORRECTAMENTE EN BBDD";
+            //echo ERRORCITO.CLASE_APODERADO."DIRECCION INGRESADA INCORRECTAMENTE EN BBDD";
             return false;
         }
 
@@ -182,7 +182,7 @@ class Apoderado extends Persona{
         $result = $sentencia->execute();
 
         if(!$result){
-            echo ERRORCITO.CLASE_APODERADO."APODERADO INGRESADO INCORRECTAMENTE EN BBDD";
+            //echo ERRORCITO.CLASE_APODERADO."APODERADO INGRESADO INCORRECTAMENTE EN BBDD";
             $sentencia = $myPDO->query("DELETE FROM direcciones WHERE id_direccion = ".$id_direccion."");
             return $result;
         }
@@ -205,11 +205,21 @@ class Apoderado extends Persona{
             $this->set_apellido2($row["apellido2"]);
             $this->set_sexo($row["sexo"]);
             $this->set_email($row["email"]);
+            $this->set_avatar($row["avatar"]);
             $this->set_id_direccion($row["id_direccion"]);
             $this->set_telefono_fijo($row["telefono_fijo"]);
             $this->set_telefono_celular($row["telefono_celular"]);
         }
         return $result;
+    }
+
+    function db_actualizar_avatar($img){
+        global $myPDO;
+        $run = $this->get_run();
+        $sentencia = $myPDO->prepare("UPDATE apoderados SET avatar = ? WHERE run_apoderado = ? ");
+        $sentencia->bindParam(1, $img, \PDO::PARAM_STR, 13);
+        $sentencia->bindParam(2, $run, \PDO::PARAM_STR, 9);
+        $sentencia->execute();
     }
 }
 /*

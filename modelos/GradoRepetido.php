@@ -62,11 +62,11 @@ class GradoRepetido {
     public function validar(){
         global $v;
         if(!$v->validar_formato_numero($this->cantidad,1,2)){
-            echo ERRORCITO.CLASE_GRADO_REPETIDO. "CANTIDAD INGRESADA INCORRECTAMENTE <br/>";
+            //echo ERRORCITO.CLASE_GRADO_REPETIDO. "CANTIDAD INGRESADA INCORRECTAMENTE <br/>";
             $this->cantidad = null;
             return false;
         }
-        echo INFO.CLASE_GRADO_REPETIDO. "CANTIDAD INGRESADA CORRECTAMENTE <br/>";
+        //echo INFO.CLASE_GRADO_REPETIDO. "CANTIDAD INGRESADA CORRECTAMENTE <br/>";
         return true;
     }
 
@@ -85,10 +85,10 @@ class GradoRepetido {
         $sentencia->execute();
 
         if($sentencia->rowCount()>=1){
-            echo INFO.CLASE_GRADO_REPETIDO." DDBB FILA EXISTENTE <br/>";
+            //echo INFO.CLASE_GRADO_REPETIDO." DDBB FILA EXISTENTE <br/>";
            return true;
         }
-        echo INFO.CLASE_GRADO_REPETIDO." DDBB FILA INEXISTENTE <br/>";
+        //echo INFO.CLASE_GRADO_REPETIDO." DDBB FILA INEXISTENTE <br/>";
         return false;
     }
 
@@ -102,10 +102,10 @@ class GradoRepetido {
         $sentencia->bindParam(4, $this->cantidad, \PDO::PARAM_INT);
 
         if(!$sentencia->execute()){
-            echo ERRORCITO.CLASE_GRADO_REPETIDO." DDBB ERROR EN ACTUALIZACION! <br/>";
+            //echo ERRORCITO.CLASE_GRADO_REPETIDO." DDBB ERROR EN ACTUALIZACION! <br/>";
             return false;
         }
-        echo INFO.CLASE_GRADO_REPETIDO." DDBB EXITO EN ACTUALIZACION! <br/>";
+        //echo INFO.CLASE_GRADO_REPETIDO." DDBB EXITO EN ACTUALIZACION! <br/>";
         return true;
     }
 
@@ -126,10 +126,10 @@ class GradoRepetido {
         $sentencia->bindParam(4, $this->cantidad, \PDO::PARAM_INT);
 
         if(!$sentencia->execute()){
-            echo ERRORCITO.CLASE_GRADO_REPETIDO." DDBB ERROR EN INGRESO! <br/>";
+            //echo ERRORCITO.CLASE_GRADO_REPETIDO." DDBB ERROR EN INGRESO! <br/>";
             return false;
         }
-        echo INFO.CLASE_GRADO_REPETIDO." DDBB EXITO EN INGRESO! <br/>";
+        //echo INFO.CLASE_GRADO_REPETIDO." DDBB EXITO EN INGRESO! <br/>";
         return true;
 
 

@@ -124,7 +124,7 @@
         <div class="grilla5 izquierda">
             <div class="grilla10">Establecimiento De Procedencia<strong>*</strong></div>
             <div class="grilla10">
-                <input id="establecimiento_procedencia" name="establecimiento_procedencia" maxlength="60">
+                <input id="establecimiento_procedencia" name="establecimiento_procedencia" maxlength="60" value="Escuela San Luis de Contulmo">
                 <div class="grilla10 error">&nbsp;</div>
             </div>
             <div class="grilla10">Grados Repetidos</div>

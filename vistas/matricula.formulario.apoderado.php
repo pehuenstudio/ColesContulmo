@@ -10,7 +10,7 @@
             <div class="grilla10 titulo"><h3>Datos Personales</h3></div>
             <div class="grilla10">RUN<strong>*</strong></div>
             <div class="grilla10">
-                <input type="text" name="run_apoderado" id="run_apoderado" placeholder="ej. 12.345.678-k" maxlength="12">
+                <input type="text" name="run_apoderado" id="run_apoderado" placeholder="ej. 12.345.678-k" maxlength="12" value="87018237">
                 <div class="grilla10 error">&nbsp;</div>
             </div>
             <div class="grilla10">Nombres<strong>*</strong></div>

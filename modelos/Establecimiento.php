@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 require_once ROOT_MODELOS."Direccion.php";
 class Establecimiento {
@@ -129,7 +130,24 @@ class Establecimiento {
     }
 
 
+    public function db_get_datos(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_establecimiento_datos(?)");
+        $sentencia->bindParam(1, $this->rbd_establecimiento, \PDO::PARAM_INT);
+        $result = $sentencia->execute();
 
+        $data = $sentencia->fetchAll();
+
+        foreach($data as $row){
+            $this->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["nombre"],
+                $row["telefono"]
+            );
+        }
+
+        return $result;
+    }
 
 
 

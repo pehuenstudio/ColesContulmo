@@ -12,7 +12,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoRepetido.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/MatrizGradosRepetidos.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Matricula.php";
 
-$escudo = $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/img/escudo_contulmo.png";
+
 //echo $_POST["avatar_alumno"];
 
 //move_uploaded_file($_FILES["avatar_alumno"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/_avatars/20150504.png");

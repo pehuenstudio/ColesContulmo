@@ -5,7 +5,7 @@
       <paths name="hostinger">
         <serverdata>
           <mappings>
-            <mapping deploy="/public_html/_code" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/_code" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

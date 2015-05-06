@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 //echo __FILE__."<br/>";
 
@@ -73,8 +74,20 @@ class TipoEnsenanza {
         return $result;
     }
 
+    public function db_get_datos(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_tipo_ensenanza(?)");
+        $sentencia->bindParam(1, $this->id_tipo_ensenanza, \PDO::PARAM_INT);
+        $result = $sentencia->execute();
 
+        $data = $sentencia->fetchAll();
+        foreach($data as $row){
+            $this->set_id_tipo_ensenanza($row["id_tipo_ensenanza"]);
+            $this->set_nombre($row["nombre"]);
+        }
 
+        return $result;
+    }
 
 
 }

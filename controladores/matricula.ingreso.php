@@ -13,7 +13,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/MatrizGradosRepetidos.php
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Matricula.php";
 
 
-//echo $_POST["avatar_alumno"];
+//print_r($_POST);
 
 //move_uploaded_file($_FILES["avatar_alumno"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"]."/_avatars/20150504.png");
 
@@ -37,7 +37,7 @@ $alumno->set_identidad(
 );
 
 $direccion_alumno = new Direccion();
-$direccion_alumno->set(
+$direccion_alumno->set_identidad(
     $_POST["calle_alumno"],
     $_POST["numero_alumno"],
     $_POST["depto_alumno"],
@@ -82,7 +82,7 @@ $apoderado->set_identidad(
     $_POST["telefono_celular_apoderado"]
 );
 $direccion_apoderado = new Direccion();
-$direccion_apoderado->set(
+$direccion_apoderado->set_identidad(
     $_POST["calle_apoderado"],
     $_POST["numero_apoderado"],
     $_POST["depto_apoderado"],
@@ -91,7 +91,8 @@ $direccion_apoderado->set(
 );
 $apoderado->set_direccion($direccion_apoderado);
 
-$curso = new Curso(
+$curso = new Curso();
+$curso->set_identidad(
     $_POST["rbd_establecimiento"],
     $_POST["id_grado"],
     $_POST["id_tipo_ensenanza"],
@@ -123,7 +124,8 @@ if($ingreso){
     $establecimiento_procedencia = $_POST["establecimiento_procedencia"];
     $fecha_incorporacion = date("Y-m-d");
 
-    $matricula = new Matricula(
+    $matricula = new Matricula();
+    $matricula->set_identidad(
         $curso->get_id_tipo_ensenanza(),
         $periodo, $alumno->get_run(),
         $curso->get_rbd_establecimiento(),

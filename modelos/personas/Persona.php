@@ -121,6 +121,8 @@ class Persona {
         $this->apellido2 = $apellido2;
         $this->sexo = $sexo;
         $this->email = $email;
+
+
     }
 
     //AGREGAR DIRECCION
@@ -154,6 +156,7 @@ class Persona {
         }
         $this->run = str_replace("-","",$this->run);
         $this->run = str_replace(".","",$this->run);
+
         ////echo INFO.CLASE_PERSONA." RUN INGRESADO CORRECTAMENTE ".$this->get_run()."<br/>";
         return true;
     }

@@ -42,7 +42,7 @@ class Apoderado extends Persona{
     //VALIDAT TELEFONO FIJO
     public function validar_telefono_fijo(){
         global $v;
-        if(!$v->validar_formato_numero($this->telefono_fijo,9,9)){
+        if(!$v->validar_formato_numero($this->telefono_fijo,0,9)){
             //echo ERRORCITO.CLASE_APODERADO." TELEFONO FIJO MUY CORTO O MUY LARGO O CONTIENE CARACTERES NO PERMITIDOS<br/>";
             $this->telefono_fijo = null;
             return false;

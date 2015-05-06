@@ -11,11 +11,16 @@ class Direccion {
     private $depto;
     private $sector;
     private $id_comuna;
+    private $nombre_comuna;
+    private $id_provincia;
+    private $nombre_provincia;
+    private $id_region;
+    private $nombre_region;
     private $estado = '1';
 
     //function __construct(){}
 
-    public function set($calle, $numero, $depto, $sector, $id_comuna)
+    public function set_identidad($calle, $numero, $depto, $sector, $id_comuna)
     {
         $this->calle = $calle;
         $this->depto = $depto;
@@ -80,12 +85,53 @@ class Direccion {
     {
         return $this->sector;
     }
+    public function set_id_provincia($id_provincia)
+    {
+        $this->id_provincia = $id_provincia;
+    }
+    public function get_id_provincia()
+    {
+        return $this->id_provincia;
+    }
+    public function set_id_region($id_region)
+    {
+        $this->id_region = $id_region;
+    }
+    public function get_id_region()
+    {
+        return $this->id_region;
+    }
+    public function set_nombre_comuna($nombre_comuna)
+    {
+        $this->nombre_comuna = $nombre_comuna;
+    }
+    public function get_nombre_comuna()
+    {
+        return $this->nombre_comuna;
+    }
+    public function set_nombre_provincia($nombre_provincia)
+    {
+        $this->nombre_provincia = $nombre_provincia;
+    }
+    public function get_nombre_provincia()
+    {
+        return $this->nombre_provincia;
+    }
+    public function set_nombre_region($nombre_region)
+    {
+        $this->nombre_region = $nombre_region;
+    }
+    public function get_nombre_region()
+    {
+        return $this->nombre_region;
+    }
+
 
 
     //VALIDAR CALLE
     public function validar_calle(){
         global $v;
-        if(!$v->validar_texto($this->calle,5,60)){
+        if(!$v->validar_texto($this->calle,3,60)){
             //echo ERRORCITO.CLASE_DIRECCION."DIRECCION CALLE VACIA O MUY LARGO <br/>";
             $this->calle = null;
             return false;
@@ -114,7 +160,7 @@ class Direccion {
             //echo INFO.CLASE_DIRECCION."DIRECCION DEPTO INGRESADO CORRECTAMENTE<br/>";
             return true;
         }
-        if(!$v->validar_formato_numero_texto($this->depto,2,5)){
+        if(!$v->validar_formato_numero_texto($this->depto,3,5)){
             //echo ERRORCITO.CLASE_DIRECCION."DIRECCION DEPTO TIENE CARACTERES NO PERMITIDOS<br/>";
             $this->depto = NULL;
             return false;
@@ -126,7 +172,7 @@ class Direccion {
     //VALIDAR SECTOR
     public function validar_sector(){
         global $v;
-        if(!$v->validar_texto($this->sector,5,60)){
+        if(!$v->validar_texto($this->sector,3,60)){
             //echo ERRORCITO.CLASE_DIRECCION."DIRECCION SECTOR ES MUY CORTO O MUY LARGO<br/>";
             $this->sector = null;
             return false;
@@ -174,9 +220,10 @@ class Direccion {
     public function db_get_datos(){
         global $myPDO;
         $sentencia = $myPDO->prepare("CALL get_direccion(?)");
-        $sentencia->bindParam(1, $this->id_direccion);
+        $sentencia->bindParam(1, $this->id_direccion, \PDO::PARAM_INT);
         $result = $sentencia->execute();
         $data = $sentencia->fetchAll();
+
 
         foreach($data as $row){
             $this->calle = $row["calle"];
@@ -219,6 +266,7 @@ class Direccion {
         //echo INFO.CLASE_DIRECCION. "DDBB EXITO EN LA ACTUALIZACION <br/>";
         return true;
     }
+
     public function db_ingresar(){
         global $myPDO;
 
@@ -231,18 +279,20 @@ class Direccion {
         $sentencia->execute();
 
         $id_direccion = $myPDO->query("SELECT @id_direccion")->fetchColumn();
+        //var_dump($id_direccion);
         return $id_direccion;
     }
 
     public function db_get_ids_nombres(){
-        global $myPDO;
 
+        global $myPDO;
         $sentencia = $myPDO->prepare("CALL get_comuna_provincia_region(?)");
         $sentencia->bindParam(1, $this->id_comuna, \PDO::PARAM_INT);
         $sentencia->execute();
 
         $data = $sentencia->fetchAll();
-        $direccion["direccion"] = array();
+
+        $direccion = array();
         foreach($data as $row){
             $direccion["direccion_id"]["id_comuna"] = $row["id_comuna"];
             $direccion["direccion_id"]["id_provincia"] = $row["id_provincia"];
@@ -250,6 +300,14 @@ class Direccion {
             $direccion["direccion_nombre"]["nombre_region"] = $row["nombre_comuna"];
             $direccion["direccion_nombre"]["nombre_provincia"] = $row["nombre_provincia"];
             $direccion["direccion_nombre"]["nombre_comuna"] = $row["nombre_comuna"];
+
+            $this->set_id_comuna($row["id_comuna"]);
+            $this->set_id_provincia($row["id_provincia"]);
+            $this->set_id_region($row["id_region"]);
+
+            $this->set_nombre_comuna($row["nombre_comuna"]);
+            $this->set_nombre_provincia($row["nombre_provincia"]);
+            $this->set_nombre_region($row["nombre_region"]);
         }
 
         $result = json_encode($direccion,JSON_UNESCAPED_UNICODE);

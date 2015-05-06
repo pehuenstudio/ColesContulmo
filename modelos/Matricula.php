@@ -28,8 +28,9 @@ class Matricula {
     private $estado = 1;
 
     //CONSTRUCTOR
+    function __construct(){}
 
-    function __construct($id_tipo_ensenanza, $periodo, $run_alumno, $rbd_establecimiento, $run_apoderado, $id_curso,
+    public function set_identidad($id_tipo_ensenanza, $periodo, $run_alumno, $rbd_establecimiento, $run_apoderado, $id_curso,
                          $establecimiento_procedencia, $fecha_incorporacion)
     {
         $this->run_apoderado = $run_apoderado;
@@ -292,6 +293,31 @@ class Matricula {
         $sentencia = $myPDO->query("SELECT @id_matricula;");
         //var_dump($sentencia->fetchColumn(0));
         $this->id_matricula = $sentencia->fetchColumn(0);
+
+        return $result;
+    }
+
+    public function db_get_datos(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_matricula(?,?)");
+        $sentencia->bindParam(1, $this->run_alumno, \PDO::PARAM_STR, 9);
+        $sentencia->bindParam(2, $this->periodo, \PDO::PARAM_INT);
+        $result = $sentencia->execute();
+
+        $data = $sentencia->fetchAll();
+        foreach($data as $row){
+            $this->set_id_matricula($row["id_matricula"]);
+            $this->set_identidad(
+                $row["id_tipo_ensenanza"],
+                $row["periodo"],
+                $row["run_alumno"],
+                $row["rbd_establecimiento"],
+                $row["run_apoderado"],
+                $row["id_curso"],
+                $row["establecimiento_procedencia"],
+                $row["fecha_incorporacion"]
+            );
+        }
 
         return $result;
     }

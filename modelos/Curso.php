@@ -12,7 +12,11 @@ class Curso {
     private $grupo;
     private $estado = "1";
 
-    function __construct($rbd_establecimiento, $id_grado, $id_tipo_ensenanza, $grupo){
+    function __construct(){
+
+    }
+
+    function set_identidad($rbd_establecimiento, $id_grado, $id_tipo_ensenanza, $grupo){
         $this->rbd_establecimiento = $rbd_establecimiento;
         $this->id_grado = $id_grado;
         $this->id_tipo_ensenanza = $id_tipo_ensenanza;
@@ -80,7 +84,7 @@ class Curso {
     function validar_rbd_establecimiento(){
         global $v;
         if(!$v->validar_formato_numero($this->rbd_establecimiento,1,6)){
-            //echo ERRORCITO.CLASE_CURSO. "RBD ESTABLECIMIENTO INGRESADO INCORRECTAMENTE <br/>";
+            ////echo ERRORCITO.CLASE_CURSO. "RBD ESTABLECIMIENTO INGRESADO INCORRECTAMENTE <br/>";
             $this->rbd_establecimiento = null;
             return false;
         }
@@ -90,7 +94,7 @@ class Curso {
     function validar_id_grado(){
         global $v;
         if(!$v->validar_formato_numero($this->id_grado,0,3)){
-            //echo ERRORCITO.CLASE_CURSO. "ID GRADO INGRESADO INCORRECTAMENTE <br/>";
+            ////echo ERRORCITO.CLASE_CURSO. "ID GRADO INGRESADO INCORRECTAMENTE <br/>";
             $this->id_grado = null;
             return false;
         }
@@ -100,7 +104,7 @@ class Curso {
     function validar_id_tipo_ensenanza(){
         global $v;
         if(!$v->validar_formato_numero($this->id_tipo_ensenanza,0,5)){
-            //echo ERRORCITO.CLASE_CURSO. "ID TIPO DE ENSENANZA INGRESADO INCORRECTAMENTE <br/>";
+            ////echo ERRORCITO.CLASE_CURSO. "ID TIPO DE ENSENANZA INGRESADO INCORRECTAMENTE <br/>";
             $this->id_tipo_ensenanza = null;
             return false;
         }
@@ -110,7 +114,7 @@ class Curso {
     function validar_grupo(){
         global $v;
         if(!$v->validar_texto($this->grupo,0,2)){
-            //echo ERRORCITO.CLASE_CURSO. "GRUPO INGRESADO INCORRECTAMENTE <br/>";
+            ////echo ERRORCITO.CLASE_CURSO. "GRUPO INGRESADO INCORRECTAMENTE <br/>";
             $this->grupo = null;
             return false;
         }
@@ -144,6 +148,27 @@ class Curso {
         $this->id_curso = $sentencia->fetchColumn(0);
 
         return $this->id_curso;
+    }
+
+    public function db_get_datos(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_curso(?)");
+        $sentencia->bindParam(1, $this->id_curso, \PDO::PARAM_INT);
+        $result = $sentencia->execute();
+
+        $data = $sentencia->fetchAll();
+
+
+        foreach($data as $row){
+            $this->set_id_curso($row["id_curso"]);
+            $this->set_rbd_establecimiento($row["rbd_establecimiento"]);
+            $this->set_run_profesor_jefe($row["run_profesor_jefe"]);
+            $this->set_id_grado($row["id_grado"]);
+            $this->set_id_tipo_ensenanza($row["id_tipo_ensenanza"]);
+            $this->set_grupo($row["grupo"]);
+        }
+
+        return $result;
     }
 }
 ?> 

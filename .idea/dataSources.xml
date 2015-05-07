@@ -6,9 +6,6 @@
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/coles_data</jdbc-url>
-      <user-name>coles_data</user-name>
-      <user-password>dfc7dfcbdfd8dfdedfcfdfd9df8adf9bdf9edf8adfcedfcfdf8adfcbdfc8dfd8dfc3dfc6</user-password>
-      <schema-pattern>coles_data.*</schema-pattern>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />

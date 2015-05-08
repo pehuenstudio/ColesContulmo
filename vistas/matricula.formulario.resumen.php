@@ -2,30 +2,62 @@
 //echo __FILE__."<br/>";
 ?>
 <style>
+    hr {
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+    }
     .resumen {
         text-transform: capitalize;
         font-style: italic;
     }
-    .label{
+    div.label{
         color: #ffffff;
-        background-color: #C8C8C8;
+        background-color: #3598DC;
+        font-size: larger;
+        padding: 5px !important;
     }
     .load2{
         height: 25px !important;
 
     }
     .exito{
-        color: #00C3AB;
+        color: #75A362;
         font-style: italic;
+
     }
 
     .warning{
-        color: #FAC757;
+        color: #F8AE0D;
         font-style: italic;
     }
+    table#contenedor_resultado td, table#contenedor_resultado tr{
+        height: 30px !important;
+        border-width: 0 !important;
+        text-align: left;
+        background: #4C4C4C;
+    }
+    table#contenedor_resultado td.label1{
+        width: 250px;
+        color: #ffffff;
+        font-size: larger;
+    }
+    table#contenedor_resultado td.label2{
+        width: 225px;
+        text-align: center;
+    }
+    table#contenedor_resultado td.label2 img{
+
+    }
+
 
 </style>
 <div id="contenedor_resumen">
+
     <div class="contenedor_grillas">
         <div class="grilla5 izquierda">
             <div class="grilla10 titulo"><h3>Datos Del Alumno</h3></div>
@@ -68,24 +100,40 @@
         <div class="grilla10"><p class="resumen" id="resumen_tipo_ensenanza"></p></div>
         <div class="grilla10 label">Grado y Grupo</div>
         <div class="grilla10"><p class="resumen" id="resumen_grado_grupo"></p></div>
-
         <div class="grilla10">&nbsp;</div>
-        <div class="grilla5 izquierda">
-            <div class="grilla4 ">Ingresando alumno</div><div class="grilla6 " id="load_ingreso_alumno">&nbsp;</div>
+        <hr>
+        <h3>
+            Cuadro De Resultados De Ingreso
+        </h3>
+        <p>Para finalizar el proceso de matrícula presione el botón azul que dice <b>Ingresar</b></p>
+        <table id="contenedor_resultado">
+            <tr>
+                <td class="label1" id="load_ingreso_alumno_label">&nbsp;</td>
+                <td class="label2" id="load_ingreso_alumno">&nbsp;</td>
+                <td class="label3" id="msg_ingreso_alumno">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="label1" id="load_ingreso_sistema1_label">&nbsp;</td>
+                <td id="load_ingreso_sistema1">&nbsp;</td>
+                <td id="msg_ingreso_sistema1">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="label1" id="load_ingreso_apoderado_label">&nbsp;</td>
+                <td id="load_ingreso_apoderado">&nbsp;</td>
+                <td id="msg_ingreso_apoderado">&nbsp;</td>
+            </tr>
 
-            <div class="grilla4 ">Ingresando apoderado</div><div class="grilla6" id="load_ingreso_apoderado">&nbsp;</div>
-
-            <div class="grilla4 ">Ingresando curso</div><div class="grilla6" id="load_ingreso_curso">&nbsp;</div>
-
-        </div>
-        <div class="grilla5 derecha">
-            <div class="grilla10" id="msg_ingreso_alumno">&nbsp;</div>
-            <div class="10"></div>
-            <div class="grilla10" id="msg_ingreso_apoderado">&nbsp;</div>
-            <div class="10"></div>
-            <div class="grilla10" id="msg_ingreso_curso">&nbsp;</div>
-            <div class="10"></div>
-        </div>
+            <tr>
+                <td class="label1" id="load_ingreso_sistema2_label">&nbsp;</td>
+                <td id="load_ingreso_sistema2">&nbsp;</td>
+                <td id="msg_ingreso_sistema2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="label1" id="load_ingreso_matricula_label">&nbsp;</td>
+                <td id="load_ingreso_matricula">&nbsp;</td>
+                <td id="msg_ingreso_matricula">&nbsp;</td>
+            </tr>
+        </table>
 
 
 

@@ -4,7 +4,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoRepetido.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 //echo __FILE__."<br/>";
-class MatrizGradosRepetidos {
+class GradoRepetidoMatriz {
     private $matriz = array();
 
     function __construct(){}
@@ -43,15 +43,7 @@ class MatrizGradosRepetidos {
     }
 
     public function to_json(){
-        $json = array();
-
-        foreach($this->matriz as $row){
-            $data["id_grado"] = $row["id_grado"];
-            $data["id_tipo_ensenanza"] = $row["id_tipo_ensenanza"];
-            $data["cantidad"] = $row["cantidad"];
-            array_push($json,$data);
-        }
-        $json = json_encode($json,JSON_UNESCAPED_UNICODE);
+        $json = json_encode($this->matriz,JSON_UNESCAPED_UNICODE);
         //print_r($json);
         return $json;
     }

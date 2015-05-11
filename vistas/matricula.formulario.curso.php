@@ -2,7 +2,7 @@
 <?php
 $presente = date("Y");
 $futuro = date("Y")+1;
-
+//TODO: el rbd deve ser selecciono mediante un usuario te tipo establecimiento y su id;
 ?>
 <div id="contenedor_curso">
     <div class="contenedor_grillas">

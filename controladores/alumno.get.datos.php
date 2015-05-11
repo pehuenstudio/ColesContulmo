@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/personas/Alumno.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/MatrizGradosRepetidos.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoRepetidoMatriz.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoRepetido.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Direccion.php";
 
@@ -44,7 +44,7 @@ switch ($funcion){
 
         $alumno->set_direccion($direccion);
 
-        $matriz_grados_repetido = new MatrizGradosRepetidos();
+        $matriz_grados_repetido = new GradoRepetidoMatriz();
         $matriz_grados_repetido->db_get_datos($run_alumno);
 
 

@@ -11,7 +11,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Direccion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Curso.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoRepetido.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/TipoEnsenanza.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/MatrizGradosRepetidos.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoRepetidoMatriz.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Matricula.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Establecimiento.php";
 require_once($_SERVER["DOCUMENT_ROOT"]."/_dompdf/dompdf_config.inc.php");

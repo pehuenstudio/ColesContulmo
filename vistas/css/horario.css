@@ -1,0 +1,72 @@
+
+#contenedor_horario{
+    width: 100%;
+    height: auto;
+    float: left;
+    margin-bottom: 20px;
+}
+#contenedor_horario .dia{
+    width: 18%;
+    float: left;
+    /*border-width: 1px;
+    border-style: solid;*/
+    margin-right: 2.5%;
+}
+#contenedor_horario .dia_last{
+    width: 18%;
+    float: left;
+    /*border-width: 1px;
+    border-style: solid;*/
+}
+.dia .header, .dia_last .header{
+    background-color: #3598DC;
+    text-align: center;
+    font-size: xx-large;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+#contenedor_horario .bloque{
+    height: 106px;
+    width: 100%;
+    border: 1px;
+    border-style: dashed;
+    margin-bottom: 10px;
+    background-color: #EFEFEF;
+}
+.dia .bloque .hora, .dia_last .bloque .hora{
+    background-color: #C8C8C8;
+    font-size: small;
+    color: #888;
+    text-align: center;
+}
+.dia .bloque .asignatura{
+    margin: 5px;
+    text-align: center;
+}
+#contenedor_horario #panel_loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+
+}
+#contenedor_selector{
+    width: 20%;
+    margin-left: -20%;
+    float: left;
+}
+
+
+#panel_loading img{
+    width: 100px;
+    height: 100px;
+    margin-top: 300px;
+}
+#panel_loading div{
+    text-align: center;
+    color: #40B1E2;
+}

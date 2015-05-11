@@ -170,5 +170,9 @@ class Curso {
 
         return $result;
     }
+
+    public function db_get_all(){
+
+    }
 }
 ?> 

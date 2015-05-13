@@ -1,19 +1,32 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
-
-
+$rbd_establecimiento = 51543;
 ?>
-<link rel="stylesheet" href="/_code/vistas/css/horario.css">
-<link rel="stylesheet" href="/_code/vistas/css/jquery-ui.css">
 
-<script src="/_code/vistas/js/_jquery.min.js"></script>
-<script src="/_code/vistas/js/_jquery-ui.js"></script>
-<script src="/_code/vistas/js/horario.js"></script>
+<form id="formulario_clase" enctype="multipart/form-data">
+    <input type="hidden" value="<?php echo $rbd_establecimiento?>" id="rbd_establecimiento" name="rbd_establecimiento">
+    <div class="contenedor_grillas">
+        <div class="grilla10 titulo"><h3>Panel De Clases</h3></div>
 
-<div id="contenedor_selector">
-    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/horario.formulario.selector.php"?>
-</div>
-<div id="contenedor_horario">
-    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/horario.formulario.bloques.php"?>
-</div>
+        <div class="grilla10">
+            <select id="id_ciclo" name="id_ciclo">
+                <option value = "0">Seleccione Un Ciclo</option>
+            </select>
+            <div class="div10 error">&nbsp;</div>
+        </div>
+
+        <div class="grilla10">
+            <select id="id_curso" name="id_curso" disabled>
+                <option value = "0">Seleccione Un Curso</option>
+            </select>
+            <div class="div10 error">&nbsp;</div>
+        </div>
+
+        <div class="grilla10">
+            <select id="id_asignatura" name="id_asignatura" disabled>
+                <option value = "0">Seleccione Una Asignatura</option>
+            </select>
+            <div class="div10 error">&nbsp;</div>
+        </div>
+        <input type="submit">
+    </div>
+</form>

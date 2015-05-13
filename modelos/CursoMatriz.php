@@ -22,7 +22,8 @@ class CursoMatriz{
             "rbd_establecimiento" => $curso->get_rbd_establecimiento(),
             "run_profesor_jefe" => $curso->get_run_profesor_jefe(),
             "id_grado" => $curso->get_id_grado(),
-            "id_tipo_ensenaza" => $curso->get_id_tipo_ensenanza(),
+            "id_tipo_ensenanza" => $curso->get_id_tipo_ensenanza(),
+            "id_ciclo" => $curso->get_id_ciclo(),
             "grupo" => $curso->get_grupo()
         );
 
@@ -34,11 +35,12 @@ class CursoMatriz{
         return $json;
     }
 
-    public function db_get_datos($rbd_establecimiento){
+    public function db_get_datos($rbd_establecimiento, $id_ciclo){
         global $myPDO;
 
-        $sentencia = $myPDO->prepare("CALL get_cursos(?)");
+        $sentencia = $myPDO->prepare("CALL get_cursos(?,?)");
         $sentencia->bindParam(1, $rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $id_ciclo, \PDO::PARAM_INT);
         $result = $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
@@ -52,6 +54,7 @@ class CursoMatriz{
             );
             $curso->set_id_curso($row["id_curso"]);
             $curso->set_run_profesor_jefe($row["run_profesor_jefe"]);
+            $curso->set_id_ciclo($row["id_ciclo"]);
 
             $this->to_matriz($curso);
         }

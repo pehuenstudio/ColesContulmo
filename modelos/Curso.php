@@ -9,6 +9,7 @@ class Curso {
     private $run_profesor_jefe;
     private $id_grado;
     private $id_tipo_ensenanza;
+    private $id_ciclo;
     private $grupo;
     private $estado = "1";
 
@@ -79,6 +80,15 @@ class Curso {
     {
         return $this->run_profesor_jefe;
     }
+    public function set_id_ciclo($id_ciclo)
+    {
+        $this->id_ciclo = $id_ciclo;
+    }
+    public function get_id_ciclo()
+    {
+        return $this->id_ciclo;
+    }
+
 
 
     function validar_rbd_establecimiento(){

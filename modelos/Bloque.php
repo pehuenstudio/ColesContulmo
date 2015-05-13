@@ -13,11 +13,10 @@ class Bloque {
 
     function __construct(){}
 
-    public function set_identidad($id_bloque, $rbd_establecimiento,  $id_ciclo, $id_dia, $hora_inicio, $hora_fin){
+    public function set_identidad($rbd_establecimiento,  $id_ciclo, $id_dia, $hora_inicio, $hora_fin){
         $this->id_dia = $id_dia;
         $this->rbd_establecimiento = $rbd_establecimiento;
         $this->id_ciclo = $id_ciclo;
-        $this->id_bloque = $id_bloque;
         $this->hora_inicio = $hora_inicio;
         $this->hora_fin = $hora_fin;
     }
@@ -79,6 +78,26 @@ class Bloque {
         return $this->rbd_establecimiento;
     }
 
+    public function db_get_datos(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_bloque(?)");
+        $sentencia->bindParam(1, $this->id_bloque, \PDO::PARAM_INT);
+        $result = $sentencia->execute();
 
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $this->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["id_ciclo"],
+                $row["id_dia"],
+                date("H:i",strtotime($row["hora_inicio"])),
+                date("H:i",strtotime($row["hora_fin"]))
+            );
+            $this->set_id_bloque($row["id_bloque"]);
+
+        }
+
+        return $result;
+    }
 }
 ?> 

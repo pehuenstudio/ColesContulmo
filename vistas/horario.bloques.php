@@ -13,3 +13,7 @@
 <div class="dia_last" id="dia5">
     <div class="header">Viernes</div>
 </div>
+<script>
+
+
+</script>

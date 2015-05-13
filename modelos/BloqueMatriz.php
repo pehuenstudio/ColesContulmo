@@ -36,13 +36,13 @@ class BloqueMatriz {
         foreach($data as $row){
             $bloque = new Bloque();
             $bloque->set_identidad(
-                $row["id_bloque"],
                 $row["rbd_establecimiento"],
                 $row["id_ciclo"],
                 $row["id_dia"],
                 date("H:i",strtotime($row["hora_inicio"])),
                 date("H:i",strtotime($row["hora_fin"]))
             );
+            $bloque->set_id_bloque($row["id_bloque"]);
 
             $this->to_matriz($bloque);
         }

@@ -8,6 +8,18 @@ class CicloMatriz {
 
     function __construct(){}
 
+    public function set_matriz($matriz)
+    {
+        $this->matriz = $matriz;
+    }
+
+    public function get_matriz()
+    {
+        return $this->matriz;
+    }
+
+
+
     public function to_matriz(Ciclo $ciclo){
         $matriz = array(
             "id_ciclo" => $ciclo->get_id_ciclo(),

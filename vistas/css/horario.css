@@ -8,6 +8,7 @@
     float: left;
     margin-bottom: 20px;
     min-height: 500px;
+    display: none;
 }
 #contenedor_bloques .dia{
     width: 18%;
@@ -62,7 +63,7 @@
     color: #ffffff;
     text-align: center;
 }
-.dia .bloque .asignatura{
+.dia .bloque .asignatura, .dia_last .bloque .asignatura{
     margin: 5px;
     text-align: center;
 }
@@ -78,9 +79,11 @@
 
 }
 #contenedor_formulario {
-    width: 20%;
-    margin-left: -23%;
+
+    background-color: #ffffff;
+    margin-bottom: 10px;
     float: left;
+    width: 100%;
 
 }
 
@@ -160,6 +163,10 @@ h1{
     border-style: solid;
     text-align: center;
     font-size: small;
+}
+
+#contenedor_formulario .grilla3{
+    width: 33.3% !important;
 }
 
 

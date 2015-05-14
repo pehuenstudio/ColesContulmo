@@ -17,6 +17,7 @@ $cursos = json_decode($cursos, JSON_UNESCAPED_UNICODE);
 
 
 for ($i = 0; $i < count($cursos); $i++){
+
     switch ($cursos[$i]["id_tipo_ensenanza"]){
         case "10":
             if($cursos[$i]["id_grado"] == "4"){
@@ -33,6 +34,8 @@ for ($i = 0; $i < count($cursos); $i++){
     $tipo_ensenanza->db_get_datos();
 
     $cursos[$i]["nombre_ensenanza"] = $tipo_ensenanza->get_nombre();
+
+
 }
 print_r(json_encode($cursos, JSON_UNESCAPED_UNICODE));
 

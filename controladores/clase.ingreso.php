@@ -12,52 +12,41 @@ $id_curso = $_POST["id_curso"];
 $id_asignatura = $_POST["id_asignatura"];
 $bloques = json_decode($_POST["bloques"], JSON_UNESCAPED_UNICODE);
 $bloquesDel = json_decode($_POST["bloquesDel"], JSON_UNESCAPED_UNICODE);
+//print_r($bloques);
+//print_r($bloquesDel);
 
 //$matriz_clase = new ClaseMatriz();
+foreach($bloquesDel as $row){
+    //print_r($row);
+    $clase = new Clase();
+    $clase->set_identidad(
+        $id_curso,
+        "null",
+        $row["id_bloque"],
+        $rbd_establecimiento
+    );
+    $clase->db_actualizar_clase_null();
+  //  print_r($row);
+}
+
+
 foreach($bloques as $row){
     //print_r($row);
     $clase = new Clase();
     $clase->set_identidad(
         $id_curso,
-        $id_asignatura,
-        $row,
+        $row["id_asignatura"],
+        $row["id_bloque"],
         $rbd_establecimiento
     );
-    //print_r($clase);
-    $clase->db_actualizar_estado("1");
-    //$matriz_clase->to_matriz($clase);
+
+    $clase->db_actualizar_clase();
+   // print_r($row["id_bloque"]);
+
 }
 
-foreach($bloquesDel as $row){
-    //print_r($row);
-    $clase = new Clase();
-    $clase->set_identidad(
-        $id_curso,
-        NULL,
-        $row,
-        $rbd_establecimiento
-    );
-    $clase->db_actualizar_estado("1");
-}
-/*
-$matriz_clase->db_ingresar();
-$matriz_clase->db_actualizar_estado("1");
 
-$matriz_clase_del = new ClaseMatriz();
 
-foreach($bloquesDel as $row){
-    //print_r($row);
-    $clase = new Clase();
-    $clase->set_identidad(
-        $id_curso,
-        $id_asignatura,
-        $row,
-        $rbd_establecimiento
-    );
-    $matriz_clase_del->to_matriz($clase);
-}
-$matriz_clase_del->db_actualizar_estado("0");
-*/
 
 ?>
  

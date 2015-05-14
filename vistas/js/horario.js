@@ -2,12 +2,18 @@ jQuery(document).ready(function(){
     var bloques = new Array();
     var bloquesDel = new Array();
     var rbd_establecimiento = jQuery("#rbd_establecimiento").val();
+    jQuery("#contenedor_formulario").sticky({topSpacing:0});
+    //get_bloques0(rbd_establecimiento,1);
+
     get_siclos();
 
     jQuery("#id_ciclo").change(function(){
         del_bloques();
         var id_ciclo = jQuery("#id_ciclo").val();
+        //get_bloques0(rbd_establecimiento,id_ciclo);
         if(id_ciclo == "0"){
+            jQuery("#contenedor_bloques").css("display","none");
+            //jQuery("#contenedor_info").css("display","inline");
             jQuery("#id_curso").empty()
                 .prop("disabled", true)
                 .append("<option value='0'>Seleccione Un Curso</option>");
@@ -16,6 +22,8 @@ jQuery(document).ready(function(){
                 .append("<option value='0'>Seleccione Una Asignatura</option>")
             return null;
         }
+        //jQuery("#contenedor_bloques").css("display","inline");
+        //jQuery("#contenedor_info").css("display","none");
         jQuery("#id_curso").empty()
             .prop("disabled", false)
             .append("<option value='0'>Seleccione Un Curso</option>");
@@ -27,11 +35,15 @@ jQuery(document).ready(function(){
         del_bloques();
         var id_curso = jQuery("#id_curso").val();
         if(id_curso == "0"){
+            jQuery("#contenedor_bloques").css("display","none");
+            //jQuery("#contenedor_info").css("display","inline");
             jQuery("#id_asignatura").empty()
                 .prop("disabled", true)
                 .append("<option value='0'>Seleccione Una Asignatura</option>");
             return null;
         }
+        jQuery("#contenedor_bloques").css("display","inline");
+        //jQuery("#contenedor_info").css("display","none");
         jQuery("#id_asignatura").empty()
             .prop("disabled", false)
             .append("<option value='0'>Seleccione Una Asignatura</option>")
@@ -48,37 +60,47 @@ jQuery(document).ready(function(){
     });
 
     jQuery("#contenedor_bloques").on("click", ".bloque", function (){
+
        // console.log("cambiando");
         var id_bloque = "#"+this.id;
         var selected = jQuery(id_bloque).attr("data-selected");
         var nombre_asignatura = jQuery("#id_asignatura").find(":selected").text();
+        var id_asignatura = jQuery("#id_asignatura").find(":selected").val();
+        var matriz = {"id_bloque":this.id,"id_asignatura":id_asignatura};
 
-        //console.log(nombre_asignatura);
         if(selected=='0'){
+            if(id_asignatura == "0"){
+                mostrar_dialogo("21","Para ingresar una clase primero debes seleccionar una asignatura");
+                return null;
+            }
             jQuery(id_bloque).attr("data-selected","1");
             jQuery(id_bloque).addClass("selected");
             jQuery(id_bloque).children(".asignatura").text(nombre_asignatura);
-            var i = bloquesDel.indexOf(this.id);
-            if(i != -1) {
-                bloquesDel.splice(i, 1);
+
+            for (var e = 0; e < bloquesDel.length ; e++){
+                if(bloquesDel[e].id_bloque == matriz.id_bloque){
+                    bloquesDel.splice(e, 1);
+                }
             }
-            bloques.push(this.id);
+            bloques.push(matriz);
+
         }else{
+
             jQuery(id_bloque).attr("data-selected","0");
             jQuery(id_bloque).removeClass("selected");
             jQuery(id_bloque).children(".asignatura").text("Sin clases");
 
-            var i = bloques.indexOf(this.id);
-            if(i != -1) {
-                bloques.splice(i, 1);
+            for (var e = 0; e < bloques.length ; e++){
+                if(bloques[e].id_bloque == matriz.id_bloque){
+                    bloques.splice(e, 1);
+                }
             }
-            bloquesDel.push(this.id);
+            bloquesDel.push(matriz);
+
 
         }
-
-        console.log("actualizar "+bloques);
-        console.log("null para estos "+bloquesDel);
-
+        console.log("bloques "+bloques.length);
+        console.log("bloquesdel "+bloquesDel.length);
     });
 
     jQuery("#formulario_clase").submit(function(){
@@ -96,12 +118,20 @@ jQuery(document).ready(function(){
             data: miFormData,
             contentType: false,
             cache: false,
-            processData:false
+            processData:false,
+            beforeSend: function(){
+                load_on("Actualizando horario...");
+            }
 
 
         }).done(function(data){
             console.log(data);
-        });
+            load_off();
+        })
+            .fail(function(){
+                alert("ERROR");
+            })
+        ;
 
     });
 
@@ -241,6 +271,41 @@ function get_asignaturas(id_grado, id_tipo_ensenanza){
     ;
 }
 
+function get_bloques0(rbd_establecimiento,id_ciclo){
+    jQuery(".bloque").remove();
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/bloque.get.datos.php",
+        data: {rbd_establecimiento : rbd_establecimiento, id_ciclo : id_ciclo},
+        beforeSend: function(){
+            load_on("Cargando bloques del horario...");
+        }
+    })
+        .done(function(data){
+            //alert(data);
+            var data = jQuery.parseJSON(data);
+
+            for(var i=0; i<data.length; i++){
+                var id_bloque = data[i]["id_bloque"];
+                var id_dia = "#dia"+data[i]["id_dia"];
+                var hora = data[i]["hora_inicio"]+" - "+data[i]["hora_fin"];
+                get_clases(id_dia, hora, id_bloque, "", "");
+
+            }
+            setTimeout(function(){
+                jQuery("#panel_loading").remove();
+            },1000);
+        })
+        .fail(function(){
+            alert("alert");
+            setTimeout(function(){
+                jQuery("#panel_loading").remove();
+
+            },1000);
+        })
+
+    ;
+}
 
 
 

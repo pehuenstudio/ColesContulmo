@@ -9,6 +9,7 @@
 <script src="/_code/vistas/js/_jquery.min.js"></script>
 <script src="/_code/vistas/js/_jquery.steps.min.js"></script>
 <script src="/_code/vistas/js/_jquery-ui.js"></script>
+<script src="/_code/vistas/js/mensajes.js"></script>
 <script src="/_code/vistas/js/_validaciones.js"></script>
 <script src="/_code/vistas/js/_ubicaciones.js"></script>
 <script src="/_code/vistas/js/_religiones.js"></script>

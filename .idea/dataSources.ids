@@ -106,7 +106,7 @@
       <index name="fk_bloques_siclos1_idx" unique="false" columns="id_ciclo"/>
     </table>
     <table name="ciclos" schema="" catalog="coles_data" type="TABLE">
-      <column name="id_ciclo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_ciclo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="nombre" sqlType="VARCHAR" length="90" precision="0" nullable="false" jdbcType="12"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_ciclo"/>
@@ -336,6 +336,11 @@
     <procedure name="get_apoderado" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="p_run_apoderado" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="get_asignatura" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_id_asignatura" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
       </prototype>
     </procedure>
     <procedure name="get_asignaturas" schema="" catalog="coles_data" type="1">
@@ -571,6 +576,13 @@
         <parameter name="p_id_bloque" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
         <parameter name="p_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
         <parameter name="p_estado" sqlType="VARCHAR " length="1" precision="1" nullable="true" jdbcType="1111" type="1" index="5"/>
+      </prototype>
+    </procedure>
+    <procedure name="upd_clase_null" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="p_id_curso" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="p_id_bloque" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
       </prototype>
     </procedure>
     <procedure name="upd_direccion" schema="" catalog="coles_data" type="1">

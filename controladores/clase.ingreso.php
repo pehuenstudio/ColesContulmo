@@ -12,7 +12,7 @@ $id_curso = $_POST["id_curso"];
 $id_asignatura = $_POST["id_asignatura"];
 $bloques = json_decode($_POST["bloques"], JSON_UNESCAPED_UNICODE);
 $bloquesDel = json_decode($_POST["bloquesDel"], JSON_UNESCAPED_UNICODE);
-//print_r($bloques);
+print_r($bloques);
 //print_r($bloquesDel);
 
 //$matriz_clase = new ClaseMatriz();
@@ -39,6 +39,7 @@ foreach($bloques as $row){
         $row["id_bloque"],
         $rbd_establecimiento
     );
+    $clase->set_run_profesor($row["run_profesor"]);
 
     $clase->db_actualizar_clase();
    // print_r($row["id_bloque"]);

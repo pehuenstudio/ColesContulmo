@@ -7,6 +7,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/ClaseMatriz.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Clase.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Bloque.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Asignatura.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/personas/Profesor.php";
 
 $rbd_establecimiento = $_POST["rbd_establecimiento"];
 $id_curso = $_POST["id_curso"];
@@ -23,6 +24,7 @@ for ($i = 0; $i < count($clases); $i++){
     $clases[$i]["hora_inicio"] = $bloque->get_hora_inicio();
     $clases[$i]["hora_fin"] = $bloque->get_hora_fin();
     $clases[$i]["nombre_asignatura"] = "Sin clases";
+    $clases[$i]["nombre_profesor"] = "";
    // print_r($bloque);
     if(!empty($clases[$i]["id_asignatura"])){
         $asignatura = new Asignatura();
@@ -30,6 +32,13 @@ for ($i = 0; $i < count($clases); $i++){
 
         $asignatura->db_get_datos();
         $clases[$i]["nombre_asignatura"] = $asignatura->get_nombre();
+    }
+    if(!empty($clases[$i]["run_profesor"])){
+        $profesor = new \personas\Profesor();
+        $profesor->set_run($clases[$i]["run_profesor"]);
+
+        $profesor->db_get_datos();
+        $clases[$i]["nombre_profesor"] = $profesor->get_nombre1()." ".$profesor->get_apellido1()." ".$profesor->get_apellido2();
     }
 
 }

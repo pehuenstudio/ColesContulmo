@@ -76,6 +76,7 @@ class ClaseMatriz {
                 $row["id_bloque"],
                 $row["rbd_establecimiento"]
             );
+            $clase->set_run_profesor($row["run_profesor"]);
             $this->to_matriz($clase);
         }
 

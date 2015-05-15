@@ -31,42 +31,61 @@
     margin-bottom: 10px;
 }
 #contenedor_bloques .bloque{
-    height: 106px;
+    height: 130px;
     width: 100%;
     border: 1px;
     border-style: dashed;
     margin-bottom: 10px;
     background-color: #EFEFEF;
 }
-.dia .bloque .hora, .dia_last .bloque .hora{
+#contenedor_bloques .bloque.selected{
+    border-color: #02B59F;
+    background-color: #e5f9f6;
+}
+
+.bloque .hora{
     background-color: #C8C8C8;
     font-size: small;
     color: #888;
     text-align: center;
+    height: 30px;
+    margin-bottom: 0;
 }
-.dia .bloque .asignatura{
-    margin: 5px;
-    text-align: center;
-}
-#contenedor_bloques .bloque.selected{
-    height: 106px;
-    width: 100%;
-    border: 1px;
-    border-style: dashed;
-    border-color: #02B59F;
-    margin-bottom: 10px;
-    background-color: #e5f9f6;
-}
-.dia .bloque.selected .hora, .dia_last .bloque.selected .hora{
+
+.bloque.selected .hora{
     background-color: #00C3AB;
-    font-size: small;
     color: #ffffff;
-    text-align: center;
 }
-.dia .bloque .asignatura, .dia_last .bloque .asignatura{
+.bloque .asignatura {
     margin: 5px;
     text-align: center;
+    height: 60px;
+    margin-bottom: 0;
 }
+.bloque.selected .asignatura{
+    color: #02B59F;
+}
+
+.bloque .profesor{
+    height: 30px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    text-align: center;
+    font-style: italic;
+
+}
+.bloque.selected .profesor{
+    color: #02B59F;
+}
+
+#contenedor_formulario .grilla10.center{
+    text-align: center;
+}
+#contenedor_formulario .grilla10.center input{
+    width: 30% !important;
+    margin: auto !important;
+}
+
 #contenedor_bloques #panel_loading{
     position: absolute;
     top: 0;
@@ -165,20 +184,21 @@ h1{
     font-size: small;
 }
 
-#contenedor_formulario .grilla3{
-    width: 33.3% !important;
+#contenedor_formulario .grilla4{
+    width: 23.5% !important;
+    margin-right: 2% !important;
+}
+#contenedor_formulario .grilla4.last{
+    width: 23.5% !important;
+    margin-right: 0 !important;
 }
 
 
-
-#panel_loading img{
-    width: 100px;
-    height: 100px;
-    margin-top: 300px;
-}
-#panel_loading div{
-    text-align: center;
-    color: #40B1E2;
+.asignatura hr {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    border: 0;
+    border-top: 1px solid #119420;
 }
 
 

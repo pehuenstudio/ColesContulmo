@@ -6,6 +6,10 @@ jQuery(document).ready(function(){
     //get_bloques0(rbd_establecimiento,1);
 
     get_siclos();
+    //get_profesores(rbd_establecimiento);
+    setTimeout(function(){
+        get_profesores(rbd_establecimiento);
+    },500);
 
     jQuery("#id_ciclo").change(function(){
         del_bloques();
@@ -19,7 +23,10 @@ jQuery(document).ready(function(){
                 .append("<option value='0'>Seleccione Un Curso</option>");
             jQuery("#id_asignatura").empty()
                 .prop("disabled", true)
-                .append("<option value='0'>Seleccione Una Asignatura</option>")
+                .append("<option value='0'>Seleccione Una Asignatura</option>");
+            jQuery("#run_profesor")
+                .prop("disabled", true)
+                .val("0");
             return null;
         }
         //jQuery("#contenedor_bloques").css("display","inline");
@@ -40,6 +47,9 @@ jQuery(document).ready(function(){
             jQuery("#id_asignatura").empty()
                 .prop("disabled", true)
                 .append("<option value='0'>Seleccione Una Asignatura</option>");
+            jQuery("#run_profesor")
+                .prop("disabled", true)
+                .val("0");
             return null;
         }
         jQuery("#contenedor_bloques").css("display","inline");
@@ -59,6 +69,20 @@ jQuery(document).ready(function(){
 
     });
 
+    jQuery("#id_asignatura").change(function(){
+        var selected = jQuery("#id_asignatura").val();
+        if(selected == "0"){
+            jQuery("#run_profesor")
+                .prop("disabled", true)
+                .val("0");
+            return null;
+        }
+        jQuery("#run_profesor")
+            .prop("disabled", false)
+            ;
+
+    });
+
     jQuery("#contenedor_bloques").on("click", ".bloque", function (){
 
        // console.log("cambiando");
@@ -66,16 +90,23 @@ jQuery(document).ready(function(){
         var selected = jQuery(id_bloque).attr("data-selected");
         var nombre_asignatura = jQuery("#id_asignatura").find(":selected").text();
         var id_asignatura = jQuery("#id_asignatura").find(":selected").val();
-        var matriz = {"id_bloque":this.id,"id_asignatura":id_asignatura};
+        var nombre_profesor = jQuery("#run_profesor").find(":selected").text();
+        var run_profesor = jQuery("#run_profesor").find(":selected").val();
+        var matriz = {"id_bloque":this.id,"id_asignatura":id_asignatura,"run_profesor":run_profesor};
 
         if(selected=='0'){
             if(id_asignatura == "0"){
-                mostrar_dialogo("21","Para ingresar una clase primero debes seleccionar una asignatura");
+                mostrar_dialogo("21","Para ingresar una clase primero debes seleccionar una asignatura.");
+                return null;
+            }
+            if(run_profesor == "0"){
+                mostrar_dialogo("21","Para ingresar una clase primero debes seleccionar un(a) profesor(a).");
                 return null;
             }
             jQuery(id_bloque).attr("data-selected","1");
             jQuery(id_bloque).addClass("selected");
             jQuery(id_bloque).children(".asignatura").text(nombre_asignatura);
+            jQuery(id_bloque).children(".profesor").text(nombre_profesor);
 
             for (var e = 0; e < bloquesDel.length ; e++){
                 if(bloquesDel[e].id_bloque == matriz.id_bloque){
@@ -89,6 +120,7 @@ jQuery(document).ready(function(){
             jQuery(id_bloque).attr("data-selected","0");
             jQuery(id_bloque).removeClass("selected");
             jQuery(id_bloque).children(".asignatura").text("Sin clases");
+            jQuery(id_bloque).children(".profesor").empty();
 
             for (var e = 0; e < bloques.length ; e++){
                 if(bloques[e].id_bloque == matriz.id_bloque){
@@ -125,8 +157,10 @@ jQuery(document).ready(function(){
 
 
         }).done(function(data){
-            console.log(data);
-            load_off();
+            //console.log(data);
+            setTimeout(function(){
+                load_off();
+            },500);
         })
             .fail(function(){
                 alert("ERROR");
@@ -197,7 +231,7 @@ function get_bloques(rbd_establecimiento, id_curso){
         }
     })
         .done(function(data){
-            //console.log(data);
+            console.log(data);
             var data = jQuery.parseJSON(data);
 
 
@@ -207,8 +241,9 @@ function get_bloques(rbd_establecimiento, id_curso){
                 var nombre_asignatura = data[i].nombre_asignatura;
                 var hora = data[i].hora_inicio+ " - " +data[i].hora_fin;
                 var id_asignatura = data[i].id_asignatura;
+                var nombre_profesor = data[i].nombre_profesor;
                 //console.log(id_asignatura);
-                get_clases(id_dia, hora, id_bloque, nombre_asignatura, id_asignatura);
+                get_clases(id_dia, hora, id_bloque, nombre_asignatura, id_asignatura, nombre_profesor);
             });
 
             setTimeout(function(){
@@ -222,7 +257,7 @@ function get_bloques(rbd_establecimiento, id_curso){
     ;
 }
 
-function get_clases(id_dia, hora, id_bloque, nombre_asignatura, id_asignatura){
+function get_clases(id_dia, hora, id_bloque, nombre_asignatura, id_asignatura, nombre_profesor){
     if(id_asignatura){
         var clase = "bloque selected";
         var selected = "1";
@@ -231,9 +266,10 @@ function get_clases(id_dia, hora, id_bloque, nombre_asignatura, id_asignatura){
         var selected = "0";
     }
     var bloque =    "<div class='"+clase+"' id='"+id_bloque+"' data-selected='"+selected+"'>" +
-        "<div class='hora'>"+hora+"</div>" +
-        "<div class='asignatura'>"+nombre_asignatura+"</div>" +
-        "</div>";
+                        "<div class='hora'>"+hora+"</div>" +
+                        "<div class='asignatura'>"+nombre_asignatura+"</div>" +
+                        "<div class='profesor'>"+nombre_profesor+"</div>"+
+                    "</div>";
     //console.log(id_dia);
     jQuery(id_dia).append(bloque);
 }
@@ -307,7 +343,41 @@ function get_bloques0(rbd_establecimiento,id_ciclo){
     ;
 }
 
+function get_profesores(rbd_establecimiento){
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/profesor.get.datos.todos.php",
+        data: {rbd_establecimiento: rbd_establecimiento},
+        beforeSend: function(){
+            load_on("Cargando profesores")
+        }
+    })
+        .done(function(data){
+            console.log(data);
+            var data = jQuery.parseJSON(data);
 
+            jQuery.each(data,function(i,value){
+                var run_profesor = data[i].run;
+                var nombre1 = data[i].nombre1;
+                var apellido1 = data[i].apellido1;
+                var apellido2 = data[i].apellido2;
+                jQuery("#run_profesor").append("<option value='"+run_profesor+"'>"+nombre1+" "+apellido1+" "+apellido2+"</option>")
+
+            });
+            setTimeout(function(){
+                load_off();
+            },500);
+        })
+        .fail(function(){
+            mostrar_dialogo("0", "La lista de profesores no se cargó correctamente.")
+        })
+        .always(function(){
+            setTimeout(function(){
+                load_off();
+            },500);
+        })
+    ;
+}
 
 function load_on(msg){
     var load = "<div id='panel_loading'><img src='/_code/vistas/img/load.gif'><div id='load_text'>"+msg+"</div></div>";

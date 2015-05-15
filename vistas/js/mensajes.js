@@ -18,6 +18,7 @@ function mostrar_dialogo(val,msg){
         });
 
     }
+
     if(val == "1"){
         clase = "error-ui";
         titulo = "Error De Validación";

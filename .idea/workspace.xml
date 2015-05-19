@@ -2,33 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f48b0c47-2dc8-4324-846f-8ac4dd133127" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/EstablecimientoMatriz.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_test2.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/css/evaluacion.calendario.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/js/evaluacion.calendario.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/js/evaluacion.calendario2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/evaluacion.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/css/load.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/js/load.js" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\horario2.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/vistas/evaluacion.formulario.php" afterPath="$PROJECT_DIR$/vistas/evaluacion.calendario.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/BloqueMatriz.php" afterPath="$PROJECT_DIR$/modelos/BloqueMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Clase.php" afterPath="$PROJECT_DIR$/modelos/Clase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/ClaseMatriz.php" afterPath="$PROJECT_DIR$/modelos/ClaseMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Curso.php" afterPath="$PROJECT_DIR$/modelos/Curso.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/CursoMatriz.php" afterPath="$PROJECT_DIR$/modelos/CursoMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Establecimiento.php" afterPath="$PROJECT_DIR$/modelos/Establecimiento.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/personas/Profesor.php" afterPath="$PROJECT_DIR$/modelos/personas/Profesor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/_test.php" afterPath="$PROJECT_DIR$/vistas/_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/clase.get.datos.php" afterPath="$PROJECT_DIR$/controladores/clase.get.datos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/clase.ingreso.php" afterPath="$PROJECT_DIR$/controladores/clase.ingreso.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/evaluacion.formulario.php" afterPath="$PROJECT_DIR$/vistas/evaluacion.formulario.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/css/horario.css" afterPath="$PROJECT_DIR$/vistas/css/horario.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/horario.formulario.php" afterPath="$PROJECT_DIR$/vistas/horario.formulario.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/horario.js" afterPath="$PROJECT_DIR$/vistas/js/horario.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/horario.php" afterPath="$PROJECT_DIR$/vistas/horario.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ColesContulmo.iws" />
@@ -61,7 +34,7 @@
       <file leaf-file-name="evaluacion.calendario.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vistas/js/evaluacion.calendario.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="83" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.7062315" vertical-offset="0" max-vertical-offset="1207">
+            <state line="75" column="46" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.8827893" vertical-offset="0" max-vertical-offset="1207">
               <folding>
                 <element signature="e#34#540#0" expanded="true" />
                 <element signature="e#131#535#0" expanded="true" />
@@ -75,8 +48,8 @@
                 <element signature="e#1642#1685#0" expanded="true" />
                 <element signature="e#1729#1823#0" expanded="true" />
                 <element signature="e#1764#1807#0" expanded="true" />
+                <element signature="e#1916#2205#0" expanded="true" />
                 <element signature="e#2119#2199#0" expanded="true" />
-                <element signature="e#2235#2889#0" expanded="true" />
                 <element signature="e#2362#2689#0" expanded="true" />
                 <element signature="e#2726#2790#0" expanded="true" />
                 <element signature="e#2830#2873#0" expanded="true" />
@@ -509,7 +482,11 @@
       <created>1431718461514</created>
       <updated>1431718461514</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="v0.32 horario terminado iniciando calendario de notas">
+      <created>1432067869448</created>
+      <updated>1432067869448</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -527,6 +504,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21052632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -534,7 +512,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -585,7 +562,8 @@
     <MESSAGE value="v0.28" />
     <MESSAGE value="v0.30" />
     <MESSAGE value="v0.31" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.31" />
+    <MESSAGE value="v0.32 horario terminado iniciando calendario de notas" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.32 horario terminado iniciando calendario de notas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -851,10 +829,7 @@
     <entry file="file://$PROJECT_DIR$/vistas/evaluacion.formulario.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="43" selection-start="311" selection-end="311" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="289">
-          <folding>
-            <element signature="tag#div#0;tag#form#0" expanded="true" />
-            <element signature="tag#select#0;tag#div#0;tag#form#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -892,7 +867,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="29" selection-start="402" selection-end="414" vertical-scroll-proportion="0.21296297" vertical-offset="32" max-vertical-offset="680">
           <folding>
-            <element signature="e#386#1080#0" expanded="true" />
+            <element signature="e#386#1080#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -943,7 +918,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vistas/js/evaluacion.calendario.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="83" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.7062315" vertical-offset="0" max-vertical-offset="1207">
+        <state line="75" column="46" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.8827893" vertical-offset="0" max-vertical-offset="1207">
           <folding>
             <element signature="e#34#540#0" expanded="true" />
             <element signature="e#131#535#0" expanded="true" />
@@ -957,8 +932,8 @@
             <element signature="e#1642#1685#0" expanded="true" />
             <element signature="e#1729#1823#0" expanded="true" />
             <element signature="e#1764#1807#0" expanded="true" />
+            <element signature="e#1916#2205#0" expanded="true" />
             <element signature="e#2119#2199#0" expanded="true" />
-            <element signature="e#2235#2889#0" expanded="true" />
             <element signature="e#2362#2689#0" expanded="true" />
             <element signature="e#2726#2790#0" expanded="true" />
             <element signature="e#2830#2873#0" expanded="true" />

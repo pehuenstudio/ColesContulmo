@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: text/html; charset=utf-8');
 
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
@@ -11,9 +11,10 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/personas/Profesor.php";
 
 $rbd_establecimiento = $_POST["rbd_establecimiento"];
 $id_curso = $_POST["id_curso"];
+$periodo = date("Y");
 
 $matriz_clase = new ClaseMatriz();
-$matriz_clase->db_get_datos($id_curso, $rbd_establecimiento);
+$matriz_clase->db_get_datos($id_curso, $rbd_establecimiento, $periodo);
 $clases = json_decode($matriz_clase->to_json(), JSON_UNESCAPED_UNICODE);
 
 for ($i = 0; $i < count($clases); $i++){

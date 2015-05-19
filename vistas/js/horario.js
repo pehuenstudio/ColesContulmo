@@ -2,6 +2,8 @@ jQuery(document).ready(function(){
     var bloques = new Array();
     var bloquesDel = new Array();
     var rbd_establecimiento = jQuery("#rbd_establecimiento").val();
+   // var periodo = jQuery("#periodo").val();
+
     jQuery("#contenedor_formulario").sticky({topSpacing:0});
     //get_bloques0(rbd_establecimiento,1);
 
@@ -87,12 +89,13 @@ jQuery(document).ready(function(){
 
        // console.log("cambiando");
         var id_bloque = "#"+this.id;
+        var id_clase = jQuery(id_bloque).attr("data-id_clase");
         var selected = jQuery(id_bloque).attr("data-selected");
         var nombre_asignatura = jQuery("#id_asignatura").find(":selected").text();
         var id_asignatura = jQuery("#id_asignatura").find(":selected").val();
         var nombre_profesor = jQuery("#run_profesor").find(":selected").text();
         var run_profesor = jQuery("#run_profesor").find(":selected").val();
-        var matriz = {"id_bloque":this.id,"id_asignatura":id_asignatura,"run_profesor":run_profesor};
+        var matriz = {"id_bloque":this.id,"id_asignatura":id_asignatura,"run_profesor":run_profesor, "id_clase": id_clase};
 
         if(selected=='0'){
             if(id_asignatura == "0"){
@@ -131,8 +134,8 @@ jQuery(document).ready(function(){
 
 
         }
-        console.log("bloques "+bloques.length);
-        console.log("bloquesdel "+bloquesDel.length);
+        //console.log("bloques "+bloques.length);
+        //console.log("bloquesdel "+bloquesDel.length);
     });
 
     jQuery("#formulario_clase").submit(function(){
@@ -152,7 +155,7 @@ jQuery(document).ready(function(){
             cache: false,
             processData:false,
             beforeSend: function(){
-                load_on("Actualizando horario...");
+                load_on("Actualizando horario...","#contenedor_bloques");
             }
 
 
@@ -193,12 +196,13 @@ function get_siclos(){
 }
 
 function get_cursos(rbd_establecimiento, id_ciclo){
+    //console.log("cargando_cursos");
     jQuery.ajax({
         method: "POST",
         url: "/_code/controladores/curso.get.datos.php",
         data: {rbd_establecimiento: rbd_establecimiento, id_ciclo: id_ciclo},
         beforeSend: function(){
-            load_on("Cargando Cursos...")
+            load_on("Cargando Cursos...", "#contenedor_bloques");
         }
     })
         .done(function(data){
@@ -227,15 +231,16 @@ function get_bloques(rbd_establecimiento, id_curso){
         url: "/_code/controladores/clase.get.datos.php",
         data: {rbd_establecimiento: rbd_establecimiento, id_curso: id_curso},
         beforeSend: function(){
-            load_on("Cargando clases...")
+            load_on("Cargando clases...", "#contenedor_bloques");
         }
     })
         .done(function(data){
-            console.log(data);
+            //console.log(data);
             var data = jQuery.parseJSON(data);
 
 
             jQuery.each(data,function(i, value){
+                var id_clase = data[i].id_clase;
                 var id_bloque = data[i].id_bloque;
                 var id_dia = "#dia"+data[i].id_dia;
                 var nombre_asignatura = data[i].nombre_asignatura;
@@ -243,7 +248,7 @@ function get_bloques(rbd_establecimiento, id_curso){
                 var id_asignatura = data[i].id_asignatura;
                 var nombre_profesor = data[i].nombre_profesor;
                 //console.log(id_asignatura);
-                get_clases(id_dia, hora, id_bloque, nombre_asignatura, id_asignatura, nombre_profesor);
+                get_clases(id_clase, id_dia, hora, id_bloque, nombre_asignatura, id_asignatura, nombre_profesor);
             });
 
             setTimeout(function(){
@@ -257,7 +262,7 @@ function get_bloques(rbd_establecimiento, id_curso){
     ;
 }
 
-function get_clases(id_dia, hora, id_bloque, nombre_asignatura, id_asignatura, nombre_profesor){
+function get_clases(id_clase, id_dia, hora, id_bloque, nombre_asignatura, id_asignatura, nombre_profesor){
     if(id_asignatura){
         var clase = "bloque selected";
         var selected = "1";
@@ -265,7 +270,7 @@ function get_clases(id_dia, hora, id_bloque, nombre_asignatura, id_asignatura, n
         var clase = "bloque"
         var selected = "0";
     }
-    var bloque =    "<div class='"+clase+"' id='"+id_bloque+"' data-selected='"+selected+"'>" +
+    var bloque =    "<div class='"+clase+"' id='"+id_bloque+"' data-selected='"+selected+"' data-id_clase='"+id_clase+"'>" +
                         "<div class='hora'>"+hora+"</div>" +
                         "<div class='asignatura'>"+nombre_asignatura+"</div>" +
                         "<div class='profesor'>"+nombre_profesor+"</div>"+
@@ -284,7 +289,7 @@ function get_asignaturas(id_grado, id_tipo_ensenanza){
         url: "/_code/controladores/asignatura.get.datos.php",
         data: {id_grado: id_grado, id_tipo_ensenanza: id_tipo_ensenanza},
         beforeSend: function (){
-            load_on("Cargando asignaturas...");
+            load_on("Cargando asignaturas...", "#contenedor_bloques");
         }
     })
         .done(function(data){
@@ -314,7 +319,7 @@ function get_bloques0(rbd_establecimiento,id_ciclo){
         url: "/_code/controladores/bloque.get.datos.php",
         data: {rbd_establecimiento : rbd_establecimiento, id_ciclo : id_ciclo},
         beforeSend: function(){
-            load_on("Cargando bloques del horario...");
+            load_on("Cargando bloques del horario...", "#contenedor_bloques");
         }
     })
         .done(function(data){
@@ -349,11 +354,11 @@ function get_profesores(rbd_establecimiento){
         url: "/_code/controladores/profesor.get.datos.todos.php",
         data: {rbd_establecimiento: rbd_establecimiento},
         beforeSend: function(){
-            load_on("Cargando profesores")
+            load_on("Cargando profesores...", "#contenedor_bloques");
         }
     })
         .done(function(data){
-            console.log(data);
+            //console.log(data);
             var data = jQuery.parseJSON(data);
 
             jQuery.each(data,function(i,value){
@@ -379,14 +384,7 @@ function get_profesores(rbd_establecimiento){
     ;
 }
 
-function load_on(msg){
-    var load = "<div id='panel_loading'><img src='/_code/vistas/img/load.gif'><div id='load_text'>"+msg+"</div></div>";
-    jQuery("#contenedor_bloques").append(load);
-}
 
-function load_off(){
-    jQuery("#panel_loading").remove()
-}
 
 
 

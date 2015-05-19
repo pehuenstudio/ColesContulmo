@@ -131,13 +131,15 @@ class Establecimiento {
 
 
     public function db_get_datos(){
+
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_establecimiento_datos(?)");
+
+        $sentencia = $myPDO->prepare("CALL get_establecimiento_datos(?);");
         $sentencia->bindParam(1, $this->rbd_establecimiento, \PDO::PARAM_INT);
         $result = $sentencia->execute();
 
-        $data = $sentencia->fetchAll();
-
+        $data = $sentencia->fetchAll(0);
+        
         foreach($data as $row){
             $this->set_identidad(
                 $row["rbd_establecimiento"],

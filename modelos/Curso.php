@@ -8,7 +8,9 @@ class Curso {
     private $rbd_establecimiento;
     private $run_profesor_jefe;
     private $id_grado;
+    private $nombre_grado;
     private $id_tipo_ensenanza;
+    private $nombre_tipo_ensenanza;
     private $id_ciclo;
     private $grupo;
     private $estado = "1";
@@ -88,6 +90,27 @@ class Curso {
     {
         return $this->id_ciclo;
     }
+
+    public function set_nombre_tipo_ensenanza($nombre_tipo_ensenanza)
+    {
+        $this->nombre_tipo_ensenanza = $nombre_tipo_ensenanza;
+    }
+
+    public function get_nombre_tipo_ensenanza()
+    {
+        return $this->nombre_tipo_ensenanza;
+    }
+
+    public function set_nombre_grado($nombre_grado)
+    {
+        $this->nombre_grado = $nombre_grado;
+    }
+
+    public function get_nombre_grado()
+    {
+        return $this->nombre_grado;
+    }
+
 
 
 
@@ -176,6 +199,7 @@ class Curso {
             $this->set_id_grado($row["id_grado"]);
             $this->set_id_tipo_ensenanza($row["id_tipo_ensenanza"]);
             $this->set_grupo($row["grupo"]);
+            $this->set_id_ciclo($row["id_ciclo"]);
         }
 
         return $result;

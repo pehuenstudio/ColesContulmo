@@ -35,36 +35,12 @@ class ClaseMatriz {
         return $json;
     }
 
-    public function db_ingresar(){
-        foreach($this->matriz as $row){
-            $clase = new Clase();
-            $clase->set_identidad(
-                $row["id_curso"],
-                $row["id_asignatura"],
-                $row["id_bloque"],
-                $row["rbd_establecimiento"]
-            );
-            $clase->db_ingresar();
-        }
-    }
-
-    public function db_actualizar_estado($estado){
-        foreach($this->matriz as $row){
-            $clase = new Clase();
-            $clase->set_identidad(
-                $row["id_curso"],
-                $row["id_asignatura"],
-                $row["id_bloque"],
-                $row["rbd_establecimiento"]
-            );
-            $clase->db_actualizar_estado($estado);
-        }
-    }
-    public function db_get_datos($id_curso, $rbd_establecimiento){
+    public function db_get_datos($id_curso, $rbd_establecimiento, $periodo){
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_clases(?,?)");
+        $sentencia = $myPDO->prepare("CALL get_clases(?,?,?)");
         $sentencia->bindParam(1, $id_curso, \PDO::PARAM_INT);
         $sentencia->bindParam(2, $rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $periodo, \PDO::PARAM_INT);
         $result = $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
@@ -77,10 +53,16 @@ class ClaseMatriz {
                 $row["rbd_establecimiento"]
             );
             $clase->set_run_profesor($row["run_profesor"]);
+            $clase->set_id_clase($row["id_clase"]);
             $this->to_matriz($clase);
         }
 
     }
+
+
+
+
+
 
 }
 ?> 

@@ -4,6 +4,7 @@ namespace personas;
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/personas/Persona.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Establecimiento.php";
 //echo __FILE__."<br/>";
 class Profesor extends Persona{
 
@@ -28,5 +29,7 @@ class Profesor extends Persona{
             $this->set_avatar($row["avatar"]);
         }
     }
+
+
 }
 ?> 

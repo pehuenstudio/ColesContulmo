@@ -49,6 +49,7 @@ class BloqueMatriz {
 
     }
 
+
 }
 /*
 $matriz_bloques = new MatrizBloques();

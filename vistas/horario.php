@@ -2,17 +2,20 @@
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 
-
+$rbd_establecimiento = 51543;
 ?>
 <link rel="stylesheet" href="/_code/vistas/css/horario.css">
 <link rel="stylesheet" href="/_code/vistas/css/jquery-ui.css">
 <link rel="stylesheet" href="/_code/vistas/css/grillas.css">
+<link rel="stylesheet" href="/_code/vistas/css/load.css">
 
 <script src="/_code/vistas/js/_jquery.min.js"></script>
 <script src="/_code/vistas/js/_jquery-ui.js"></script>
 <script src="/_code/vistas/js/jquery.sticky.js"></script>
 <script src="/_code/vistas/js/mensajes.js"></script>
+<script src="/_code/vistas/js/load.js"></script>
 <script src="/_code/vistas/js/horario.js"></script>
+
 
 
 <div id="contenedor_formulario">

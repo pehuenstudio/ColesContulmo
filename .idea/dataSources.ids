@@ -120,6 +120,7 @@
       <column name="id_asignatura" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="id_bloque" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="rbd_establecimiento" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="periodo" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_clase"/>
       <foreign-key name="fk_clases_asignaturas1" columns="id_asignatura" ref-table="asignaturas" ref-schema="" ref-catalog="coles_data" ref-columns="id_asignatura" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -219,8 +220,8 @@
       <column name="run_profesor" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_establecimiento_profesor"/>
-      <foreign-key name="fk_profesores_has_establecimientos_profesores1" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_profesores_has_establecimientos_establecimientos1" columns="rbd_establecimiento" ref-table="establecimientos" ref-schema="" ref-catalog="coles_data" ref-columns="rbd_establecimiento" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_profesores_has_establecimientos_profesores1" columns="run_profesor" ref-table="profesores" ref-schema="" ref-catalog="coles_data" ref-columns="run_profesor" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_profesores_has_establecimientos_establecimientos1_idx" unique="false" columns="rbd_establecimiento"/>
       <index name="fk_profesores_has_establecimientos_profesores1_idx" unique="false" columns="run_profesor"/>
     </table>
@@ -386,6 +387,7 @@
       <prototype>
         <parameter name="p_id_curso" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
         <parameter name="p_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="p_periodo" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
       </prototype>
     </procedure>
     <procedure name="get_comuna_provincia_region" schema="" catalog="coles_data" type="1">
@@ -601,6 +603,7 @@
         <parameter name="p_run_profesor" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="3"/>
         <parameter name="p_id_bloque" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
         <parameter name="p_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="5"/>
+        <parameter name="p_id_clase" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="6"/>
       </prototype>
     </procedure>
     <procedure name="upd_clase_null" schema="" catalog="coles_data" type="1">
@@ -608,6 +611,7 @@
         <parameter name="p_id_curso" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
         <parameter name="p_id_bloque" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
         <parameter name="p_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="p_id_clase" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
       </prototype>
     </procedure>
     <procedure name="upd_direccion" schema="" catalog="coles_data" type="1">

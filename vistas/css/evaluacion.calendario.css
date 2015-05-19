@@ -1,0 +1,14 @@
+#contenedor_cursos{
+    width: 25%;
+    margin-left: -22%;
+    float: left;
+}
+#contenedor_calendario{
+    float:left;
+}
+
+#contenedor_calendario .sin-clases{
+    background-color: #EFEFEF;
+    text-align: center;
+    vertical-align: middle;
+}

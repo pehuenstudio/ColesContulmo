@@ -9,6 +9,7 @@ class Clase {
     private $id_asignatura;
     private $id_bloque;
     private $rbd_establecimiento;
+    private $periodo;
     private $estado = '1';
 
     function __construct(){}
@@ -79,45 +80,26 @@ class Clase {
     {
         return $this->run_profesor;
     }
-
-    public function db_existencia(){
-        global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_clase(?,?,?,?)");
-        $sentencia->bindParam(1, $this->id_curso, \PDO::PARAM_INT);
-        $sentencia->bindParam(2, $this->id_asignatura, \PDO::PARAM_INT);
-        $sentencia->bindParam(3, $this->id_bloque, \PDO::PARAM_INT);
-        $sentencia->bindParam(4, $this->rbd_establecimiento, \PDO::PARAM_INT);
-        $result = $sentencia->execute();
-
-        if($sentencia->rowCount() > 0){
-            return true;
-        }
-        return false;
+    public function set_periodo($periodo)
+    {
+        $this->periodo = $periodo;
+    }
+    public function get_periodo()
+    {
+        return $this->periodo;
     }
 
-    public function db_ingresar(){
-        if($this->db_existencia()){
-            return true;
-        }
 
-        global $myPDO;
-        $sentencia = $myPDO->prepare("CALL set_clase(?,?,?,?)");
-        $sentencia->bindParam(1, $this->id_curso, \PDO::PARAM_INT);
-        $sentencia->bindParam(2, $this->id_asignatura, \PDO::PARAM_INT);
-        $sentencia->bindParam(3, $this->id_bloque, \PDO::PARAM_INT);
-        $sentencia->bindParam(4, $this->rbd_establecimiento, \PDO::PARAM_INT);
-        $result = $sentencia->execute();
-        return $result;
-    }
 
     public function db_actualizar_clase(){
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL upd_clase(?,?,?,?,?)");
+        $sentencia = $myPDO->prepare("CALL upd_clase(?,?,?,?,?,?)");
         $sentencia->bindParam(1, $this->id_curso, \PDO::PARAM_INT);
         $sentencia->bindParam(2, $this->id_asignatura, \PDO::PARAM_INT);
         $sentencia->bindParam(3, $this->run_profesor, \PDO::PARAM_STR. 9);
         $sentencia->bindParam(4, $this->id_bloque, \PDO::PARAM_INT);
         $sentencia->bindParam(5, $this->rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(6, $this->id_clase, \PDO::PARAM_INT);
         $result = $sentencia->execute();
         //echo("call upd_clase(".$this->id_curso.",'".$this->id_asignatura."',".$this->id_bloque.",".$this->rbd_establecimiento.",'".$estado."');\n");
         return $result;
@@ -125,10 +107,11 @@ class Clase {
 
     public function db_actualizar_clase_null(){
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL upd_clase_null(?,?,?)");
+        $sentencia = $myPDO->prepare("CALL upd_clase_null(?,?,?,?)");
         $sentencia->bindParam(1, $this->id_curso, \PDO::PARAM_INT);
         $sentencia->bindParam(2, $this->id_bloque, \PDO::PARAM_INT);
         $sentencia->bindParam(3, $this->rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(4, $this->id_clase, \PDO::PARAM_INT);
              $result = $sentencia->execute();
         //echo("call upd_clase(".$this->id_curso.",'".$this->id_asignatura."',".$this->id_bloque.",".$this->rbd_establecimiento.",'".$estado."');\n");
         return $result;

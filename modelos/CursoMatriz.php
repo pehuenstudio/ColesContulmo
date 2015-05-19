@@ -22,7 +22,9 @@ class CursoMatriz{
             "rbd_establecimiento" => $curso->get_rbd_establecimiento(),
             "run_profesor_jefe" => $curso->get_run_profesor_jefe(),
             "id_grado" => $curso->get_id_grado(),
+            "nombre_grado" =>$curso->get_nombre_grado(),
             "id_tipo_ensenanza" => $curso->get_id_tipo_ensenanza(),
+            "nombre_tipo_ensenanza" => $curso->get_nombre_tipo_ensenanza(),
             "id_ciclo" => $curso->get_id_ciclo(),
             "grupo" => $curso->get_grupo()
         );

@@ -2,21 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f48b0c47-2dc8-4324-846f-8ac4dd133127" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/personas/Profesor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/personas/ProfesorMatriz.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/evaluacion.formulario.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controladores/profesor.get.datos.todos.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/EstablecimientoMatriz.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_test2.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/css/evaluacion.calendario.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/js/evaluacion.calendario.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/js/evaluacion.calendario2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/evaluacion.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/css/load.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/js/load.js" />
+      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\horario2.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vistas/evaluacion.formulario.php" afterPath="$PROJECT_DIR$/vistas/evaluacion.calendario.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/BloqueMatriz.php" afterPath="$PROJECT_DIR$/modelos/BloqueMatriz.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Clase.php" afterPath="$PROJECT_DIR$/modelos/Clase.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/ClaseMatriz.php" afterPath="$PROJECT_DIR$/modelos/ClaseMatriz.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Curso.php" afterPath="$PROJECT_DIR$/modelos/Curso.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/CursoMatriz.php" afterPath="$PROJECT_DIR$/modelos/CursoMatriz.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Establecimiento.php" afterPath="$PROJECT_DIR$/modelos/Establecimiento.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/personas/Profesor.php" afterPath="$PROJECT_DIR$/modelos/personas/Profesor.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/_test.php" afterPath="$PROJECT_DIR$/vistas/_test.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/clase.get.datos.php" afterPath="$PROJECT_DIR$/controladores/clase.get.datos.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/clase.ingreso.php" afterPath="$PROJECT_DIR$/controladores/clase.ingreso.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/evaluacion.formulario.php" afterPath="$PROJECT_DIR$/vistas/evaluacion.formulario.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/css/horario.css" afterPath="$PROJECT_DIR$/vistas/css/horario.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/horario.formulario.php" afterPath="$PROJECT_DIR$/vistas/horario.formulario.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/horario.js" afterPath="$PROJECT_DIR$/vistas/js/horario.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/mensajes.js" afterPath="$PROJECT_DIR$/vistas/js/mensajes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/horario.php" afterPath="$PROJECT_DIR$/vistas/horario.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ColesContulmo.iws" />
@@ -35,52 +47,70 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="533e777f-9cb2-459a-b29f-0697feaf46b3:data source" value="Blue" />
+    </colors>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="ColesContulmo" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="horario.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vistas/js/horario.js">
+      <file leaf-file-name="evaluacion.calendario.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vistas/js/evaluacion.calendario.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="270" column="64" selection-start="9624" selection-end="9624" vertical-scroll-proportion="0.0" vertical-offset="4072" max-vertical-offset="6851">
-              <folding />
+            <state line="68" column="83" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.7062315" vertical-offset="0" max-vertical-offset="1207">
+              <folding>
+                <element signature="e#34#540#0" expanded="true" />
+                <element signature="e#131#535#0" expanded="true" />
+                <element signature="e#639#896#0" expanded="true" />
+                <element signature="e#810#890#0" expanded="true" />
+                <element signature="e#926#1553#0" expanded="true" />
+                <element signature="e#1055#1351#0" expanded="true" />
+                <element signature="e#1387#1454#0" expanded="true" />
+                <element signature="e#1494#1537#0" expanded="true" />
+                <element signature="e#1579#1701#0" expanded="true" />
+                <element signature="e#1642#1685#0" expanded="true" />
+                <element signature="e#1729#1823#0" expanded="true" />
+                <element signature="e#1764#1807#0" expanded="true" />
+                <element signature="e#2119#2199#0" expanded="true" />
+                <element signature="e#2235#2889#0" expanded="true" />
+                <element signature="e#2362#2689#0" expanded="true" />
+                <element signature="e#2726#2790#0" expanded="true" />
+                <element signature="e#2830#2873#0" expanded="true" />
+                <element signature="e#2915#3037#0" expanded="true" />
+                <element signature="e#2978#3021#0" expanded="true" />
+                <element signature="e#3065#3159#0" expanded="true" />
+                <element signature="e#3100#3143#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluacion.formulario.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vistas/evaluacion.formulario.php">
+      <file leaf-file-name="MySQL - coles_data@localhost" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="50" selection-start="697" selection-end="717" vertical-scroll-proportion="0.46307692" vertical-offset="5" max-vertical-offset="697">
-              <folding />
+            <state line="0" column="19" selection-start="19" selection-end="658" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="391">
+              <folding>
+                <marker date="0" expanded="true" signature="48:165" placeholder="-- +++++++++..." />
+                <marker date="0" expanded="true" signature="166:221" placeholder="DROP PROCEDU..." />
+                <marker date="0" expanded="true" signature="224:341" placeholder="-- +++++++++..." />
+                <marker date="0" expanded="true" signature="343:387" placeholder="DROP PROCEDU..." />
+                <marker date="0" expanded="true" signature="390:509" placeholder="-- +++++++++..." />
+                <marker date="0" expanded="true" signature="511:560" placeholder="DROP PROCEDU..." />
+                <marker date="0" expanded="true" signature="564:600" placeholder="-- +++++++++..." />
+                <marker date="0" expanded="true" signature="601:657" placeholder="DROP PROCEDU..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_test.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vistas/_test.php">
+      <file leaf-file-name="evaluacion.calendario2.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vistas/js/evaluacion.calendario2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="75" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="136">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="clase.get.datos.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controladores/clase.get.datos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="4" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.0" vertical-offset="266" max-vertical-offset="901">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profesor.get.datos.todos.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controladores/profesor.get.datos.todos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="374">
+            <state line="60" column="0" selection-start="1822" selection-end="3404" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
               <folding />
             </state>
           </provider>
@@ -89,34 +119,63 @@
       <file leaf-file-name="BloqueMatriz.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modelos/BloqueMatriz.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1054">
+            <state line="51" column="0" selection-start="1739" selection-end="1739" vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="476">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Clase.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modelos/Clase.php">
+      <file leaf-file-name="CicloMatriz.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modelos/CicloMatriz.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="57" selection-start="3243" selection-end="3243" vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="2482">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="476">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfesorMatriz.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modelos/personas/ProfesorMatriz.php">
+      <file leaf-file-name="ClaseMatriz.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modelos/ClaseMatriz.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="29" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1156">
+            <state line="37" column="30" selection-start="1149" selection-end="1161" vertical-scroll-proportion="-5.6666665" vertical-offset="0" max-vertical-offset="901">
+              <folding>
+                <element signature="n#db_get_datos#0;n#ClaseMatriz#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clase.get.datos.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controladores/clase.get.datos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="49" selection-start="55" selection-end="55" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="918">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Persona.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modelos/personas/Persona.php">
+      <file leaf-file-name="AsignaturaMatriz.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modelos/AsignaturaMatriz.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6086">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="425">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EstablecimientoMatriz.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modelos/EstablecimientoMatriz.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="0" selection-start="947" selection-end="947" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="408">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profesor.get.datos.todos.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controladores/profesor.get.datos.todos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="0" selection-start="596" selection-end="596" vertical-scroll-proportion="-4.3333335" vertical-offset="0" max-vertical-offset="374">
               <folding />
             </state>
           </provider>
@@ -135,57 +194,57 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/vistas/js/_ubicaciones.js" />
-        <option value="$PROJECT_DIR$/vistas/clase.horario.php" />
-        <option value="$PROJECT_DIR$/vistas/horario.selector.php" />
-        <option value="$PROJECT_DIR$/vistas/js/_horario.js" />
-        <option value="$PROJECT_DIR$/controladores/matricula.ingreso.alumno.php" />
-        <option value="$PROJECT_DIR$/controladores/bloques.get.datos.php" />
-        <option value="$PROJECT_DIR$/controladores/select/cargar.options.php" />
-        <option value="$PROJECT_DIR$/modelos/GradoRepetidoMatriz.php" />
-        <option value="$PROJECT_DIR$/vistas/matricula.formulario.curso.php" />
-        <option value="$PROJECT_DIR$/controladores/alumno.get.datos.php" />
-        <option value="$PROJECT_DIR$/modelos/BloqueMatriz.php" />
-        <option value="$PROJECT_DIR$/vistas/horario.formulario.bloques.php" />
-        <option value="$PROJECT_DIR$/vistas/horario.formulario.selector.php" />
-        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_clase" />
-        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_clases" />
-        <option value="$PROJECT_DIR$/modelos/Ciclo.php" />
-        <option value="$PROJECT_DIR$/modelos/Curso.php" />
-        <option value="$PROJECT_DIR$/modelos/CursoMatriz.php" />
-        <option value="$PROJECT_DIR$/modelos/Bloque.php" />
-        <option value="$PROJECT_DIR$/modelos/AsignaturaMatriz.php" />
-        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_bloques" />
-        <option value="$PROJECT_DIR$/controladores/asignatura.get.datos.php" />
-        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_asignaturas" />
-        <option value="$PROJECT_DIR$/modelos/Asignatura.php" />
-        <option value="$PROJECT_DIR$/vistas/js/horario2.js" />
-        <option value="$PROJECT_DIR$/controladores/curso.get.datos.php" />
-        <option value="$PROJECT_DIR$/modelos/CicloMatriz.php" />
-        <option value="$PROJECT_DIR$/controladores/ciclo.get.datos.php" />
-        <option value="$PROJECT_DIR$/vistas/css/grillas.css" />
         <option value="$PROJECT_DIR$/vistas/horario.bloques.php" />
         <option value="$PROJECT_DIR$/vistas/matricula.formulario.php" />
         <option value="$PROJECT_DIR$/vistas/js/_matricula.js" />
-        <option value="$PROJECT_DIR$/vistas/horario.php" />
         <option value="$PROJECT_DIR$/controladores/profesor.get.datos2.php" />
         <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_profesores" />
         <option value="$PROJECT_DIR$/modelos/personas/ProfesorMatriz.php" />
         <option value="$PROJECT_DIR$/controladores/profesor.get.datos.todos.php" />
         <option value="$PROJECT_DIR$/vistas/js/mensajes.js" />
+        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_clases" />
+        <option value="$PROJECT_DIR$/controladores/clase.get.datos.php" />
+        <option value="$PROJECT_DIR$/modelos/Clase.php" />
         <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..upd_clase" />
         <option value="$PROJECT_DIR$/controladores/clase.ingreso.php" />
-        <option value="$PROJECT_DIR$/modelos/Clase.php" />
         <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..upd_clase_null" />
-        <option value="$PROJECT_DIR$/modelos/ClaseMatriz.php" />
-        <option value="db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/" />
-        <option value="$PROJECT_DIR$/modelos/personas/Profesor.php" />
-        <option value="$PROJECT_DIR$/controladores/clase.get.datos.php" />
-        <option value="$PROJECT_DIR$/vistas/js/horario.js" />
+        <option value="$PROJECT_DIR$/controladores/clase.get.datos_profesor.php" />
         <option value="$PROJECT_DIR$/vistas/horario.formulario.php" />
+        <option value="$PROJECT_DIR$/vistas/js/horario2.js" />
+        <option value="$PROJECT_DIR$/controladores/clase.profesor.get.datos.php" />
         <option value="$PROJECT_DIR$/vistas/css/horario.css" />
+        <option value="$PROJECT_DIR$/vistas/horario.php" />
+        <option value="$PROJECT_DIR$/vistas/css/load.css" />
+        <option value="$PROJECT_DIR$/vistas/js/load.js" />
+        <option value="$PROJECT_DIR$/controladores/clase.curso.profesor.get.datos.php" />
+        <option value="$PROJECT_DIR$/vistas/js/horario.js" />
+        <option value="$PROJECT_DIR$/modelos/personas/Profesor.php" />
+        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_establecimientos" />
+        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_establecimiento_datos" />
+        <option value="$PROJECT_DIR$/controladores/profesor.establecimiento.php" />
+        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_profesores_establecimientos" />
+        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_clases_profesor" />
+        <option value="$PROJECT_DIR$/modelos/Curso.php" />
+        <option value="$PROJECT_DIR$/modelos/CursoMatriz.php" />
+        <option value="$PROJECT_DIR$/controladores/profesor.get.curso.php" />
+        <option value="$PROJECT_DIR$/controladores/profesor.get.establecimiento.php" />
+        <option value="$PROJECT_DIR$/modelos/Establecimiento.php" />
+        <option value="$PROJECT_DIR$/controladores/profesor.get.clases.php" />
+        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..count_matriculas" />
+        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_profesor_asignaturas_clases" />
+        <option value="$PROJECT_DIR$/controladores/profesor.get.cursos.asignaturas.php" />
+        <option value="$PROJECT_DIR$/controladores/profesor.get.dias_clases.php" />
+        <option value="$PROJECT_DIR$/vistas/_test2.php" />
         <option value="$PROJECT_DIR$/vistas/_test.php" />
+        <option value="$PROJECT_DIR$/vistas/evaluacion.calendario.php" />
+        <option value="$PROJECT_DIR$/vistas/evaluacion.php" />
+        <option value="$PROJECT_DIR$/vistas/css/evaluacion.calendario.css" />
         <option value="$PROJECT_DIR$/vistas/evaluacion.formulario.php" />
+        <option value="$PROJECT_DIR$/vistas/js/evaluacion.calendario.js" />
+        <option value="db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/" />
+        <option value="$PROJECT_DIR$/modelos/EstablecimientoMatriz.php" />
+        <option value="$PROJECT_DIR$/modelos/BloqueMatriz.php" />
+        <option value="$PROJECT_DIR$/modelos/ClaseMatriz.php" />
       </list>
     </option>
   </component>
@@ -222,7 +281,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -357,6 +415,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,10 +423,12 @@
     <property name="FullScreen" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents" />
-    <property name="SearchEverywhereHistory" value="." />
+    <property name="SearchEverywhereHistory" value="&#10;." />
+    <property name="Console.TableResult.DefaultCopyAction" value="HTML Table" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas" />
       <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js" />
       <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\controladores" />
       <recent name="C:\Users\Rodrigo\Documents" />
@@ -444,31 +505,35 @@
       <created>1431636326696</created>
       <updated>1431636326696</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="v0.31">
+      <created>1431718461514</created>
+      <updated>1431718461514</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6144244" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8183079" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47156727" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22015405" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20025674" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28710124" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32780084" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21052632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -476,15 +541,15 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28630707" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6144244" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32780084" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32780084" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22079588" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47156727" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22015405" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -495,10 +560,10 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1957638" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32732317" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21052632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -519,7 +584,8 @@
     <MESSAGE value="v0.27" />
     <MESSAGE value="v0.28" />
     <MESSAGE value="v0.30" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.30" />
+    <MESSAGE value="v0.31" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.31" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -527,265 +593,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vistas/horario.formulario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Direccion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/select/cargar.options.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/js/_establecimientos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/GradoRepetido.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/matricula.formulario.curso.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/personas/Alumno.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/apoderado.get.datos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/matricula.ingreso.alumno.joomla.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/matricula.ingreso.alumno.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/matricula.ingreso.apoderado.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/matricula.ingreso.apoderado.joomla.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/css/matricula.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/matricula.formulario.alumno.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/matricula.ingreso.curso.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/matricula.pdf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/TipoEnsenanza.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Curso.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/CursoMatriz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Matricula.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/css/grillas.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/personas/Apoderado.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/alumno.get.datos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700" />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_profesores">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="14" selection-start="0" selection-end="405" vertical-scroll-proportion="0.2372093" vertical-offset="0" max-vertical-offset="645" />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_establecimientos_profesores">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="674" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/AsignaturaMatriz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.23919754" vertical-offset="304" max-vertical-offset="952" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/js/_matricula.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-19.060514" vertical-offset="12599" max-vertical-offset="14484" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/matricula.formulario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/js/mensajes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799" />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..upd_clase">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="628" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645" />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..upd_clase_null">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="530" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/clase.ingreso.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="609" selection-end="609" vertical-scroll-proportion="-3.2692308" vertical-offset="153" max-vertical-offset="986" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Bloque.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.3935185" vertical-offset="255" max-vertical-offset="1020" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/BloqueMatriz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="459">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/curso.get.datos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_clases">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="674" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Clase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="57" selection-start="3243" selection-end="3243" vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="2482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/ClaseMatriz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="50" selection-start="2574" selection-end="2574" vertical-scroll-proportion="1.1527778" vertical-offset="52" max-vertical-offset="1020" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/bloque.get.datos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="674" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/profesor.get.datos.todos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modelos/personas/Persona.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6086">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="251" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/personas/ProfesorMatriz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="29" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/personas/Profesor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="5" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.76080245" vertical-offset="0" max-vertical-offset="648" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/clase.get.datos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="4" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.0" vertical-offset="266" max-vertical-offset="901">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/js/horario.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="64" selection-start="9624" selection-end="9624" vertical-scroll-proportion="0.0" vertical-offset="4072" max-vertical-offset="6851">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/horario.formulario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="16" selection-start="1487" selection-end="1487" vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="527" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/css/horario.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="27" selection-start="1625" selection-end="1625" vertical-scroll-proportion="0.4718101" vertical-offset="1127" max-vertical-offset="3706" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="75" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="136">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6086" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vistas/js/fullcalendar.es.js">
@@ -793,10 +603,370 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="661" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/Bloque.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="31" selection-start="2011" selection-end="2023" vertical-scroll-proportion="-6.6153846" vertical-offset="372" max-vertical-offset="1020" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_clase">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="674" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_clases">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="409" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..upd_clase">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="11" selection-start="1303" selection-end="1303" vertical-scroll-proportion="1.4938875" vertical-offset="307" max-vertical-offset="1020" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..upd_clase_null">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="17" selection-start="17" selection-end="580" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/css/jquery-ui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="847" column="47" selection-start="19983" selection-end="19987" vertical-scroll-proportion="0.33333334" vertical-offset="14180" max-vertical-offset="41072" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controladores/curso.get.datos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.21973094" vertical-offset="147" max-vertical-offset="816" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controladores/clase.ingreso.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="39" selection-start="929" selection-end="929" vertical-scroll-proportion="0.64424515" vertical-offset="28" max-vertical-offset="1003" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/css/horario.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="1" selection-start="1650" selection-end="1832" vertical-scroll-proportion="0.7477745" vertical-offset="1162" max-vertical-offset="3570" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/css/load.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="1" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/js/load.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="4" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/horario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="51" selection-start="418" selection-end="418" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="527" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/js/horario.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="198" column="6" selection-start="7053" selection-end="7053" vertical-scroll-proportion="0.31316188" vertical-offset="3159" max-vertical-offset="6817">
+          <folding>
+            <element signature="e#33#6441#0" expanded="false" />
+            <element signature="e#406#458#0" expanded="false" />
+            <element signature="e#507#1581#0" expanded="false" />
+            <element signature="e#1626#2816#0" expanded="false" />
+            <element signature="e#2733#2802#0" expanded="false" />
+            <element signature="e#2866#3179#0" expanded="false" />
+            <element signature="e#3251#5416#0" expanded="false" />
+            <element signature="e#5469#6435#0" expanded="false" />
+            <element signature="e#5849#6192#0" expanded="false" />
+            <element signature="e#6091#6180#0" expanded="false" />
+            <element signature="e#6213#6340#0" expanded="false" />
+            <element signature="e#6281#6324#0" expanded="false" />
+            <element signature="e#6370#6417#0" expanded="false" />
+            <element signature="n#!!block;n#get_siclos#0" expanded="false" />
+            <element signature="e#6485#6548#0" expanded="false" />
+            <element signature="e#6578#6919#0" expanded="false" />
+            <element signature="e#6702#6907#0" expanded="false" />
+            <element signature="e#6945#6984#0" expanded="false" />
+            <element signature="e#7101#7375#0" expanded="false" />
+            <element signature="e#7292#7369#0" expanded="false" />
+            <element signature="e#7405#8048#0" expanded="false" />
+            <element signature="e#7536#7952#0" expanded="false" />
+            <element signature="e#7988#8031#0" expanded="false" />
+            <element signature="n#!!block;n#get_bloques#0" expanded="false" />
+            <element signature="e#8147#8421#0" expanded="false" />
+            <element signature="e#8338#8415#0" expanded="false" />
+            <element signature="e#8451#9268#0" expanded="false" />
+            <element signature="e#8582#9171#0" expanded="false" />
+            <element signature="e#9208#9251#0" expanded="false" />
+            <element signature="e#9294#9357#0" expanded="false" />
+            <element signature="n#!!block;n#get_clases#0" expanded="false" />
+            <element signature="n#!!block;n#del_bloques#0" expanded="false" />
+            <element signature="n#!!block;n#get_asignaturas#0" expanded="false" />
+            <element signature="e#10205#10486#0" expanded="false" />
+            <element signature="e#10398#10480#0" expanded="false" />
+            <element signature="e#10516#10976#0" expanded="false" />
+            <element signature="e#10647#10878#0" expanded="false" />
+            <element signature="e#10915#10958#0" expanded="false" />
+            <element signature="n#!!block;n#get_bloques0#0" expanded="false" />
+            <element signature="e#11089#11379#0" expanded="false" />
+            <element signature="e#11283#11373#0" expanded="false" />
+            <element signature="e#11409#11910#0" expanded="false" />
+            <element signature="e#11827#11893#0" expanded="false" />
+            <element signature="e#11936#12083#0" expanded="false" />
+            <element signature="e#11999#12066#0" expanded="false" />
+            <element signature="n#!!block;n#get_profesores#0" expanded="false" />
+            <element signature="e#12157#12424#0" expanded="false" />
+            <element signature="e#12337#12418#0" expanded="false" />
+            <element signature="e#12454#13023#0" expanded="false" />
+            <element signature="e#12583#12928#0" expanded="false" />
+            <element signature="e#12964#13007#0" expanded="false" />
+            <element signature="e#13049#13146#0" expanded="false" />
+            <element signature="e#13174#13268#0" expanded="false" />
+            <element signature="e#13209#13252#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_establecimiento_datos">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="-0.5862069" vertical-offset="0" max-vertical-offset="119" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_establecimientos">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="65" selection-start="93" selection-end="113" vertical-scroll-proportion="0.028192371" vertical-offset="0" max-vertical-offset="603" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/GradoRepetidoMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="476" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/personas/ProfesorMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="29" selection-start="403" selection-end="403" vertical-scroll-proportion="0.2361111" vertical-offset="0" max-vertical-offset="648" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_profesores_establecimientos">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="25" selection-start="25" selection-end="424" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_profesor_establecimientos">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="42" selection-start="370" selection-end="409" vertical-scroll-proportion="0.2372093" vertical-offset="0" max-vertical-offset="645" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_clases_profesor">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="21" selection-start="303" selection-end="322" vertical-scroll-proportion="-6.448276" vertical-offset="0" max-vertical-offset="323" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/Curso.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="0" selection-start="2822" selection-end="2822" vertical-scroll-proportion="0.7345679" vertical-offset="493" max-vertical-offset="1717" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/CursoMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="56" selection-start="824" selection-end="824" vertical-scroll-proportion="0.4722222" vertical-offset="0" max-vertical-offset="731" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/Establecimiento.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="8" selection-start="3922" selection-end="3922" vertical-scroll-proportion="0.46307692" vertical-offset="702" max-vertical-offset="1394" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/horario.bloques.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="695" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..count_matriculas">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="352" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="439" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_profesor_dias_clases">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="674">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/Clase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="65" selection-start="3120" selection-end="3120" vertical-scroll-proportion="0.95884144" vertical-offset="102" max-vertical-offset="1071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_profesor_asignaturas_clases">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="478" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_test2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="61" selection-start="67" selection-end="67" vertical-scroll-proportion="0.026234567" vertical-offset="0" max-vertical-offset="648">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="64" selection-start="70" selection-end="70" vertical-scroll-proportion="0.025411062" vertical-offset="0" max-vertical-offset="669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/evaluacion.calendario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="25" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/horario.formulario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="3" selection-start="73" selection-end="195" vertical-scroll-proportion="0.12957317" vertical-offset="0" max-vertical-offset="656">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/evaluacion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="31" selection-end="31" vertical-scroll-proportion="0.025411062" vertical-offset="0" max-vertical-offset="680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/css/evaluacion.calendario.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="20" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vistas/evaluacion.formulario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="50" selection-start="697" selection-end="717" vertical-scroll-proportion="0.46307692" vertical-offset="5" max-vertical-offset="697">
+        <state line="8" column="43" selection-start="311" selection-end="311" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="289">
+          <folding>
+            <element signature="tag#div#0;tag#form#0" expanded="true" />
+            <element signature="tag#select#0;tag#div#0;tag#form#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/js/evaluacion.calendario2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="1822" selection-end="3404" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controladores/profesor.get.datos.todos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="596" selection-end="596" vertical-scroll-proportion="-4.3333335" vertical-offset="0" max-vertical-offset="374">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="19" selection-start="19" selection-end="658" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="632">
+          <folding>
+            <marker date="0" expanded="true" signature="48:165" placeholder="-- +++++++++..." />
+            <marker date="0" expanded="true" signature="166:221" placeholder="DROP PROCEDU..." />
+            <marker date="0" expanded="true" signature="224:341" placeholder="-- +++++++++..." />
+            <marker date="0" expanded="true" signature="343:387" placeholder="DROP PROCEDU..." />
+            <marker date="0" expanded="true" signature="390:509" placeholder="-- +++++++++..." />
+            <marker date="0" expanded="true" signature="511:560" placeholder="DROP PROCEDU..." />
+            <marker date="0" expanded="true" signature="564:600" placeholder="-- +++++++++..." />
+            <marker date="0" expanded="true" signature="601:657" placeholder="DROP PROCEDU..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/personas/Profesor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="29" selection-start="402" selection-end="414" vertical-scroll-proportion="0.21296297" vertical-offset="32" max-vertical-offset="680">
+          <folding>
+            <element signature="e#386#1080#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/EstablecimientoMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="947" selection-end="947" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="408">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/AsignaturaMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="653">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/BloqueMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="0" selection-start="1739" selection-end="1739" vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/CicloMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="674">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/ClaseMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="30" selection-start="1149" selection-end="1161" vertical-scroll-proportion="-5.6666665" vertical-offset="0" max-vertical-offset="901">
+          <folding>
+            <element signature="n#db_get_datos#0;n#ClaseMatriz#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controladores/clase.get.datos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="49" selection-start="55" selection-end="55" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/js/evaluacion.calendario.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="83" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.7062315" vertical-offset="0" max-vertical-offset="1207">
+          <folding>
+            <element signature="e#34#540#0" expanded="true" />
+            <element signature="e#131#535#0" expanded="true" />
+            <element signature="e#639#896#0" expanded="true" />
+            <element signature="e#810#890#0" expanded="true" />
+            <element signature="e#926#1553#0" expanded="true" />
+            <element signature="e#1055#1351#0" expanded="true" />
+            <element signature="e#1387#1454#0" expanded="true" />
+            <element signature="e#1494#1537#0" expanded="true" />
+            <element signature="e#1579#1701#0" expanded="true" />
+            <element signature="e#1642#1685#0" expanded="true" />
+            <element signature="e#1729#1823#0" expanded="true" />
+            <element signature="e#1764#1807#0" expanded="true" />
+            <element signature="e#2119#2199#0" expanded="true" />
+            <element signature="e#2235#2889#0" expanded="true" />
+            <element signature="e#2362#2689#0" expanded="true" />
+            <element signature="e#2726#2790#0" expanded="true" />
+            <element signature="e#2830#2873#0" expanded="true" />
+            <element signature="e#2915#3037#0" expanded="true" />
+            <element signature="e#2978#3021#0" expanded="true" />
+            <element signature="e#3065#3159#0" expanded="true" />
+            <element signature="e#3100#3143#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

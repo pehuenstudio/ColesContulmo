@@ -85,14 +85,3 @@ h1{
     font-size: small;
 }
 
-
-
-#panel_loading img{
-    width: 100px;
-    height: 100px;
-    margin-top: 300px;
-}
-#panel_loading div{
-    text-align: center;
-    color: #40B1E2;
-}

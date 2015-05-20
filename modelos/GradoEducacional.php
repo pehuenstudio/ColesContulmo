@@ -2,12 +2,10 @@
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 //echo __FILE__."<br/>";
-class Ciclo {
-    private $id_ciclo;
+class GradoEducacional {
+    private $id_grado_educacional;
     private $nombre;
-    private $estado = '1';
-
-    function __construct(){}
+    private $estado = "1";
 
     public function set_estado($estado)
     {
@@ -17,13 +15,13 @@ class Ciclo {
     {
         return $this->estado;
     }
-    public function set_id_ciclo($id_ciclo)
+    public function set_id_grado_educacional($id_grado_educacional)
     {
-        $this->id_ciclo = $id_ciclo;
+        $this->id_grado_educacional = $id_grado_educacional;
     }
-    public function get_id_ciclo()
+    public function get_id_grado_educacional()
     {
-        return $this->id_ciclo;
+        return $this->id_grado_educacional;
     }
     public function set_nombre($nombre)
     {
@@ -34,6 +32,9 @@ class Ciclo {
         return $this->nombre;
     }
 
+    public function set_identidad($nombre){
+        $this->set_nombre($nombre);
+    }
 
 
 }

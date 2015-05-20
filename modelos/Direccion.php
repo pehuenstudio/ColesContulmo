@@ -1,42 +1,16 @@
 <?php
-
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 //echo __FILE__."<br/>";
 class Direccion {
-
     private $id_direccion;
     private $calle;
     private $numero;
     private $depto;
     private $sector;
     private $id_comuna;
-    private $nombre_comuna;
-    private $id_provincia;
-    private $nombre_provincia;
-    private $id_region;
-    private $nombre_region;
     private $estado = '1';
 
-    //function __construct(){}
-
-    public function set_identidad($calle, $numero, $depto, $sector, $id_comuna)
-    {
-        $this->calle = $calle;
-        $this->depto = $depto;
-        $this->id_comuna = $id_comuna;
-        $this->numero = $numero;
-        $this->sector = $sector;
-    }
-
-    public function set_id_direccion($id_direccion)
-    {
-        $this->id_direccion = $id_direccion;
-    }
-    public function get_id_direccion()
-    {
-        return $this->id_direccion;
-    }
     public function set_calle($calle)
     {
         $this->calle = $calle;
@@ -69,6 +43,14 @@ class Direccion {
     {
         return $this->id_comuna;
     }
+    public function set_id_direccion($id_direccion)
+    {
+        $this->id_direccion = $id_direccion;
+    }
+    public function get_id_direccion()
+    {
+        return $this->id_direccion;
+    }
     public function set_numero($numero)
     {
         $this->numero = $numero;
@@ -85,50 +67,16 @@ class Direccion {
     {
         return $this->sector;
     }
-    public function set_id_provincia($id_provincia)
-    {
-        $this->id_provincia = $id_provincia;
-    }
-    public function get_id_provincia()
-    {
-        return $this->id_provincia;
-    }
-    public function set_id_region($id_region)
-    {
-        $this->id_region = $id_region;
-    }
-    public function get_id_region()
-    {
-        return $this->id_region;
-    }
-    public function set_nombre_comuna($nombre_comuna)
-    {
-        $this->nombre_comuna = $nombre_comuna;
-    }
-    public function get_nombre_comuna()
-    {
-        return $this->nombre_comuna;
-    }
-    public function set_nombre_provincia($nombre_provincia)
-    {
-        $this->nombre_provincia = $nombre_provincia;
-    }
-    public function get_nombre_provincia()
-    {
-        return $this->nombre_provincia;
-    }
-    public function set_nombre_region($nombre_region)
-    {
-        $this->nombre_region = $nombre_region;
-    }
-    public function get_nombre_region()
-    {
-        return $this->nombre_region;
+
+    public function set_identidad($calle, $numero, $depto, $sector, $id_comuna){
+        $this->calle = $calle;
+        $this->depto = $depto;
+        $this->id_comuna = $id_comuna;
+        $this->numero = $numero;
+        $this->sector = $sector;
     }
 
-
-
-    //VALIDAR CALLE
+    //VALIDACIONES INICIO//
     public function validar_calle(){
         global $v;
         if(!$v->validar_texto($this->calle,3,60)){
@@ -140,8 +88,6 @@ class Direccion {
         $this->calle =  mb_convert_case($this->calle, MB_CASE_TITLE, "UTF-8");
         return true;
     }
-
-    //VALIDAR NUMERO
     public function validar_numero(){
         global $v;
         if(!$v->validar_formato_numero($this->numero,2,4)){
@@ -152,8 +98,6 @@ class Direccion {
         //echo INFO.CLASE_DIRECCION." DIRECCION NUMERO INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
-
-    //VALIDAR DEPTO
     public function validar_depto(){
         global $v;
         if(empty($this->depto)){
@@ -168,8 +112,6 @@ class Direccion {
         //echo INFO.CLASE_DIRECCION."DIRECCION DEPTO INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
-
-    //VALIDAR SECTOR
     public function validar_sector(){
         global $v;
         if(!$v->validar_texto($this->sector,3,60)){
@@ -181,8 +123,6 @@ class Direccion {
         $this->sector = mb_convert_case($this->sector, MB_CASE_TITLE, "UTF-8");
         return true;
     }
-
-    //VALIDAR ID COMUNA
     public function validar_id_comuna(){
         global $v;
         if(!$v->validar_formato_numero($this->id_comuna,1,5)){
@@ -193,8 +133,6 @@ class Direccion {
         //echo INFO.CLASE_DIRECCION."DIRECCION ID COMUNA INGRESADO CORRECTAMENTE<br/>";
         return true;
     }
-
-    //Validar
     public function validar(){
         $result = true;
 
@@ -215,105 +153,25 @@ class Direccion {
         }
         return $result;
     }
+    //VALIDACIONES INICIO//
 
-    //++++++++++++++++++++++++++++++++++++++++MANEJO DE BBDD+++++++++++++++++++++++++++++++++++++
     public function db_get_datos(){
         global $myPDO;
         $sentencia = $myPDO->prepare("CALL get_direccion(?)");
         $sentencia->bindParam(1, $this->id_direccion, \PDO::PARAM_INT);
         $result = $sentencia->execute();
-        $data = $sentencia->fetchAll();
 
-
+        $data = $sentencia->fetchAll(0);
         foreach($data as $row){
-            $this->calle = $row["calle"];
-            $this->numero = $row["numero"];
-            $this->depto = $row["depto"];
-            $this->sector = $row["sector"];
-            $this->id_comuna = $row["id_comuna"];
+            $this->set_identidad(
+                $row["calle"],
+                $row["numero"],
+                $row["depto"],
+                $row["sector"],
+                $row["id_comuna"]
+            );
         }
-
-        return $result;
-    }
-
-    public function db_get_id($tabla,$persona,$run){
-        global $myPDO;
-        $sentencia = $myPDO->prepare("SELECT id_direccion FROM ".$tabla." WHERE run_".$persona." = ?");
-        $sentencia->bindParam(1, $run, \PDO::PARAM_STR, 9);
-        $sentencia->execute();
-
-        $id_direccion = $sentencia->fetchColumn();
-        return $id_direccion;
-    }
-
-    public function db_actualizar(){
-        global $myPDO;
-
-        $sentencia = $myPDO->prepare("CALL upd_direccion(?,?,?,?,?,?,?);");
-        $sentencia->bindParam(1, $this->id_direccion, \PDO::PARAM_INT);
-        $sentencia->bindParam(2, $this->calle, \PDO::PARAM_STR, 60);
-        $sentencia->bindParam(3, $this->numero, \PDO::PARAM_INT);
-        $sentencia->bindParam(4, $this->depto, \PDO::PARAM_STR, 5);
-        $sentencia->bindParam(5, $this->sector, \PDO::PARAM_STR, 60);
-        $sentencia->bindParam(6, $this->id_comuna , \PDO::PARAM_INT);
-        $sentencia->bindParam(7, $this->estado , \PDO::PARAM_STR, 1);
-        $result = $sentencia->execute();
-
-        if(!$result){
-            //echo ERRORCITO.CLASE_DIRECCION. " DDBB ERROR EN LA ACTUALIZACION<br/>";
-            return false;
-        }
-        //echo INFO.CLASE_DIRECCION. "DDBB EXITO EN LA ACTUALIZACION <br/>";
-        return true;
-    }
-
-    public function db_ingresar(){
-        global $myPDO;
-
-        $sentencia = $myPDO->prepare("CALL set_direccion(?,?,?,?,?,@id_direccion);");
-        $sentencia->bindParam(1, $this->calle, \PDO::PARAM_STR, 60);
-        $sentencia->bindParam(2, $this->numero, \PDO::PARAM_INT);
-        $sentencia->bindParam(3, $this->depto, \PDO::PARAM_STR, 5);
-        $sentencia->bindParam(4, $this->sector, \PDO::PARAM_STR, 60);
-        $sentencia->bindParam(5, $this->id_comuna , \PDO::PARAM_INT);
-        $sentencia->execute();
-
-        $id_direccion = $myPDO->query("SELECT @id_direccion")->fetchColumn();
-        //var_dump($id_direccion);
-        return $id_direccion;
-    }
-
-    public function db_get_ids_nombres(){
-
-        global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_comuna_provincia_region(?)");
-        $sentencia->bindParam(1, $this->id_comuna, \PDO::PARAM_INT);
-        $sentencia->execute();
-
-        $data = $sentencia->fetchAll();
-
-        $direccion = array();
-        foreach($data as $row){
-            $direccion["direccion_id"]["id_comuna"] = $row["id_comuna"];
-            $direccion["direccion_id"]["id_provincia"] = $row["id_provincia"];
-            $direccion["direccion_id"]["id_region"] = $row["id_region"];
-            $direccion["direccion_nombre"]["nombre_region"] = $row["nombre_comuna"];
-            $direccion["direccion_nombre"]["nombre_provincia"] = $row["nombre_provincia"];
-            $direccion["direccion_nombre"]["nombre_comuna"] = $row["nombre_comuna"];
-
-            $this->set_id_comuna($row["id_comuna"]);
-            $this->set_id_provincia($row["id_provincia"]);
-            $this->set_id_region($row["id_region"]);
-
-            $this->set_nombre_comuna($row["nombre_comuna"]);
-            $this->set_nombre_provincia($row["nombre_provincia"]);
-            $this->set_nombre_region($row["nombre_region"]);
-        }
-
-        $result = json_encode($direccion,JSON_UNESCAPED_UNICODE);
-
         return $result;
     }
 }
-
-?>
+?> 

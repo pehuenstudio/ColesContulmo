@@ -17,7 +17,16 @@ switch($id_funcion){
 
 function get_grados_educacionales(){
     $grado_educacional_matriz = new GradoEducacionalMatriz();
-    $grado_educacional_matriz->db_get_grados_educacionales();
+    if($grado_educacional_matriz->db_get_grados_educacionales() == "0"){
+        $result = array(
+            "result" => false
+        );
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
     print_r($grado_educacional_matriz->to_json());
+    return null;
 }
 ?>

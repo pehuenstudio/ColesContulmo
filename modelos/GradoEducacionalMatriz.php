@@ -32,7 +32,7 @@ class GradoEducacionalMatriz {
     public function db_get_grados_educacionales(){
         global $myPDO;
         $sentencia = $myPDO->prepare("CALL get_grados_educacionales");
-        $result = $sentencia->execute();
+        $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
         //print_r($data);
@@ -46,7 +46,7 @@ class GradoEducacionalMatriz {
             $this->to_matriz($grado_educacional);
         }
 
-        return $result;
+        return $sentencia->rowCount();
     }
 }
 ?>

@@ -34,7 +34,7 @@ class RegionMatriz {
     public function db_get_regiones(){
         global $myPDO;
         $sentencia = $myPDO->prepare("CALL get_regiones");
-        $result = $sentencia->execute();
+        $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
         foreach($data as $row){
@@ -48,7 +48,7 @@ class RegionMatriz {
             $this->to_matriz($region);
         }
 
-        return $result;
+        return $sentencia->rowCount();
     }
 }
 ?> 

@@ -13,6 +13,7 @@
 <script src="/_code/vistas/js/mensajes.js"></script>
 <script src="/_code/vistas/js/load.js"></script>
 <script src="/_code/vistas/js/matricula.js"></script>
+<script src="/_code/vistas/js/validaciones.js"></script>
 
 
 

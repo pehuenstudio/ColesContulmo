@@ -34,7 +34,7 @@ class ComunaMatriz {
         global $myPDO;
         $sentencia = $myPDO->prepare("CALL get_comunas_by_id_provincia(?)");
         $sentencia->bindParam(1, $id_provincia, \PDO::PARAM_INT);
-        $result = $sentencia->execute();
+        $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
         foreach($data as $row){
@@ -47,7 +47,7 @@ class ComunaMatriz {
             $this->to_matriz($comuna);
         }
 
-        return $result;
+        return $sentencia->rowCount();
     }
 }
 ?>

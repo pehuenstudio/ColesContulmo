@@ -62,6 +62,7 @@ function validar_textoMinMax(input,min,max,msg){
 
 function validar_numeroMinMax(input,min,max,msg){
     var inputNumero = input.val();
+
     var regExp =  new RegExp("^[0-9]{"+min+","+max+"}$","i");
     if(!regExp.test(inputNumero)){
         input.attr("class","error");
@@ -73,16 +74,15 @@ function validar_numeroMinMax(input,min,max,msg){
     return true;
 }
 
-function validar_numeroMinMax2(input,min,max,msg,error){
+function validar_numeroMinMax2(input,min,max){
     var inputNumero = input.val();
+
     var regExp =  new RegExp("^[0-9]{"+min+","+max+"}$","i");
     if(!regExp.test(inputNumero)){
         input.attr("class","error");
-        jQuery(error).html("<p>"+msg+"</p>");
         return false;
     }
     input.attr("class","");
-    jQuery(error).html("&nbsp;");
     return true;
 }
 

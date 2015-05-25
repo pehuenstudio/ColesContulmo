@@ -18,7 +18,16 @@ switch($id_funcion){
 
 function get_comunas_by_id_provincia($id_provincia){
     $comuna_matriz = new ComunaMatriz();
-    $comuna_matriz->db_get_comunas_by_id_provincia($id_provincia);
+    if($comuna_matriz->db_get_comunas_by_id_provincia($id_provincia) == "0"){
+        $result = array(
+            "result" => false
+        );
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
     print_r($comuna_matriz->to_json());
+    return null;
 }
 ?>

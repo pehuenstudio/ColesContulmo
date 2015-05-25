@@ -151,15 +151,15 @@ class Direccion {
         if(!$this->validar_id_comuna()){
             $result = false;
         }
-        return $result;
+        return $sentencia->rowCount();
     }
     //VALIDACIONES INICIO//
 
-    public function db_get_datos(){
+    public function db_get_direccion_by_id(){
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_direccion(?)");
+        $sentencia = $myPDO->prepare("CALL get_direccion_by_id(?)");
         $sentencia->bindParam(1, $this->id_direccion, \PDO::PARAM_INT);
-        $result = $sentencia->execute();
+        $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
         foreach($data as $row){
@@ -171,7 +171,7 @@ class Direccion {
                 $row["id_comuna"]
             );
         }
-        return $result;
+        return $sentencia->rowCount();
     }
 }
 ?> 

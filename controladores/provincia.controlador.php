@@ -18,7 +18,16 @@ switch($id_funcion){
 
 function get_provincias_by_id_region($id_region){
     $provincia_matriz = new ProvinciaMatriz();
-    $provincia_matriz->db_get_provincias_by_id_region($id_region);
+    if($provincia_matriz->db_get_provincias_by_id_region($id_region) == "0"){
+        $result = array(
+            "result" => false
+        );
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
     print_r($provincia_matriz->to_json());
+    return null;
 }
 ?>

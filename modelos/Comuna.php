@@ -46,5 +46,22 @@ class Comuna {
         $this->set_nombre($nombre);
     }
 
+    public function db_get_comuna_by_id(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_comuna_by_id(?)");
+        $sentencia->bindParam(1, $this->id_comuna, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $this->set_identidad(
+                $row["id_provincia"],
+                $row["nombre"]
+            );
+        }
+
+        return $sentencia->rowCount();
+    }
+
 }
 ?> 

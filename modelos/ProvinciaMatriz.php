@@ -35,7 +35,7 @@ class ProvinciaMatriz {
         global $myPDO;
         $sentencia = $myPDO->prepare("CALL get_provincias_by_id_region(?)");
         $sentencia->bindParam(1, $id_region, \PDO::PARAM_INT);
-        $result = $sentencia->execute();
+        $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
         foreach($data as $row){
@@ -50,7 +50,7 @@ class ProvinciaMatriz {
             $this->to_matriz($provincia);
         }
 
-        return $result;
+        return $sentencia->rowCount();
     }
 }
 ?>

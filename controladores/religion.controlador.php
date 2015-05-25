@@ -17,7 +17,16 @@ switch($id_funcion){
 
 function get_religiones(){
     $religion_matriz = new ReligionMatriz();
-    $religion_matriz->db_get_religiones();
+    if($religion_matriz->db_get_religiones() == "0"){
+        $result = array(
+            "result" => false
+        );
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
     print_r($religion_matriz->to_json());
+    return null;
 }
 ?>

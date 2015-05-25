@@ -1,10 +1,12 @@
 jQuery(document).ready(function(){
     var contenedor_alumno = "#contenedor_alumno";
+    var contenedor_apoderado = "#contenedor_apoderado";
+
 
     crear_furmulario();
     get_regiones("#id_region_alumno", contenedor_alumno);
     setTimeout(function(){get_religiones("#id_religion_alumno", contenedor_alumno);},500);
-    setTimeout(function(){get_grados_educacionales("#grado_educacional_padre", "#grado_educacional_madre", contenedor_alumno)},500);
+    setTimeout(function(){get_grados_educacionales("#grado_educacional_padre", "#grado_educacional_madre", contenedor_alumno)},1000);
 
     jQuery("#id_region_alumno").change(function(){
         var id_region = jQuery(this).val();
@@ -20,13 +22,14 @@ jQuery(document).ready(function(){
                 .text("Seleccione Provincia"));
         jQuery("#id_comuna_alumno")
             .empty()
-            .attr("disabled", disabled)
+            .attr("disabled", true)
             .append(jQuery("<option></option>")
                 .val("0")
                 .text("Seleccione Comuna"));
         if(id_region == "0"){return null}
 
         get_provincias("#id_provincia_alumno", contenedor_alumno, id_region);
+        return null;
     });
 
     jQuery("#id_provincia_alumno").change(function(){
@@ -44,10 +47,90 @@ jQuery(document).ready(function(){
         if(id_provincia == "0"){return null}
 
         get_comunas("#id_comuna_alumno", contenedor_alumno, id_provincia);
+        return null;
+    });
+
+    jQuery("#run_alumno").focusout(function(){
+        var run_alumno = jQuery(this).val();
+        get_alumno(run_alumno, contenedor_alumno);
+    });
+
+    jQuery("#grados_repetidos").find("input:checkbox").click(function(){
+        var id_grado = "[data-id_grado="+jQuery(this).attr("data-id_grado")+"]";
+        var id_tipo_ensenanza = "[data-id_tipo_ensenanza="+jQuery(this).attr("data-id_tipo_ensenanza")+"]";
+        var readonly = false;
+        var cantidad = "0";
+        if(!jQuery(this).prop("checked")){readonly = true;};
+        jQuery("#grados_repetidos_cantidad")
+            .find(id_grado+id_tipo_ensenanza)
+            .prop("readonly", readonly)
+            .val(cantidad)
+        ;
+
+    });
+
+    jQuery("#avatar_alumno").change(function(){
+        var avatar_preview = jQuery("#avatar_alumno_preview");
+        readURL(this, avatar_preview);
+    });
+
+
+    jQuery("#id_region_apoderado").change(function(){
+        var id_region = jQuery(this).val();
+        var disabled = false;
+
+        if(id_region == "0"){disabled = true;}
+
+        jQuery("#id_provincia_apoderado")
+            .empty()
+            .attr("disabled", disabled)
+            .append(jQuery("<option></option>")
+                .val("0")
+                .text("Seleccione Provincia"));
+        jQuery("#id_comuna_apoderado")
+            .empty()
+            .attr("disabled", true)
+            .append(jQuery("<option></option>")
+                .val("0")
+                .text("Seleccione Comuna"));
+        if(id_region == "0"){return null}
+
+        get_provincias("#id_provincia_apoderado", contenedor_alumno, id_region);
+        return null;
+    });
+
+    jQuery("#id_provincia_apoderado").change(function(){
+        var id_provincia = jQuery(this).val();
+        var disabled = false;
+
+        if(id_provincia == "0"){disabled = true;}
+
+        jQuery("#id_comuna_apoderado")
+            .empty()
+            .attr("disabled", disabled)
+            .append(jQuery("<option></option>")
+                .val("0")
+                .text("Seleccione Comuna"));
+        if(id_provincia == "0"){return null}
+
+        get_comunas("#id_comuna_apoderado", contenedor_alumno, id_provincia);
+        return null;
+    });
+
+    jQuery("#run_apoderado").focusout(function(){
+        var run_apoderado = jQuery(this).val();
+        get_apoderado(run_apoderado, contenedor_apoderado);
+    });
+
+    jQuery("#avatar_apoderado").change(function(){
+        var avatar_preview = jQuery("#avatar_apoderado_preview");
+        readURL(this, avatar_preview);
     });
 
 });
 function crear_furmulario(){
+    var visto_regiones = 0;
+    var visto_establecimientos = 0;
     jQuery("#modulo_matriculas").steps({
         headerTag: "h2",
         bodyTag: "section",
@@ -64,13 +147,8 @@ function crear_furmulario(){
             switch (newIndex){
                 case 1:
                     if(!validar_alumno()){
-                        jQuery("#matricula_formulario input").keyup(function(){
+                        jQuery("#matricula_formulario").find("input, select").change(function(){
                             validar_alumno();
-                        });
-
-                        jQuery("#matricula_formulario select").change(function(){
-                            validar_alumno();
-
                         });
 
                         return false;
@@ -78,14 +156,9 @@ function crear_furmulario(){
                     break;
                 case 2:
                     if(!validar_apoderado()){
-                        jQuery("#matricula_formulario input").keyup(function(){
+                        jQuery("#matricula_formulario").find("input, select").change(function(){
                             validar_apoderado();
                         });
-
-                        jQuery("#matricula_formulario select").change(function(){
-                            validar_apoderado();
-                        });
-
                         return false;
                     }
                     break;
@@ -211,6 +284,9 @@ function get_regiones(select, contenedor){
         .done(function(data){
             //console.log(data);
             var data = jQuery.parseJSON(data);
+            if(data.result == false){
+                return null;
+            }
             jQuery.each(data, function(i,v){
                 var id_region = data[i].id_region;
                 var nombre = data[i].nombre;
@@ -246,6 +322,9 @@ function get_provincias(select, contenedor, id_region){
         .done(function(data){
             //console.log(data);
             var data = jQuery.parseJSON(data);
+            if(data.result == false){
+                return null;
+            }
             jQuery.each(data, function(i,v){
                 var id_provincia = data[i].id_provincia;
                 var nombre = data[i].nombre;
@@ -281,6 +360,9 @@ function get_comunas(select, contenedor, id_provincia){
         .done(function(data){
             //console.log(data);
             var data = jQuery.parseJSON(data);
+            if(data.result == false){
+                return null;
+            }
             jQuery.each(data, function(i,v){
                 var id_comuna = data[i].id_comuna;
                 var nombre = data[i].nombre;
@@ -316,6 +398,9 @@ function get_religiones(select, contenedor){
         .done(function(data){
             //console.log(data);
             var data = jQuery.parseJSON(data);
+            if(data.result == false){
+                return null;
+            }
             jQuery.each(data, function(i,v){
                 var id_religion = data[i].id_religion;
                 var nombre = data[i].nombre;
@@ -349,8 +434,11 @@ function get_grados_educacionales(select1, select2, contenedor){
         }
     })
         .done(function(data){
-            console.log(data);
+            //console.log(data);
             var data = jQuery.parseJSON(data);
+            if(data.result == false){
+                return null;
+            }
             jQuery.each(data, function(i,v){
                 var id_grado_educacional = data[i].id_grado_educacional;
                 var nombre = data[i].nombre;
@@ -376,4 +464,255 @@ function get_grados_educacionales(select1, select2, contenedor){
 
 
         });
+}
+
+function get_alumno(run_alumno, contenedor){
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/alumno.controlador.php",
+        data: {id_funcion: "1", run_alumno: run_alumno},
+        beforeSend: function(){
+            load_on("Cargando datos de alumno...", contenedor);
+        }
+    })
+        .done(function(data){
+            //console.log(data);
+            var data = jQuery.parseJSON(data);
+            if(data.result == false){
+                return null;
+            }
+            //console.log(data.grados_repetidos);
+            jQuery("#nombre1_alumno").val(data.nombre1);
+            jQuery("#nombre2_alumno").val(data.nombre2);
+            jQuery("#apellido1_alumno").val(data.apellido1);
+            jQuery("#apellido2_alumno").val(data.apellido2);
+            jQuery("#sexo_alumno").val(data.sexo);
+            jQuery("#fecha_nacimiento_alumno").val(data.fecha_nacimiento);
+            jQuery("#email_alumno").val(data.email);
+            jQuery("#avatar_alumno_preview").attr("src", "/_avatars/"+data.avatar);
+            jQuery("#calle_alumno").val(data.calle);
+            jQuery("#numero_alumno").val(data.numero);
+            jQuery("#depto_alumno").val(data.depto);
+            jQuery("#id_region_alumno").val(data.id_region);
+            jQuery("#id_provincia_alumno")
+                .empty()
+                .prop("disabled", false)
+                .append(jQuery("<option></option>")
+                    .val("0")
+                    .text("Seleccione Provincia"))
+                .append(jQuery("<option></option>")
+                    .val(data.id_provincia)
+                    .text(data.nombre_provincia)
+                    .prop("selected", true)
+                );
+            jQuery("#id_comuna_alumno")
+                .empty()
+                .prop("disabled", false)
+                .append(jQuery("<option></option>")
+                    .val("0")
+                    .text("Seleccione Comuna"))
+                .append(jQuery("<option></option>")
+                    .val(data.id_comuna)
+                    .text(data.nombre_comuna)
+                    .prop("selected", true)
+                );
+            jQuery("#sector_alumno").val(data.sector);
+            jQuery("#pde").val(data.pde);
+            jQuery("#id_religion_alumno").val(data.id_religion);
+            jQuery("#grado_educacional_padre").val(data.grado_educacional_padre);
+            jQuery("#grado_educacional_madre").val(data.grado_educacional_madre);
+            jQuery("#persona_vive_alumno").val(data.persona_vive);
+            jQuery.each(data.grados_repetidos, function(i,vlue){
+                var id_grado = "[data-id_grado="+data.grados_repetidos[i].id_grado+"]";
+                var id_tipo_ensenanza = "[data-id_tipo_ensenanza="+data.grados_repetidos[i].id_tipo_ensenanza+"]";
+                var cantidad = data.grados_repetidos[i].cantidad;
+                jQuery("#grados_repetidos")
+                    .find(id_grado+id_tipo_ensenanza)
+                    .prop("checked", true)
+                ;
+                jQuery("#grados_repetidos_cantidad")
+                    .find(id_grado+id_tipo_ensenanza)
+                    .prop("readonly", false)
+                    .val(cantidad)
+                ;
+
+            });
+        })
+        .fail(function(){
+            alert("ERROR");
+        })
+        .always(function(){
+            setTimeout(function(){load_off()},500);
+        })
+    ;
+}
+
+function get_apoderado(run_apoderado, contenedor){
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/apoderado.controlador.php",
+        data: {id_funcion: "1", run_apoderado: run_apoderado},
+        beforeSend: function(){
+            load_on("Cargando datos de apoderado", contenedor);
+        }
+    })
+        .done(function(data){
+            //console.log(data);
+            var data = jQuery.parseJSON(data);
+            if(data.result == false){
+                return null;
+            }
+            jQuery("#nombre1_apoderado").val(data.nombre1);
+            jQuery("#nombre2_apoderado").val(data.nombre2);
+            jQuery("#apellido1_apoderado").val(data.apellido1);
+            jQuery("#apellido2_apoderado").val(data.apellido2);
+            jQuery("#sexo_apoderado").val(data.sexo);
+            jQuery("#email_apoderado").val(data.email);
+            jQuery("#avatar_apoderado_preview").attr("src", "/_avatars/"+data.avatar);
+            jQuery("#telefono_fijo_apoderado").val(data.telefono_fijo);
+            jQuery("#telefono_celular_apoderado").val(data.telefono_celular);
+            jQuery("#calle_apoderado").val(data.calle);
+            jQuery("#numero_apoderado").val(data.numero);
+            jQuery("#depto_apoderado").val(data.depto);
+            jQuery("#id_region_apoderado").val(data.id_region);
+            jQuery("#id_provincia_apoderado")
+                .empty()
+                .prop("disabled", false)
+                .append(jQuery("<option></option>")
+                    .val("0")
+                    .text("Seleccione Provincia"))
+                .append(jQuery("<option></option>")
+                    .val(data.id_provincia)
+                    .text(data.nombre_provincia)
+                    .prop("selected", true)
+                );
+            jQuery("#id_comuna_apoderado")
+                .empty()
+                .prop("disabled", false)
+                .append(jQuery("<option></option>")
+                    .val("0")
+                    .text("Seleccione Comuna"))
+                .append(jQuery("<option></option>")
+                    .val(data.id_comuna)
+                    .text(data.nombre_comuna)
+                    .prop("selected", true)
+                );
+            jQuery("#sector_apoderado").val(data.sector);
+
+        })
+        .fail(function(){
+            alert("ERROR");
+        })
+        .always(function(){
+            setTimeout(function(){load_off()}, 500);
+        })
+    ;
+}
+
+function get_establecimientos(select, contenedor){
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/establecimiento.controlador.php",
+        data: {id_funcion: "1"},
+        beforeSend: function(){
+            load_on("Cargando_establecimientos...", contenedor);
+        }
+    })
+        .done(function(data){
+            console.log(data);
+            var data = jQuery.parseJSON(data);
+            jQuery.each(data, function(i, value){
+                jQuery(select)
+                    .append(jQuery("<option></option>")
+                        .val(data[i].rbd_establecimiento)
+                        .text(data[i].nombre))
+                ;
+            });
+
+        })
+        .fail(function(){
+            alert("ERROR");
+        })
+        .always(function(){
+            load_off();
+        })
+    ;
+}
+
+function validar_alumno(){
+    var result = true;
+    if(!validar_run(jQuery("#run_alumno"))){ console.log("run alumno inválido"); result = false; }
+    if(!validar_textoMinMax(jQuery("#nombre1_alumno"),3,45,"Ingrese un nombre válido")){ console.log("nombre1 alumno inválido"); result = false; }
+    if(!validar_textoMinMax(jQuery("#nombre2_alumno"),3,45,"Ingrese un nombre válido")){ console.log("nombre2 alumno inválido"); result = false; }
+    if(!validar_textoMinMax(jQuery("#apellido1_alumno"),3,45,"Ingrese un apellido válido")){ console.log("apellido1 alumno inválido"); result = false; }
+    if(!validar_textoMinMax(jQuery("#apellido2_alumno"),3,45,"Ingrese un apellido válido")){ console.log("apellido2 alumno inválido"); result = false; }
+    if(!validar_select(jQuery("#sexo_alumno"),"Debe selecciona un sexo")){result = false}
+    if(!validar_fecha(jQuery("#fecha_nacimiento_alumno"),"Ingrese una fecha valida")){result = false;}
+
+    if(!validar_email(jQuery("#email_alumno"),"Ingrese un email válido")){result = false;}
+    if(!validar_textoMinMax(jQuery("#calle_alumno"),3,60,"Ingrese un nombre de calle válido")){result = false}
+    if(!validar_numeroMinMax(jQuery("#numero_alumno"),1,5,"Ingrese un número de calle válido")){result = false}
+    if(!validar_numeroTextoMinMax(jQuery("#depto_alumno"),0,5,"Ingrese un número depto válido")){result = false}
+    if(!validar_select(jQuery("#id_region_alumno"),"Debe seleccionar una región")){result = false}
+    if(!validar_select(jQuery("#id_provincia_alumno"),"Debe seleccionar una provincia")){result = false}
+    if(!validar_select(jQuery("#id_comuna_alumno"),"Debe seleccionar una comuna")){result = false}
+    if(!validar_textoMinMax(jQuery("#sector_alumno"),3,60,"Debe ingresar un sector válido")){result = false}
+    if(!validar_select(jQuery("#pde"),"Debe seleccionar una opción")) {result = false}
+    if(!validar_select(jQuery("#grado_educacional_madre"),"Debe seleccionar una opción")){result = false}
+    if(!validar_select(jQuery("#grado_educacional_padre"),"Debe seleccionar una opción")){result = false}
+    if(!validar_textoMinMax(jQuery("#persona_vive_alumno"),3,100,"Debe ingresar a lo menos una persona")){result = false}
+    if(!validar_textoMinMax(jQuery("#establecimiento_procedencia"),3,60,"Ingrese un establecimiento válido")){result = false}
+    if(!validar_grados_repetidos()){result = false};
+    if(!validar_imagen_extencion(jQuery("#avatar_alumno"),"Ingrese una imagen valida")){ result = false;}
+    return result;
+}
+
+function validar_grados_repetidos(){
+    var result = true;
+    jQuery("#grados_repetidos_cantidad input[type=text]").each(function(){
+        if(!validar_numeroMinMax2(jQuery(this),0,2)){
+            result = false;
+        }
+    });
+    if(!result){
+        jQuery("#error_cantidad").html("<p>Ingrese cantidades validas</p>");
+        return result;
+    }
+    jQuery("#error_cantidad").html("&nbsp;");
+    return result;
+}
+
+function validar_apoderado(){
+    var result = true;
+    if (!validar_run(jQuery("#run_apoderado"))){ console.log("run alumno inválido"); result = false; }
+    if(!validar_textoMinMax(jQuery("#nombre1_apoderado"),3,45,"Ingrese un nombre válido")){ console.log("nombre1 alumno inválido"); result = false; }
+    if(!validar_textoMinMax(jQuery("#nombre2_apoderado"),3,45,"Ingrese un nombre válido")){ console.log("nombre2 alumno inválido"); result = false; }
+    if(!validar_textoMinMax(jQuery("#apellido1_apoderado"),3,45,"Ingrese un apellido válido")){ console.log("apellido1 alumno inválido"); result = false; }
+    if(!validar_textoMinMax(jQuery("#apellido2_apoderado"),3,45,"Ingrese un apellido válido")){ console.log("apellido2 alumno inválido"); result = false; }
+    if(!validar_select(jQuery("#sexo_apoderado"),"Debe seleccionar un sexo")){result = false}
+    if(!validar_email(jQuery("#email_apoderado"),"Ingrese un email válido")){result = false;}
+    if(!validar_textoMinMax(jQuery("#calle_apoderado"),3,60,"Ingrese un nombre de calle válido")){result = false};
+    if(!validar_numeroMinMax(jQuery("#numero_apoderado"),1,5,"Ingrese un número de calle válido")){result = false};
+    if(!validar_numeroTextoMinMax(jQuery("#depto_apoderado"),0,5,"Ingrese un número depto válido")){result = false};
+    if(!validar_select(jQuery("#id_region_apoderado"),"Debe seleccionar una región")){result = false}
+    if(!validar_select(jQuery("#id_provincia_apoderado"),"Debe seleccionar una provincia")){result = false}
+    if(!validar_select(jQuery("#id_comuna_apoderado"),"Debe seleccionar una comuna")){result = false}
+    if(!validar_textoMinMax(jQuery("#sector_apoderado"),3,60,"Debe ingresar un sector válido")){result = false}
+    if(!validar_numeroMinMax(jQuery("#telefono_fijo_apoderado"),0,9,"Ingrese un teléfono fijo válido")){result = false}
+    if(!validar_numeroMinMax(jQuery("#telefono_celular_apoderado"),8,9,"Ingrese un teléfono fijo válido")){result = false}
+    if(!validar_imagen_extencion(jQuery("#avatar_apoderado"),"Ingrese una imagen valida")){ result = false;}
+
+    return result;
+}
+
+function readURL(input,preview) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
 }

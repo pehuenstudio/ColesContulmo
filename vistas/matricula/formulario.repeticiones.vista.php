@@ -25,18 +25,18 @@
         <td><input type="checkbox" data-id_grado="7" data-id_tipo_ensenanza="110"></td>
         <td><input type="checkbox" data-id_grado="8" data-id_tipo_ensenanza="110"></td>
     </tr>
-    <tr id="grados_repetidos_veces">
+    <tr id="grados_repetidos_cantidad">
         <td>Cantidad</td>
-        <td><input id="grv0" name="PK" type="text" placeholder="0" maxlength="2" data-id_grado="4" data-id_tipo_ensenanza="10" readonly></td>
-        <td><input id="grv1" name="KD" type="text" placeholder="0" maxlength="2" data-id_grado="5" data-id_tipo_ensenanza="10" readonly></td>
-        <td><input id="grv2" name="1B" type="text" placeholder="0" maxlength="2" data-id_grado="1" data-id_tipo_ensenanza="110" readonly></td>
-        <td><input id="grv3" name="2B" type="text" placeholder="0" maxlength="2" data-id_grado="2" data-id_tipo_ensenanza="110" readonly></td>
-        <td><input id="grv4" name="3B" type="text" placeholder="0" maxlength="2" data-id_grado="3" data-id_tipo_ensenanza="110" readonly></td>
-        <td><input id="grv5" name="4B" type="text" placeholder="0" maxlength="2" data-id_grado="4" data-id_tipo_ensenanza="110" readonly></td>
-        <td><input id="grv6" name="5B" type="text" placeholder="0" maxlength="2" data-id_grado="5" data-id_tipo_ensenanza="110" readonly></td>
-        <td><input id="grv7" name="6B" type="text" placeholder="0" maxlength="2" data-id_grado="6" data-id_tipo_ensenanza="110" readonly></td>
-        <td><input id="grv8" name="7B" type="text" placeholder="0" maxlength="2" data-id_grado="7" data-id_tipo_ensenanza="110" readonly></td>
-        <td><input id="grv9" name="8B" type="text" placeholder="0" maxlength="2" data-id_grado="8" data-id_tipo_ensenanza="110" readonly></td>
+        <td><input name="PK" type="text" placeholder="0" maxlength="2" data-id_grado="4" data-id_tipo_ensenanza="10" readonly></td>
+        <td><input name="KD" type="text" placeholder="0" maxlength="2" data-id_grado="5" data-id_tipo_ensenanza="10" readonly></td>
+        <td><input name="1B" type="text" placeholder="0" maxlength="2" data-id_grado="1" data-id_tipo_ensenanza="110" readonly></td>
+        <td><input name="2B" type="text" placeholder="0" maxlength="2" data-id_grado="2" data-id_tipo_ensenanza="110" readonly></td>
+        <td><input name="3B" type="text" placeholder="0" maxlength="2" data-id_grado="3" data-id_tipo_ensenanza="110" readonly></td>
+        <td><input name="4B" type="text" placeholder="0" maxlength="2" data-id_grado="4" data-id_tipo_ensenanza="110" readonly></td>
+        <td><input name="5B" type="text" placeholder="0" maxlength="2" data-id_grado="5" data-id_tipo_ensenanza="110" readonly></td>
+        <td><input name="6B" type="text" placeholder="0" maxlength="2" data-id_grado="6" data-id_tipo_ensenanza="110" readonly></td>
+        <td><input name="7B" type="text" placeholder="0" maxlength="2" data-id_grado="7" data-id_tipo_ensenanza="110" readonly></td>
+        <td><input name="8B" type="text" placeholder="0" maxlength="2" data-id_grado="8" data-id_tipo_ensenanza="110" readonly></td>
 
     </tr>
 </table>

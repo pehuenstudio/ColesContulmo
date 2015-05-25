@@ -32,7 +32,7 @@ class ReligionMatriz {
     public function db_get_religiones(){
         global $myPDO;
         $sentencia = $myPDO->prepare("CALL get_religiones()");
-        $result = $sentencia->execute();
+        $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
         foreach($data as $row){
@@ -43,7 +43,7 @@ class ReligionMatriz {
             $this->to_matriz($religion);
         }
 
-        return $result;
+        return $sentencia->rowCount();
     }
 }
 ?>

@@ -1,45 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f48b0c47-2dc8-4324-846f-8ac4dd133127" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/Alumno.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/AlumnoMatriz.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/Apoderado.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/Establecimiento.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/EstablecimientoMatriz.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/GradoRepetido.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/GradoRepetidoMatriz.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/Persona.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controladores/alumno.controlador.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controladores/apoderado.controlador.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controladores/establecimiento.controlador.php" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\establecimientos.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\evaluacion.calendario2.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\evaluacion.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\grados_educacionales.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\horario.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\matricula - copia.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\religiones.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\ubicaciones.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Comuna.php" afterPath="$PROJECT_DIR$/modelos/Comuna.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/ComunaMatriz.php" afterPath="$PROJECT_DIR$/modelos/ComunaMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Direccion.php" afterPath="$PROJECT_DIR$/modelos/Direccion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/GradoEducacionalMatriz.php" afterPath="$PROJECT_DIR$/modelos/GradoEducacionalMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Provincia.php" afterPath="$PROJECT_DIR$/modelos/Provincia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/ProvinciaMatriz.php" afterPath="$PROJECT_DIR$/modelos/ProvinciaMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/RegionMatriz.php" afterPath="$PROJECT_DIR$/modelos/RegionMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/ReligionMatriz.php" afterPath="$PROJECT_DIR$/modelos/ReligionMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/comuna.controlador.php" afterPath="$PROJECT_DIR$/controladores/comuna.controlador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/matricula/formulario.repeticiones.vista.php" afterPath="$PROJECT_DIR$/vistas/matricula/formulario.repeticiones.vista.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/grado_educacional.controlador.php" afterPath="$PROJECT_DIR$/controladores/grado_educacional.controlador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/matricula.js" afterPath="$PROJECT_DIR$/vistas/js/matricula.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/matricula/matricula.vista.php" afterPath="$PROJECT_DIR$/vistas/matricula/matricula.vista.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/provincia.controlador.php" afterPath="$PROJECT_DIR$/controladores/provincia.controlador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/region.controlador.php" afterPath="$PROJECT_DIR$/controladores/region.controlador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/religion.controlador.php" afterPath="$PROJECT_DIR$/controladores/religion.controlador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/validaciones.js" afterPath="$PROJECT_DIR$/vistas/js/validaciones.js" />
+    <list default="true" id="f48b0c47-2dc8-4324-846f-8ac4dd133127" name="Default" comment="v0.35 nuevo comienzo respaldo todo">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ColesContulmo.iws" />
@@ -72,7 +34,7 @@
       <file leaf-file-name="matricula.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vistas/js/matricula.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="627" column="36" selection-start="22779" selection-end="22779" vertical-scroll-proportion="6.623672" vertical-offset="89" max-vertical-offset="6052">
+            <state line="627" column="36" selection-start="22779" selection-end="22779" vertical-scroll-proportion="6.6438355" vertical-offset="89" max-vertical-offset="6052">
               <folding>
                 <element signature="n#!!block;n#crear_furmulario#0" expanded="true" />
                 <element signature="e#4429#10535#0" expanded="true" />
@@ -485,12 +447,16 @@
       <created>1432152209200</created>
       <updated>1432152209200</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="v0.34 nuevo comienzo respaldo todo">
+      <created>1432587607282</created>
+      <updated>1432587607282</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6141079" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264177" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -503,14 +469,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2182285" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2182285" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -941,7 +907,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vistas/js/matricula.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="627" column="36" selection-start="22779" selection-end="22779" vertical-scroll-proportion="6.623672" vertical-offset="89" max-vertical-offset="6052">
+        <state line="627" column="36" selection-start="22779" selection-end="22779" vertical-scroll-proportion="6.6438355" vertical-offset="89" max-vertical-offset="6052">
           <folding>
             <element signature="n#!!block;n#crear_furmulario#0" expanded="true" />
             <element signature="e#4429#10535#0" expanded="true" />

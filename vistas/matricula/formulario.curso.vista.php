@@ -33,7 +33,7 @@ $futuro = date("Y")+1;
             <div class="grilla10 error">&nbsp;</div>
         </div>
         <div class="grilla10 error"></div>
-        <div class="grilla10">Seleccionar Grado</div>
+        <div class="grilla10">Seleccionar Grado<strong>*</strong></div>
         <div class="grilla10">
             <select name="id_grado" id="id_grado" disabled="disabled">
                 <option value="0">Seleccione Grado</option>
@@ -41,10 +41,10 @@ $futuro = date("Y")+1;
             <div class="grilla10 error">&nbsp;</div>
         </div>
         <div class="grilla10 error"></div>
-        <div class="grilla10">Seleccionar Grupo</div>
+        <div class="grilla10">Seleccionar Grupo Curso</div>
         <div class="grilla10">
-            <select name="grupo" id="grupo" disabled="disabled">
-                <option value="0">Seleccione Grupo</option>
+            <select name="id_curso" id="id_curso" disabled="disabled">
+                <option value="0">Seleccione Grupo Curso</option>
             </select></div>
         <div class="grilla10 error">&nbsp;</div>
         <div class="grilla10 error"></div>

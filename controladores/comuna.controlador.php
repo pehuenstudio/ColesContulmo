@@ -8,15 +8,16 @@ $id_funcion = $_POST["id_funcion"];
 
 switch($id_funcion){
     case "1":
-        $id_provincia = $_POST["id_provincia"];
-        get_comunas_by_id_provincia($id_provincia);
+        get_comunas_by_id_provincia();
         break;
     default:
         break;
     
 }
 
-function get_comunas_by_id_provincia($id_provincia){
+function get_comunas_by_id_provincia(){
+    $id_provincia = $_POST["id_provincia"];
+
     $comuna_matriz = new ComunaMatriz();
     if($comuna_matriz->db_get_comunas_by_id_provincia($id_provincia) == "0"){
         $result = array(

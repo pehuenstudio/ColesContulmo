@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/validacion.php";
 //echo __FILE__."<br/>";
 class Direccion {
     private $id_direccion;
@@ -151,9 +152,9 @@ class Direccion {
         if(!$this->validar_id_comuna()){
             $result = false;
         }
-        return $sentencia->rowCount();
+        return $result;
     }
-    //VALIDACIONES INICIO//
+    //VALIDACIONES FIN//
 
     public function db_get_direccion_by_id(){
         global $myPDO;
@@ -170,6 +171,23 @@ class Direccion {
                 $row["sector"],
                 $row["id_comuna"]
             );
+        }
+        return $sentencia->rowCount();
+    }
+
+    public function db_ins_direccion(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL ins_direccion(?,?,?,?,?)");
+        $sentencia->bindParam(1, $this->calle, \PDO::PARAM_STR, 60);
+        $sentencia->bindParam(2, $this->numero, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $this->depto, \PDO::PARAM_STR, 5);
+        $sentencia->bindParam(4, $this->sector, \PDO::PARAM_STR, 60);
+        $sentencia->bindParam(5, $this->id_comuna, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $this->set_id_direccion($row["id_direccion"]);
         }
         return $sentencia->rowCount();
     }

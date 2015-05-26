@@ -177,7 +177,17 @@
         </div>
         <div class="grilla10">Persona Con Quien Vive<strong>*</strong></div>
         <div class="grilla10">
-            <input type="text" name="persona_vive_alumno" id="persona_vive_alumno" placeholder="ej. Con el padre">
+            <input type="text" name="persona_vive_alumno" id="persona_vive_alumno" placeholder="ej. Con el padre" list="persona_vive_lista">
+            <datalist id="persona_vive_lista">
+                <option value="Con la madre">
+                <option value="Con el padre">
+                <option value="Con los padres">
+                <option value="Con la abuela">
+                <option value="Con el abuelo">
+                <option value="Con los abuelos">
+                <option value="Con una hermana">
+                <option value="Con un hermano">
+            </datalist>
             <div class="grilla10 error">&nbsp;</div>
         </div>
   	</div>

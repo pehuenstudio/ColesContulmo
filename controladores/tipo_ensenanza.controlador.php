@@ -2,24 +2,24 @@
 header('Content-Type: text/html; charset=utf-8');
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/ProvinciaMatriz.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/TipoEnsenanzaMatriz.php";
 
 $id_funcion = $_POST["id_funcion"];
 
 switch($id_funcion){
     case "1":
-        get_provincias_by_id_region();
+        get_tipos_ensenanza_by_rbd_establecimiento();
         break;
     default:
         break;
-
+    
 }
 
-function get_provincias_by_id_region(){
-    $id_region = $_POST["id_region"];
+function get_tipos_ensenanza_by_rbd_establecimiento(){
+    $rbd_establecimiento = $_POST["rbd_establecimiento"];
 
-    $provincia_matriz = new ProvinciaMatriz();
-    if($provincia_matriz->db_get_provincias_by_id_region($id_region) == "0"){
+    $matriz_tipo_ensenanza = new TipoEnsenanzaMatriz();
+    if($matriz_tipo_ensenanza->db_get_tipos_ensenanza_by_rbd_establecimiento($rbd_establecimiento) == "0"){
         $result = array(
             "result" => false
         );
@@ -27,8 +27,7 @@ function get_provincias_by_id_region(){
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;
     }
+    print_r($matriz_tipo_ensenanza->to_json());
 
-    print_r($provincia_matriz->to_json());
-    return null;
 }
 ?>

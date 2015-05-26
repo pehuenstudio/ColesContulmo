@@ -11,14 +11,15 @@ $id_funcion = $_POST["id_funcion"];
 
 switch($id_funcion){
     case "1":
-        $run_apoderado = $_POST["run_apoderado"];
-        get_apoderado_by_run($run_apoderado);
+        get_apoderado_by_run();
         break;
     default:
         break;
     
 }
-function get_apoderado_by_run($run_apoderado){
+function get_apoderado_by_run(){
+    $run_apoderado = $_POST["run_apoderado"];
+
     $apoderado = new Apoderado();
     $apoderado->set_run($run_apoderado);
 

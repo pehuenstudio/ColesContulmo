@@ -12,15 +12,24 @@ $id_funcion = $_POST["id_funcion"];
 
 switch($id_funcion){
     case "1":
-        $run_alumno = $_POST["run_alumno"];
-        get_alumno_by_run($run_alumno);
+        get_alumno_by_run();
+        break;
+    case "2":
+        //print_r($_POST);
+        if(con_alumno_by_run() > "0"){
+            upd_alumno();
+        }else{
+            echo "ins";
+        }
+        $id_direccion = ins_direccion();
         break;
     default:
         break;
     
 }
-function get_alumno_by_run($run_alumno){
-    $result = true;
+function get_alumno_by_run(){
+    $run_alumno = $_POST["run_alumno"];
+
     $alumno = new Alumno();
     $alumno->set_run($run_alumno);
     if($alumno->db_get_alumno_by_run() == "0"){
@@ -66,6 +75,83 @@ function get_alumno_by_run($run_alumno){
 
     print_r(json_encode($matriz_alumno, JSON_UNESCAPED_UNICODE));
 
-    return null;
+
 }
+
+function con_alumno_by_run(){
+    $run_alumno = $_POST["run_alumno"];
+
+    $alumno = new Alumno();
+    $alumno->set_run($run_alumno);
+
+    $con = $alumno->db_get_alumno_by_run();
+    return $con;
+}
+
+function upd_alumno(){
+    $alumno = new Alumno();
+
+    $run_alumno = $_POST["run_alumno"];
+    $nombre1 = $_POST["nombre1_alumno"];
+    $nombre2 = $_POST["nombre2_alumno"];
+    $apellido1 = $_POST["apellido1_alumno"];
+    $apellido2 = $_POST["apellido2_alumno"];
+    $sexo = $_POST["sexo_alumno"];
+    //$id_direccion = $_POST["id_direccion_alumno"];
+    $email = $_POST["email_alumno"];
+    $fecha_nacimiento = $_POST["fecha_nacimiento_alumno"];
+    $pde = $_POST["pde"];
+    $id_religion = $_POST["id_religion_alumno"];
+    $grado_educacional_padre = $_POST["grado_educacional_padre"];
+    $grado_educacional_madre = $_POST["grado_educacional_madre"];
+    $persona_vive = $_POST["persona_vive_alumno"];
+
+    $alumno->set_identidad(
+        $run_alumno,
+        $nombre1,
+        $nombre2,
+        $apellido1,
+        $apellido2,
+        $sexo,
+        null,
+        $email
+    );
+
+
+    $alumno->set_fecha_nacimiento($fecha_nacimiento);
+    $alumno->set_pde($pde);
+    $alumno->set_id_religion($id_religion);
+    $alumno->set_grado_educacional_padre($grado_educacional_padre);
+    $alumno->set_grado_educacional_madre($grado_educacional_madre);
+    $alumno->set_persona_vive($persona_vive);
+
+    if(!$alumno->validar()){
+        $result = array("result" => false);
+    }
+
+    $alumno->db_upd_alumno();
+
+    $result = array("result" => true);
+    print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+}
+
+function ins_direccion(){
+    $calle = $_POST["calle_alumno"];
+    $numero = $_POST["numero_alumno"];
+    $depto = $_POST["depto_alumno"];
+    $sector = $_POST["sector_alumno"];
+    $id_comuna = $_POST["id_comuna_alumno"];
+
+    $direccion = new Direccion();
+    $direccion->set_identidad(
+        $calle,
+        $numero,
+        $depto,
+        $sector,$id_comuna
+    );
+    $direccion->validar();
+    $direccion->db_ins_direccion();
+    return $direccion->db_ins_direccion();
+}
+
 ?>

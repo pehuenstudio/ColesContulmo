@@ -25,15 +25,28 @@
         height: 25px !important;
 
     }
-    .exito{
+    table#contenedor_resultado .exito{
         color: #75A362;
         font-style: italic;
-
+        font-size: larger;
     }
 
-    .warning{
+    table#contenedor_resultado .error{
+        color: #D4555E;
+        font-style: italic;
+        font-size: larger;
+    }
+
+    table#contenedor_resultado .warning{
         color: #F8AE0D;
         font-style: italic;
+        font-size: larger;
+    }
+    table#contenedor_resultado td{
+         padding-top: 5px;
+     }
+    table#contenedor_resultado .last td{
+        padding-bottom: 5px;
     }
     table#contenedor_resultado td, table#contenedor_resultado tr{
         height: 30px !important;
@@ -50,9 +63,7 @@
         width: 225px;
         text-align: center;
     }
-    table#contenedor_resultado td.label2 img{
 
-    }
 
 
 </style>
@@ -101,7 +112,7 @@
         <div class="grilla10 label">Grado y Grupo</div>
         <div class="grilla10"><p class="resumen" id="resumen_grado_grupo"></p></div>
         <div class="grilla10">&nbsp;</div>
-        <hr>
+
         <h3>
             Cuadro De Resultados De Ingreso
         </h3>
@@ -109,28 +120,27 @@
         <table id="contenedor_resultado">
             <tr>
                 <td class="label1" id="load_ingreso_alumno_label">&nbsp;</td>
-                <td class="label2" id="load_ingreso_alumno">&nbsp;</td>
+                <td class="label2" id="load_ingreso_alumno"></td>
                 <td class="label3" id="msg_ingreso_alumno">&nbsp;</td>
             </tr>
             <tr>
                 <td class="label1" id="load_ingreso_sistema1_label">&nbsp;</td>
-                <td id="load_ingreso_sistema1">&nbsp;</td>
+                <td id="load_ingreso_sistema1"></td>
                 <td id="msg_ingreso_sistema1">&nbsp;</td>
             </tr>
             <tr>
                 <td class="label1" id="load_ingreso_apoderado_label">&nbsp;</td>
-                <td id="load_ingreso_apoderado">&nbsp;</td>
+                <td id="load_ingreso_apoderado"></td>
                 <td id="msg_ingreso_apoderado">&nbsp;</td>
             </tr>
-
             <tr>
                 <td class="label1" id="load_ingreso_sistema2_label">&nbsp;</td>
-                <td id="load_ingreso_sistema2">&nbsp;</td>
+                <td id="load_ingreso_sistema2"></td>
                 <td id="msg_ingreso_sistema2">&nbsp;</td>
             </tr>
-            <tr>
+            <tr class="last">
                 <td class="label1" id="load_ingreso_matricula_label">&nbsp;</td>
-                <td id="load_ingreso_matricula">&nbsp;</td>
+                <td id="load_ingreso_matricula"></td>
                 <td id="msg_ingreso_matricula">&nbsp;</td>
             </tr>
         </table>

@@ -81,7 +81,7 @@ class Direccion {
     public function validar_calle(){
         global $v;
         if(!$v->validar_texto($this->calle,3,60)){
-            //echo ERRORCITO.CLASE_DIRECCION."DIRECCION CALLE VACIA O MUY LARGO <br/>";
+            ////echo ERRORCITO.CLASE_DIRECCION."DIRECCION CALLE VACIA O MUY LARGO <br/>";
             $this->calle = null;
             return false;
         }
@@ -92,7 +92,7 @@ class Direccion {
     public function validar_numero(){
         global $v;
         if(!$v->validar_formato_numero($this->numero,2,4)){
-            //echo ERRORCITO.CLASE_DIRECCION." DIRECCION NUMERO NO ES NUMERO O ES MUY CORTO O MUY LARGO<br/>";
+            ////echo ERRORCITO.CLASE_DIRECCION." DIRECCION NUMERO NO ES NUMERO O ES MUY CORTO O MUY LARGO<br/>";
             $this->numero = null;
             return faLse;
         }
@@ -106,7 +106,7 @@ class Direccion {
             return true;
         }
         if(!$v->validar_formato_numero_texto($this->depto,3,5)){
-            //echo ERRORCITO.CLASE_DIRECCION."DIRECCION DEPTO TIENE CARACTERES NO PERMITIDOS<br/>";
+            ////echo ERRORCITO.CLASE_DIRECCION."DIRECCION DEPTO TIENE CARACTERES NO PERMITIDOS<br/>";
             $this->depto = NULL;
             return false;
         }
@@ -116,7 +116,7 @@ class Direccion {
     public function validar_sector(){
         global $v;
         if(!$v->validar_texto($this->sector,3,60)){
-            //echo ERRORCITO.CLASE_DIRECCION."DIRECCION SECTOR ES MUY CORTO O MUY LARGO<br/>";
+            ////echo ERRORCITO.CLASE_DIRECCION."DIRECCION SECTOR ES MUY CORTO O MUY LARGO<br/>";
             $this->sector = null;
             return false;
         }
@@ -127,7 +127,7 @@ class Direccion {
     public function validar_id_comuna(){
         global $v;
         if(!$v->validar_formato_numero($this->id_comuna,1,5)){
-            //echo ERRORCITO.CLASE_DIRECCION."DIRECCION ID NO ES NUMERO<br/>";
+            ////echo ERRORCITO.CLASE_DIRECCION."DIRECCION ID NO ES NUMERO<br/>";
             $this->id_comuna = null;
             return FALSE;
         }
@@ -190,6 +190,20 @@ class Direccion {
             $this->set_id_direccion($row["id_direccion"]);
         }
         return $sentencia->rowCount();
+    }
+
+    public function db_upd_direccion_by_id(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL upd_direccion_by_id(?,?,?,?,?,?)");
+        $sentencia->bindParam(1, $this->id_direccion, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $this->calle, \PDO::PARAM_STR, 60);
+        $sentencia->bindParam(3, $this->numero, \PDO::PARAM_INT);
+        $sentencia->bindParam(4, $this->depto, \PDO::PARAM_STR, 5);
+        $sentencia->bindParam(5, $this->sector, \PDO::PARAM_STR, 60);
+        $sentencia->bindParam(6, $this->id_comuna, \PDO::PARAM_INT);
+        $result = $sentencia->execute();
+
+        return $result;
     }
 }
 ?> 

@@ -412,20 +412,21 @@
     </procedure>
     <procedure name="ins_alumno" schema="" catalog="coles_data" type="1">
       <prototype>
-        <parameter name="in_nombre1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="1"/>
-        <parameter name="in_nombre2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="2"/>
-        <parameter name="in_apellido1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="3"/>
-        <parameter name="in_apellido2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="4"/>
-        <parameter name="in_sexo" sqlType="VARCHAR " length="1" precision="1" nullable="true" jdbcType="1111" type="1" index="5"/>
-        <parameter name="in_fecha_nacimiento" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="6"/>
-        <parameter name="in_pde" sqlType="BOOL" length="0" precision="0" nullable="true" jdbcType="1111" type="1" index="7"/>
-        <parameter name="in_id_direccion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="8"/>
-        <parameter name="in_id_religion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="9"/>
-        <parameter name="in_grado_educacional_madre" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="10"/>
-        <parameter name="in_grado_educacional_padre" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="11"/>
-        <parameter name="in_persona_vive" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="12"/>
-        <parameter name="in_avatar" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="13"/>
-        <parameter name="in_email" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="14"/>
+        <parameter name="in_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="in_nombre1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="2"/>
+        <parameter name="in_nombre2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="3"/>
+        <parameter name="in_apellido1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="4"/>
+        <parameter name="in_apellido2" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="5"/>
+        <parameter name="in_sexo" sqlType="VARCHAR " length="1" precision="1" nullable="true" jdbcType="1111" type="1" index="6"/>
+        <parameter name="in_fecha_nacimiento" sqlType="DATE" length="10" precision="10" nullable="true" jdbcType="91" type="1" index="7"/>
+        <parameter name="in_pde" sqlType="BOOL" length="0" precision="0" nullable="true" jdbcType="1111" type="1" index="8"/>
+        <parameter name="in_id_direccion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="9"/>
+        <parameter name="in_id_religion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="10"/>
+        <parameter name="in_grado_educacional_madre" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="11"/>
+        <parameter name="in_grado_educacional_padre" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="12"/>
+        <parameter name="in_persona_vive" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="13"/>
+        <parameter name="in_avatar" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="14"/>
+        <parameter name="in_email" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="15"/>
       </prototype>
     </procedure>
     <procedure name="ins_direccion" schema="" catalog="coles_data" type="1">
@@ -437,7 +438,13 @@
         <parameter name="in_id_comuna" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="5"/>
       </prototype>
     </procedure>
-    <procedure name="upd_alumno" schema="" catalog="coles_data" type="1">
+    <procedure name="upd_alumno_avatar_by_run" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="in_avatar" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="upd_alumno_by_run" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="in_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
         <parameter name="in_nombre1" sqlType="VARCHAR " length="45" precision="45" nullable="true" jdbcType="1111" type="1" index="2"/>
@@ -452,6 +459,16 @@
         <parameter name="in_grado_educacional_padre" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="11"/>
         <parameter name="in_persona_vive" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="12"/>
         <parameter name="in_email" sqlType="VARCHAR " length="100" precision="100" nullable="true" jdbcType="1111" type="1" index="13"/>
+      </prototype>
+    </procedure>
+    <procedure name="upd_direccion_by_id" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_id_direccion" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="in_calle" sqlType="VARCHAR " length="60" precision="60" nullable="true" jdbcType="1111" type="1" index="2"/>
+        <parameter name="in_numero" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="in_depto" sqlType="VARCHAR " length="5" precision="5" nullable="true" jdbcType="1111" type="1" index="4"/>
+        <parameter name="in_sector" sqlType="VARCHAR " length="60" precision="60" nullable="true" jdbcType="1111" type="1" index="5"/>
+        <parameter name="in_id_comuna" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="6"/>
       </prototype>
     </procedure>
   </data-source>

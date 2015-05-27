@@ -1,3 +1,17 @@
+window.onunload = unloadPage("hola");
+function unloadPage(txt)
+{
+
+    var myEvent = window.attachEvent || window.addEventListener;
+    var chkevent = window.attachEvent ? 'onbeforeunload' : 'beforeunload'; /// make IE7, IE8 compatable
+
+    myEvent(chkevent, function(e) { // For >=IE7, Chrome, Firefox
+        var confirmationMessage = 'Si abandona este MÓDULO sin INGRESAR la matricula los datos se perderán.';  // a space
+        (e || window.event).returnValue = confirmationMessage;
+        return confirmationMessage;
+    });
+    return false;
+}
 jQuery(document).ready(function(){
     var contenedor_alumno = "#contenedor_alumno";
     var contenedor_apoderado = "#contenedor_apoderado";
@@ -53,6 +67,9 @@ jQuery(document).ready(function(){
 
     jQuery("#run_alumno").focusout(function(){
         var run_alumno = jQuery(this).val();
+        run_alumno = run_alumno.replace(/\./g,"");
+        run_alumno = run_alumno.replace(/\-/g,"");
+
         get_alumno(run_alumno, contenedor_alumno);
     });
 
@@ -226,7 +243,7 @@ function crear_furmulario(){
             previous: "Atras",
             loading: "Procesando ..."
         },
-        transitionEffect: $.fn.steps.transitionEffect.slide,
+        transitionEffect: jQuery.fn.steps.transitionEffect.slide,
         transitionEffectSpeed: 200,
         onStepChanging: function (event, currentIndex, newIndex) {
             switch (newIndex){
@@ -571,6 +588,7 @@ function get_alumno(run_alumno, contenedor){
             jQuery("#fecha_nacimiento_alumno").val(data.fecha_nacimiento);
             jQuery("#email_alumno").val(data.email);
             jQuery("#avatar_alumno_preview").attr("src", "/_avatars/"+data.avatar);
+            jQuery("#id_direccion_alumno").val(data.id_direccion);
             jQuery("#calle_alumno").val(data.calle);
             jQuery("#numero_alumno").val(data.numero);
             jQuery("#depto_alumno").val(data.depto);
@@ -835,17 +853,14 @@ function ins_alumno(formData){
         cache: false,
         processData: false,
         beforeSend: function(){
-            jQuery("#load_ingreso_alumno").html("<img class='load2' src='/_code/vistas/img/load2.gif'>");
-            jQuery("#load_ingreso_alumno_label").text("Validando datos de alumno…");
+            load_matricula_on("#load_ingreso_alumno", "#load_ingreso_alumno_label", "Validando datos alumno...")
         }
     })
         .done(function(data){
             console.log(data);
             var data = jQuery.parseJSON(data);
-            if(data.result == false){
-                mostrar_dialogo(0,"El proceso de matricula ha fallado.");
-                return false;
-            }/*
+
+            /*
             jQuery.each(data, function(i, value){
                 jQuery(select)
                     .append(jQuery("<option></option>")
@@ -853,13 +868,7 @@ function ins_alumno(formData){
                         .text("Grupo " + data[i].grupo));
             });*/
             setTimeout(function(){
-                jQuery("#load_ingreso_sistema1").html("<img class='load2' src="+icon+">");
-                jQuery("#msg_ingreso_sistema1").removeClass()
-                    .addClass(clase)
-                    .html(msg);
-                jQuery("#load_ingreso_apoderado_label").text("Validando datos de apoderado…");
-                jQuery("#load_ingreso_apoderado").html("<img class='load2' src='/_code/vistas/img/load2.gif'>");
-
+                load_matricula_off("#load_ingreso_alumno", "#msg_ingreso_alumno", data.msg, data.result);
             },2000);
         })
         .fail(function(){
@@ -871,8 +880,27 @@ function ins_alumno(formData){
     ;
 }
 
+
+
+function validar_grados_repetidos(){
+    var result = true;
+    jQuery("#grados_repetidos_cantidad input[type=text]").each(function(){
+        if(!validar_numeroMinMax2(jQuery(this),0,2)){
+            result = false;
+        }
+    });
+    if(!result){
+        jQuery("#error_cantidad").html("<p>Ingrese cantidades validas</p>");
+        return result;
+    }
+    jQuery("#error_cantidad").html("&nbsp;");
+    return result;
+}
+
+
 function validar_alumno(){
     var result = true;
+    /*
     if(!validar_run(jQuery("#run_alumno"))){ console.log("run alumno inválido"); result = false; }
     if(!validar_textoMinMax(jQuery("#nombre1_alumno"),3,45,"Ingrese un nombre válido")){ console.log("nombre1 alumno inválido"); result = false; }
     if(!validar_textoMinMax(jQuery("#nombre2_alumno"),3,45,"Ingrese un nombre válido")){ console.log("nombre2 alumno inválido"); result = false; }
@@ -896,24 +924,9 @@ function validar_alumno(){
     if(!validar_textoMinMax(jQuery("#establecimiento_procedencia"),3,60,"Ingrese un establecimiento válido")){result = false}
     if(!validar_grados_repetidos()){result = false};
     if(!validar_imagen_extencion(jQuery("#avatar_alumno"),"Ingrese una imagen valida")){ result = false;}
+    */
     return result;
 }
-
-function validar_grados_repetidos(){
-    var result = true;
-    jQuery("#grados_repetidos_cantidad input[type=text]").each(function(){
-        if(!validar_numeroMinMax2(jQuery(this),0,2)){
-            result = false;
-        }
-    });
-    if(!result){
-        jQuery("#error_cantidad").html("<p>Ingrese cantidades validas</p>");
-        return result;
-    }
-    jQuery("#error_cantidad").html("&nbsp;");
-    return result;
-}
-
 function validar_apoderado(){
     var result = true;
     if (!validar_run(jQuery("#run_apoderado"))){ console.log("run alumno inválido"); result = false; }
@@ -956,4 +969,40 @@ function readURL(input,preview) {
 
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+function load_matricula_on(load, label, msg){
+    jQuery(load).html(
+        jQuery("<img>")
+            .attr("src","/_code/vistas/img/load4.gif")
+            .css({"width":"220px","height":"24px"})
+    );
+    jQuery(label).text(msg);
+}
+
+function load_matricula_off(load, label, msg, result){
+    switch (result){
+        case '1':
+            icon = '/_code/vistas/img/no-ok.png';
+            clase = "error";
+            break;
+        case '2':
+            icon = '/_code/vistas/img/warning.png';
+            clase = "warning";
+            resultado = true;
+            break;
+        case '3':
+            icon = '/_code/vistas/img/ok.png';
+            clase = "exito";
+            resultado = true;
+            break;
+    }
+    jQuery(load).find("img")
+        .attr("src",icon)
+        .css({"width":"25px","height":"25px"})
+    ;
+    jQuery(label)
+        .removeClass()
+        .addClass(clase)
+        .text(msg);
 }

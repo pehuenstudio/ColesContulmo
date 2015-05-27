@@ -103,14 +103,14 @@ class Persona {
 
         //VERIFICAR LONGITUD DEL NUMERO
         if(!$v->validar_formato_run($this->run)){
-            echo ERRORCITO.CLASE_PERSONA."RUN DEMASIADO LARGO O DEMASIADO CORTO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."RUN DEMASIADO LARGO O DEMASIADO CORTO<br/>";
             $this->run = null;
             return false;
         }
 
         //VALIDAR DIGITO VERIFICADOR
         if(!$v->validar_digito_run($this->run)){
-            echo ERRORCITO.CLASE_PERSONA. "RUN DIGITO VERIFICADOR NO COINCIDE CON NUMERO <br/>";
+            //echo ERRORCITO.CLASE_PERSONA. "RUN DIGITO VERIFICADOR NO COINCIDE CON NUMERO <br/>";
             $this->run = null;
             return false;
         }
@@ -123,7 +123,7 @@ class Persona {
     public function validar_nombre1(){
         global $v;
         if(!$v->validar_texto($this->nombre1,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."EL NOMBRE1 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."EL NOMBRE1 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->nombre1 = null;
             return false;
         }
@@ -134,7 +134,7 @@ class Persona {
     public function validar_nombre2(){
         global $v;
         if(!$v->validar_texto($this->nombre2,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."NOMBRE2 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."NOMBRE2 CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->nombre2 = null;
             return false;
         }
@@ -145,7 +145,7 @@ class Persona {
     public function validar_apellido1(){
         global $v;
         if(!$v->validar_texto($this->apellido1,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."APELLIDO1 ".$this->apellido1." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO ".$this->apellido1."<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."APELLIDO1 ".$this->apellido1." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO ".$this->apellido1."<br/>";
             $this->apellido1 = null;
             return false;
         }
@@ -156,7 +156,7 @@ class Persona {
     public function validar_apellido2(){
         global $v;
         if(!$v->validar_texto($this->apellido2,3,45)){
-            echo ERRORCITO.CLASE_PERSONA."APELLIDO2 ".$this->apellido2." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA."APELLIDO2 ".$this->apellido2." CONTIENE CARACTERES NO PERMITIDOS O ES MUY CORTO O MUY LARGO<br/>";
             $this->apellido2 = null;
             return false;
         }
@@ -168,7 +168,7 @@ class Persona {
         global $v;
         //$this->sexo = strtoupper($this->sexo);
         if(!$v->validar_formato_sexo($this->sexo)){
-            echo ERRORCITO.CLASE_PERSONA." SEXO NO INGRESADO O NO ES VALIDO<br/>";
+            //echo ERRORCITO.CLASE_PERSONA." SEXO NO INGRESADO O NO ES VALIDO<br/>";
             $this->sexo = null;
             return false;
         }
@@ -178,7 +178,7 @@ class Persona {
     public function validar_email(){
         global $v;
         if(!$v->validar_formato_email($this->email)){
-            echo ERRORCITO.CLASE_PERSONA. " EMAIL ".$this->email." INGRESADO INCORRECTAMENTE <br/>";
+            //echo ERRORCITO.CLASE_PERSONA. " EMAIL ".$this->email." INGRESADO INCORRECTAMENTE <br/>";
             $this->email = null;
             return false;
         }
@@ -214,14 +214,13 @@ class Persona {
         return $return;
     }
 
-    public function set_identidad($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $id_direccion, $email) {
+    public function set_identidad($run, $nombre1, $nombre2, $apellido1, $apellido2, $sexo, $email) {
         $this->set_run($run);
         $this->set_nombre1($nombre1);
         $this->set_nombre2($nombre2);
         $this->set_apellido1($apellido1);
         $this->set_apellido2($apellido2);
         $this->set_sexo($sexo);
-        $this->set_id_direccion($id_direccion);
         $this->set_email($email);
     }
 

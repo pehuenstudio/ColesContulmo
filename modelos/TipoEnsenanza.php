@@ -36,5 +36,19 @@ class TipoEnsenanza {
         $this->set_nombre($nombre);
     }
 
+    public function db_get_tipo_ensenanza_by_id(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_tipo_ensenanza_by_id(?)");
+        $sentencia->bindParam(1, $this->id_tipo_ensenanza, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $this->set_identidad($row["nombre"]);
+        }
+
+        return $sentencia->rowCount();
+    }
+
 }
 ?> 

@@ -77,6 +77,57 @@ class Curso {
         return $this->run_profesor_jefe;
     }
 
+    function validar_rbd_establecimiento(){
+        global $v;
+        if(!$v->validar_formato_numero($this->rbd_establecimiento,1,6)){
+            ////echo ERRORCITO.CLASE_CURSO. "RBD ESTABLECIMIENTO INGRESADO INCORRECTAMENTE <br/>";
+            $this->rbd_establecimiento = null;
+            return false;
+        }
+        //echo INFO.CLASE_CURSO. "RBD ESTABLECIMIENTO INGRESADO CORRECTAMENTE <br/>";
+        return true;
+    }
+    function validar_id_grado(){
+        global $v;
+        if(!$v->validar_formato_numero($this->id_grado,0,3)){
+            ////echo ERRORCITO.CLASE_CURSO. "ID GRADO INGRESADO INCORRECTAMENTE <br/>";
+            $this->id_grado = null;
+            return false;
+        }
+        //echo INFO.CLASE_CURSO. "ID GRADO INGRESADO CORRECTAMENTE <br/>";
+        return true;
+    }
+    function validar_id_tipo_ensenanza(){
+        global $v;
+        if(!$v->validar_formato_numero($this->id_tipo_ensenanza,0,5)){
+            ////echo ERRORCITO.CLASE_CURSO. "ID TIPO DE ENSENANZA INGRESADO INCORRECTAMENTE <br/>";
+            $this->id_tipo_ensenanza = null;
+            return false;
+        }
+        //echo INFO.CLASE_CURSO. "ID TIPO DE ENSENANZA CORRECTAMENTE <br/>";
+        return true;
+    }
+    function validar_grupo(){
+        global $v;
+        if(!$v->validar_texto($this->grupo,0,2)){
+            ////echo ERRORCITO.CLASE_CURSO. "GRUPO INGRESADO INCORRECTAMENTE <br/>";
+            $this->grupo = null;
+            return false;
+        }
+        //echo INFO.CLASE_CURSO. "GRUPO ENSENANZA CORRECTAMENTE <br/>";
+        return true;
+    }
+    public function validar(){
+        $result = true;
+
+        if(!$this->validar_rbd_establecimiento()){$result = false;}
+        if(!$this->validar_id_grado()){$result = false;}
+        if(!$this->validar_id_tipo_ensenanza()){$result = false;}
+        if(!$this->validar_grupo()){$result = false;}
+
+        return $result;
+    }
+
     public function set_identidad($rbd_establecimiento, $run_profesor_jefe, $id_grado,
                                   $id_tipo_ensenanza, $id_ciclo, $grupo){
 
@@ -88,7 +139,56 @@ class Curso {
         $this->grupo = $grupo;
     }
 
+    public function db_get_curso_by_rbd_esta_and_id_tipo_ense_and_id_grado_and_grupo(){
+        global $myPDO;
+        print_r($this);
+        $sentencia = $myPDO->prepare("CALL get_curso_by_rbd_esta_and_id_tipo_ense_and_id_grado_and_grupo(?,?,?,?)");
+        $sentencia->bindParam(1, $this->rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $this->id_tipo_ensenanza, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $this->id_grado, \PDO::PARAM_INT);
+        $sentencia->bindParam(4, $this->grupo, \PDO::PARAM_STR,1);
+        $sentencia->execute();
 
+        $data = $sentencia->fetchAll(0);
+        //print_r($data);
+        foreach($data as $row){
+            $this->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["run_profesor_jefe"],
+                $row["id_grado"],
+                $row["id_tipo_ensenanza"],
+                $row["id_ciclo"],
+                $row["grupo"]
+            );
+            $this->set_id_curso($row["id_curso"]);
+        }
+
+        return $sentencia->rowCount();
+    }
+
+    public function db_get_curso_by_id(){
+        global $myPDO;
+
+        $sentencia = $myPDO->prepare("CALL get_curso_by_id(?)");
+        $sentencia->bindParam(1, $this->id_curso, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        //print_r($data);
+        foreach($data as $row){
+            $this->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["run_profesor_jefe"],
+                $row["id_grado"],
+                $row["id_tipo_ensenanza"],
+                $row["id_ciclo"],
+                $row["grupo"]
+            );
+
+        }
+
+        return $sentencia->rowCount();
+    }
 
 
 }

@@ -316,7 +316,7 @@ class Alumno extends Persona{
         $avatar = $this->get_avatar();
 
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL ins_alumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $sentencia = $myPDO->prepare("CALL ins_alumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $sentencia->bindParam(1, $run_alumno, \PDO::PARAM_STR, 9);
         $sentencia->bindParam(2, $nombre1, \PDO::PARAM_STR, 45);
         $sentencia->bindParam(3, $nombre2, \PDO::PARAM_STR, 45);
@@ -330,8 +330,7 @@ class Alumno extends Persona{
         $sentencia->bindParam(11, $this->grado_educacional_madre, \PDO::PARAM_INT);
         $sentencia->bindParam(12, $this->grado_educacional_padre, \PDO::PARAM_INT);
         $sentencia->bindParam(13, $this->persona_vive, \PDO::PARAM_STR, 100);
-        $sentencia->bindParam(14, $avatar, \PDO::PARAM_STR, 100);
-        $sentencia->bindParam(15, $email, \PDO::PARAM_STR, 100);
+        $sentencia->bindParam(14, $email, \PDO::PARAM_STR, 100);
         $result = $sentencia->execute();
 
         return $result;

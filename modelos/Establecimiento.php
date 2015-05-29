@@ -57,6 +57,23 @@ class Establecimiento {
         $this->set_id_direccion($id_direccion);
     }
 
+    public function db_get_establecimiento_by_rbd(){
+        global $myPDO;
 
+        $sentencia = $myPDO->prepare("CALL get_establecimiento_by_rbd(?)");
+        $sentencia->bindParam(1, $this->rbd_establecimiento, PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $this->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["nombre"],
+                $row["telefono"],
+                $row["id_direccion"]
+            );
+
+        }
+    }
 }
 ?> 

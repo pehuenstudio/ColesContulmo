@@ -351,19 +351,9 @@ function crear_furmulario(){
         onFinished: function (event, currentIndex) {
             var form = document.getElementById("formulario");
             var formData = new FormData(form);
-            var result = true;
 
-            if(!ins_alumno(formData)){result = false}
-            /*if(!ingresar_alumno_sistema(formData)){result = false}
-            if(!ingresar_apoderado(formData)){result = false}
-            if(!ingresar_apoderado_sistema(formData)){result = false}
-            if(result){
-                if(!ingresar_matricula(formData)){result = false}
-            }*/
+            ins_alumno(formData);
 
-           /* if(!result){
-                mostrar_dialogo(0,"El proceso de matricula ha fallado.");
-            }*/
         }
     });
 
@@ -670,6 +660,7 @@ function get_apoderado(run_apoderado, contenedor){
             jQuery("#avatar_apoderado_preview").attr("src", "/_avatars/"+data.avatar);
             jQuery("#telefono_fijo_apoderado").val(data.telefono_fijo);
             jQuery("#telefono_celular_apoderado").val(data.telefono_celular);
+            jQuery("#id_direccion_apoderado").val(data.id_direccion);
             jQuery("#calle_apoderado").val(data.calle);
             jQuery("#numero_apoderado").val(data.numero);
             jQuery("#depto_apoderado").val(data.depto);
@@ -828,7 +819,7 @@ function get_cursos(select, contenedor, rbd_establecimiento, id_tipo_ensenanza, 
             jQuery.each(data, function(i, value){
                 jQuery(select)
                     .append(jQuery("<option></option>")
-                        .val(data[i].grupo)
+                        .val(data[i].id_curso)
                         .text("Grupo " + data[i].grupo));
             });
 
@@ -853,23 +844,17 @@ function ins_alumno(formData){
         cache: false,
         processData: false,
         beforeSend: function(){
-            load_matricula_on("#load_ingreso_alumno", "#load_ingreso_alumno_label", "Validando datos alumno...")
+            load_matricula_on("#load_ingreso_alumno", "#load_ingreso_alumno_label", "Validando datos del alumno...")
         }
     })
         .done(function(data){
-            console.log(data);
+            //console.log(data);
             var data = jQuery.parseJSON(data);
-
-            /*
-            jQuery.each(data, function(i, value){
-                jQuery(select)
-                    .append(jQuery("<option></option>")
-                        .val(data[i].grupo)
-                        .text("Grupo " + data[i].grupo));
-            });*/
             setTimeout(function(){
                 load_matricula_off("#load_ingreso_alumno", "#msg_ingreso_alumno", data.msg, data.result);
-            },2000);
+            },500);
+            if(data.result == "1"){return null}
+            setTimeout(function(){ins_alumno_joomla(formData)},500);
         })
         .fail(function(){
             alert("ERROR");
@@ -879,6 +864,134 @@ function ins_alumno(formData){
         })
     ;
 }
+
+function ins_alumno_joomla(formData){
+    console.log("Ingresando alumno en joomla...");
+    formData.append("id_funcion", "3");
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/alumno.controlador.php",
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function(){
+            load_matricula_on("#load_ingreso_sistema1", "#load_ingreso_sistema1_label", "Ingresando datos del alumno...")
+        }
+    })
+        .done(function(data){
+            //console.log(data);
+            var data = jQuery.parseJSON(data);
+            setTimeout(function(){
+                load_matricula_off("#load_ingreso_sistema1", "#msg_ingreso_sistema1", data.msg, data.result);
+            },500);
+            if(data.result == "1"){return null}
+            setTimeout(function(){ins_apoderado(formData)},500);
+        })
+        .fail(function(){
+            alert("ERROR");
+        })
+        .always(function(){
+            setTimeout(function(){load_off();}, 500);
+        })
+    ;
+}
+
+function ins_apoderado(formData){
+    console.log("Ingresando apoderado...");
+    formData.append("id_funcion", "2");
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/apoderado.controlador.php",
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function(){
+            load_matricula_on("#load_ingreso_apoderado", "#load_ingreso_apoderado_label", "Validando datos del apoderado...")
+        }
+    })
+        .done(function(data){
+            //console.log(data);
+            var data = jQuery.parseJSON(data);
+            setTimeout(function(){
+                load_matricula_off("#load_ingreso_apoderado", "#msg_ingreso_apoderado", data.msg, data.result);
+            },500);
+            if(data.result == "1"){return null}
+            setTimeout(function(){ins_apoderado_joomla(formData)},500);
+        })
+        .fail(function(){
+            alert("ERROR");
+        })
+        .always(function(){
+            setTimeout(function(){load_off();}, 500);
+        })
+    ;
+}
+
+function ins_apoderado_joomla(formData){
+    console.log("Ingresando apoderado en joomla...");
+    formData.append("id_funcion", "3");
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/apoderado.controlador.php",
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function(){
+            load_matricula_on("#load_ingreso_sistema2", "#load_ingreso_sistema2_label", "Ingresando datos del apoderado...")
+        }
+    })
+        .done(function(data){
+            //console.log(data);
+            var data = jQuery.parseJSON(data);
+            setTimeout(function(){
+                load_matricula_off("#load_ingreso_sistema2", "#msg_ingreso_sistema2", data.msg, data.result);
+            },500);
+            if(data.result == "1"){return null}
+            setTimeout(function(){ins_matricula(formData)},500);
+        })
+        .fail(function(){
+            alert("ERROR");
+        })
+        .always(function(){
+            setTimeout(function(){load_off();}, 500);
+        })
+    ;
+}
+
+function ins_matricula(formData){
+    console.log("Ingresando apoderado en joomla...");
+    formData.append("id_funcion", "1");
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/matricula.controlador.php",
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function(){
+            load_matricula_on("#load_ingreso_matricula", "#load_ingreso_matricula_label", "Ingresando matricula...")
+        }
+    })
+        .done(function(data){
+            console.log(data);
+            var data = jQuery.parseJSON(data);
+            setTimeout(function(){
+                load_matricula_off("#load_ingreso_matricula", "#msg_ingreso_matricula", data.msg, data.result);
+            },500);
+            setTimeout(function(){mostrar_dialogo(data.result, data.msg)},500);
+        })
+        .fail(function(){
+            alert("ERROR");
+        })
+        .always(function(){
+            setTimeout(function(){load_off();}, 500);
+        })
+    ;
+}
+
 
 
 
@@ -900,7 +1013,7 @@ function validar_grados_repetidos(){
 
 function validar_alumno(){
     var result = true;
-    /*
+
     if(!validar_run(jQuery("#run_alumno"))){ console.log("run alumno inválido"); result = false; }
     if(!validar_textoMinMax(jQuery("#nombre1_alumno"),3,45,"Ingrese un nombre válido")){ console.log("nombre1 alumno inválido"); result = false; }
     if(!validar_textoMinMax(jQuery("#nombre2_alumno"),3,45,"Ingrese un nombre válido")){ console.log("nombre2 alumno inválido"); result = false; }
@@ -924,7 +1037,7 @@ function validar_alumno(){
     if(!validar_textoMinMax(jQuery("#establecimiento_procedencia"),3,60,"Ingrese un establecimiento válido")){result = false}
     if(!validar_grados_repetidos()){result = false};
     if(!validar_imagen_extencion(jQuery("#avatar_alumno"),"Ingrese una imagen valida")){ result = false;}
-    */
+
     return result;
 }
 function validar_apoderado(){

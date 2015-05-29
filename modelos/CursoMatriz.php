@@ -16,7 +16,7 @@ class CursoMatriz {
 
     public function to_matriz(Curso $curso){
         $matriz = array(
-            "id_curso" => $curso->get_id_grado(),
+            "id_curso" => $curso->get_id_curso(),
             "rbd_establecimiento" => $curso->get_rbd_establecimiento(),
             "run_profesor_jefe" => $curso->get_run_profesor_jefe(),
             "id_grado" => $curso->get_id_grado(),
@@ -44,6 +44,7 @@ class CursoMatriz {
         $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
+
         foreach($data as $row){
             $curso = new Curso();
             $curso->set_id_curso($row["id_curso"]);

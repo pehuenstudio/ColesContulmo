@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/validacion.php";
 //echo __FILE__."<br/>";
 class Persona {
     private $run;

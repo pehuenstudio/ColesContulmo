@@ -54,6 +54,7 @@
         </div>
         <!--PANEL DE DIRECCIONES-->
         <div class="grilla5 derecha">
+            <input type="hidden" name="id_direccion_apoderado" id="id_direccion_apoderado">
             <div class="grilla10 titulo"><h3>Dirección</h3></div>
             <div class="grilla10">Calle<strong>*</strong></div>
             <div class="grilla10">

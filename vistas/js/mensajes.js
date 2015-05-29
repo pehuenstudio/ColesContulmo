@@ -52,8 +52,16 @@ function mostrar_dialogo(val,msg){
                 {
                     text: "Imprimir Matricula",
                     click: function(){
-                        jQuery("#formulario").attr("action","/_code/controladores/matricula.pdf.php");
-                        jQuery("#formulario").submit();
+                        jQuery("#formulario")
+                            .attr("action","/_code/controladores/matricula.controlador.php")
+                            .append(
+                                jQuery("<input>")
+                                    .attr({
+                                        "name": "id_funcion",
+                                        "type": "hidden"
+                                    })
+                                    .val("2"))
+                            .submit();
                     }
                 }
             ]
@@ -92,8 +100,16 @@ function mostrar_dialogo(val,msg){
                 {
                     text: "Imprimir Matricula",
                     click: function(){
-                        jQuery("#formulario").attr("action","/_code/controladores/matricula.pdf.php");
-                        jQuery("#formulario").submit();
+                        jQuery("#formulario")
+                            .attr("action","/_code/controladores/matricula.controlador.php")
+                            .append(
+                                jQuery("<input>")
+                                    .attr({
+                                            "name": "id_funcion",
+                                            "type": "hidden"
+                                        })
+                                    .val("2"))
+                            .submit();
                     }
                 }
             ]

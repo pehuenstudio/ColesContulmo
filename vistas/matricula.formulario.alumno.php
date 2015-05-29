@@ -129,7 +129,7 @@
             </div>
             <div class="grilla10">Grados Repetidos</div>
             <div class="grilla10">
-            <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula/formulario.repeticiones.vista.php"?>
+            <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula.formulario.repeticiones.php"?>
                 <div class="grilla10 error" id="error_cantidad">&nbsp;</div>
             </div>
         </div>

@@ -25,21 +25,21 @@
             <div id="modulo_matriculas">
                 <h2>Ingreso De Alumno</h2>
                 <section>
-                    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula/formulario.alumno.vista.php";?>
+                    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula.formulario.alumno.php";?>
                 </section>
                 <h2>Ingreso De Apoderado</h2>
                 <section>
-                    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula/formulario.apoderado.vista.php";?>
+                    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula.formulario.apoderado.php";?>
                 </section>
 
                 <h2>Seleccionar Curso</h2>
                 <section>
-                    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula/formulario.curso.vista.php";?>
+                    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula.formulario.curso.php";?>
                 </section>
 
                 <h2>Resumen</h2>
                 <section>
-                    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula/formulario.resumen.vista.php";?>
+                    <?php require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/matricula.formulario.resumen.php";?>
                 </section>
             </div>
         </div>

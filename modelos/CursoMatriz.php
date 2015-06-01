@@ -63,5 +63,32 @@ class CursoMatriz {
         return $sentencia->rowCount();
 
     }
+
+    public function db_get_cursos_by_rbd_establecimiento_and_id_ciclo($rbd_establecimiento, $id_ciclo){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_cursos_by_rbd_establecimiento_and_id_ciclo(?,?)");
+        $sentencia->bindParam(1, $rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $id_ciclo, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $curso = new Curso();
+            $curso->set_id_curso($row["id_curso"]);
+            $curso->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["run_profesor_jefe"],
+                $row["id_grado"],
+                $row["id_tipo_ensenanza"],
+                $row["id_ciclo"],
+                $row["grupo"]
+            );
+
+            $this->to_matriz($curso);
+        }
+
+        return $sentencia->rowCount();
+    }
 }
+
 ?>

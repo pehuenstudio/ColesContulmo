@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/validar.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/validacion.php";
 
 //echo __FILE__."<br/>";
 class Ciclo {
@@ -38,7 +38,7 @@ class Ciclo {
         $this->set_nombre($nombre);
     }
 
-    public function validar_is_ciclo(){
+    public function validar_id_ciclo(){
         global $v;
         if(!$v->validar_formato_numero($this->get_id_ciclo(),1,2)){
             $this->set_id_ciclo(null);

@@ -23,6 +23,7 @@ class CursoMatriz {
             "id_tipo_ensenanza" => $curso->get_id_tipo_ensenanza(),
             "id_ciclo" => $curso->get_id_ciclo(),
             "grupo" => $curso->get_grupo(),
+            "periodo" => $curso->get_periodo(),
             "estado" => $curso->get_estado()
         );
 
@@ -34,13 +35,14 @@ class CursoMatriz {
         return $json;
     }
 
-    public function db_get_cursos_by_rbd_esta_and_id_tipo_ensenanza_and_id_grado($rbd_establecimiento,
-                                                                                 $id_tipo_ensenanza, $id_grado){
+    public function db_get_cursos_by_rbd_esta_and_id_tipo_ense_and_id_grado_and_periodo($rbd_establecimiento,
+                                                                                 $id_tipo_ensenanza, $id_grado, $periodo){
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_cursos_by_rbd_esta_and_id_tipo_ensenanza_and_id_grado(?,?,?)");
+        $sentencia = $myPDO->prepare("CALL get_cursos_by_rbd_esta_and_id_tipo_ense_and_id_grado_and_periodo(?,?,?,?)");
         $sentencia->bindParam(1, $rbd_establecimiento, \PDO::PARAM_INT);
         $sentencia->bindParam(2, $id_tipo_ensenanza, \PDO::PARAM_INT);
         $sentencia->bindParam(3, $id_grado, \PDO::PARAM_INT);
+        $sentencia->bindParam(4, $periodo, \PDO::PARAM_INT);
         $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
@@ -64,11 +66,12 @@ class CursoMatriz {
 
     }
 
-    public function db_get_cursos_by_rbd_establecimiento_and_id_ciclo($rbd_establecimiento, $id_ciclo){
+    public function db_get_cursos_by_rbd_establecimiento_and_id_ciclo_and_periodo($rbd_establecimiento, $id_ciclo, $periodo){
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_cursos_by_rbd_establecimiento_and_id_ciclo(?,?)");
+        $sentencia = $myPDO->prepare("CALL get_cursos_by_rbd_establecimiento_and_id_ciclo_and_periodo(?,?,?)");
         $sentencia->bindParam(1, $rbd_establecimiento, \PDO::PARAM_INT);
         $sentencia->bindParam(2, $id_ciclo, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $periodo, \PDO::PARAM_INT);
         $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
@@ -84,6 +87,36 @@ class CursoMatriz {
                 $row["grupo"]
             );
 
+            $curso->set_periodo($row["periodo"]);
+            $this->to_matriz($curso);
+        }
+
+        return $sentencia->rowCount();
+    }
+
+    public function db_get_cursos_by_run_profesor_and_rbd_establecimiento_and_periodo($run_profesor,
+                                                                                      $rbd_establecimiento, $periodo){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_cursos_by_run_profesor_and_rbd_establecimiento_and_periodo(?,?,?)");
+        $sentencia->bindParam(1, $run_profesor, \PDO::PARAM_STR, 9);
+        $sentencia->bindParam(2, $rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $periodo, \PDO::PARAM_INT);
+
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $curso = new Curso();
+            $curso->set_id_curso($row["id_curso"]);
+            $curso->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["run_profesor_jefe"],
+                $row["id_grado"],
+                $row["id_tipo_ensenanza"],
+                $row["id_ciclo"],
+                $row["grupo"]
+            );
+            $curso->set_periodo($row["periodo"]);
             $this->to_matriz($curso);
         }
 

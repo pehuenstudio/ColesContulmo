@@ -4,6 +4,7 @@ $presente = date("Y");
 $futuro = date("Y")+1;
 //TODO: el rbd deve ser selecciono mediante un usuario te tipo establecimiento y su id;
 ?>
+<input type="hidden" id="rbd_establecimiento" name="rbd_establecimiento" value="<?php echo $rbd_establecimiento; ?>">
 <div id="contenedor_curso">
     <div class="contenedor_grillas">
     	<div class="grilla10 titulo"><h3>Datos Del Curso</h3></div>
@@ -15,18 +16,10 @@ $futuro = date("Y")+1;
             </select>
             <div class="grilla10 error">&nbsp;</div>
         </div>
-        <div class="grilla10">Seleccionar Establecimiento<strong>*</strong></div>
-        <div class="grilla10">
-            <select name="rbd_establecimiento" id="rbd_establecimiento">
-                <option value="0">Seleccione Establecimiento</option>
 
-            </select>
-            <div class="grilla10 error">&nbsp;</div>
-        </div>
-        <div class="grilla10 error"></div>
         <div class="grilla10">Seleccionar Tipo De Ense&ntilde;anza<strong>*</strong></div>
         <div class="grilla10">
-            <select name="id_tipo_ensenanza" id="id_tipo_ensenanza" disabled="disabled">
+            <select name="id_tipo_ensenanza" id="id_tipo_ensenanza">
                 <option value="0">Seleccione Tipo De Enseñanza</option>
 
             </select>

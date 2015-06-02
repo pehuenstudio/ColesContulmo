@@ -3,6 +3,8 @@ jQuery(document).ready(function(){
     var clasesDel = [];
     var rbd_establecimiento = jQuery("#rbd_establecimiento").val();
 
+    jQuery("#contenedor_formulario").sticky({topSpacing:0});
+
     get_ciclos(rbd_establecimiento);
 
     setTimeout(function(){
@@ -69,7 +71,7 @@ jQuery(document).ready(function(){
 
         setTimeout(function(){
             get_asignaturas(rbd_establecimiento, id_curso);
-        },1000);
+        },500);
 
     });
 
@@ -107,11 +109,11 @@ jQuery(document).ready(function(){
 
         if(selected=='0'){
             if(id_asignatura == "0"){
-                mostrar_dialogo("21","Para ingresar una clase primero debes seleccionar una asignatura.");
+                mostrar_dialogo("2","Para ingresar una clase primero debes seleccionar una asignatura.");
                 return null;
             }
             if(run_profesor == "0"){
-                mostrar_dialogo("21","Para ingresar una clase primero debes seleccionar un(a) profesor(a).");
+                mostrar_dialogo("2","Para ingresar una clase primero debes seleccionar un(a) profesor(a).");
                 return null;
             }
             jQuery(this)
@@ -145,7 +147,7 @@ jQuery(document).ready(function(){
 
 
         }
-        //console.log("bloques "+bloques.length);
+        //console.log(clasesDel);
         //console.log("bloquesdel "+bloquesDel.length);
     });
 
@@ -153,7 +155,7 @@ jQuery(document).ready(function(){
         event.preventDefault();
         var form = document.getElementById("formulario_clase");
         var miFormData = new FormData(form);
-        miFormData.append("id_funcion","2");
+        miFormData.append("id_funcion", "2");
         var clasesInsJson = JSON.stringify(clasesIns);
         var clasesDelJson = JSON.stringify(clasesDel);
         miFormData.append("clasesIns", clasesInsJson);
@@ -168,17 +170,23 @@ jQuery(document).ready(function(){
             processData:false,
             beforeSend: function(){
                 load_on("Actualizando horario...","#contenedor_bloques");
-            }
-
-
+             }
         }).done(function(data){
-            console.log(data);
+            //console.log(data);
+            var data = jQuery.parseJSON(data);
             setTimeout(function(){
-                load_off();
+                mostrar_dialogo(data.result, data.msg);
             },500);
+            setTimeout(function(){
+                jQuery("#dialog").dialog("close");
+            },3000);
+
         })
             .fail(function(){
                 alert("ERROR");
+            })
+            .always(function(){
+                setTimeout(function(){load_off();},500);
             })
         ;
 
@@ -212,6 +220,9 @@ function get_ciclos(rbd_establecimiento){
         .fail(function(){
             alert("ERROR");
         })
+        .always(function(){
+            setTimeout(function(){load_off();},500);
+        })
     ;
 }
 
@@ -236,9 +247,7 @@ function get_cursos(rbd_establecimiento, id_ciclo){
                             .text(data[i].id_grado+" "+data[i].nombre_curso+" "+data[i].grupo)
                     )
                });
-            setTimeout(function(){
-                load_off();
-            },1000);
+            setTimeout(function(){load_off();},500);
         })
     ;
 }
@@ -302,14 +311,12 @@ function get_bloques(id_curso){
                         )
                 );
             });
-
-            setTimeout(function(){
-                load_off();
-            },1000);
         })
         .fail(function(){
             alert("ERROR");
-            load_off();
+        })
+        .always(function(){
+            setTimeout(function(){load_off();},500);
         })
     ;
 }
@@ -338,11 +345,12 @@ function get_asignaturas(rbd_establecimiento, id_curso){
                         .text(data[i].nombre)
                 );
             });
-
-            setTimeout(function(){
-                load_off();
-            },1000);
-
+        })
+        .fail(function(){
+            alert("ERROR");
+        })
+        .always(function(){
+            setTimeout(function(){load_off();},500);
         })
 
     ;
@@ -369,18 +377,13 @@ function get_bloques0(rbd_establecimiento,id_ciclo){
                 get_clases(id_dia, hora, id_bloque, "", "");
 
             }
-            setTimeout(function(){
-                jQuery("#panel_loading").remove();
-            },1000);
         })
         .fail(function(){
-            alert("alert");
-            setTimeout(function(){
-                jQuery("#panel_loading").remove();
-
-            },1000);
+            alert("ERROR");
         })
-
+        .always(function(){
+            setTimeout(function(){load_off();},500);
+        })
     ;
 }
 
@@ -405,21 +408,77 @@ function get_profesores(rbd_establecimiento){
                             .text(data[i].nombre1+" "+data[i].apellido1+" "+data[i].apellido2)
                     )
             });
-            setTimeout(function(){
-                load_off();
-            },500);
         })
         .fail(function(){
-            mostrar_dialogo("0", "La lista de profesores no se cargó correctamente.")
+            alert("ERROR");
         })
         .always(function(){
-            setTimeout(function(){
-                load_off();
-            },500);
+            setTimeout(function(){load_off();},500);
         })
     ;
 }
 
+function mostrar_dialogo(val,msg){
+    var clase = "";
+    var titulo = "Mensaje";
+    var dialogo = jQuery("#dialog");
+
+    switch (val){
+        case "1":
+            clase = "error-ui";
+            titulo = "Error Fatal";
+            dialogo.dialog({
+                autoOpen: false,
+                buttons:[
+                    {
+                        text: "Intentar Nuevamente",
+                        click: function(){
+                            jQuery("#dialog").dialog("close");
+                        }
+                    }
+                ]
+            });
+            break;
+
+        case "2":
+            clase = "peligro-ui";
+            titulo = "Operación Interrumpida";
+            dialogo.dialog({
+                autoOpen: false,
+                buttons:[
+                    {
+                        text: "Aceptar",
+                        click: function(){
+                            jQuery("#dialog").dialog("close");
+                        }
+                    }
+                ]
+            });
+            break;
+
+        case "3":
+            clase = "exito-ui";
+            titulo = "Operación exitosa";
+
+            dialogo.dialog({
+                autoOpen: false,
+                buttons:[]
+            });
+    }
+
+
+
+    dialogo
+        .html("<p>"+msg+"</p>")
+        .dialog({
+        modal:true,
+        autoOpen: false,
+        dialogClass: clase,
+        title: titulo,
+        width: "auto"
+    })
+        .dialog("open");
+}
 
 
 

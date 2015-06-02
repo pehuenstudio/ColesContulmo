@@ -1,0 +1,30 @@
+#contenedor_clases{
+    background-color: #EFEFEF !important;
+    margin-bottom: 10px !important;
+    float: left !important;
+    width: 100%;
+    z-index: 10;
+    padding-left: 2%;
+    padding-right: 2%;
+    vertical-align: middle;
+
+}
+#contenedor_clases .grilla3{
+    width: 32% !important;
+    margin-right: 2% !important;
+
+}
+
+#contenedor_clases .grilla3.ultima{
+    margin-right: 0 !important;
+}
+
+.grilla3 select{
+    width: 100%;
+}
+
+#contenedor_calendario .sin-clases{
+    background-color: #EFEFEF;
+    text-align: center;
+    vertical-align: middle;
+}

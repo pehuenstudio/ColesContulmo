@@ -22,6 +22,7 @@ class ClaseMatriz {
             "id_asignatura" => $clase->get_id_asignatura(),
             "id_bloque" => $clase->get_id_bloque(),
             "rbd_establecimiento" => $clase->get_rbd_establecimiento(),
+            "periodo" => $clase->get_periodo(),
             "estado" => $clase->get_estado()
         );
 
@@ -33,10 +34,11 @@ class ClaseMatriz {
         return $json;
     }
 
-    public function db_get_clases_by_id_curso($id_curso){
+    public function db_get_clases_by_id_curso_and_periodo($id_curso, $periodo){
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_clases_by_id_curso(?)");
+        $sentencia = $myPDO->prepare("CALL get_clases_by_id_curso_and_periodo(?,?)");
         $sentencia->bindParam(1, $id_curso, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $periodo, \PDO::PARAM_INT);
         $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
@@ -50,6 +52,7 @@ class ClaseMatriz {
                 $row["rbd_establecimiento"]
             );
             $clase->set_run_profesor($row["run_profesor"]);
+            $clase->set_periodo($row["periodo"]);
 
             $this->to_matriz($clase);
         }
@@ -59,14 +62,19 @@ class ClaseMatriz {
 
     public function db_upd_clases_run_profesor_and_id_asignatura_by_id(){
         $matriz = $this->get_matriz();
+        $result = true;
         foreach($matriz as $row){
             $clase = new Clase();
             $clase->set_id_clase($row["id_clase"]);
             $clase->set_run_profesor($row["run_profesor"]);
             $clase->set_id_asignatura($row["id_asignatura"]);
 
-            $clase->db_upd_clase_run_profesor_and_id_asignatura_by_id();
+            if(!$clase->db_upd_clase_run_profesor_and_id_asignatura_by_id()){
+                $result = false;
+            }
         }
+
+        return $result;
     }
 }
 ?>

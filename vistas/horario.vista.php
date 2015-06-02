@@ -1,5 +1,5 @@
 <?php
-
+$rbd_establecimiento = 51543;
 ?>
 <link rel="stylesheet" href="/_code/vistas/css/horario.css">
 <link rel="stylesheet" href="/_code/vistas/css/jquery-ui.css">
@@ -9,8 +9,8 @@
 
 <script src="/_code/vistas/js/jquery.min.js"></script>
 <script src="/_code/vistas/js/jquery-ui.js"></script>
-<script src="/_code/vistas/js/mensajes.js"></script>
 <script src="/_code/vistas/js/load.js"></script>
+<script src="/_code/vistas/js/sticky.js"></script>
 <script src="/_code/vistas/js/horario.js"></script>
 
 <div id="contenedor_formulario">

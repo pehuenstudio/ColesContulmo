@@ -10,6 +10,7 @@ class Curso {
     private $id_tipo_ensenanza;
     private $id_ciclo;
     private $grupo;
+    private $periodo;
     private $estado = "1";
 
     public function set_estado($estado)
@@ -76,6 +77,15 @@ class Curso {
     {
         return $this->run_profesor_jefe;
     }
+    public function set_periodo($periodo)
+    {
+        $this->periodo = $periodo;
+    }
+    public function get_periodo()
+    {
+        return $this->periodo;
+    }
+
 
     function validar_rbd_establecimiento(){
         global $v;

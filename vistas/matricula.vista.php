@@ -1,4 +1,6 @@
-<?php //echo __FILE__."<br/>";?>
+<?php
+$rbd_establecimiento = 51543;
+;?>
 <!--<link rel="stylesheet" href="/_code/vistas/css/normalize.css">-->
 <link rel="stylesheet" href="/_code/vistas/css/main.css">
 <link rel="stylesheet" href="/_code/vistas/css/jquery.steps.css">

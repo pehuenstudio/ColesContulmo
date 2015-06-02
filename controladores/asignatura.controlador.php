@@ -11,6 +11,9 @@ switch($id_funcion){
     case "1":
         get_asignaturas_by_rbd_establecimiento_and_id_tipo_asignatura();
         break;
+    case "2":
+        get_asignaturas_by_run_prof_and_rbd_esta_and_id_cur_and_periodo();
+        break;
     default:
         break;
     
@@ -39,6 +42,26 @@ function get_asignaturas_by_rbd_establecimiento_and_id_tipo_asignatura(){
 
     $matriz_asignatura = new AsignaturaMatriz();
     if($matriz_asignatura->db_get_asignaturas_by_rbd_establecimiento_and_id_tipo_asignatura($rbd_establecimiento, $id_tipo_asignatura) == "0"){
+        $result = array(
+            "result" => false
+        );
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    print_r($matriz_asignatura->to_json());
+}
+
+function get_asignaturas_by_run_prof_and_rbd_esta_and_id_cur_and_periodo(){
+    $run_profesor = $_POST["run_profesor"];
+    $rbd_establecimiento = $_POST["rbd_establecimiento"];
+    $id_curso = $_POST["id_curso"];
+    $periodo = date("Y");
+
+    $matriz_asignatura = new AsignaturaMatriz();
+    if($matriz_asignatura->db_get_asignaturas_by_run_prof_and_rbd_esta_and_id_cur_and_periodo($run_profesor,
+            $rbd_establecimiento, $id_curso, $periodo) == "0"){
         $result = array(
             "result" => false
         );

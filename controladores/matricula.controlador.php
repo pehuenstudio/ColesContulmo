@@ -61,7 +61,8 @@ function ins_matricula(){
     $matricula = new Matricula();
     $matricula->set_identidad(
         $curso->get_id_tipo_ensenanza(),
-        $periodo, $alumno->get_run(),
+        $periodo,
+        $alumno->get_run(),
         $curso->get_rbd_establecimiento(),
         $apoderado->get_run(),
         $curso->get_id_curso(),

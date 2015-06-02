@@ -51,5 +51,27 @@ class EstablecimientoMatriz {
 
         return $sentencia->rowCount();
     }
+
+    public function db_get_establecimientos_by_run_profesor($run_profesor){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_establecimientos_by_run_profesor(?)");
+        $sentencia->bindParam(1, $run_profesor, \PDO::PARAM_STR, 9);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $establecimiento = new Establecimiento();
+            $establecimiento->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["nombre"],
+                $row["telefono"],
+                $row["id_direccion"]
+            );
+
+            $this->to_matriz($establecimiento);
+        }
+
+        return $sentencia->rowCount();
+    }
 }
 ?>

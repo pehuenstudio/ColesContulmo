@@ -1,11 +1,11 @@
 <?php
-$rbd_establecimiento = 51543;
+
 ?>
 
 <form id="formulario_clase" enctype="multipart/form-data">
     <input type="hidden" value="<?php echo $rbd_establecimiento ?>" id="rbd_establecimiento" name="rbd_establecimiento">
     <div class="contenedor_grillas">
-        <div class="grilla10 titulo"><h3>Panel De Clases</h3></div>
+        <div class="grilla10 titulo"><h3>Panel De Carga Horaria</h3></div>
 
         <div class="grilla4">
             <select id="id_ciclo" name="id_ciclo">

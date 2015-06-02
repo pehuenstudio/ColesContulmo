@@ -11,7 +11,7 @@ $id_funcion = $_POST["id_funcion"];
 
 switch($id_funcion){
     case "1":
-        get_clases_by_id_curso();
+        get_clases_by_id_curso_and_periodo();
         break;
     case "2":
         upd_clases_run_profesor_and_id_asignatura_by_id();
@@ -21,10 +21,11 @@ switch($id_funcion){
     
 }
 
-function get_clases_by_id_curso(){
+function get_clases_by_id_curso_and_periodo(){
     $id_curso = $_POST["id_curso"];
+    $periodo = date("Y");
     $matriz_clase = new ClaseMatriz();
-    if($matriz_clase->db_get_clases_by_id_curso($id_curso) == "0"){
+    if($matriz_clase->db_get_clases_by_id_curso_and_periodo($id_curso, $periodo) == "0"){
         $result = array(
             "result" => false
         );
@@ -57,6 +58,8 @@ function get_clases_by_id_curso(){
 }
 
 function upd_clases_run_profesor_and_id_asignatura_by_id(){
+    $result = true;
+
     $clasesIns = json_decode($_POST["clasesIns"], JSON_UNESCAPED_UNICODE);
     $matriz_clase = new ClaseMatriz();
     foreach($clasesIns as $row){
@@ -67,20 +70,29 @@ function upd_clases_run_profesor_and_id_asignatura_by_id(){
 
         $matriz_clase->to_matriz($clase);
     }
-    $matriz_clase->db_upd_clases_run_profesor_and_id_asignatura_by_id();
+    if(!$matriz_clase->db_upd_clases_run_profesor_and_id_asignatura_by_id()){
+        $result = false;
+    }
 
     $clasesDel= json_decode($_POST["clasesDel"], JSON_UNESCAPED_UNICODE);
     $matriz_clase = new ClaseMatriz();
     foreach($clasesDel as $row){
         $clase = new Clase();
         $clase->set_id_clase($row["id_clase"]);
-        $clase->set_run_profesor($row["run_profesor"]);
-        $clase->set_id_asignatura($row["id_asignatura"]);
+        $clase->set_run_profesor(null);
+        $clase->set_id_asignatura(null);
 
         $matriz_clase->to_matriz($clase);
     }
-    $matriz_clase->db_upd_clases_run_profesor_and_id_asignatura_by_id();
-    //print_r($matriz_clase);
+    if(!$matriz_clase->db_upd_clases_run_profesor_and_id_asignatura_by_id()){
+        $result = false;
+    }
+    if(!$result){
+        $result = array("result"=>"1", "msg"=>"Lo sentimos, se produjo un error en la actualización del horario.");
+    }else{
+        $result = array("result"=>"3", "msg"=>"El horario fue actualizado exitosamente.");
+    }
+    print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
 }
 /*
 if( == "0"){

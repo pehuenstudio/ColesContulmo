@@ -116,6 +116,38 @@ function mostrar_dialogo(val,msg){
         });
     }
 
+    if(val == "3"){
+        clase = "exito-ui"
+        titulo = "Operación exitosa";
+
+        jQuery("#dialog").dialog({
+            autoOpen: false,
+            buttons:[
+                {
+                    text: "Nueva Matricula",
+                    click: function(){
+                        location.reload();
+                    }
+                },
+                {
+                    text: "Imprimir Matricula",
+                    click: function(){
+                        jQuery("#formulario")
+                            .attr("action","/_code/controladores/matricula.controlador.php")
+                            .append(
+                                jQuery("<input>")
+                                    .attr({
+                                        "name": "id_funcion",
+                                        "type": "hidden"
+                                    })
+                                    .val("2"))
+                            .submit();
+                    }
+                }
+            ]
+        });
+    }
+
     jQuery("#dialog").dialog({
         modal:true,
         autoOpen: false,

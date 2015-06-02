@@ -145,39 +145,6 @@ jQuery(document).ready(function(){
         readURL(this, avatar_preview);
     });
 
-
-    jQuery("#rbd_establecimiento").change(function(){
-        var rbd_establecimiento = jQuery(this).val();
-        var disabled = false;
-
-        if(rbd_establecimiento == "0"){disabled = true}
-
-        jQuery("#id_tipo_ensenanza")
-            .empty()
-            .attr("disabled", disabled)
-            .append(jQuery("<option></option>")
-                .val("0")
-                .text("Seleccione Tipo De Enseñanza"));
-
-        jQuery("#id_grado")
-            .empty()
-            .attr("disabled", true)
-            .append(jQuery("<option></option>")
-                .val("0")
-                .text("Seleccione Grado"));
-
-        jQuery("#id_curso")
-            .empty()
-            .attr("disabled", true)
-            .append(jQuery("<option></option>")
-                .val("0")
-                .text("Seleccione Grupo Curso"));
-
-        if(rbd_establecimiento == "0"){return null}
-
-        get_tipos_ensenanza("#id_tipo_ensenanza", contenedor_curso, rbd_establecimiento);
-    });
-
     jQuery("#id_tipo_ensenanza").change(function(){
         var rbd_establecimiento = jQuery("#rbd_establecimiento").val();
         var id_tipo_ensenanza = jQuery(this).val();
@@ -208,6 +175,7 @@ jQuery(document).ready(function(){
         var rbd_establecimiento = jQuery("#rbd_establecimiento").val();
         var id_tipo_ensenanza = jQuery("#id_tipo_ensenanza").val();
         var id_grado = jQuery(this).val();
+        var periodo = jQuery("#periodo").find(":selected").val();
         var disabled = false;
 
         if(id_grado == "0"){disabled = true}
@@ -221,7 +189,7 @@ jQuery(document).ready(function(){
 
         if(id_grado == "0"){return null}
 
-        get_cursos("#id_curso", contenedor_curso, rbd_establecimiento, id_tipo_ensenanza, id_grado);
+        get_cursos("#id_curso", contenedor_curso, rbd_establecimiento, id_tipo_ensenanza, id_grado, periodo);
     });
 
 
@@ -232,7 +200,8 @@ jQuery(document).ready(function(){
 
 function crear_furmulario(){
     var visto_regiones = 0;
-    var visto_establecimientos = 0;
+    var visto_tipo_ensenanza = 0;
+    var rbd_establecimiento = jQuery("#rbd_establecimiento").val();
     jQuery("#modulo_matriculas").steps({
         headerTag: "h2",
         bodyTag: "section",
@@ -341,9 +310,9 @@ function crear_furmulario(){
                     }
                     break;
                 case 2:
-                    if(visto_establecimientos == 0){//si no an cargado las establecimientos que s ecargen
-                        get_establecimientos("#rbd_establecimiento","#contenedor_curso");
-                        visto_establecimientos = 1;
+                    if(visto_tipo_ensenanza == 0){//si no an cargado las establecimientos que s ecargen
+                        get_tipos_ensenanza("#id_tipo_ensenanza", "#contenedor_curso", rbd_establecimiento);
+                        visto_tipo_ensenanza = 1;
                     }
                     break;
             }
@@ -699,39 +668,6 @@ function get_apoderado(run_apoderado, contenedor){
     ;
 }
 
-function get_establecimientos(select, contenedor){
-    jQuery.ajax({
-        method: "POST",
-        url: "/_code/controladores/establecimiento.controlador.php",
-        data: {id_funcion: "1"},
-        beforeSend: function(){
-            load_on("Cargando_establecimientos...", contenedor);
-        }
-    })
-        .done(function(data){
-            //console.log(data);
-            var data = jQuery.parseJSON(data);
-            if(data.result == false){
-                return null;
-            }
-            jQuery.each(data, function(i, value){
-                jQuery(select)
-                    .append(jQuery("<option></option>")
-                        .val(data[i].rbd_establecimiento)
-                        .text(data[i].nombre))
-                ;
-            });
-
-        })
-        .fail(function(){
-            alert("ERROR");
-        })
-        .always(function(){
-            setTimeout(function(){load_off();}, 500);
-        })
-    ;
-}
-
 function get_tipos_ensenanza(select, contenedor, rbd_establecimiento){
     console.log("Invocando tipos de enseñanza...");
     jQuery.ajax({
@@ -800,12 +736,12 @@ function get_grados(select, contenedor, rbd_establecimiento, id_tipo_ensenanza){
     ;
 }
 
-function get_cursos(select, contenedor, rbd_establecimiento, id_tipo_ensenanza, id_grado){
+function get_cursos(select, contenedor, rbd_establecimiento, id_tipo_ensenanza, id_grado, periodo){
     console.log("Invocando cursos...");
     jQuery.ajax({
         method: "POST",
         url: "/_code/controladores/curso.controlador.php",
-        data: {id_funcion: "1", rbd_establecimiento: rbd_establecimiento, id_tipo_ensenanza: id_tipo_ensenanza, id_grado: id_grado},
+        data: {id_funcion: "1", rbd_establecimiento: rbd_establecimiento, id_tipo_ensenanza: id_tipo_ensenanza, id_grado: id_grado, periodo: periodo},
         beforeSend: function(){
             load_on("Cargando cursos...", contenedor);
         }

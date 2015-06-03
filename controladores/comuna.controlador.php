@@ -14,7 +14,7 @@ switch($id_funcion){
         break;
     
 }
-
+//SE USA DESDE *
 function get_comunas_by_id_provincia(){
     $id_provincia = $_POST["id_provincia"];
 

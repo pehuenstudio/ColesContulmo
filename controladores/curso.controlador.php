@@ -21,7 +21,7 @@ switch($id_funcion){
         break;
     
 }
-
+//SE USA DESDE ingreso_matricula
 function get_cursos_by_rbd_esta_and_id_tipo_ense_and_id_grado_and_periodo(){
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $id_tipo_ensenanza = $_POST["id_tipo_ensenanza"];
@@ -42,6 +42,7 @@ function get_cursos_by_rbd_esta_and_id_tipo_ense_and_id_grado_and_periodo(){
     print_r($matriz_curso->to_json());
 }
 
+//SE USA DESDE carga_clases
 function get_cursos_by_rbd_establecimiento_and_id_ciclo_and_periodo(){
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $id_ciclo = $_POST["id_ciclo"];
@@ -71,6 +72,7 @@ function get_cursos_by_rbd_establecimiento_and_id_ciclo_and_periodo(){
     print_r(json_encode($cursos, JSON_UNESCAPED_UNICODE));
 }
 
+//SE USA DESDE carga_evaluaciones
 function get_cursos_by_run_profesor_and_rbd_establecimiento_and_periodo(){
     $run_profesor = $_POST["run_profesor"];
     $rbd_establecimiento = $_POST["rbd_establecimiento"];

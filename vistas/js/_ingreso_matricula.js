@@ -145,6 +145,28 @@ jQuery(document).ready(function(){
         readURL(this, avatar_preview);
     });
 
+    jQuery("#periodo").change(function(){
+        var periodo = jQuery(this).val();
+
+        jQuery("#id_tipo_ensenanza").val("0");
+
+        jQuery("#id_grado")
+            .empty()
+            .attr("disabled", true)
+            .append(jQuery("<option></option>")
+                .val("0")
+                .text("Seleccione Grado"));
+
+        jQuery("#id_curso")
+            .empty()
+            .attr("disabled", true)
+            .append(jQuery("<option></option>")
+                .val("0")
+                .text("Seleccione Grupo Curso"));
+
+
+    });
+
     jQuery("#id_tipo_ensenanza").change(function(){
         var rbd_establecimiento = jQuery("#rbd_establecimiento").val();
         var id_tipo_ensenanza = jQuery(this).val();

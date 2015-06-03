@@ -14,7 +14,7 @@ switch($id_funcion){
         break;
 
 }
-
+//SE USA DESDE *
 function get_regiones(){
     $region_matriz = new RegionMatriz();
     if($region_matriz->db_get_regiones() == "0"){

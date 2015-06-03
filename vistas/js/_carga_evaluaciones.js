@@ -1,7 +1,8 @@
 jQuery(document).ready(function(){
     var run_profesor = jQuery("#run_profesor").val();
+    var dias_clases = [];
 
-    jQuery("#contenedor_clases").sticky({topSpacing:0});
+    jQuery("#contenedor_formulario").sticky({topSpacing:0});
 
     get_establecimientos(run_profesor);
     renderCalendar0(fecha_hoy);
@@ -13,17 +14,32 @@ jQuery(document).ready(function(){
     });
 
     jQuery("#id_curso").change(function(){
-        var rbd_establecimiento = jQuery("#rbd_establecimiento").val();
         var id_curso = jQuery(this).val();
         jQuery("#id_asignatura").prop("disabled", false);
-        get_asignaturas(run_profesor, rbd_establecimiento, id_curso);
-        $('#calendar').fullCalendar('destroy');
-
+        get_asignaturas(run_profesor, id_curso);
     });
 
     jQuery("#id_asignatura").change(function(){
-        renderCalendar0(fecha_hoy);
+        var id_curso = jQuery("#id_curso").val();
+        var id_asignatura = jQuery(this).val();
+        $('#calendar').fullCalendar('destroy');
+        get_dias(run_profesor, id_curso, id_asignatura, dias_clases, fecha_hoy);
 
+    });
+
+    jQuery("#contenedor_calendario").on("click",".fc-day",function(){
+        var asignatura = jQuery("#id_asignatura").find(":selected");
+        var fecha = jQuery(this).attr("data-date");
+        console.log(fecha);
+        jQuery('#calendar').fullCalendar('renderEvent',
+            {
+                title: "Prueba de "+asignatura.text(),
+                start: fecha,
+                color: asignatura.attr("data-color1")
+
+            },
+            true // make the event "stick"
+        );
     });
 });
 
@@ -89,12 +105,12 @@ function get_cursos(run_profesor, rbd_establecimiento){
     ;
 }
 
-function get_asignaturas(run_profesor, rbd_establecimiento, id_curso){
+function get_asignaturas(run_profesor, id_curso){
     console.log("cargando cursos")
     jQuery.ajax({
         method: "POST",
         url: "/_code/controladores/asignatura.controlador.php",
-        data: {id_funcion: "2", run_profesor: run_profesor, rbd_establecimiento: rbd_establecimiento, id_curso: id_curso},
+        data: {id_funcion: "2", run_profesor: run_profesor, id_curso: id_curso},
         beforeSend: function(){
             //load_on("Cargando establecimientos...", "#contenedor_fechas");
         }
@@ -108,8 +124,39 @@ function get_asignaturas(run_profesor, rbd_establecimiento, id_curso){
                         jQuery("<option></option>")
                             .val(data[i].id_asignatura)
                             .text(data[i].nombre)
+                            .attr({
+                                "data-color1": data[i].color1,
+                                "data-color2": data[i].color2
+                            })
                     )
             });
+        })
+        .fail(function(){
+            alert("ERROR");
+        })
+        .always(function(){
+            setTimeout(function(){load_off();},500);
+        })
+    ;
+}
+
+function get_dias(run_profesor, id_curso, id_asignatura, dias_clases, fecha_hoy){
+    console.log("cargando cursos")
+    jQuery.ajax({
+        method: "POST",
+        url: "/_code/controladores/dia.controlador.php",
+        data: {id_funcion: "1", run_profesor: run_profesor, id_curso: id_curso, id_asignatura: id_asignatura},
+        beforeSend: function(){
+            //load_on("Cargando establecimientos...", "#contenedor_fechas");
+        }
+    })
+        .done(function(data){
+            console.log(data);
+            var data = jQuery.parseJSON(data);
+            jQuery.each(data, function(i, value){
+                dias_clases[i]=data[i].id_dia;
+            });
+            renderCalendar(fecha_hoy, dias_clases)
         })
         .fail(function(){
             alert("ERROR");
@@ -137,14 +184,18 @@ function renderCalendar(fecha_hoy, dias_clases) {
         dayRender: function(date, cell){
             var date1 = new Date(date);
             var dia_semana = (date1.getDay()+1);
-            /* if (date1.getDay() == "1"){
-             cell.css("background","#EFEFEF");
-             }*/
-            if(jQuery.inArray(dia_semana.toString(),dias_clases) == -1){
-                cell.text("Sin clases este dia");
-                cell.addClass("sin-clases");
-            }
 
+            if(jQuery.inArray(dia_semana.toString(),dias_clases) == -1){
+                if(!cell.hasClass("fc-other-month")){
+                    cell.text("Sin clases");
+                    cell.addClass("sin-clases");
+                }
+            }
+        },// allow "more" link when too many events
+        columnFormat: {
+            month: 'dddd',    // Monday, Wednesday, etc
+            week: 'dddd, MMM dS', // Monday 9/7
+            day: 'dddd, MMM dS'  // Monday 9/7
         }
     });
 }
@@ -162,7 +213,12 @@ function renderCalendar0(fecha_hoy) {
         weekNumbers: false,
         editable: false,
         eventLimit: true,
-        hiddenDays: [6,0 ]// allow "more" link when too many events
+        hiddenDays: [6,0 ],// allow "more" link when too many events
+        columnFormat: {
+            month: 'dddd',    // Monday, Wednesday, etc
+            week: 'dddd, MMM dS', // Monday 9/7
+            day: 'dddd, MMM dS'  // Monday 9/7
+        }
 
     });
 }

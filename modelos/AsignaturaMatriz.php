@@ -21,6 +21,8 @@ class AsignaturaMatriz {
             "nombre" => $asignatura->get_nombre(),
             "rbd_establecimiento" => $asignatura->get_rbd_establecimiento(),
             "descripcion" => $asignatura->get_descripcion(),
+            "color1" => $asignatura->get_color1(),
+            "color2" => $asignatura->get_color2(),
             "estado" => $asignatura->get_estado()
         );
 
@@ -49,6 +51,8 @@ class AsignaturaMatriz {
                 $row["nombre"],
                 $row["descripcion"]
             );
+            $asignatura->set_color1($row["color1"]);
+            $asignatura->set_color2($row["color2"]);
 
             $this->to_matriz($asignatura);
         }
@@ -56,13 +60,11 @@ class AsignaturaMatriz {
         return $sentencia->rowCount();
     }
 
-    public function db_get_asignaturas_by_run_prof_and_rbd_esta_and_id_cur_and_periodo($run_profesor, $rbd_establecimiento, $id_curso, $periodo){
+    public function db_get_asignaturas_by_run_profesor_and_id_curso($run_profesor, $id_curso){
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_asignaturas_by_run_prof_and_rbd_esta_and_id_cur_and_periodo(?,?,?,?)");
+        $sentencia = $myPDO->prepare("CALL get_asignaturas_by_run_profesor_and_id_curso(?,?)");
         $sentencia->bindParam(1, $run_profesor, \PDO::PARAM_STR, 9);
-        $sentencia->bindParam(2, $rbd_establecimiento, \PDO::PARAM_INT);
-        $sentencia->bindParam(3, $id_curso, \PDO::PARAM_INT);
-        $sentencia->bindParam(4, $periodo, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $id_curso, \PDO::PARAM_INT);
         $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
@@ -75,6 +77,8 @@ class AsignaturaMatriz {
                 $row["nombre"],
                 $row["descripcion"]
             );
+            $asignatura->set_color1($row["color1"]);
+            $asignatura->set_color2($row["color2"]);
 
             $this->to_matriz($asignatura);
         }

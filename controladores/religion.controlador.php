@@ -14,7 +14,7 @@ switch($id_funcion){
         break;
     
 }
-
+//SE USA DESDE *
 function get_religiones(){
     $religion_matriz = new ReligionMatriz();
     if($religion_matriz->db_get_religiones() == "0"){

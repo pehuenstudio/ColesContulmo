@@ -99,6 +99,8 @@ jQuery(document).ready(function(){
         var asignatura = jQuery("#id_asignatura").find(":selected");
         var nombre_asignatura = asignatura.text();
         var id_asignatura = asignatura.val();
+        var color1 = asignatura.attr("data-color1");
+        var color2 = asignatura.attr("data-color2");
 
         var profesor = jQuery("#run_profesor").find(":selected");
         var nombre_profesor = profesor.text();
@@ -119,7 +121,15 @@ jQuery(document).ready(function(){
             jQuery(this)
                 .attr("data-selected","1")
                 .addClass("selected")
-            ;
+                .css({
+                    "background-color": color2,
+                    "color": color1
+                });
+            jQuery(this).find(".hora").css({
+                "background-color": color1,
+                "color": "#FFF"
+            });
+
             jQuery(this).find(".asignatura").text(nombre_asignatura);
             jQuery(this).find(".profesor").text(nombre_profesor);
 
@@ -264,7 +274,7 @@ function get_bloques(id_curso){
         }
     })
         .done(function(data){
-            //console.log(data);
+            console.log(data);
             var data = jQuery.parseJSON(data);
 
             jQuery.each(data,function(i, value){
@@ -294,10 +304,18 @@ function get_bloques(id_curso){
                             "data-selected": selected,
                             "data-id_clase": data[i].id_clase
                         })
+                        .css({
+                            "background-color": data[i].color2,
+                            "color": data[i].color1
+                        })
                         .append(
                             jQuery("<div></div>")
                                 .addClass("hora")
                                 .text(data[i].horario)
+                                .css({
+                                    "background-color": data[i].color1,
+                                    "color": "#FFF"
+                                })
                         )
                         .append(
                             jQuery("<div></div>")
@@ -343,6 +361,10 @@ function get_asignaturas(rbd_establecimiento, id_curso){
                     jQuery("<option></option>")
                         .val(data[i].id_asignatura)
                         .text(data[i].nombre)
+                        .attr({
+                            "data-color1": data[i].color1,
+                            "data-color2": data[i].color2
+                        })
                 );
             });
         })

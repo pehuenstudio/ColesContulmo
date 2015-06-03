@@ -7,7 +7,9 @@ class Asignatura {
     private $id_asignatura_tipo;
     private $rbd_establecimiento;
     private $nombre;
-    private $descripcion = 'Pendiente';
+    private $color1 = "#C8C8C8";
+    private $color2 = "#EFEFEF";
+    private $descripcion = "Pendiente";
     private $estado = "1";
 
     public function set_descripcion($descripcion)
@@ -58,6 +60,23 @@ class Asignatura {
     {
         return $this->rbd_establecimiento;
     }
+    public function set_color1($color1)
+    {
+        $this->color1 = $color1;
+    }
+    public function get_color1()
+    {
+        return $this->color1;
+    }
+    public function set_color2($color2)
+    {
+        $this->color2 = $color2;
+    }
+    public function get_color2()
+    {
+        return $this->color2;
+    }
+
 
     public function set_identidad($id_asignatura_tipo, $rbd_establecimiento, $nombre, $descripcion){
         $this->set_id_asignatura_tipo($id_asignatura_tipo);
@@ -80,6 +99,8 @@ class Asignatura {
                 $row["nombre"],
                 $row["descripcion"]
             );
+            $this->set_color1($row["color1"]);
+            $this->set_color2($row["color2"]);
         }
 
         return $sentencia->rowCount();

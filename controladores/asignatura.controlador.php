@@ -12,12 +12,13 @@ switch($id_funcion){
         get_asignaturas_by_rbd_establecimiento_and_id_tipo_asignatura();
         break;
     case "2":
-        get_asignaturas_by_run_prof_and_rbd_esta_and_id_cur_and_periodo();
+        get_asignaturas_by_run_profesor_and_id_curso();
         break;
     default:
         break;
     
 }
+//SE USA DESDE carga_clases
 function get_asignaturas_by_rbd_establecimiento_and_id_tipo_asignatura(){
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $id_curso = $_POST["id_curso"];
@@ -53,15 +54,13 @@ function get_asignaturas_by_rbd_establecimiento_and_id_tipo_asignatura(){
     print_r($matriz_asignatura->to_json());
 }
 
-function get_asignaturas_by_run_prof_and_rbd_esta_and_id_cur_and_periodo(){
+//SE USA DESDE carga_evaluaciones
+function get_asignaturas_by_run_profesor_and_id_curso(){
     $run_profesor = $_POST["run_profesor"];
-    $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $id_curso = $_POST["id_curso"];
-    $periodo = date("Y");
 
     $matriz_asignatura = new AsignaturaMatriz();
-    if($matriz_asignatura->db_get_asignaturas_by_run_prof_and_rbd_esta_and_id_cur_and_periodo($run_profesor,
-            $rbd_establecimiento, $id_curso, $periodo) == "0"){
+    if($matriz_asignatura->db_get_asignaturas_by_run_profesor_and_id_curso($run_profesor, $id_curso) == "0"){
         $result = array(
             "result" => false
         );

@@ -22,11 +22,13 @@ switch ($id_funcion){
         break;
     case "2":
         to_pdf();
+        break;
     default:
         break;
 
 }
 
+//SE USA DESDE ingreso_matriucla
 function ins_matricula(){
 
     if($_POST["id_curso"]=="0"){
@@ -98,6 +100,7 @@ function ins_matricula(){
 
 }
 
+//SE USA DESDE carga_clases
 function to_pdf(){
     $plataforma= $_SERVER["HTTP_HOST"];
 

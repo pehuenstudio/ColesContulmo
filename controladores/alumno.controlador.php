@@ -25,7 +25,7 @@ switch($id_funcion){
         break;
     
 }
-
+//SE USA EN ingreso_matricula
 function get_alumno_by_run(){
     $run_alumno = $_POST["run_alumno"];
 
@@ -77,6 +77,7 @@ function get_alumno_by_run(){
 
 }
 
+//SE USA EN ingreso_matricula
 function ins_alumno(){
     $alumno = new Alumno();
     $alumno->set_identidad(
@@ -182,6 +183,7 @@ function ins_alumno(){
     die();
 }
 
+//SE USA EN ingreso_matricula
 function ins_alumno_joomla(){
     define('_JEXEC', 1);
     define('DS', DIRECTORY_SEPARATOR);
@@ -270,7 +272,7 @@ function ins_alumno_joomla(){
         }else{
             if($no_email){
                 $result["result"] = "2";
-                $result["msg"] = "Ingreso exitoso al sistema. Se asigno el email ".$_POST['run_alumno']."@mail.cl.";
+                $result["msg"] = "Ingreso exitoso al sistema. Se asigno el email ".$_POST['run_alumno']."@mail.cl. Recuerde cambiarlo mas tarde.";
 
             }else{
                 $result["result"] = "3";

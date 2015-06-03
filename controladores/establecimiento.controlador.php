@@ -12,11 +12,12 @@ switch($id_funcion){
         break;
     case "2":
         get_establecimientos_by_run_profesor();
+        break;
     default:
         break;
     
 }
-
+//SE USA DESDE *
 function get_establecimientos(){
     $matriz_establecimiento = new EstablecimientoMatriz();
     if($matriz_establecimiento->db_get_establecimientos() == "0"){
@@ -31,6 +32,7 @@ function get_establecimientos(){
     return null;
 }
 
+//SE USA DESDE evaluaciones
 function get_establecimientos_by_run_profesor(){
     $run_profesor = $_POST["run_profesor"];
 

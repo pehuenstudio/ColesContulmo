@@ -1,4 +1,4 @@
-#contenedor_clases{
+#contenedor_formulario{
     background-color: #EFEFEF !important;
     margin-bottom: 10px !important;
     float: left !important;
@@ -9,13 +9,13 @@
     vertical-align: middle;
 
 }
-#contenedor_clases .grilla3{
+#contenedor_formulario .grilla3{
     width: 32% !important;
     margin-right: 2% !important;
 
 }
 
-#contenedor_clases .grilla3.ultima{
+#contenedor_formulario .grilla3.ultima{
     margin-right: 0 !important;
 }
 
@@ -23,8 +23,20 @@
     width: 100%;
 }
 
+#contenedor_calendario .fc-day-header{
+    background-color: #40B1E2;
+    color: #ffffff;
+}
+
+#contenedor_calendario .fc-day-number{
+    background-color: #C8C8C8;
+    color: #A0A0A0;
+    border-color: #ddd;
+}
+
 #contenedor_calendario .sin-clases{
-    background-color: #EFEFEF;
+    background: #EFEFEF;
+
     text-align: center;
     vertical-align: middle;
 }

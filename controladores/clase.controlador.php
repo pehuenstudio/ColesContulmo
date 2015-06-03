@@ -11,7 +11,7 @@ $id_funcion = $_POST["id_funcion"];
 
 switch($id_funcion){
     case "1":
-        get_clases_by_id_curso_and_periodo();
+        get_clases_by_id_curso();
         break;
     case "2":
         upd_clases_run_profesor_and_id_asignatura_by_id();
@@ -20,12 +20,12 @@ switch($id_funcion){
         break;
     
 }
-
-function get_clases_by_id_curso_and_periodo(){
+// SE USA DESDE carag_clases
+function get_clases_by_id_curso(){
     $id_curso = $_POST["id_curso"];
     $periodo = date("Y");
     $matriz_clase = new ClaseMatriz();
-    if($matriz_clase->db_get_clases_by_id_curso_and_periodo($id_curso, $periodo) == "0"){
+    if($matriz_clase->db_get_clases_by_id_curso($id_curso) == "0"){
         $result = array(
             "result" => false
         );
@@ -51,12 +51,15 @@ function get_clases_by_id_curso_and_periodo(){
         $asignatura->set_id_asignatura($clases[$i]["id_asignatura"]);
         $asignatura->db_get_asignatura_by_id();
         $clases[$i]["nombre_asignatura"] = $asignatura->get_nombre();
+        $clases[$i]["color1"] = $asignatura->get_color1();
+        $clases[$i]["color2"] = $asignatura->get_color2();
     }
 
 
     print_r(json_encode($clases, JSON_UNESCAPED_UNICODE));
 }
 
+// SE USA DESDE carag_evaluaciones
 function upd_clases_run_profesor_and_id_asignatura_by_id(){
     $result = true;
 

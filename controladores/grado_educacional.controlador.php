@@ -14,7 +14,7 @@ switch($id_funcion){
         break;
     
 }
-
+//SE USA DESDE *
 function get_grados_educacionales(){
     $grado_educacional_matriz = new GradoEducacionalMatriz();
     if($grado_educacional_matriz->db_get_grados_educacionales() == "0"){

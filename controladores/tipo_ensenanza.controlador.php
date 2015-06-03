@@ -14,7 +14,7 @@ switch($id_funcion){
         break;
     
 }
-
+//SE USA DESDE ingreso_matricula
 function get_tipos_ensenanza_by_rbd_establecimiento(){
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
 

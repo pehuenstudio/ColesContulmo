@@ -14,6 +14,7 @@ switch($id_funcion){
         break;
     
 }
+// SE USA DESDE carga_clases
 function get_ciclos_by_rbd_establecimiento(){
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $matriz_ciclo = new CicloMatriz();

@@ -2,25 +2,25 @@
 header('Content-Type: text/html; charset=utf-8');
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoMatriz.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/DiaMatriz.php";
 
 $id_funcion = $_POST["id_funcion"];
 
 switch($id_funcion){
     case "1":
-        get_grados_by_rbd_establecimiento_and_id_tipo_ensenanza();
+        get_dias_by_run_profesor_and_id_curso_and_id_asignatura();
         break;
     default:
         break;
     
 }
-//SE USA DESDE ingreso_matricula
-function get_grados_by_rbd_establecimiento_and_id_tipo_ensenanza(){
-    $rbd_establecimiento = $_POST["rbd_establecimiento"];
-    $id_tipo_ensenanza = $_POST["id_tipo_ensenanza"];
+function get_dias_by_run_profesor_and_id_curso_and_id_asignatura(){
+    $run_profesor = $_POST["run_profesor"];
+    $id_curso = $_POST["id_curso"];
+    $id_asignatura = $_POST["id_asignatura"];
 
-    $matriz_grado = new GradoMatriz();
-    if($matriz_grado->db_get_grados_by_rbd_establecimiento_and_id_tipo_ensenanza($rbd_establecimiento, $id_tipo_ensenanza) == "0"){
+    $matriz_dia = new DiaMatriz();
+    if($matriz_dia->get_dias_by_run_profesor_and_id_curso_and_id_asignatura($run_profesor, $id_curso, $id_asignatura) == "0"){
         $result = array(
             "result" => false
         );
@@ -29,7 +29,8 @@ function get_grados_by_rbd_establecimiento_and_id_tipo_ensenanza(){
         return null;
     }
 
-    print_r($matriz_grado->to_json());
+    print_r($matriz_dia->to_json());
+
 }
 /*
 if( == "0"){

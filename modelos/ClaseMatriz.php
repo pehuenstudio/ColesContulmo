@@ -34,11 +34,10 @@ class ClaseMatriz {
         return $json;
     }
 
-    public function db_get_clases_by_id_curso_and_periodo($id_curso, $periodo){
+    public function db_get_clases_by_id_curso($id_curso){
         global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_clases_by_id_curso_and_periodo(?,?)");
+        $sentencia = $myPDO->prepare("CALL get_clases_by_id_curso(?)");
         $sentencia->bindParam(1, $id_curso, \PDO::PARAM_INT);
-        $sentencia->bindParam(2, $periodo, \PDO::PARAM_INT);
         $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);

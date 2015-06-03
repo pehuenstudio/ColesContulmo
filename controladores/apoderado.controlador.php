@@ -24,6 +24,7 @@ switch($id_funcion){
         break;
     
 }
+//SE USA EN ingreso_matricula
 function get_apoderado_by_run(){
     $run_apoderado = $_POST["run_apoderado"];
 
@@ -68,6 +69,7 @@ function get_apoderado_by_run(){
     return null;
 }
 
+//SE USA EN ingreso_matricula
 function ins_apoderado(){
     $apoderado = new Apoderado();
     $apoderado->set_identidad(
@@ -143,6 +145,7 @@ function ins_apoderado(){
     die();
 }
 
+//SE USA EN ingreso_matricula
 function ins_apoderado_joomla(){
 
     define('_JEXEC', 1);

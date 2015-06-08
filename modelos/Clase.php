@@ -94,5 +94,24 @@ class Clase {
 
         return $result;
     }
+
+    function db_get_clase_by_id(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_clase_by_id(?)");
+        $sentencia->bindParam(1, $this->id_clase, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $this->set_identidad(
+                $row["id_curso"],
+                $row["id_asignatura"],
+                $row["id_bloque"],
+                $row["rbd_establecimiento"]
+            );
+        }
+
+        return $sentencia->rowCount();
+    }
 }
 ?> 

@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+date_default_timezone_set("America/Argentina/Buenos_Aires");
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoMatriz.php";

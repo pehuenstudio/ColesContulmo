@@ -120,6 +120,7 @@ jQuery(document).ready(function(){
             }
             jQuery(this)
                 .attr("data-selected","1")
+                .removeClass("non_selected")
                 .addClass("selected")
                 .css({
                     "background-color": color2,
@@ -127,7 +128,7 @@ jQuery(document).ready(function(){
                 });
             jQuery(this).find(".hora").css({
                 "background-color": color1,
-                "color": "#FFF"
+                "color": color2
             });
 
             jQuery(this).find(".asignatura").text(nombre_asignatura);
@@ -143,8 +144,10 @@ jQuery(document).ready(function(){
         }else{
 
             jQuery(this)
-                .attr("data-selected","0").
-                removeClass("selected");
+                .attr("data-selected","0")
+                .removeClass("selected")
+                .addClass("non_selected")
+            ;
             jQuery(this).find(".asignatura").text("Sin clases");
             jQuery(this).find(".profesor").empty();
 
@@ -274,7 +277,7 @@ function get_bloques(id_curso){
         }
     })
         .done(function(data){
-            console.log(data);
+            //console.log(data);
             var data = jQuery.parseJSON(data);
 
             jQuery.each(data,function(i, value){
@@ -283,7 +286,7 @@ function get_bloques(id_curso){
                 var id_asignatura = data[i].id_asignatura;
                 var nombre_asignatura = data[i].nombre_asignatura;
 
-                var clase = "bloque";
+                var clase = "bloque non_selected";
                 var selected = "0";
 
                 if(id_asignatura){
@@ -314,7 +317,7 @@ function get_bloques(id_curso){
                                 .text(data[i].horario)
                                 .css({
                                     "background-color": data[i].color1,
-                                    "color": "#FFF"
+                                    "color": data[i].color2
                                 })
                         )
                         .append(

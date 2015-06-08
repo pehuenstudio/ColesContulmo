@@ -1,4 +1,4 @@
-#contenedor_formulario{
+#contenedor_selectores{
     background-color: #EFEFEF !important;
     margin-bottom: 10px !important;
     float: left !important;
@@ -6,37 +6,156 @@
     z-index: 10;
     padding-left: 2%;
     padding-right: 2%;
-    vertical-align: middle;
 
 }
-#contenedor_formulario .grilla3{
+#contenedor_selectores .grilla3{
     width: 32% !important;
     margin-right: 2% !important;
 
 }
 
-#contenedor_formulario .grilla3.ultima{
+#contenedor_selectores .grilla3.ultima{
     margin-right: 0 !important;
 }
 
-.grilla3 select{
+#contenedor_selectores .grilla3 select{
     width: 100%;
 }
 
-#contenedor_calendario .fc-day-header{
-    background-color: #40B1E2;
-    color: #ffffff;
+#contenedor_selectores .grilla10 select, #contenedor_selectores .grilla10 input, #contenedor_selectores .grilla10 textarea{
+    width: 100%;
 }
 
-#contenedor_calendario .fc-day-number{
-    background-color: #C8C8C8;
-    color: #A0A0A0;
-    border-color: #ddd;
+.cabecera{
+    display: table;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-#contenedor_calendario .sin-clases{
-    background: #EFEFEF;
-
+.cabecera div{
+    display: table-cell;
+    vertical-align: bottom;
+    width: 80%;
     text-align: center;
-    vertical-align: middle;
+}
+
+.cabecera #mes_actual{
+    width: 100%;
+}
+
+.cabecera .boton{
+    margin-bottom: 15px;
+    width: 10%;
+}
+.cabecera .boton #boton_atras{
+    float: left;
+    width: 100%;
+}
+
+.cabecera .boton #boton_siguiente{
+    float: right;
+    width: 100%;
+}
+
+#calendario{
+    width: 100%;
+}
+#calendario .cabecera{
+    float: left;
+    width: 100%;
+}
+
+#calendario .cabecera .dia {
+    float: left;
+    width: 20%;
+    color: #FFFFFF;
+    background-color: #40B1E2;
+    border-left: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#calendario .cabecera .dia.primero{
+    border-top-left-radius: 10px;
+}
+
+#calendario .cabecera .dia.ultimo{
+    border-top-right-radius: 10px;
+    border-right: 1px solid #EFEFEF;
+}
+
+.mes, .mes .semana{
+    float: left;
+    width: 100%;
+}
+
+.mes .semana .dia{
+    float: left;
+    width: 20%;
+    color: #FFFFFF;
+    border-left: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
+    text-align: center;
+    font-size: small;
+    height: 150px;
+
+}
+
+.mes .semana .dia.sin_clases{
+   /* background-color: #A0A0A0;*/
+    /*background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+*/
+}
+
+.mes .semana .dia.con_clases{
+    background-color: #ffffff;
+}
+
+.mes .semana .dia.ultimo{
+    border-right: 1px solid #EFEFEF;
+}
+
+.mes .semana .dia .fecha{
+    background-color: #212121;
+    text-align: right;
+    float: left;
+    height: 30px;
+    width: 100%;
+}
+.dia .contenedor_eventos{
+    float: left;
+    width: 100%;
+    height: 120px;
+    position: relative;
+}
+
+.dia .contenedor_eventos .bloqueo{
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 120px;
+    z-index: 9;
+    background-color: rgba(160, 160, 160, 0.5);
+
+}
+
+
+.mes .semana .dia .contenedor_eventos .evento{
+    text-align: left;
+    float: left;
+    height: 30px;
+    width: 100%;
+}
+
+
+
+ #mes_actual{
+     float: left;
+     text-align: center;
+     width: 80%;
+ }
+
+#contenedor_formulario .grilla10 input, #contenedor_formulario .grilla10 select, #contenedor_formulario .grilla10 textarea{
+    width: 100%;
 }

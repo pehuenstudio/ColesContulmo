@@ -1,11 +1,14 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+date_default_timezone_set("America/Argentina/Buenos_Aires");
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/ClaseMatriz.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Profesor.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Bloque.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Dia.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Asignatura.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Evaluacion.php";
 
 $id_funcion = $_POST["id_funcion"];
 
@@ -15,6 +18,9 @@ switch($id_funcion){
         break;
     case "2":
         upd_clases_run_profesor_and_id_asignatura_by_id();
+        break;
+    case "3":
+        get_clases_by_run_profe_and_id_cur_and_id_asig_and_id_dia();
         break;
     default:
         break;
@@ -59,7 +65,7 @@ function get_clases_by_id_curso(){
     print_r(json_encode($clases, JSON_UNESCAPED_UNICODE));
 }
 
-// SE USA DESDE carag_evaluaciones
+// SE USA DESDE carag_clases
 function upd_clases_run_profesor_and_id_asignatura_by_id(){
     $result = true;
 
@@ -97,6 +103,58 @@ function upd_clases_run_profesor_and_id_asignatura_by_id(){
     }
     print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
 }
+
+//SE USA DESDE cargar_evaluaciones
+function get_clases_by_run_profe_and_id_cur_and_id_asig_and_id_dia(){
+
+    $run_profesor = $_POST["run_profesor"];
+    $id_curso = $_POST["id_curso"];
+    $id_asignatura = $_POST["id_asignatura"];
+    $id_dia = $_POST["id_dia"];
+    $fecha = $_POST["fecha"];
+
+    $matriz_clase = new ClaseMatriz();
+    if($matriz_clase->db_get_clases_by_run_profe_and_id_cur_and_id_asig_and_id_dia($run_profesor, $id_curso, $id_asignatura,$id_dia) == "0"){
+        $result = array("result" => false);
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    $clases = $matriz_clase->get_matriz();
+
+    $i = 0;
+    $j = count($clases);
+    while($i < $j){
+        $evaluacion = new Evaluacion();
+        $evaluacion->set_id_clase($clases[$i]["id_clase"]);
+        $evaluacion->set_fecha($fecha);
+
+        if($evaluacion->db_get_evaluacion_by_id_clase_and_fecha() > "0"){
+            unset($clases[$i]);
+        }
+        $i++;
+    }
+
+    $clases = array_values($clases);
+    for($i = 0; $i < count($clases); $i++){
+    $bloque = new Bloque();
+    $bloque->set_id_bloque($clases[$i]["id_bloque"]);
+    $bloque->db_get_bloque_by_id();
+    $clases[$i]["hora_inicio"]= $bloque->get_hora_inicio();
+    $clases[$i]["hora_fin"] = $bloque->get_hora_fin();
+
+    $dia = new Dia();
+    $dia->set_id_dia($bloque->get_id_dia());
+    $dia->db_get_dia_by_id();
+
+    $clases[$i]["nombre_dia"] = $dia->get_nombre();
+    }
+    //$clases = array_values($clases);
+
+    print_r(json_encode($clases, JSON_UNESCAPED_UNICODE));
+}
+
 /*
 if( == "0"){
         $result = array(

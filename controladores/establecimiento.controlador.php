@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+date_default_timezone_set("America/Argentina/Buenos_Aires");
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/EstablecimientoMatriz.php";
@@ -34,6 +35,7 @@ function get_establecimientos(){
 
 //SE USA DESDE evaluaciones
 function get_establecimientos_by_run_profesor(){
+    //print_r($_POST);
     $run_profesor = $_POST["run_profesor"];
 
     $matriz_establecimiento = new EstablecimientoMatriz();

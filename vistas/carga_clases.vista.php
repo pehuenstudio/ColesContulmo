@@ -1,5 +1,6 @@
 <?php
 $rbd_establecimiento = 51543;
+//TODO: ver overlapping
 ?>
 
 <link rel="stylesheet" href="/_code/vistas/css/jquery-ui.css">

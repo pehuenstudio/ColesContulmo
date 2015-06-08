@@ -255,8 +255,9 @@
     <table name="evaluaciones" schema="" catalog="coles_data" type="TABLE">
       <column name="id_evaluacion" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="id_clase" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="fecha" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
       <column name="run_profesor" sqlType="VARCHAR" length="9" precision="0" nullable="false" jdbcType="12"/>
-      <column name="periodo" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="descripcion" sqlType="VARCHAR" length="200" precision="0" nullable="false" jdbcType="12"/>
       <column name="estado" sqlType="TINYINT" length="3" precision="0" nullable="true" jdbcType="-6" def="MQ=="/>
       <primary-key name="PRIMARY" columns="id_evaluacion"/>
       <foreign-key name="fk_notas_clases1" columns="id_clase" ref-table="clases" ref-schema="" ref-catalog="coles_data" ref-columns="id_clase" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -407,14 +408,42 @@
         <parameter name="in_id_bloque" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
       </prototype>
     </procedure>
+    <procedure name="get_bloques_by_run_profe_and_id_cur_and_id_asig_and_id_dia" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_run_profesor" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="in_id_curso" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="in_asignatura" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="in_id_dia" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
+      </prototype>
+    </procedure>
+    <procedure name="get_bloques_by_run_profe_and_id_curso_and_id_asignatura" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_run_profesor" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="in_id_curso" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="in_asignatura" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+      </prototype>
+    </procedure>
     <procedure name="get_ciclos_by_rbd_establecimiento" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="in_rbd_establecimiento" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
       </prototype>
     </procedure>
+    <procedure name="get_clase_by_id" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_id_clase" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
     <procedure name="get_clases_by_id_curso" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="in_id_curso" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="get_clases_by_run_profe_and_id_cur_and_id_asig_and_id_dia" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_run_profesor" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="in_id_curso" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="in_asignatura" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="in_id_dia" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="4"/>
       </prototype>
     </procedure>
     <procedure name="get_comuna_by_id" schema="" catalog="coles_data" type="1">
@@ -462,6 +491,11 @@
         <parameter name="in_periodo" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="3"/>
       </prototype>
     </procedure>
+    <procedure name="get_dia_by_id" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_id_dia" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+      </prototype>
+    </procedure>
     <procedure name="get_dias_by_run_profesor_and_id_curso_and_id_asignatura" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="in_run_profesor" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
@@ -483,6 +517,18 @@
     <procedure name="get_establecimientos_by_run_profesor" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="in_run_profesor" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="get_evaluacion_by_id_clase_and_fecha" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_id_clase" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="in_fecha" sqlType="VARCHAR" length="10" precision="10" nullable="true" jdbcType="12" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="get_evaluaciones_by_id_curso_and_mes_actual" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_id_curso" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="in_mes_actual" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="2"/>
       </prototype>
     </procedure>
     <procedure name="get_grado_repetido_by_run_and_id_grado_and_id_tipo_ensenanza" schema="" catalog="coles_data" type="1">
@@ -584,6 +630,14 @@
         <parameter name="in_id_comuna" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="5"/>
       </prototype>
     </procedure>
+    <procedure name="ins_evaluacion" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_id_clase" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="in_fecha" sqlType="VARCHAR " length="10" precision="10" nullable="true" jdbcType="1111" type="1" index="2"/>
+        <parameter name="in_run_profesor" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="3"/>
+        <parameter name="in_descripcion" sqlType="VARCHAR" length="200" precision="200" nullable="true" jdbcType="12" type="1" index="4"/>
+      </prototype>
+    </procedure>
     <procedure name="ins_grado_repetido" schema="" catalog="coles_data" type="1">
       <prototype>
         <parameter name="in_run_alumno" sqlType="VARCHAR " length="9" precision="9" nullable="true" jdbcType="1111" type="1" index="1"/>
@@ -661,6 +715,13 @@
         <parameter name="in_depto" sqlType="VARCHAR " length="5" precision="5" nullable="true" jdbcType="1111" type="1" index="4"/>
         <parameter name="in_sector" sqlType="VARCHAR " length="60" precision="60" nullable="true" jdbcType="1111" type="1" index="5"/>
         <parameter name="in_id_comuna" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="6"/>
+      </prototype>
+    </procedure>
+    <procedure name="upd_evaluacion" schema="" catalog="coles_data" type="1">
+      <prototype>
+        <parameter name="in_id_clase" sqlType="INT" length="10" precision="10" nullable="true" jdbcType="4" type="1" index="1"/>
+        <parameter name="in_fecha" sqlType="VARCHAR " length="10" precision="10" nullable="true" jdbcType="1111" type="1" index="2"/>
+        <parameter name="in_descripcion" sqlType="VARCHAR " length="200" precision="200" nullable="true" jdbcType="1111" type="1" index="3"/>
       </prototype>
     </procedure>
     <procedure name="upd_grado_repetido_by_run_and_id_grado_and_id_tipo_ensenanza" schema="" catalog="coles_data" type="1">

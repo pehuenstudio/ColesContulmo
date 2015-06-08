@@ -35,5 +35,19 @@ class Dia {
     public function set_identidad($nombre){
         $this->set_nombre($nombre);
     }
+
+    public function db_get_dia_by_id(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_dia_by_id(?)");
+        $sentencia->bindParam(1, $this->id_dia, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $this->set_identidad($row["nombre"]);
+        }
+
+        $sentencia->rowCount();
+    }
 }
 ?> 

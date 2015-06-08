@@ -36,33 +36,36 @@
     border: 1px;
     border-style: dashed;
     margin-bottom: 10px;
-    background-color: #EFEFEF;
-}/*
-#contenedor_bloques .bloque.selected{
-    border-color: #02B59F;
-    background-color: #e5f9f6;
-}
-.bloque.selected .hora{
-    background-color: #00C3AB;
-    color: #ffffff;
-}
-.bloque.selected .asignatura{
-    color: #02B59F;
 }
 
-.bloque.selected .profesor{
-    color: #02B59F;
-}
-*/
-.bloque .hora{
-    background-color: #C8C8C8;
+#contenedor_bloques .bloque.selected .hora{
+    text-align: center;
     font-size: small;
-    color: #888;
+}
+
+#contenedor_bloques .bloque.non_selected{
+    background-color: #EFEFEF !important;
+    color: #C8C8C8 !important;
+}
+
+#contenedor_bloques .bloque.non_selected .hora{
+    background-color: #C8C8C8 !important;
+    font-size: small;
+    color: #EFEFEF !important;
     text-align: center;
     height: 30px;
     margin-bottom: 0;
 }
 
+#contenedor_bloques .bloque.non_selected .asignatura{
+    background-color: #EFEFEF !important;
+    font-size: small;
+    color: #C8C8C8 !important;
+    text-align: center;
+    margin: 5px;
+    height: 60px;
+    margin-bottom: 0;
+}
 
 
 .bloque .asignatura {

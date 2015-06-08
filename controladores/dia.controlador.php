@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+date_default_timezone_set("America/Argentina/Buenos_Aires");
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/DiaMatriz.php";
@@ -14,6 +15,7 @@ switch($id_funcion){
         break;
     
 }
+//SE USA DESDE carga_evaluaciones
 function get_dias_by_run_profesor_and_id_curso_and_id_asignatura(){
     $run_profesor = $_POST["run_profesor"];
     $id_curso = $_POST["id_curso"];

@@ -40,9 +40,7 @@ function get_establecimientos_by_run_profesor(){
 
     $matriz_establecimiento = new EstablecimientoMatriz();
     if($matriz_establecimiento->db_get_establecimientos_by_run_profesor($run_profesor)== "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

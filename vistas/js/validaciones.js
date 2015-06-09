@@ -169,3 +169,16 @@ function validar_imagen_extencion(file,msg){
     file.siblings(".error").html("&nbsp;");
     return true;
 }
+
+function validar_textareaMinMax(textarea,min,max,msg){
+    var textareaText = textarea.val();
+    var regExp =  new RegExp("^[a-záéíóúñ0-9\\.\\,\\-\\!\\¡\\?\\¿\\$ ]{"+min+","+max+"}$","i");
+    if(!regExp.test(textareaText)){
+        textarea.attr("class","error");
+        textarea.siblings(".error").html("<p>"+msg+"</p>");
+        return false;
+    }
+    textarea.attr("class","");
+    textarea.siblings(".error").html("&nbsp;");
+    return true;
+}

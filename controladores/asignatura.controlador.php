@@ -62,9 +62,7 @@ function get_asignaturas_by_run_profesor_and_id_curso(){
 
     $matriz_asignatura = new AsignaturaMatriz();
     if($matriz_asignatura->db_get_asignaturas_by_run_profesor_and_id_curso($run_profesor, $id_curso) == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

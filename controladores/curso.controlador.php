@@ -81,9 +81,7 @@ function get_cursos_by_run_profesor_and_rbd_establecimiento_and_periodo(){
 
     $matriz_curso = new CursoMatriz();
     if($matriz_curso->db_get_cursos_by_run_profesor_and_rbd_establecimiento_and_periodo($run_profesor, $rbd_establecimiento, $periodo)== "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

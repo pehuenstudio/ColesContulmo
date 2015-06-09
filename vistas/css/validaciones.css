@@ -1,0 +1,25 @@
+div.error{
+    font-size:small !important;
+    /*font-style:italic !important;*/
+    color:#E65D65 !important;
+}
+
+div.error p{
+    margin: 0 !important;
+}
+
+ input.error,  select.error, textarea.error{
+    background: #fbe3e4 !important;
+    border: 1px solid #fbc2c4 !important;
+    color: #8a1f11 !important;
+}
+input.error::-webkit-input-placeholder {
+    color: #dbbbb7 !important;
+}
+form strong{
+    color: #E65D65 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+}

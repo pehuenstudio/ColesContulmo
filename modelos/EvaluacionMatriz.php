@@ -19,8 +19,9 @@ class EvaluacionMatriz {
         $matriz = array(
             "id_evaluacion" => $evaluacion->get_id_evaluacion(),
             "id_clase" => $evaluacion->get_id_clase(),
-            "fecha" => $evaluacion->get_fecha(),
             "run_profesor" => $evaluacion->get_run_profesor(),
+            "fecha" => $evaluacion->get_fecha(),
+            "coeficiente" => $evaluacion->get_coeficiente(),
             "descripcion" => $evaluacion->get_descripcion()
         );
 
@@ -47,6 +48,7 @@ class EvaluacionMatriz {
                 $row["id_clase"],
                 $row["run_profesor"],
                 $row["fecha"],
+                $row["coeficiente"],
                 $row["descripcion"]
             );
 

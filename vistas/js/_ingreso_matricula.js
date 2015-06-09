@@ -977,7 +977,7 @@ function validar_alumno(){
     if(!validar_textoMinMax(jQuery("#nombre2_alumno"),3,45,"Ingrese un nombre válido")){ console.log("nombre2 alumno inválido"); result = false; }
     if(!validar_textoMinMax(jQuery("#apellido1_alumno"),3,45,"Ingrese un apellido válido")){ console.log("apellido1 alumno inválido"); result = false; }
     if(!validar_textoMinMax(jQuery("#apellido2_alumno"),3,45,"Ingrese un apellido válido")){ console.log("apellido2 alumno inválido"); result = false; }
-    if(!validar_select(jQuery("#sexo_alumno"),"Debe selecciona un sexo")){result = false}
+    if(!validar_select(jQuery("#sexo_alumno"),"Debe seleccionar un sexo")){result = false}
     if(!validar_fecha(jQuery("#fecha_nacimiento_alumno"),"Ingrese una fecha valida")){result = false;}
 
     if(!validar_email(jQuery("#email_alumno"),"Ingrese un email válido")){result = false;}

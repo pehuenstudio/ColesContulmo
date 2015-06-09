@@ -21,31 +21,31 @@
         <div class="semana">
             <div class="dia sin_clases primero" data-id_dia="1">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
            </div>
             <div class="dia sin_clases" data-id_dia="2">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="3">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="4">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases ultimo" data-id_dia="5">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
@@ -53,31 +53,31 @@
         <div class="semana">
             <div class="dia sin_clases primero" data-id_dia="1">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="2">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="3">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="4">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases ultimo" data-id_dia="5">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
@@ -85,31 +85,31 @@
         <div class="semana">
             <div class="dia sin_clases primero" data-id_dia="1">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="2">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="3">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="4">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases ultimo" data-id_dia="5">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
@@ -117,31 +117,31 @@
         <div class="semana">
             <div class="dia sin_clases primero" data-id_dia="1">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="2">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="3">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="4">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases ultimo" data-id_dia="5">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
@@ -149,31 +149,31 @@
         <div class="semana">
             <div class="dia sin_clases primero" data-id_dia="1">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="2">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="3">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="4">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases ultimo" data-id_dia="5">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
@@ -181,31 +181,31 @@
         <div class="semana">
             <div class="dia sin_clases primero" data-id_dia="1">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="2">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="3">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases" data-id_dia="4">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>
             <div class="dia sin_clases ultimo" data-id_dia="5">
                 <div class="fecha">&nbsp;</div>
-                <div class="contenedor_eventos">
+                <div class="contenedor_evaluaciones">
                     <div class="bloqueo"></div>
                 </div>
             </div>

@@ -45,11 +45,11 @@
 
 #contenedor_bloques .bloque.non_selected{
     background-color: #EFEFEF !important;
-    color: #C8C8C8 !important;
+    color: #212121 !important;
 }
 
 #contenedor_bloques .bloque.non_selected .hora{
-    background-color: #C8C8C8 !important;
+    background-color: #212121 !important;
     font-size: small;
     color: #EFEFEF !important;
     text-align: center;
@@ -60,7 +60,7 @@
 #contenedor_bloques .bloque.non_selected .asignatura{
     background-color: #EFEFEF !important;
     font-size: small;
-    color: #C8C8C8 !important;
+    color: #212121 !important;
     text-align: center;
     margin: 5px;
     height: 60px;

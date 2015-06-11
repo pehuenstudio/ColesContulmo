@@ -36,9 +36,7 @@ function get_dias_by_run_profesor_and_id_curso_and_id_asignatura(){
 }
 /*
 if( == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

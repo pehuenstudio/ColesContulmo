@@ -60,6 +60,19 @@ function validar_textoMinMax(input,min,max,msg){
     return true;
 }
 
+function validar_floatMinMax(input,min,max,msg){
+    var inputFloat = input.val();
+    var regExp =  new RegExp("^[0-9\\.]{"+min+","+max+"}$","i");
+    if(!regExp.test(inputTexto)){
+        input.attr("class","error");
+        input.siblings(".error").html("<p>"+msg+"</p>");
+        return false;
+    }
+    input.attr("class","");
+    input.siblings(".error").html("&nbsp;");
+    return true;
+}
+
 function validar_numeroMinMax(input,min,max,msg){
     var inputNumero = input.val();
 

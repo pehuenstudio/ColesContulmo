@@ -66,5 +66,37 @@ class Nota {
         $this->set_fecha_creacion($fecha_creacion);
     }
 
+    public function db_ins_nota(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL ins_nota(?,?,?,?)");
+        $sentencia->bindParam(1, $this->id_evaluacion, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $this->run_alumno, \PDO::PARAM_STR, 9);
+        $sentencia->bindParam(3, $this->valor, \PDO::PARAM_STR, 3);
+        $sentencia->bindParam(4, $this->fecha_creacion, \PDO::PARAM_STR, 10);
+        $result = $sentencia->execute();
+
+        return $result;
+    }
+
+    public function db_upd_nota_by_id_evaluacion_and_run_alumno(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL upd_nota_by_id_evaluacion_and_run_alumno(?,?,?)");
+        $sentencia->bindParam(1, $this->id_evaluacion, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $this->run_alumno, \PDO::PARAM_STR, 9);
+        $sentencia->bindParam(3, $this->valor, \PDO::PARAM_STR, 3);
+        $result = $sentencia->execute();
+
+        return $result;
+    }
+
+    public function db_del_nota_by_id_evaluacion_and_run_alumno(){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL del_nota_by_id_evaluacion_and_run_alumno(?,?)");
+        $sentencia->bindParam(1, $this->id_evaluacion, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $this->run_alumno, \PDO::PARAM_STR, 9);
+        $result = $sentencia->execute();
+
+        return $result;
+    }
 }
 ?> 

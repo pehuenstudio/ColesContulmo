@@ -5,6 +5,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Resize.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Alumno.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/AlumnoMatriz.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Direccion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Comuna.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Provincia.php";
@@ -22,6 +23,10 @@ switch($id_funcion){
         break;
     case "3":
         ins_alumno_joomla();
+        break;
+    case "4":
+        get_alumnos_by_id_curso();
+        break;
     default:
         break;
     
@@ -225,7 +230,6 @@ function ins_alumno_joomla(){
         $db->setQuery("SELECT id FROM z_users WHERE username = '" . $alumno->get_run()."'");
         $db->query();
         $data = $db->loadResult();
-        //print_r("SELECT id FROM z_users WHERE username = " . $alumno->get_run());
         if(!empty($data)){
             $result["result"] = "3";
             $result["msg"] = "El alumno ya existe en el sistema.";
@@ -285,7 +289,19 @@ function ins_alumno_joomla(){
     print_r($result);
 }
 
+function get_alumnos_by_id_curso(){
+    $id_curso = $_POST["id_curso"];
+    $matriz_alumnos = new AlumnoMatriz();
+    if($matriz_alumnos->db_get_alumnos_by_id_curso($id_curso) == "0"){
+        $result = array();
 
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    print_r($matriz_alumnos->to_json());
+
+}
 
 
 ?>

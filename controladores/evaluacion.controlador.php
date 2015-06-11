@@ -29,6 +29,9 @@ switch($id_funcion){
     case "5":
         del_evaluacion_by_id();
         break;
+    case "6":
+        get_evaluaciones_by_id_curso_and_id_asignatura();
+        break;
     default:
         break;
     
@@ -38,7 +41,6 @@ function ins_evaluacion(){
 
     $evaluacion = new Evaluacion();
     $evaluacion->set_id_clase($_POST["id_clase"]);
-    $evaluacion->set_run_profesor($_POST["run_profesor"]);
     $evaluacion->set_fecha($_POST["fecha"]);
     $evaluacion->set_coeficiente($_POST["coeficiente"]);
     $evaluacion->set_descripcion($_POST["descripcion"]);
@@ -99,13 +101,15 @@ function get_evaluacion_by_id(){
         return null;
     }
 
-    $profesor = new Profesor();
-    $profesor->set_run($evaluacion->get_run_profesor());
-    $profesor->db_get_profesor_by_run();
 
     $clase = new Clase();
     $clase->set_id_clase($evaluacion->get_id_clase());
     $clase->db_get_clase_by_id();
+
+    $profesor = new Profesor();
+    $profesor->set_run($clase->get_run_profesor());
+    $profesor->db_get_profesor_by_run();
+
 
     $bloque = new Bloque();
     $bloque->set_id_bloque($clase->get_id_bloque());
@@ -188,11 +192,45 @@ function del_evaluacion_by_id(){
 
 
 }
+
+function get_evaluaciones_by_id_curso_and_id_asignatura(){
+    //print_r($_POST);
+    $id_curso = $_POST["id_curso"];
+    $id_asignatura = $_POST["id_asignatura"];
+    $matriz_evaluaciones = new EvaluacionMatriz();
+    if($matriz_evaluaciones->db_get_evaluaciones_by_id_curso_and_id_asignatura($id_curso, $id_asignatura) == "0"){
+        $result = array( );
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+    $fecha_hoy = date_create(date("Y-m-d"));
+    $evaluaciones = $matriz_evaluaciones->get_matriz();
+
+    for($i = 0; $i < count($evaluaciones); $i++){
+        $fecha_evaluacion = date_create($evaluaciones[$i]["fecha"]);
+
+        $evaluaciones[$i]["dia_mes"] = date("j", strtotime($evaluaciones[$i]["fecha"])) ;
+        $evaluaciones[$i]["id_mes"] = date("n", strtotime($evaluaciones[$i]["fecha"])) ;
+
+
+        $date_diff = date_diff($fecha_hoy, $fecha_evaluacion);
+        $diferencia = (int)$date_diff->format("%R%a");
+
+        if($diferencia < 1){
+            $evaluaciones[$i]["readonly"] = false;
+        }else{
+            $evaluaciones[$i]["readonly"] = true;
+        }
+
+    }
+
+    print_r(json_encode($evaluaciones,JSON_UNESCAPED_UNICODE));
+
+}
 /*
 if( == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array( );
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

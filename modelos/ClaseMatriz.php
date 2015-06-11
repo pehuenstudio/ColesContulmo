@@ -21,8 +21,6 @@ class ClaseMatriz {
             "id_curso" => $clase->get_id_curso(),
             "id_asignatura" => $clase->get_id_asignatura(),
             "id_bloque" => $clase->get_id_bloque(),
-            "rbd_establecimiento" => $clase->get_rbd_establecimiento(),
-            "periodo" => $clase->get_periodo(),
             "estado" => $clase->get_estado()
         );
 
@@ -47,11 +45,10 @@ class ClaseMatriz {
             $clase->set_identidad(
                 $row["id_curso"],
                 $row["id_asignatura"],
-                $row["id_bloque"],
-                $row["rbd_establecimiento"]
+                $row["id_bloque"]
             );
             $clase->set_run_profesor($row["run_profesor"]);
-            $clase->set_periodo($row["periodo"]);
+
 
             $this->to_matriz($clase);
         }
@@ -92,11 +89,9 @@ class ClaseMatriz {
             $clase->set_identidad(
                 $row["id_curso"],
                 $row["id_asignatura"],
-                $row["id_bloque"],
-                $row["rbd_establecimiento"]
+                $row["id_bloque"]
             );
             $clase->set_run_profesor($row["run_profesor"]);
-            $clase->set_periodo($row["periodo"]);
 
             $this->to_matriz($clase);
         }

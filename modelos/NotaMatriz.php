@@ -55,5 +55,55 @@ class NotaMatriz {
 
         return $sentencia->rowCount();
     }
+
+    public function db_get_notas_by_id_curso_and_id_asignatura($id_curso, $id_asignatura){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_notas_by_id_curso_and_id_asignatura(?,?)");
+        $sentencia->bindParam(1, $id_curso, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $id_asignatura, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+
+        foreach($data as $row){
+            $nota = new Nota();
+            $nota->set_id_nota($row["id_nota"]);
+            $nota->set_identidad(
+                $row["id_evaluacion"],
+                $row["run_alumno"],
+                $row["valor"],
+                $row["fecha_creacion"]
+            );
+
+            $this->to_matriz($nota);
+        }
+
+        return $sentencia->rowCount();
+    }
+
+    public function db_get_notas_by_id_evaluacion_and_run_alumno($id_evaluacion, $run_alumno){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_notas_by_id_evaluacion_and_run_alumno(?,?)");
+        $sentencia->bindParam(1, $id_evaluacion, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $run_alumno, \PDO::PARAM_STR, 9);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+
+        foreach($data as $row){
+            $nota = new Nota();
+            $nota->set_id_nota($row["id_nota"]);
+            $nota->set_identidad(
+                $row["id_evaluacion"],
+                $row["run_alumno"],
+                $row["valor"],
+                $row["fecha_creacion"]
+            );
+
+            $this->to_matriz($nota);
+        }
+
+        return $sentencia->rowCount();
+    }
 }
 ?>

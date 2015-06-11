@@ -8,8 +8,6 @@ class Clase {
     private $id_curso;
     private $id_asignatura;
     private $id_bloque;
-    private $rbd_establecimiento;
-    private $periodo;
     private $estado = "1";
 
     public function set_estado($estado)
@@ -52,22 +50,6 @@ class Clase {
     {
         return $this->id_curso;
     }
-    public function set_periodo($periodo)
-    {
-        $this->periodo = $periodo;
-    }
-    public function get_periodo()
-    {
-        return $this->periodo;
-    }
-    public function set_rbd_establecimiento($rbd_establecimiento)
-    {
-        $this->rbd_establecimiento = $rbd_establecimiento;
-    }
-    public function get_rbd_establecimiento()
-    {
-        return $this->rbd_establecimiento;
-    }
     public function set_run_profesor($run_profesor)
     {
         $this->run_profesor = $run_profesor;
@@ -77,11 +59,12 @@ class Clase {
         return $this->run_profesor;
     }
 
-    function set_identidad($id_curso, $id_asignatura, $id_bloque, $rbd_establecimiento){
+
+
+    function set_identidad($id_curso, $id_asignatura, $id_bloque){
         $this->id_asignatura = $id_asignatura;
         $this->id_bloque = $id_bloque;
         $this->id_curso = $id_curso;
-        $this->rbd_establecimiento = $rbd_establecimiento;
     }
 
     function db_upd_clase_run_profesor_and_id_asignatura_by_id(){
@@ -103,11 +86,11 @@ class Clase {
 
         $data = $sentencia->fetchAll(0);
         foreach($data as $row){
+            $this->set_run_profesor($row["run_profesor"]);
             $this->set_identidad(
                 $row["id_curso"],
                 $row["id_asignatura"],
-                $row["id_bloque"],
-                $row["rbd_establecimiento"]
+                $row["id_bloque"]
             );
         }
 

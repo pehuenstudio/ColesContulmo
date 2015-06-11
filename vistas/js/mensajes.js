@@ -67,55 +67,6 @@ function mostrar_dialogo(val,msg){
             ]
         });
     }
-    if(val == "21"){
-        clase = "peligro-ui";
-        titulo = "Operación Interrumpida";
-
-        jQuery("#dialog").dialog({
-            autoOpen: false,
-            buttons:[
-                {
-                    text: "Aceptar",
-                    click: function(){
-                        jQuery("#dialog").dialog("close");
-                    }
-                }
-            ]
-        });
-    }
-
-    if(val == "3"){
-        clase = "exito-ui"
-        titulo = "Operación exitosa";
-
-        jQuery("#dialog").dialog({
-            autoOpen: false,
-            buttons:[
-                {
-                    text: "Nueva Matricula",
-                    click: function(){
-                        location.reload();
-                    }
-                },
-                {
-                    text: "Imprimir Matricula",
-                    click: function(){
-                        jQuery("#formulario")
-                            .attr("action","/_code/controladores/matricula.controlador.php")
-                            .append(
-                                jQuery("<input>")
-                                    .attr({
-                                            "name": "id_funcion",
-                                            "type": "hidden"
-                                        })
-                                    .val("2"))
-                            .submit();
-                    }
-                }
-            ]
-        });
-    }
-
     if(val == "3"){
         clase = "exito-ui"
         titulo = "Operación exitosa";

@@ -140,37 +140,7 @@ h1.titulo{
     font-size: small;
 }
 
-#contenedor_selectores div.error{
-    font-size:small !important;
-    /*font-style:italic !important;*/
-    color:#E65D65 !important;
-}
 
-#contenedor_selectores div.error p{
-    margin: 0 !important;
-}
-
-#contenedor_selectores strong{
-    color: #E65D65 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 0 !important;
-    height: 0 !important;
-}
-#contenedor_selectores input.error, #contenedor_selectores select.error{
-    background: #fbe3e4 !important;
-    border: 1px solid #fbc2c4 !important;
-    color: #8a1f11 !important;
-}
-#contenedor_selectores input.error::-webkit-input-placeholder {
-    color: #dbbbb7 !important;
-}
-#contenedor_selectores img{
-    height: 100px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
 #contenedor_selectores #panel_loading{
     position: absolute;
     top: 0;
@@ -180,34 +150,6 @@ h1.titulo{
     z-index: 10;
     background-color: rgba(0,0,0,0.5);
 
-}
-#contenedor_selectores table{
-    width: 100%;
-    height: 35px !important;
-}
-
-#contenedor_selectores table tr{
-    border-width: 1px;
-    border-style: solid;
-    text-align: center;
-    font-size: small;
-}
-
-#contenedor_selectores .grilla4{
-    width: 23.5% !important;
-    margin-right: 2% !important;
-}
-#contenedor_selectores .grilla4.last{
-    width: 23.5% !important;
-    margin-right: 0 !important;
-}
-
-
-.asignatura hr {
-    margin-top: 1px;
-    margin-bottom: 1px;
-    border: 0;
-    border-top: 1px solid #119420;
 }
 
 

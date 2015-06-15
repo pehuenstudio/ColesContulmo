@@ -5,37 +5,52 @@ jQuery(document).ready(function(){
     var id_curso = jQuery("#id_curso");
     var id_asignatura = jQuery("#id_asignatura");
     var formulario_notas = jQuery("#formulario_notas");
-    var notas_inputs = jQuery(".notas").find("input");
+    var cartola = jQuery("#cartola");
+    var cartola2 = cartola.clone();
+
 
     get_establecimientos(run_profesor.val());
 
     rbd_establecimiento.change(function(){
         del_selector(id_curso, "Seleccione Un Curso");
         del_selector(id_asignatura, "Seleccione Una Asignatura");
+        jQuery("#cartola").remove();
+
 
         if(rbd_establecimiento.val() == "0"){
             id_curso.prop("disabled", true);
             return null;
         }
+        cartola2.clone().insertAfter("#run_profesor");
         id_curso.prop("disabled", false);
         id_asignatura.prop("disabled", true);
         get_cursos(run_profesor.val(), rbd_establecimiento.val());
     });
 
     id_curso.change(function(){
+        jQuery("#cartola").remove();
         del_selector(id_asignatura, "Seleccione Una Asignatura");
 
         if(id_curso.val() == "0"){
             id_asignatura.prop("disabled", true);
             return null;
         }
-
+        cartola2.clone().insertAfter("#run_profesor");
+        jQuery("#cartola").attr("style","display: table !important");
         id_asignatura.prop("disabled", false);
         get_alumnos(run_profesor.val(), id_curso.val());
 
     });
 
     id_asignatura.change(function(){
+        jQuery(".fecha").remove();
+        jQuery(".notas").empty();
+        jQuery(".boton").remove();
+        jQuery(".promedio")
+            .find("p")
+            .text("S/N")
+            .removeClass("rojo azul")
+        ;
         if(id_asignatura.val() == "0"){return null; }
         get_evaluaciones(id_curso.val(), id_asignatura.val())
     });
@@ -44,14 +59,17 @@ jQuery(document).ready(function(){
         var nota = $(this);
         var regExp = new RegExp("(^[1-7]{1}$)|(^[1-7]{1}\\.$)");
         if(!regExp.test(nota.val())){
-            //console.log("no cumple con uno");
             var regExp = new RegExp("^([1-7]{1}\\.[0])|([1-6]{1}\\.[0-9]{1})$");
             if(!regExp.test(nota.val())){
-                //console.log("no cumple con dos");
                 nota.val(nota.val().substring(0, nota.val().length - 1));
+                nota.attr("data-nota","del-nota");
+            }else{
+                nota.attr("data-nota","ins-nota");
             }
+        }else{
+            nota.attr("data-nota","ins-nota");
         }
-
+        //if(nota.val() == ""){nota.attr("data-nota","del-nota")}else{nota.removeAttr("data-nota")}
     });
 
     formulario_notas.on("focusout","input",function(e){
@@ -64,7 +82,7 @@ jQuery(document).ready(function(){
         if(regExp.test(nota.val())){
             nota.val(nota.val()+".0")
         }
-        //console.log(nota.val())
+
         if(nota.val() != ""){
             if(nota.val() < 4){
                 var clase = "rojo";
@@ -72,6 +90,7 @@ jQuery(document).ready(function(){
                 var clase = "azul";
             }
         }
+
         jQuery(nota)
             .removeClass("rojo azul")
             .addClass(clase)
@@ -96,20 +115,14 @@ jQuery(document).ready(function(){
                 sumatoria_total += (notas_alumno[i].nota*notas_alumno[i].coeficiente);
                 sumatoria_coeficientes += parseInt(notas_alumno[i].coeficiente);
             })
-            //console.log(sumatoria_total);
-            //console.log(sumatoria_coeficientes);
+;
             var promedio = sumatoria_total/sumatoria_coeficientes;
             var promedio_formateado = promedio.toFixed(1);
             var clase = "";
-            console.log(sumatoria_total);
-            if(sumatoria_total != ""){
-                if(promedio_formateado < 4){
-                    var clase = "rojo";
-                }else{
-                    var clase = "azul";
-                }
+            if(promedio_formateado < 4){
+                var clase = "rojo";
             }else{
-                promedio_formateado = "S/N";
+                var clase = "azul";
             }
             jQuery(".promedio[data-run_alumno="+run_alumno+"]")
                 .find("p")
@@ -117,10 +130,31 @@ jQuery(document).ready(function(){
                 .removeClass("rojo azul")
                 .addClass(clase)
             ;
+        }else{
+            var clase = "";
+            promedio_formateado = "S/N";
+            jQuery(".promedio[data-run_alumno="+run_alumno+"]")
+                .find("p")
+                .text(promedio_formateado)
+                .removeClass("rojo azul")
+                .addClass(clase)
         }
     });
 
+    formulario_notas.on("click",".boton", function(e){
+        var id_evaluacion = jQuery(this).attr("data-id_evaluacion");
+        var notasArray = jQuery("input[data-id_evaluacion="+id_evaluacion+"]");
+        jQuery.each(notasArray, function(i, v){
+            if(jQuery(notasArray[i]).val() != ""){
+                jQuery(notasArray[i])
+                    .val("")
+                    .attr("data-nota","del_nota")
+                ;
+            }
+        });
 
+        jQuery("#formulario_notas").find("input").focusout();
+    });
 
     formulario_notas.submit(function(){
         event.preventDefault();
@@ -130,17 +164,20 @@ jQuery(document).ready(function(){
             var notas= [];
             var notasArray = jQuery(registros[i]).find("input");
             jQuery.each(notasArray, function(i, value){
-                notas.push({
-                    id_evaluacion:jQuery(notasArray[i]).attr("data-id_evaluacion"),
-                    nota: jQuery(notasArray[i]).val()
+                if(jQuery(notasArray[i]).attr("data-nota")) {
+                    notas.push({
+                        id_evaluacion: jQuery(notasArray[i]).attr("data-id_evaluacion"),
+                        nota: jQuery(notasArray[i]).val()
+                    });
+                }
+            });
+
+            if(notas.length > 0) {
+                alumnos.push({
+                    run_alumno: jQuery(registros[i]).attr("data-run_alumno"),
+                    notas: notas
                 });
-            });
-
-
-            alumnos.push({
-                run_alumno: jQuery(registros[i]).attr("data-run_alumno"),
-                notas: notas
-            });
+            }
         });
 
         jQuery.ajax({
@@ -284,10 +321,10 @@ function get_alumnos(run_profesor, id_curso){
             }
             var ultimo = "";
             jQuery.each(data, function(i, value){
-                if(i == (data.length-1)){
-                    ultimo = "ultimo";
+                if((data.length-1) == 1 || (data.length-1) == i){
+                    ultimo = "ultimo"
                 }
-                jQuery("#cartola")
+                jQuery("#cartola").find(".contenedor_registros")
                     .append(
                         jQuery("<div></div>")
                             .addClass("registro")
@@ -345,31 +382,45 @@ function get_evaluaciones(id_curso, id_asignatura){
         }
     })
         .done(function(data){
-            console.log(data);
+            //console.log(data);
             var data = jQuery.parseJSON(data);
-            var ultimo = ""
+            var clase = ""
             jQuery(".empty")
                 .css({
-                    "border-right": "1px solid #212121"
+                    "border-right": "1px solid transparent",
+                    "border-top-right-radius": "10px"
                 })
             jQuery.each(data, function(i, value){
-                if(i == (data.length-1)){
-                    ultimo = "ultimo";
+                if((data.length-1) == 0 || (data.length-1) == i){
+                    clase = "ultima"
+                }
+                if(i == 0){
+                    var  clase = "primera"
                 }
                 jQuery(".header_fechas")
                     .append(
                         jQuery("<div></div>")
                             .addClass("fecha")
+                            .addClass(clase)
                             .text(data[i].dia_mes+" - "+meses[data[i].id_mes])
-
                     )
+                ;
+                jQuery(".booter_fechas")
+                    .append(
+                    jQuery("<div></div>")
+                        .addClass("boton")
+                        .addClass(clase)
+                        .text("Limpiar")
+                        .attr("data-id_evaluacion",data[i].id_evaluacion)
+
+                )
 
                 ;
                 jQuery(".notas")
                     .append(
                         jQuery("<div></div>")
                             .addClass("casillero")
-                            .addClass(ultimo)
+                            .addClass(clase)
                             .append(
                             jQuery("<div></div>")
                                 .addClass("coeficiente")
@@ -424,6 +475,9 @@ function get_notas(id_curso, id_asignatura){
                     }else{
                         var clase = "azul";
                     }
+                    var data_nota = "con-nota";
+                }else{
+                    var data_nota = "";
                 }
                 var notas_array = jQuery(".notas[data-run_alumno="+data[i].run_alumno+"]");
                 var nota = jQuery(notas_array).find(("input[data-id_evaluacion="+data[i].id_evaluacion+"]"));

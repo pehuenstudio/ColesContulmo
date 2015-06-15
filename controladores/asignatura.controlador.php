@@ -5,6 +5,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/AsignaturaMatriz.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Curso.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Matricula.php";
 
 $id_funcion = $_POST["id_funcion"];
 
@@ -14,6 +15,9 @@ switch($id_funcion){
         break;
     case "2":
         get_asignaturas_by_run_profesor_and_id_curso();
+        break;
+    case "3":
+        get_asignaturas_by_id_curso();
         break;
     default:
         break;
@@ -70,11 +74,37 @@ function get_asignaturas_by_run_profesor_and_id_curso(){
 
     print_r($matriz_asignatura->to_json());
 }
+
+function get_asignaturas_by_id_curso(){
+    $run_alumno = $_POST["run_alumno"];
+    $rbd_establecimiento = $_POST["rbd_establecimiento"];
+    $periodo = date("Y");
+
+    $matricula = new Matricula();
+    $matricula->set_run_alumno($run_alumno);
+    $matricula->set_rbd_establecimiento($rbd_establecimiento);
+    $matricula->set_periodo($periodo);
+    if( $matricula->db_get_matricula_by_run_alumno_and_rbd_esta_and_periodo()== "0"){
+        $result = array();
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    $matriz_asignaturas = new AsignaturaMatriz();
+    if($matriz_asignaturas->get_asignaturas_by_id_curso($matricula->get_id_curso())== "0"){
+        $result = array();
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    print_r($matriz_asignaturas->to_json());
+
+}
 /*
 if( == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

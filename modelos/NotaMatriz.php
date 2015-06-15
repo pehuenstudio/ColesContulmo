@@ -2,6 +2,7 @@
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Nota.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Matricula.php";
 class NotaMatriz {
     private $matriz = array();
     
@@ -86,6 +87,31 @@ class NotaMatriz {
         $sentencia = $myPDO->prepare("CALL get_notas_by_id_evaluacion_and_run_alumno(?,?)");
         $sentencia->bindParam(1, $id_evaluacion, \PDO::PARAM_INT);
         $sentencia->bindParam(2, $run_alumno, \PDO::PARAM_STR, 9);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+
+        foreach($data as $row){
+            $nota = new Nota();
+            $nota->set_id_nota($row["id_nota"]);
+            $nota->set_identidad(
+                $row["id_evaluacion"],
+                $row["run_alumno"],
+                $row["valor"],
+                $row["fecha_creacion"]
+            );
+
+            $this->to_matriz($nota);
+        }
+
+        return $sentencia->rowCount();
+    }
+
+    public function db_get_notas_by_run_alumno_and_id_curso($run_alumno, $id_curso){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_notas_by_run_alumno_and_id_curso(?,?)");
+        $sentencia->bindParam(1, $run_alumno, \PDO::PARAM_STR, 9);
+        $sentencia->bindParam(2, $id_curso, \PDO::PARAM_INT);
         $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);

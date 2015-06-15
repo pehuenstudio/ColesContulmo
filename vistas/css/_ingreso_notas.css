@@ -1,3 +1,15 @@
+h1.titulo{
+    text-align: center;
+    background-color: #212121;
+    padding: 20px;
+    color: #ffffff;
+
+}
+
+#cartola{
+    display: none !important;
+}
+
 #contenedor_selectores{
     background-color: #EFEFEF !important;
     margin-bottom: 10px !important;
@@ -68,14 +80,61 @@
     text-align: center
 }
 
+#contenedor_cartola #cartola .header_fechas .fecha.primera{
+    border-top-left-radius: 10px;
+    border-left: 1px solid #212121;
+}
 
-#contenedor_cartola #cartola .registro{
+#contenedor_cartola #cartola .header_fechas .fecha.ultima{
+    border-top-right-radius: 10px;
+}
+
+
+/*--*/
+
+#contenedor_cartola #cartola .booter_fechas{
+    height: 32px;
+    width: 45%;
+    float: right;
+    margin-right: 5%;
+    border-right: 1px solid transparent;
+}
+#contenedor_cartola #cartola .booter_fechas .boton{
+    width: 10%;
+    float: left;
+    display: table-column;
+    border-bottom: 1px solid #212121;
+    border-right: 1px solid #212121;
+    text-align: center;
+}
+
+#contenedor_cartola #cartola .booter_fechas .boton:hover{
+    background-color: #FAC757;
+    color: #ffffff;
+}
+
+#contenedor_cartola #cartola .booter_fechas .boton.primera{
+    border-bottom-left-radius: 10px;
+    border-left: 1px solid #212121;
+}
+
+#contenedor_cartola #cartola .booter_fechas .boton.ultima{
+    border-bottom-right-radius: 10px;
+}
+
+#contenedor_cartola #cartola .contenedor_registros{
+    width: 100%;
+    float: left;
+    display: table;
+}
+
+#contenedor_cartola #cartola .contenedor_registros .registro{
     width: 100%;
     float: left;
     display: table-row;
 }
 
-#contenedor_cartola #cartola .registro .alumno{
+#contenedor_cartola #cartola .contenedor_registros .registro .alumno{
     width: 50%;
     height: 50px;
     float: left;
@@ -86,11 +145,11 @@
     line-height: 50px;
 }
 
-#contenedor_cartola #cartola .registro .alumno.ultimo{
+#contenedor_cartola #cartola .contenedor_registros .registro .alumno.ultimo{
     border-bottom: 1px solid #212121;
 }
 
-#contenedor_cartola #cartola .registro .notas{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas{
     width: 45%;
     height: 50px;
     float: left;
@@ -99,22 +158,22 @@
     border-right: 1px solid #212121;
 }
 
-#contenedor_cartola #cartola .registro .notas.ultimo{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas.ultimo{
     border-bottom: 1px solid #212121;
 }
 
-#contenedor_cartola #cartola .registro .notas .casillero{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas .casillero{
     width: 10%;
     height: 100%;
     border-right: 1px solid #212121;
     float: left;
 }
 
-#contenedor_cartola #cartola .registro .notas .casillero.ultimo{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas .casillero.ultimo{
     border-left: none;
 }
 
-#contenedor_cartola #cartola .registro .notas .casillero .coeficiente{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas .casillero .coeficiente{
     background-color: #4C4C4C;
     color: #ffffff;
     font-size: xx-small;
@@ -124,7 +183,7 @@
 
 }
 
-#contenedor_cartola #cartola .registro .notas .casillero input{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas .casillero input{
     width: 100%;
     height: 30px;
     border-radius: inherit;
@@ -147,23 +206,23 @@
 
 }
 
-#contenedor_cartola #cartola .registro .notas .casillero input::-webkit-input-placeholder{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas .casillero input::-webkit-input-placeholder{
     color: #A0A0A0;
 }
 
-#contenedor_cartola #cartola .registro .notas .casillero input[readonly]{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas .casillero input[readonly]{
     background-color: #A0A0A0;
 }
 
-#contenedor_cartola #cartola .registro .notas .casillero input[readonly]::-webkit-input-placeholder{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas .casillero input[readonly]::-webkit-input-placeholder{
     color: #ffffff;
 }
 
-#contenedor_cartola #cartola .registro .notas.ultimo .casillero input{
+#contenedor_cartola #cartola .contenedor_registros .registro .notas.ultimo .casillero input{
     height: 28px;
 }
 
-#contenedor_cartola #cartola .registro .promedio {
+#contenedor_cartola #cartola .contenedor_registros .registro .promedio {
     width: 5%;
     height: 50px;
     float: left;
@@ -172,11 +231,12 @@
     border-top: 1px solid #212121;
 }
 
-#contenedor_cartola #cartola .registro .promedio.ultimo{
+#contenedor_cartola #cartola .contenedor_registros .registro .promedio.ultimo{
     border-bottom: 1px solid #212121;
+
 }
 
-#contenedor_cartola #cartola .registro .promedio .header{
+#contenedor_cartola #cartola .contenedor_registros .registro .promedio .header{
     background-color: #4C4C4C;
     color: #ffffff;
     font-size: xx-small;
@@ -185,6 +245,11 @@
     line-height: 20px;
 }
 
-#contenedor_cartola #cartola .registro .promedio p{
+#contenedor_cartola #cartola .contenedor_registros .registro .promedio p{
     text-align: center;
+}
+
+#contenedor_cartola #cartola .contenedor_registros .registro .promedio.ultimo p{
+    text-align: center;
+    height: 28px;
 }

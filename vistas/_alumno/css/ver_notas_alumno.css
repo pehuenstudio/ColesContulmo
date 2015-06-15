@@ -1,0 +1,127 @@
+#contenedor_cartola{
+    width: 100%;
+    float: left;
+}
+
+#contenedor_cartola #asignaturas .contenedor_evaluaciones{
+    width: 100%;
+    float: left;
+    display: table;
+}
+
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas_header{
+    width: 100%;
+    float: left;
+    display: table-row;
+    text-align: center;
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas_header .fecha_header{
+    display: inline-block;
+    background-color: #4C4C4C;
+    color: #ffffff;
+    font-size: large;
+    width: 20%;
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas_header .coeficiente_header{
+    display: inline-block;
+    background-color: #4C4C4C;
+    color: #ffffff;
+    font-size: large;
+    width: 10%;
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas_header .valor_header{
+    display: inline-block;
+    background-color: #4C4C4C;
+    color: #ffffff;
+    font-size: large;
+    width: 10%;
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas{
+    width: 100%;
+    float: left;
+    display: table-row;
+    text-align: center;
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas .evaluacion{
+    width: 100%;
+    float: left;
+    display: table-row;
+    text-align: center;
+
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas .evaluacion .fecha{
+    width: 20%;
+    display: inline-block;
+    border-bottom: 1px solid #212121;
+    border-left: 1px solid #212121;
+    padding: 2px 0 2px 0;
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas .evaluacion .coeficiente{
+    width: 10%;
+    display: inline-block;
+    border-bottom: 1px solid #212121;
+    border-left: 1px solid #212121;
+    padding: 2px 0 2px 0;
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas .evaluacion .valor{
+    width: 10%;
+    display: inline-block;
+    text-align: center;
+    border-bottom: 1px solid #212121;
+    border-left: 1px solid #212121;
+    border-right: 1px solid #212121;
+    padding: 2px 0 2px 0;
+}
+
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .notas .evaluacion .valor p{
+    display: inline-block;
+    margin: 0;
+}
+
+.rojo{
+    background-color: #D4555E;
+    color: #ffffff;
+    display: inline-block;
+    margin: 0;
+}
+.azul{
+    background-color: #2988C9;
+    color: #ffffff;
+    display: inline-block;
+    margin: 0;
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .contenedor_promedio{
+    width: 100%;
+    float: left;
+    display: table-row;
+    text-align: center;
+}
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .contenedor_promedio .promedio_header{
+    display: inline-block;
+    background-color: #4C4C4C;
+    color: #ffffff;
+    font-size: x-large;
+    width: 30%;
+    border-left: 1px solid #212121;
+    border-bottom: 1px solid #212121;
+}
+
+#contenedor_cartola #asignaturas .asignatura .contenedor_evaluaciones .contenedor_promedio .promedio{
+    display: inline-block;
+    width: 10%;
+    border-bottom: 1px solid #212121;
+    border-left: 1px solid #212121;
+    border-right: 1px solid #212121;
+    font-size: x-large;
+}

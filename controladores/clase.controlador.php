@@ -9,6 +9,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Bloque.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Dia.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Asignatura.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Evaluacion.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Matricula.php";
 
 $id_funcion = $_POST["id_funcion"];
 
@@ -21,6 +22,9 @@ switch($id_funcion){
         break;
     case "3":
         get_clases_by_run_profe_and_id_cur_and_id_asig_and_id_dia();
+        break;
+    case "4":
+        get_matricula_by_run_alumno_and_rbd_esta_and_periodo();
         break;
     default:
         break;
@@ -155,11 +159,55 @@ function get_clases_by_run_profe_and_id_cur_and_id_asig_and_id_dia(){
     print_r(json_encode($clases, JSON_UNESCAPED_UNICODE));
 }
 
-/*
-if( == "0"){
+function get_matricula_by_run_alumno_and_rbd_esta_and_periodo(){
+    //print_r($_POST);
+    $periodo = date("Y");
+
+    $matricula = new Matricula();
+    $matricula->set_run_alumno($_POST["run_alumno"]);
+    $matricula->set_rbd_establecimiento($_POST["rbd_establecimiento"]);
+    $matricula->set_periodo($periodo);
+    $matricula->db_get_matricula_by_run_alumno_and_rbd_esta_and_periodo();
+    //print_r($matricula);
+
+    $matriz_clase = new ClaseMatriz();
+    if($matriz_clase->db_get_clases_by_id_curso($matricula->get_id_curso()) == "0"){
         $result = array(
             "result" => false
         );
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    $clases = $matriz_clase->get_matriz();
+    for($i = 0; $i < count($clases); $i++){
+        $bloque = new Bloque();
+        $bloque->set_id_bloque($clases[$i]["id_bloque"]);
+        $bloque->db_get_bloque_by_id();
+        $clases[$i]["id_dia"] = $bloque->get_id_dia();
+        $clases[$i]["horario"] = $bloque->get_hora_inicio()." - ".$bloque->get_hora_fin();
+
+        $profesor = new Profesor();
+        $profesor->set_run($clases[$i]["run_profesor"]);
+        $profesor->db_get_profesor_by_run();
+        $clases[$i]["nombre_profesor"] = $profesor->get_nombre1()." ".$profesor->get_nombre2()." ".$profesor->get_apellido2();
+
+        $asignatura = new Asignatura();
+        $asignatura->set_id_asignatura($clases[$i]["id_asignatura"]);
+        $asignatura->db_get_asignatura_by_id();
+        $clases[$i]["nombre_asignatura"] = $asignatura->get_nombre();
+        $clases[$i]["color1"] = $asignatura->get_color1();
+        $clases[$i]["color2"] = $asignatura->get_color2();
+    }
+
+
+    print_r(json_encode($clases, JSON_UNESCAPED_UNICODE));
+
+}
+/*
+if( == "0"){
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

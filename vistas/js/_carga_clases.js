@@ -16,7 +16,7 @@ jQuery(document).ready(function(){
         var id_ciclo = jQuery("#id_ciclo").val();
 
         if(id_ciclo == "0"){
-            jQuery("#contenedor_bloques").css("display","none");
+            jQuery("#bloques").css("display","none");
 
             jQuery("#id_curso").empty()
                 .prop("disabled", true)
@@ -29,7 +29,7 @@ jQuery(document).ready(function(){
                 .val("0");
             return null;
         }
-        //jQuery("#contenedor_bloques").css("display","inline");
+        //jQuery("#bloques").css("display","inline");
         //jQuery("#contenedor_info").css("display","none");
         jQuery("#id_curso").empty()
             .prop("disabled", false)
@@ -42,7 +42,7 @@ jQuery(document).ready(function(){
     jQuery("#id_curso").change(function(){
         del_bloques();
         var id_curso = jQuery("#id_curso").val();
-        var bloques = jQuery("#contenedor_bloques");
+        var bloques = jQuery("#bloques");
         var asignatura = jQuery("#id_asignatura");
 
         if(id_curso == "0"){
@@ -90,7 +90,7 @@ jQuery(document).ready(function(){
 
     });
 
-    jQuery("#contenedor_bloques").on("click", ".bloque", function (){
+    jQuery("#bloques").on("click", ".bloque", function (){
 
         var id_bloque = jQuery(this).attr("data-id_bloque");
         var id_clase = jQuery(this).attr("data-id_clase");

@@ -10,6 +10,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Asignatura.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Profesor.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Bloque.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/NotaMatriz.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Matricula.php";
 
 $id_funcion = $_POST["id_funcion"];
 
@@ -18,7 +19,7 @@ switch($id_funcion){
         ins_evaluacion();
         break;
     case "2":
-        get_evaluaciones_by_id_curso_and_mes_actual();
+        get_evaluaciones_by_run_profesor_and_id_curso_and_mes_actual();
         break;
     case "3":
         get_evaluacion_by_id();
@@ -31,6 +32,12 @@ switch($id_funcion){
         break;
     case "6":
         get_evaluaciones_by_id_curso_and_id_asignatura();
+        break;
+    case "7":
+        get_evaluaciones_by_id_curso_and_mes_actual();
+        break;
+    case "8":
+        get_evaluaciones_by_id_curso();
         break;
     default:
         break;
@@ -58,12 +65,13 @@ function ins_evaluacion(){
 }
 
 //SE USA DESDE carga_evaluaciones
-function get_evaluaciones_by_id_curso_and_mes_actual(){
+function get_evaluaciones_by_run_profesor_and_id_curso_and_mes_actual(){
+    $run_profesor = $_POST["run_profesor"];
     $id_curso = $_POST["id_curso"];
     $mes_actual = $_POST["mes_actual"];
 
     $matriz_evaluacion = new EvaluacionMatriz();
-    if($matriz_evaluacion->db_get_evaluaciones_by_id_curso_and_mes_actual($id_curso, $mes_actual) == "0"){
+    if($matriz_evaluacion->db_get_evaluaciones_by_run_profesor_and_id_curso_and_mes_actual($run_profesor, $id_curso, $mes_actual) == "0"){
         $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
@@ -227,6 +235,96 @@ function get_evaluaciones_by_id_curso_and_id_asignatura(){
 
     print_r(json_encode($evaluaciones,JSON_UNESCAPED_UNICODE));
 
+}
+
+function get_evaluaciones_by_id_curso_and_mes_actual(){
+    $periodo = date("Y");
+    $matricula = new Matricula();
+    $matricula->set_run_alumno($_POST["run_alumno"]);
+    $matricula->set_rbd_establecimiento($_POST["rbd_establecimiento"]);
+    $matricula->set_periodo($periodo);
+    if($matricula->db_get_matricula_by_run_alumno_and_rbd_esta_and_periodo()== "0"){
+        $result = array( );
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    $id_curso = $matricula->get_id_curso();
+    $mes_actual = $_POST["mes_actual"];
+
+    $matriz_evaluacion = new EvaluacionMatriz();
+    if($matriz_evaluacion->db_get_evaluaciones_by_id_curso_and_mes_actual($id_curso, $mes_actual) == "0"){
+        $result = array();
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    $evaluaciones = $matriz_evaluacion->get_matriz();
+    for($i = 0; $i < count($evaluaciones); $i++){
+        $clase = new Clase();
+        $clase->set_id_clase($evaluaciones[$i]["id_clase"]);
+        $clase->db_get_clase_by_id();
+
+
+        $asignatura = new Asignatura();
+        $asignatura->set_id_asignatura($clase->get_id_asignatura());
+        $asignatura->db_get_asignatura_by_id();
+
+        $evaluaciones[$i]["nombre_asignatura"] = $asignatura->get_nombre();
+        $evaluaciones[$i]["color1"] = $asignatura->get_color1();
+        $evaluaciones[$i]["color2"] = $asignatura->get_color2();
+
+    }
+
+    print_r(json_encode($evaluaciones, JSON_UNESCAPED_UNICODE));
+
+}
+
+function get_evaluaciones_by_id_curso(){
+    $run_alumno = $_POST["run_alumno"];
+    $rbd_establecimiento = $_POST["rbd_establecimiento"];
+    $periodo = date("Y");
+
+    $matricula = new Matricula();
+    $matricula->set_run_alumno($run_alumno);
+    $matricula->set_rbd_establecimiento($rbd_establecimiento);
+    $matricula->set_periodo($periodo);
+    if($matricula->db_get_matricula_by_run_alumno_and_rbd_esta_and_periodo()== "0"){
+        $result = array( );
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+    //print_r($matricula);
+    $matriz_evaluacion = new EvaluacionMatriz();
+    if($matriz_evaluacion->db_get_evaluaciones_by_id_curso($matricula->get_id_curso()) == "0"){
+        $result = array();
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    $evaluaciones = $matriz_evaluacion->get_matriz();
+    for($i = 0; $i < count($evaluaciones); $i++){
+        $clase = new Clase();
+        $clase->set_id_clase($evaluaciones[$i]["id_clase"]);
+        $clase->db_get_clase_by_id();
+
+
+        $asignatura = new Asignatura();
+        $asignatura->set_id_asignatura($clase->get_id_asignatura());
+        $asignatura->db_get_asignatura_by_id();
+
+        $evaluaciones[$i]["id_asignatura"] = $asignatura->get_id_asignatura();
+        $evaluaciones[$i]["nombre_asignatura"] = $asignatura->get_nombre();
+        $evaluaciones[$i]["color1"] = $asignatura->get_color1();
+        $evaluaciones[$i]["color2"] = $asignatura->get_color2();
+
+    }
+
+    print_r(json_encode($evaluaciones, JSON_UNESCAPED_UNICODE));
 }
 /*
 if( == "0"){

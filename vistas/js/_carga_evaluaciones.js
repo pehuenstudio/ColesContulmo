@@ -27,32 +27,32 @@ jQuery(document).ready(function(){
 
 
     jQuery("#boton_atras").click(function(){
-        get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
+        //get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
         del_selector(id_clase_ins, "Seleccione Una Clase");
 
         mes_actual = (mes_actual - 1);
         cargar_botones(meses, mes_actual);
 
-        //console.log(mes_actual+" "+meses[mes_actual]);
+        console.log(mes_actual+" "+meses[mes_actual]);
         if(mes_actual <=12){jQuery("#boton_siguiente").css("visibility","visible")}
-        if(mes_actual <= 3){jQuery("#boton_atras").css("visibility","hidden"); return null}
+        if(mes_actual <= 3){jQuery("#boton_atras").css("visibility","hidden")}
         get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
-        if(id_curso.val() != "0"){get_evaluaciones(id_curso.val(), mes_actual)}
+        if(id_curso.val() != "0"){get_evaluaciones(run_profesor_ins.val(), id_curso.val(), mes_actual)}
         if(id_asignatura.val() != "0" && id_curso.val() != "0"){get_dias(run_profesor_ins.val(), id_curso.val(), id_asignatura.val())}
     });
 
     jQuery("#boton_siguiente").click(function(){
-        get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
+        //get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
         del_selector(id_clase_ins, "Seleccione Una Clase");
 
         mes_actual = (mes_actual + 1);
         cargar_botones(meses, mes_actual);
 
-        //console.log(mes_actual);
+        console.log(mes_actual);
         if(mes_actual >= 3){jQuery("#boton_atras").css("visibility","visible")}
-        if(mes_actual >= 12){jQuery("#boton_siguiente").css("visibility","hidden"); return null}
+        if(mes_actual >= 12){jQuery("#boton_siguiente").css("visibility","hidden")}
         get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
-        if(id_curso.val() != "0"){get_evaluaciones(id_curso.val(), mes_actual)}
+        if(id_curso.val() != "0"){get_evaluaciones(run_profesor_ins.val(), id_curso.val(), mes_actual)}
         if(id_asignatura.val() != "0" && id_curso.val() != "0"){get_dias(run_profesor_ins.val(), id_curso.val(), id_asignatura.val())}
     });
 
@@ -87,7 +87,7 @@ jQuery(document).ready(function(){
         id_clase_ins.prop("disabled", true);
 
         get_asignaturas(run_profesor_ins.val(), id_curso.val());
-        setTimeout(function(){get_evaluaciones(id_curso.val(), mes_actual)},500);
+        setTimeout(function(){get_evaluaciones(run_profesor_ins.val(), id_curso.val(), mes_actual)},500);
     });
 
     id_asignatura.change(function(){
@@ -196,7 +196,7 @@ jQuery(document).ready(function(){
             processData:false
         })
             .done(function(data){
-                console.log(data);
+                //console.log(data);
                 var data = jQuery.parseJSON(data);
                 switch (data.result){
                     case "3":
@@ -252,7 +252,7 @@ jQuery(document).ready(function(){
             processData:false
         })
             .done(function(data){
-                console.log(data);
+                //console.log(data);
                 var data = jQuery.parseJSON(data);
                 switch (data.result){
                     case "2":
@@ -262,7 +262,7 @@ jQuery(document).ready(function(){
                     case "3":
                         get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
                         get_dias(run_profesor_ins.val(), id_curso.val(), id_asignatura.val());
-                        get_evaluaciones(id_curso.val(), mes_actual);
+                        get_evaluaciones(run_profesor_ins.val(), id_curso.val(), mes_actual);
                         jQuery("#contenedor_formulario_upd").dialog("close");
                         break;
                 }
@@ -287,7 +287,7 @@ jQuery(document).ready(function(){
             data: {id_funcion: "5", id_evaluacion: id_evaluacion}
         })
             .done(function(data){
-                console.log(data);
+                //console.log(data);
                 var data = jQuery.parseJSON(data);
                 switch (data.result){
                     case "21":
@@ -301,7 +301,7 @@ jQuery(document).ready(function(){
                     case "3":
                         get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
                         get_dias(run_profesor_ins.val(), id_curso.val(), id_asignatura.val());
-                        get_evaluaciones(id_curso.val(), mes_actual);
+                        get_evaluaciones(run_profesor_ins.val(), id_curso.val(), mes_actual);
                         jQuery("#contenedor_formulario_upd").dialog("close");
                         break;
                 }
@@ -554,18 +554,18 @@ function get_dias(run_profesor, id_curso, id_asignatura){
     ;
 }
 
-function get_evaluaciones(id_curso, mes_actual){
+function get_evaluaciones(run_profesor, id_curso, mes_actual){
     console.log("Cargando evaluaciones...");
     jQuery.ajax({
         method: "POST",
         url: "/_code/controladores/evaluacion.controlador.php",
-        data: {id_funcion: "2", id_curso: id_curso, mes_actual: mes_actual},
+        data: {id_funcion: "2", run_profesor: run_profesor, id_curso: id_curso, mes_actual: mes_actual},
         beforeSend: function(){
 
         }
     })
         .done(function(data){
-            //console.log(data);
+            console.log(data);
 
             var data = jQuery.parseJSON(data);
 

@@ -105,9 +105,7 @@ function get_cursos_by_run_profesor_and_rbd_establecimiento_and_periodo(){
 
 /*
 if( == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

@@ -18,6 +18,7 @@ $hoy = "2015-05-06";
 <script src="/_code/vistas/js/load.js"></script>
 <script src="/_code/vistas/js/_ingreso_notas.js"></script>
 
+<h1 class="titulo">Panel De Ingreso De Notas</h1>
 <div id="contenedor_selectores">
     <?php require_once "/_code/vistas/ingreso_notas.selectores.php"?>
 </div>

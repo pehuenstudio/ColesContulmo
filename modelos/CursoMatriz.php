@@ -122,6 +122,8 @@ class CursoMatriz {
 
         return $sentencia->rowCount();
     }
+
+
 }
 
 ?>

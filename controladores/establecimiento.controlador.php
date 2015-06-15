@@ -14,6 +14,9 @@ switch($id_funcion){
     case "2":
         get_establecimientos_by_run_profesor();
         break;
+    case "3":
+        get_establecimientos_by_run_alumno_and_periodo();
+        break;
     default:
         break;
     
@@ -48,11 +51,23 @@ function get_establecimientos_by_run_profesor(){
 
     print_r($matriz_establecimiento->to_json());
 }
+
+function get_establecimientos_by_run_alumno_and_periodo(){
+    $run_alumno = $_POST["run_alumno"];
+    $periodo = date("Y");
+    $matriz_establecimiento = new EstablecimientoMatriz();
+    if($matriz_establecimiento->db_get_establecimientos_by_run_alumno_and_periodo($run_alumno, $periodo)== "0"){
+        $result = array();
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    print_r($matriz_establecimiento->to_json());
+}
 /*
-== "0"){
-$result = array(
-"result" => false
-);
+if(== "0"){
+$result = array();
 
 print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
 return null;

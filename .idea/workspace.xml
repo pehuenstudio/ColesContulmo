@@ -1,35 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f48b0c47-2dc8-4324-846f-8ac4dd133127" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/css/_ingreso_notas.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/js/_ingreso_notas.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/ingreso_notas.cartola.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/ingreso_notas.selectores.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/ingreso_notas.vista.php" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\css\fullcalendar.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\css\fullcalendar.print.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\fullcalendar.es.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\fullcalendar.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js\moment.min.js" afterPath="" />
+    <list default="true" id="f48b0c47-2dc8-4324-846f-8ac4dd133127" name="Default" comment="v">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modelos/ZUser.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/carga_clases.selectores.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/css/selectores.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/ver_clases_alumno.bloques.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/css/ver_clases_alumno.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/js/ver_clases_alumno.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/ver_clases_alumno.selectores.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/ver_clases_alumno.vista.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/ver_evaluaciones_alumno.calendario.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/css/ver_evaluaciones_alumno.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/js/ver_evaluaciones_alumno.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/ver_evaluaciones_alumno.selectores.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/ver_evaluaciones_alumno.vista.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/ver_notas_alumno.cartola.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/css/ver_notas_alumno.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/js/ver_notas_alumno.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/ver_notas_alumno.selectores.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vistas/_alumno/ver_notas_alumno.vista.php" />
+      <change type="DELETED" beforePath="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\carga_clases.formulario.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/AlumnoMatriz.php" afterPath="$PROJECT_DIR$/modelos/AlumnoMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Clase.php" afterPath="$PROJECT_DIR$/modelos/Clase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/ClaseMatriz.php" afterPath="$PROJECT_DIR$/modelos/ClaseMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Evaluacion.php" afterPath="$PROJECT_DIR$/modelos/Evaluacion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/AsignaturaMatriz.php" afterPath="$PROJECT_DIR$/modelos/AsignaturaMatriz.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Curso.php" afterPath="$PROJECT_DIR$/modelos/Curso.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/CursoMatriz.php" afterPath="$PROJECT_DIR$/modelos/CursoMatriz.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/EstablecimientoMatriz.php" afterPath="$PROJECT_DIR$/modelos/EstablecimientoMatriz.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/EvaluacionMatriz.php" afterPath="$PROJECT_DIR$/modelos/EvaluacionMatriz.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/Nota.php" afterPath="$PROJECT_DIR$/modelos/Nota.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelos/NotaMatriz.php" afterPath="$PROJECT_DIR$/modelos/NotaMatriz.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/css/_carga_clases.css" afterPath="$PROJECT_DIR$/vistas/css/_carga_clases.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/_carga_clases.js" afterPath="$PROJECT_DIR$/vistas/js/_carga_clases.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/_carga_evaluaciones.js" afterPath="$PROJECT_DIR$/vistas/js/_carga_evaluaciones.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/_conexion.php" afterPath="$PROJECT_DIR$/includes/_conexion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/_config.php" afterPath="$PROJECT_DIR$/includes/_config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/css/_ingreso_notas.css" afterPath="$PROJECT_DIR$/vistas/css/_ingreso_notas.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/_ingreso_notas.js" afterPath="$PROJECT_DIR$/vistas/js/_ingreso_notas.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/_test.php" afterPath="$PROJECT_DIR$/vistas/_test.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/_test2.php" afterPath="$PROJECT_DIR$/vistas/_test2.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/alumno.controlador.php" afterPath="$PROJECT_DIR$/controladores/alumno.controlador.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/asignatura.controlador.php" afterPath="$PROJECT_DIR$/controladores/asignatura.controlador.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/carga_clases.bloques.php" afterPath="$PROJECT_DIR$/vistas/carga_clases.bloques.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/carga_clases.vista.php" afterPath="$PROJECT_DIR$/vistas/carga_clases.vista.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/carga_evaluaciones.vista.php" afterPath="$PROJECT_DIR$/vistas/carga_evaluaciones.vista.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/clase.controlador.php" afterPath="$PROJECT_DIR$/controladores/clase.controlador.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/curso.controlador.php" afterPath="$PROJECT_DIR$/controladores/curso.controlador.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/dia.controlador.php" afterPath="$PROJECT_DIR$/controladores/dia.controlador.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/establecimiento.controlador.php" afterPath="$PROJECT_DIR$/controladores/establecimiento.controlador.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/evaluacion.controlador.php" afterPath="$PROJECT_DIR$/controladores/evaluacion.controlador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/mensajes.js" afterPath="$PROJECT_DIR$/vistas/js/mensajes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/ingreso_notas.cartola.php" afterPath="$PROJECT_DIR$/vistas/ingreso_notas.cartola.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/ingreso_notas.vista.php" afterPath="$PROJECT_DIR$/vistas/ingreso_notas.vista.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controladores/nota.controlador.php" afterPath="$PROJECT_DIR$/controladores/nota.controlador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vistas/js/validaciones.js" afterPath="$PROJECT_DIR$/vistas/js/validaciones.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ColesContulmo.iws" />
@@ -59,135 +78,90 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_ingreso_notas.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vistas/js/_ingreso_notas.js">
+      <file leaf-file-name="ver_notas_apoderado.selectores.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vistas/_apoderado/ver_notas_apoderado.selectores.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="41" selection-start="3867" selection-end="3867" vertical-scroll-proportion="-0.5365854" vertical-offset="1700" max-vertical-offset="8500">
+            <state line="10" column="50" selection-start="510" selection-end="510" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="340">
               <folding>
-                <element signature="e#1458#1918#0" expanded="true" />
-                <element signature="e#2884#3178#0" expanded="true" />
-                <element signature="e#2980#3152#0" expanded="true" />
-                <element signature="e#3392#3575#0" expanded="true" />
-                <element signature="e#4433#5465#0" expanded="true" />
-                <element signature="e#4598#5108#0" expanded="true" />
-                <element signature="e#4746#4948#0" expanded="true" />
-                <element signature="e#4775#4932#0" expanded="true" />
-                <element signature="e#4978#5096#0" expanded="true" />
-                <element signature="e#5132#5287#0" expanded="true" />
-                <element signature="e#5321#5371#0" expanded="true" />
-                <element signature="e#5401#5448#0" expanded="true" />
-                <element signature="n#!!block;n#get_establecimientos#0" expanded="true" />
-                <element signature="e#5583#5863#0" expanded="true" />
-                <element signature="e#5769#5857#0" expanded="true" />
-                <element signature="e#5893#6538#0" expanded="true" />
-                <element signature="e#6249#6526#0" expanded="true" />
-                <element signature="e#6564#6603#0" expanded="true" />
-                <element signature="e#6631#6695#0" expanded="true" />
-                <element signature="n#!!block;n#get_cursos#0" expanded="true" />
-                <element signature="e#6814#7126#0" expanded="true" />
-                <element signature="e#7032#7120#0" expanded="true" />
-                <element signature="e#7156#7817#0" expanded="true" />
-                <element signature="e#7505#7805#0" expanded="true" />
-                <element signature="e#7843#7882#0" expanded="true" />
-                <element signature="e#7910#7974#0" expanded="true" />
-                <element signature="n#!!block;n#get_asignaturas#0" expanded="true" />
-                <element signature="e#8094#8389#0" expanded="true" />
-                <element signature="e#8295#8383#0" expanded="true" />
-                <element signature="e#8419#9059#0" expanded="true" />
-                <element signature="e#8781#9047#0" expanded="true" />
-                <element signature="e#9085#9124#0" expanded="true" />
-                <element signature="e#9152#9216#0" expanded="true" />
-                <element signature="n#!!block;n#get_alumnos#0" expanded="true" />
-                <element signature="e#9329#9592#0" expanded="true" />
-                <element signature="e#9498#9586#0" expanded="true" />
-                <element signature="e#9622#11942#0" expanded="true" />
-                <element signature="e#10043#11877#0" expanded="true" />
-                <element signature="e#11968#12007#0" expanded="true" />
-                <element signature="e#12035#12099#0" expanded="true" />
-                <element signature="n#!!block;n#get_evaluaciones#0" expanded="true" />
-                <element signature="e#12316#12537#0" expanded="true" />
-                <element signature="e#12519#12531#0" expanded="true" />
-                <element signature="e#12567#14511#0" expanded="true" />
-                <element signature="e#12725#12800#0" expanded="true" />
-                <element signature="e#12850#14423#0" expanded="true" />
-                <element signature="e#13807#13955#0" expanded="true" />
-                <element signature="e#14070#14274#0" expanded="true" />
-                <element signature="e#14537#14576#0" expanded="true" />
-                <element signature="e#14604#14616#0" expanded="true" />
-                <element signature="n#!!block;n#get_notas#0" expanded="true" />
-                <element signature="e#14726#14941#0" expanded="true" />
-                <element signature="e#14923#14935#0" expanded="true" />
-                <element signature="e#14971#15797#0" expanded="true" />
-                <element signature="e#15101#15719#0" expanded="true" />
-                <element signature="e#15823#15862#0" expanded="true" />
-                <element signature="e#15890#15902#0" expanded="true" />
-                <element signature="n#!!block;n#mostrar_dialogo#0" expanded="true" />
-                <element signature="e#16165#16486#0" expanded="true" />
-                <element signature="e#16224#16472#0" expanded="true" />
-                <element signature="e#16246#16454#0" expanded="true" />
-                <element signature="e#16342#16432#0" expanded="true" />
-                <element signature="e#16635#16944#0" expanded="true" />
-                <element signature="e#16694#16930#0" expanded="true" />
-                <element signature="e#16716#16912#0" expanded="true" />
-                <element signature="e#16800#16890#0" expanded="true" />
-                <element signature="e#17087#17162#0" expanded="true" />
-                <element signature="e#17253#17402#0" expanded="true" />
-                <element signature="n#!!block;n#del_selector#0" expanded="true" />
+                <element signature="tag#div#1;tag#div#0" expanded="true" />
+                <element signature="tag#select#0;tag#div#1;tag#div#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluacion.controlador.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controladores/evaluacion.controlador.php">
+      <file leaf-file-name="ver_notas_apoderado.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vistas/_apoderado/js/ver_notas_apoderado.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="213" column="84" selection-start="7387" selection-end="7387" vertical-scroll-proportion="0.0" vertical-offset="3621" max-vertical-offset="4148">
+            <state line="46" column="17" selection-start="1498" selection-end="1498" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="5423">
+              <folding>
+                <element signature="e#33#696#0" expanded="true" />
+                <element signature="e#794#1061#0" expanded="true" />
+                <element signature="e#976#1055#0" expanded="true" />
+                <element signature="e#1534#1573#0" expanded="true" />
+                <element signature="e#1601#1665#0" expanded="true" />
+                <element signature="n#!!block;n#get_establecimeintos#0" expanded="true" />
+                <element signature="e#1784#2051#0" expanded="true" />
+                <element signature="e#1966#2045#0" expanded="true" />
+                <element signature="e#2081#2496#0" expanded="true" />
+                <element signature="e#2207#2484#0" expanded="true" />
+                <element signature="e#2522#2561#0" expanded="true" />
+                <element signature="e#2589#2653#0" expanded="true" />
+                <element signature="n#!!block;n#get_asignaturas#0" expanded="true" />
+                <element signature="e#2783#3087#0" expanded="true" />
+                <element signature="e#3002#3081#0" expanded="true" />
+                <element signature="e#3117#6367#0" expanded="true" />
+                <element signature="e#3243#6206#0" expanded="true" />
+                <element signature="e#6393#6432#0" expanded="true" />
+                <element signature="e#6460#6524#0" expanded="true" />
+                <element signature="n#!!block;n#get_evaluaciones#0" expanded="true" />
+                <element signature="e#6656#6960#0" expanded="true" />
+                <element signature="e#6875#6954#0" expanded="true" />
+                <element signature="e#6990#8445#0" expanded="true" />
+                <element signature="e#7144#8208#0" expanded="true" />
+                <element signature="e#8313#8433#0" expanded="true" />
+                <element signature="e#8471#8510#0" expanded="true" />
+                <element signature="e#8538#8602#0" expanded="true" />
+                <element signature="n#!!block;n#get_notas#0" expanded="true" />
+                <element signature="e#8720#9018#0" expanded="true" />
+                <element signature="e#8933#9012#0" expanded="true" />
+                <element signature="e#9048#9720#0" expanded="true" />
+                <element signature="e#9174#9671#0" expanded="true" />
+                <element signature="e#9746#9785#0" expanded="true" />
+                <element signature="e#9813#9877#0" expanded="true" />
+                <element signature="n#!!block;n#get_calcular_promedio#0" expanded="true" />
+                <element signature="e#10034#11577#0" expanded="true" />
+                <element signature="e#10565#11054#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySQL - coles_data@localhost" pinned="false" current="true" current-in-tab="true">
+        <entry file="dbDummy://db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="7" selection-start="0" selection-end="450" vertical-scroll-proportion="0.26741573" vertical-offset="0" max-vertical-offset="445">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ingreso_notas.cartola.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vistas/ingreso_notas.cartola.php">
+      <file leaf-file-name="_test.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vistas/_test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="427" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+            <state line="1" column="64" selection-start="70" selection-end="70" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="187">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nota.controlador.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controladores/nota.controlador.php">
+      <file leaf-file-name="ver_notas_apoderado.vista.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vistas/_apoderado/ver_notas_apoderado.vista.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="10" selection-start="2137" selection-end="2139" vertical-scroll-proportion="0.0" vertical-offset="784" max-vertical-offset="1428">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Nota.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modelos/Nota.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="72" selection-start="2974" selection-end="2974" vertical-scroll-proportion="0.0" vertical-offset="1615" max-vertical-offset="1819">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NotaMatriz.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modelos/NotaMatriz.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="64" selection-start="2859" selection-end="2859" vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="1938">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_ingreso_notas.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vistas/css/_ingreso_notas.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="40" selection-start="1279" selection-end="1279" vertical-scroll-proportion="0.0" vertical-offset="614" max-vertical-offset="3315">
-              <folding />
+            <state line="17" column="68" selection-start="792" selection-end="792" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="459">
+              <folding>
+                <element signature="tag#div#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -208,57 +182,57 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/controladores/grado_educacional.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/matricula.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/profesor.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/provincia.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/region.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/religion.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/tipo_ensenanza.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/calendario.controlador.php" />
-        <option value="$PROJECT_DIR$/modelos/Calendario.php" />
-        <option value="$PROJECT_DIR$/modelos/CalendarioMatriz.php" />
-        <option value="dbprocedure:/80b01052/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_evaluacion_by_id_clase_and_fecha" />
-        <option value="$PROJECT_DIR$/vistas/carga_clases.vista.php" />
-        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..ins_evaluacion" />
-        <option value="dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_clases_by_run_profe_and_id_cur_and_id_asig_and_id_dia" />
-        <option value="$PROJECT_DIR$/controladores/clase.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/curso.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/asignatura.controlador.php" />
-        <option value="$PROJECT_DIR$/controladores/establecimiento.controlador.php" />
-        <option value="$PROJECT_DIR$/vistas/css/_carga_clases.css" />
-        <option value="$PROJECT_DIR$/vistas/carga_evaluaciones.calendario.php" />
-        <option value="$PROJECT_DIR$/vistas/carga_evaluaciones.formulario.php" />
-        <option value="$PROJECT_DIR$/vistas/css/validaciones.css" />
-        <option value="$PROJECT_DIR$/vistas/css/_carga_evaluaciones.css" />
-        <option value="$PROJECT_DIR$/vistas/carga_evaluaciones.formularios.php" />
-        <option value="C:/wamp/www/mail.php" />
-        <option value="$PROJECT_DIR$/vistas/_test2.php" />
-        <option value="$PROJECT_DIR$/vistas/ingreso_notas.selectores.php" />
-        <option value="$PROJECT_DIR$/vistas/js/mensajes.js" />
-        <option value="$PROJECT_DIR$/vistas/carga_evaluaciones.vista.php" />
-        <option value="$PROJECT_DIR$/vistas/ingreso_notas.formulario.php" />
-        <option value="$PROJECT_DIR$/controladores/dia.controlador.php" />
-        <option value="$PROJECT_DIR$/modelos/AlumnoMatriz.php" />
-        <option value="$PROJECT_DIR$/modelos/Clase.php" />
-        <option value="$PROJECT_DIR$/modelos/ClaseMatriz.php" />
-        <option value="$PROJECT_DIR$/modelos/Evaluacion.php" />
-        <option value="$PROJECT_DIR$/controladores/alumno.controlador.php" />
-        <option value="$PROJECT_DIR$/vistas/js/_ingreso_matricula.js" />
-        <option value="$PROJECT_DIR$/modelos/EvaluacionMatriz.php" />
-        <option value="$PROJECT_DIR$/vistas/_test.php" />
-        <option value="$PROJECT_DIR$/vistas/js/_carga_evaluaciones.js" />
+        <option value="$PROJECT_DIR$/vistas/js/_carga_clases.js" />
+        <option value="$PROJECT_DIR$/vistas/carga_clases.formulario.php" />
         <option value="$PROJECT_DIR$/vistas/ingreso_notas.vista.php" />
-        <option value="$PROJECT_DIR$/vistas/js/validaciones.js" />
+        <option value="$PROJECT_DIR$/vistas/ver_clases_alumno.bloques.php" />
+        <option value="$PROJECT_DIR$/vistas/ver_clases_alumno.vista.php" />
+        <option value="$PROJECT_DIR$/vistas/carga_clases.vista.php" />
+        <option value="$PROJECT_DIR$/vistas/css/_carga_clases.css" />
+        <option value="$PROJECT_DIR$/controladores/establecimiento.controlador.php" />
+        <option value="$PROJECT_DIR$/modelos/EstablecimientoMatriz.php" />
+        <option value="$PROJECT_DIR$/controladores/clase.controlador.php" />
+        <option value="$PROJECT_DIR$/vistas/ver_clases_alumno.selectores.php" />
+        <option value="$PROJECT_DIR$/vistas/css/_ver_clases_alumno.css" />
+        <option value="$PROJECT_DIR$/vistas/js/_ver_clases_alumno.js" />
+        <option value="$PROJECT_DIR$/vistas/js/_ver_evaluaciones_alumno.js" />
+        <option value="$PROJECT_DIR$/vistas/ver_evaluaciones_alumno.selectores.php" />
+        <option value="$PROJECT_DIR$/vistas/css/_ver_evaluaciones_alumno.css" />
+        <option value="$PROJECT_DIR$/vistas/ver_evaluaciones_alumno.vista.php" />
+        <option value="$PROJECT_DIR$/controladores/curso.controlador.php" />
+        <option value="$PROJECT_DIR$/modelos/CursoMatriz.php" />
+        <option value="$PROJECT_DIR$/modelos/Curso.php" />
+        <option value="$PROJECT_DIR$/vistas/carga_evaluaciones.vista.php" />
         <option value="db-console:/80b01052/533e777f-9cb2-459a-b29f-0697feaf46b3/" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/ver_evaluaciones_alumno.calendario.php" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/js/_ver_evaluaciones_alumno.js" />
+        <option value="$PROJECT_DIR$/includes/_conexion.php" />
+        <option value="$PROJECT_DIR$/modelos/AsignaturaMatriz.php" />
+        <option value="$PROJECT_DIR$/controladores/asignatura.controlador.php" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/ver_evaluaciones_alumno.vista.php" />
+        <option value="$PROJECT_DIR$/vistas/ver_notas.cartola.php" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/js/ver_notas_alumno.html" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/css/ver_clases_alumno.css" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/ver_notas_alumno.selectores.php" />
+        <option value="$PROJECT_DIR$/vistas/css/selectores.css" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/ver_notas_alumno.vista.php" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/ver_notas_alumno.cartola.php" />
+        <option value="$PROJECT_DIR$/modelos/EvaluacionMatriz.php" />
         <option value="$PROJECT_DIR$/controladores/evaluacion.controlador.php" />
+        <option value="$PROJECT_DIR$/vistas/js/_carga_evaluaciones.js" />
         <option value="$PROJECT_DIR$/vistas/css/_ingreso_notas.css" />
-        <option value="$PROJECT_DIR$/vistas/ingreso_notas.cartola.php" />
-        <option value="$PROJECT_DIR$/modelos/NotaMatriz.php" />
-        <option value="db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/" />
-        <option value="$PROJECT_DIR$/modelos/Nota.php" />
         <option value="$PROJECT_DIR$/controladores/nota.controlador.php" />
+        <option value="$PROJECT_DIR$/modelos/NotaMatriz.php" />
         <option value="$PROJECT_DIR$/vistas/js/_ingreso_notas.js" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/ver_clases_alumno.vista.php" />
+        <option value="$PROJECT_DIR$/vistas/_test2.php" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/css/ver_notas_alumno.css" />
+        <option value="$PROJECT_DIR$/vistas/_alumno/js/ver_notas_alumno.js" />
+        <option value="$PROJECT_DIR$/vistas/_apoderado/ver_notas_apoderado.selectores.php" />
+        <option value="$PROJECT_DIR$/vistas/_test.php" />
+        <option value="$PROJECT_DIR$/vistas/_apoderado/ver_notas_apoderado.vista.php" />
+        <option value="$PROJECT_DIR$/vistas/_apoderado/js/ver_notas_apoderado.js" />
+        <option value="db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/" />
       </list>
     </option>
   </component>
@@ -363,6 +337,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="vistas" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_apoderado" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColesContulmo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColesContulmo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vistas" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_apoderado" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColesContulmo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ColesContulmo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="modelos" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -404,7 +418,7 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="FullScreen" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="C:/wamp/www" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/vistas/_alumno" />
     <property name="SearchEverywhereHistory" value="&#10;." />
     <property name="Console.TableResult.DefaultCopyAction" value="HTML Table" />
     <property name="options.lastSelected" value="fileTemplates" />
@@ -416,18 +430,22 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\_alumno" />
+      <recent name="C:\Users\Rodrigo\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\css" />
+      <recent name="C:\Users\Rodrigo\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js" />
+      <recent name="C:\Users\Rodrigo\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas" />
       <recent name="C:\wamp\www" />
-      <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas" />
-      <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\js" />
-      <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\controladores" />
-      <recent name="C:\Users\Rodrigo\Documents" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\_alumno" />
+      <recent name="C:\Users\Rodrigo\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\_alumno\js" />
+      <recent name="C:\Users\Rodrigo\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\_alumno\css" />
+      <recent name="C:\Users\Rodrigo\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas\_alumno" />
       <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\vistas" />
-      <recent name="C:\Users\Usuario\Dropbox\PehuenStudio\1 - Proyectos\MUNICIPALIDAD CONTULMNO\ColesContulmo\3 - DESARROLLO\ColesContulmo\modelos" />
     </key>
   </component>
   <component name="RunManager">
@@ -554,47 +572,51 @@
       <created>1433883312646</created>
       <updated>1433883312646</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="v0.44 carga de notas casi lista :)">
+      <created>1434054575099</created>
+      <updated>1434054575099</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2773925" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32177532" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8183079" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34082156" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="531" y="59" width="303" height="610" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24932614" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2884882" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18549423" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="531" y="59" width="303" height="610" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21373557" sideWeight="0.49930653" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21181001" sideWeight="0.5006935" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32177532" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21181001" sideWeight="0.5006935" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28016645" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32177532" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24932614" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24903722" sideWeight="0.49930653" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32177532" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28987518" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24967907" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24967907" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28294036" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27868852" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32226834" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32131147" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8183079" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28987518" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18806162" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="531" y="59" width="303" height="610" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2885246" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34040996" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="531" y="59" width="303" height="610" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -605,10 +627,10 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24932614" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20988446" sideWeight="0.49930653" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32177532" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18887262" sideWeight="0.49930653" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24967907" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32177532" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -641,102 +663,80 @@
     <MESSAGE value="v0.41 renombre de vistas, se agrego colores a carga de clases falta terminar carga evaluaciones" />
     <MESSAGE value="v0.42 carga de valuaciones casi lista. falta actualizar una evaluacion y poder borrarla. que no deje borrar evaluaciones pasadas" />
     <MESSAGE value="v0.43 carga de valuaciones  lista." />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.43 carga de valuaciones  lista." />
+    <MESSAGE value="v0.44 carga de notas casi lista :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.44 carga de notas casi lista :)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/modelos/EstablecimientoMatriz.php</url>
+          <line>99</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/controladores/evaluacion.controlador.php</url>
+          <line>141</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="16" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/controladores/grado_educacional.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/profesor.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/provincia.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/region.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/religion.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/tipo_ensenanza.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/GradoRepetido.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/establecimiento.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vistas/css/_carga_clases.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Dia.php">
+    <entry file="file://$PROJECT_DIR$/vistas/carga_clases.vista.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/DiaMatriz.php">
+    <entry file="file://$PROJECT_DIR$/vistas/carga_clases.selectores.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/EstablecimientoMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding>
+            <element signature="n#to_matriz#0;n#EstablecimientoMatriz#0;n#!!top" expanded="false" />
+            <element signature="n#to_json#0;n#EstablecimientoMatriz#0;n#!!top" expanded="false" />
+            <element signature="n#db_get_establecimientos#0;n#EstablecimientoMatriz#0;n#!!top" expanded="false" />
+            <element signature="n#db_get_establecimientos_by_run_profesor#0;n#EstablecimientoMatriz#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controladores/clase.controlador.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/calendario.controlador.php">
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/ver_clases_alumno.bloques.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/ver_clases_alumno.selectores.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vistas/carga_evaluaciones.calendario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/css/_ingreso_matricula.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/carga_evaluaciones.selectores.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/ingreso_notas.selectores.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/css/_carga_evaluaciones.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/js/mensajes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vistas/carga_evaluaciones.formularios.php">
@@ -744,27 +744,50 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/dia.controlador.php">
+    <entry file="file://$PROJECT_DIR$/vistas/carga_evaluaciones.selectores.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controladores/establecimiento.controlador.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding>
+            <element signature="n#get_establecimientos#0;n#!!top" expanded="false" />
+            <element signature="n#get_establecimientos_by_run_profesor#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/ver_evaluaciones_alumno.selectores.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/Curso.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/AsignaturaMatriz.php">
+    <entry file="file://$PROJECT_DIR$/modelos/Matricula.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/ciclo.controlador.php">
+    <entry file="file://$PROJECT_DIR$/modelos/Evaluacion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/asignatura.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/js/_carga_clases.js">
+    <entry file="file://$PROJECT_DIR$/modelos/CursoMatriz.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
@@ -774,219 +797,470 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/ClaseMatriz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/clase.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Clase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Evaluacion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/js/_ingreso_matricula.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/alumno.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Alumno.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/AlumnoMatriz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/EvaluacionMatriz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/_test2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/ingreso_matricula.vista.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/js/_carga_evaluaciones.js">
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/css/ver_evaluaciones_alumno.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/css/validaciones.css">
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/ver_evaluaciones_alumno.calendario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/ingreso_notas.vista.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/js/validaciones.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/apoderado.controlador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="56" selection-end="116" vertical-scroll-proportion="0.052469134" vertical-offset="0" max-vertical-offset="697" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/carga_evaluaciones.vista.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vistas/ingreso_notas.cartola.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="427" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="669">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controladores/evaluacion.controlador.php">
+    <entry file="file://$PROJECT_DIR$/includes/_config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="84" selection-start="7387" selection-end="7387" vertical-scroll-proportion="0.0" vertical-offset="3621" max-vertical-offset="4148">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="935">
+          <folding>
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1434246689000" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/_conexion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="2" selection-start="671" selection-end="671" vertical-scroll-proportion="0.68609864" vertical-offset="0" max-vertical-offset="669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/js/ver_evaluaciones_alumno.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/AsignaturaMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="58" selection-start="3242" selection-end="3280" vertical-scroll-proportion="0.63109756" vertical-offset="317" max-vertical-offset="1258">
+          <folding>
+            <element signature="n#db_get_asignaturas_by_run_profesor_and_id_curso#0;n#AsignaturaMatriz#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/ver_evaluaciones_alumno.vista.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="87" selection-start="866" selection-end="949" vertical-scroll-proportion="0.5336323" vertical-offset="0" max-vertical-offset="669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controladores/asignatura.controlador.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="14" selection-start="788" selection-end="788" vertical-scroll-proportion="0.44095665" vertical-offset="45" max-vertical-offset="1224">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/js/ver_clases_alumno.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="531" selection-end="1520" vertical-scroll-proportion="0.024460431" vertical-offset="306" max-vertical-offset="3570">
+          <folding>
+            <element signature="e#33#528#0" expanded="false" />
+            <element signature="e#266#524#0" expanded="false" />
+            <element signature="n#!!block;n#get_establecimeintos#0" expanded="false" />
+            <element signature="e#640#907#0" expanded="false" />
+            <element signature="e#822#901#0" expanded="false" />
+            <element signature="e#937#1353#0" expanded="false" />
+            <element signature="e#1063#1340#0" expanded="false" />
+            <element signature="e#1379#1418#0" expanded="false" />
+            <element signature="e#1446#1510#0" expanded="false" />
+            <element signature="n#!!block;n#get_clases#0" expanded="false" />
+            <element signature="e#1649#1946#0" expanded="false" />
+            <element signature="e#1863#1940#0" expanded="false" />
+            <element signature="e#1976#4179#0" expanded="false" />
+            <element signature="e#2106#4167#0" expanded="false" />
+            <element signature="e#2837#3091#0" expanded="false" />
+            <element signature="e#3122#3265#0" expanded="false" />
+            <element signature="e#3492#3659#0" expanded="false" />
+            <element signature="e#4205#4244#0" expanded="false" />
+            <element signature="e#4272#4336#0" expanded="false" />
+            <element signature="n#!!block;n#del_bloques#0" expanded="false" />
+            <element signature="n#!!block;n#mostrar_dialogo#0" expanded="false" />
+            <element signature="e#4658#4979#0" expanded="false" />
+            <element signature="e#4717#4965#0" expanded="false" />
+            <element signature="e#4739#4947#0" expanded="false" />
+            <element signature="e#4835#4925#0" expanded="false" />
+            <element signature="e#5128#5437#0" expanded="false" />
+            <element signature="e#5187#5423#0" expanded="false" />
+            <element signature="e#5209#5405#0" expanded="false" />
+            <element signature="e#5293#5383#0" expanded="false" />
+            <element signature="e#5580#5655#0" expanded="false" />
+            <element signature="e#5727#5852#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/ver_notas_alumno.selectores.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="6" selection-start="402" selection-end="402" vertical-scroll-proportion="0.22869955" vertical-offset="0" max-vertical-offset="669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/css/selectores.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.16834532" vertical-offset="2" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/ver_notas_alumno.vista.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="54" selection-start="336" selection-end="336" vertical-scroll-proportion="0.18364197" vertical-offset="0" max-vertical-offset="648">
+          <folding>
+            <element signature="tag#div#0" expanded="true" />
+            <element signature="tag#div#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/ver_notas_alumno.cartola.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="23" selection-end="23" vertical-scroll-proportion="0.025411062" vertical-offset="0" max-vertical-offset="669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbprocedure:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/coles_data..get_notas_by_id_evaluacion_and_run_alumno">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="67" selection-start="26" selection-end="67" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/EvaluacionMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="71" selection-start="3843" selection-end="3843" vertical-scroll-proportion="0.51754385" vertical-offset="138" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/carga_evaluaciones.vista.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/js/_carga_evaluaciones.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="567" column="12" selection-start="22037" selection-end="22037" vertical-scroll-proportion="0.88840264" vertical-offset="9233" max-vertical-offset="11883">
+          <folding>
+            <element signature="e#33#13187#0" expanded="false" />
+            <element signature="e#1383#2161#0" expanded="false" />
+            <element signature="e#2212#2969#0" expanded="false" />
+            <element signature="e#3014#3618#0" expanded="false" />
+            <element signature="e#3652#4255#0" expanded="false" />
+            <element signature="e#4294#4440#0" expanded="false" />
+            <element signature="e#4504#6165#0" expanded="false" />
+            <element signature="e#6236#7571#0" expanded="false" />
+            <element signature="e#6421#6646#0" expanded="false" />
+            <element signature="e#6620#6636#0" expanded="false" />
+            <element signature="e#6680#7429#0" expanded="false" />
+            <element signature="e#7256#7398#0" expanded="false" />
+            <element signature="e#7459#7506#0" expanded="false" />
+            <element signature="e#7538#7554#0" expanded="false" />
+            <element signature="e#7622#10073#0" expanded="false" />
+            <element signature="e#8262#8487#0" expanded="false" />
+            <element signature="e#8521#9932#0" expanded="false" />
+            <element signature="e#9220#9395#0" expanded="false" />
+            <element signature="e#9962#10008#0" expanded="false" />
+            <element signature="e#10040#10056#0" expanded="false" />
+            <element signature="e#10107#11622#0" expanded="false" />
+            <element signature="e#10387#10612#0" expanded="false" />
+            <element signature="e#10646#11480#0" expanded="false" />
+            <element signature="e#11510#11557#0" expanded="false" />
+            <element signature="e#11589#11605#0" expanded="false" />
+            <element signature="e#11656#13182#0" expanded="false" />
+            <element signature="e#11775#11948#0" expanded="false" />
+            <element signature="e#11982#13040#0" expanded="false" />
+            <element signature="e#13070#13117#0" expanded="false" />
+            <element signature="e#13149#13165#0" expanded="false" />
+            <element signature="n#!!block;n#cargar_botones#0" expanded="false" />
+            <element signature="n#!!block;n#get_calendario#0" expanded="false" />
+            <element signature="e#13718#13893#0" expanded="false" />
+            <element signature="e#13923#14716#0" expanded="false" />
+            <element signature="e#14416#14602#0" expanded="false" />
+            <element signature="e#14742#14781#0" expanded="false" />
+            <element signature="e#14809#14821#0" expanded="false" />
+            <element signature="n#!!block;n#get_establecimientos#0" expanded="false" />
+            <element signature="e#14955#15235#0" expanded="false" />
+            <element signature="e#15141#15229#0" expanded="false" />
+            <element signature="e#15265#15894#0" expanded="false" />
+            <element signature="e#15621#15882#0" expanded="false" />
+            <element signature="e#15920#15959#0" expanded="false" />
+            <element signature="e#15987#16051#0" expanded="false" />
+            <element signature="n#!!block;n#get_cursos#0" expanded="false" />
+            <element signature="e#16169#16481#0" expanded="false" />
+            <element signature="e#16387#16475#0" expanded="false" />
+            <element signature="e#16511#17156#0" expanded="false" />
+            <element signature="e#16860#17144#0" expanded="false" />
+            <element signature="e#17182#17221#0" expanded="false" />
+            <element signature="e#17249#17313#0" expanded="false" />
+            <element signature="n#!!block;n#get_asignaturas#0" expanded="false" />
+            <element signature="e#17433#17728#0" expanded="false" />
+            <element signature="e#17634#17722#0" expanded="false" />
+            <element signature="e#17758#18557#0" expanded="false" />
+            <element signature="e#18120#18545#0" expanded="false" />
+            <element signature="e#18368#18512#0" expanded="false" />
+            <element signature="e#18583#18622#0" expanded="false" />
+            <element signature="e#18650#18714#0" expanded="false" />
+            <element signature="n#!!block;n#get_clases#0" expanded="false" />
+            <element signature="e#18854#19204#0" expanded="false" />
+            <element signature="e#19110#19198#0" expanded="false" />
+            <element signature="e#19234#20170#0" expanded="false" />
+            <element signature="e#19647#19963#0" expanded="false" />
+            <element signature="e#20023#20143#0" expanded="false" />
+            <element signature="e#20196#20235#0" expanded="false" />
+            <element signature="e#20263#20327#0" expanded="false" />
+            <element signature="n#!!block;n#get_dias#0" expanded="false" />
+            <element signature="e#20521#20839#0" expanded="false" />
+            <element signature="e#20745#20833#0" expanded="false" />
+            <element signature="e#20869#21458#0" expanded="false" />
+            <element signature="e#21145#21445#0" expanded="false" />
+            <element signature="e#21484#21523#0" expanded="false" />
+            <element signature="e#21551#21615#0" expanded="false" />
+            <element signature="e#21750#21993#0" expanded="false" />
+            <element signature="e#21975#21987#0" expanded="false" />
+            <element signature="e#22153#23201#0" expanded="false" />
+            <element signature="e#22744#22911#0" expanded="false" />
+            <element signature="e#23239#23278#0" expanded="false" />
+            <element signature="e#23306#23318#0" expanded="false" />
+            <element signature="n#!!block;n#del_selector#0" expanded="false" />
+            <element signature="n#!!block;n#mostrar_dialogo#0" expanded="false" />
+            <element signature="e#23809#24130#0" expanded="false" />
+            <element signature="e#23868#24116#0" expanded="false" />
+            <element signature="e#23890#24098#0" expanded="false" />
+            <element signature="e#23986#24076#0" expanded="false" />
+            <element signature="e#24279#24588#0" expanded="false" />
+            <element signature="e#24338#24574#0" expanded="false" />
+            <element signature="e#24360#24556#0" expanded="false" />
+            <element signature="e#24444#24534#0" expanded="false" />
+            <element signature="e#24731#24806#0" expanded="false" />
+            <element signature="e#24878#25027#0" expanded="false" />
+            <element signature="n#!!block;n#validar_formulario_ins#0" expanded="false" />
+            <element signature="n#!!block;n#validar_formulario_upd#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/css/_carga_evaluaciones.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="3" selection-start="589" selection-end="591" vertical-scroll-proportion="0.33333334" vertical-offset="264" max-vertical-offset="3315">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vistas/css/_ingreso_notas.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="40" selection-start="1279" selection-end="1279" vertical-scroll-proportion="0.0" vertical-offset="614" max-vertical-offset="3315">
+        <state line="253" column="16" selection-start="5833" selection-end="5833" vertical-scroll-proportion="0.9162862" vertical-offset="3699" max-vertical-offset="4420">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/NotaMatriz.php">
+    <entry file="file://$PROJECT_DIR$/vistas/js/_carga_clases.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="64" selection-start="2859" selection-end="2859" vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="1938">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/">
+    <entry file="file://$PROJECT_DIR$/controladores/evaluacion.controlador.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="381" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="443" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modelos/Nota.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="72" selection-start="2974" selection-end="2974" vertical-scroll-proportion="0.0" vertical-offset="1615" max-vertical-offset="1819">
-          <folding />
+        <state line="299" column="26" selection-start="9644" selection-end="10177" vertical-scroll-proportion="-11.346154" vertical-offset="1762" max-vertical-offset="2788">
+          <folding>
+            <element signature="n#get_evaluaciones_by_id_curso_and_mes_actual#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controladores/nota.controlador.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="10" selection-start="2137" selection-end="2139" vertical-scroll-proportion="0.0" vertical-offset="784" max-vertical-offset="1428">
-          <folding />
+        <state line="19" column="14" selection-start="662" selection-end="662" vertical-scroll-proportion="-12.423077" vertical-offset="0" max-vertical-offset="1173">
+          <folding>
+            <element signature="n#get_notas_by_run_alumno_and_id_curso#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modelos/NotaMatriz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="64" selection-start="278" selection-end="278" vertical-scroll-proportion="1.3076923" vertical-offset="102" max-vertical-offset="884">
+          <folding>
+            <element signature="n#db_get_notas_by_run_alumno_and_id_curso#0;n#NotaMatriz#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vistas/js/_ingreso_notas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="41" selection-start="3867" selection-end="3867" vertical-scroll-proportion="-0.5365854" vertical-offset="1700" max-vertical-offset="8500">
+        <state line="393" column="39" selection-start="14372" selection-end="14372" vertical-scroll-proportion="0.0" vertical-offset="1151" max-vertical-offset="2397">
           <folding>
-            <element signature="e#1458#1918#0" expanded="true" />
-            <element signature="e#2884#3178#0" expanded="true" />
-            <element signature="e#2980#3152#0" expanded="true" />
-            <element signature="e#3392#3575#0" expanded="true" />
-            <element signature="e#4433#5465#0" expanded="true" />
-            <element signature="e#4598#5108#0" expanded="true" />
-            <element signature="e#4746#4948#0" expanded="true" />
-            <element signature="e#4775#4932#0" expanded="true" />
-            <element signature="e#4978#5096#0" expanded="true" />
-            <element signature="e#5132#5287#0" expanded="true" />
-            <element signature="e#5321#5371#0" expanded="true" />
-            <element signature="e#5401#5448#0" expanded="true" />
-            <element signature="n#!!block;n#get_establecimientos#0" expanded="true" />
-            <element signature="e#5583#5863#0" expanded="true" />
-            <element signature="e#5769#5857#0" expanded="true" />
-            <element signature="e#5893#6538#0" expanded="true" />
-            <element signature="e#6249#6526#0" expanded="true" />
-            <element signature="e#6564#6603#0" expanded="true" />
-            <element signature="e#6631#6695#0" expanded="true" />
-            <element signature="n#!!block;n#get_cursos#0" expanded="true" />
-            <element signature="e#6814#7126#0" expanded="true" />
-            <element signature="e#7032#7120#0" expanded="true" />
-            <element signature="e#7156#7817#0" expanded="true" />
-            <element signature="e#7505#7805#0" expanded="true" />
-            <element signature="e#7843#7882#0" expanded="true" />
-            <element signature="e#7910#7974#0" expanded="true" />
-            <element signature="n#!!block;n#get_asignaturas#0" expanded="true" />
-            <element signature="e#8094#8389#0" expanded="true" />
-            <element signature="e#8295#8383#0" expanded="true" />
-            <element signature="e#8419#9059#0" expanded="true" />
-            <element signature="e#8781#9047#0" expanded="true" />
-            <element signature="e#9085#9124#0" expanded="true" />
-            <element signature="e#9152#9216#0" expanded="true" />
-            <element signature="n#!!block;n#get_alumnos#0" expanded="true" />
-            <element signature="e#9329#9592#0" expanded="true" />
-            <element signature="e#9498#9586#0" expanded="true" />
-            <element signature="e#9622#11942#0" expanded="true" />
-            <element signature="e#10043#11877#0" expanded="true" />
-            <element signature="e#11968#12007#0" expanded="true" />
-            <element signature="e#12035#12099#0" expanded="true" />
-            <element signature="n#!!block;n#get_evaluaciones#0" expanded="true" />
-            <element signature="e#12316#12537#0" expanded="true" />
-            <element signature="e#12519#12531#0" expanded="true" />
-            <element signature="e#12567#14511#0" expanded="true" />
-            <element signature="e#12725#12800#0" expanded="true" />
-            <element signature="e#12850#14423#0" expanded="true" />
-            <element signature="e#13807#13955#0" expanded="true" />
-            <element signature="e#14070#14274#0" expanded="true" />
-            <element signature="e#14537#14576#0" expanded="true" />
-            <element signature="e#14604#14616#0" expanded="true" />
-            <element signature="n#!!block;n#get_notas#0" expanded="true" />
-            <element signature="e#14726#14941#0" expanded="true" />
-            <element signature="e#14923#14935#0" expanded="true" />
-            <element signature="e#14971#15797#0" expanded="true" />
-            <element signature="e#15101#15719#0" expanded="true" />
-            <element signature="e#15823#15862#0" expanded="true" />
-            <element signature="e#15890#15902#0" expanded="true" />
-            <element signature="n#!!block;n#mostrar_dialogo#0" expanded="true" />
-            <element signature="e#16165#16486#0" expanded="true" />
-            <element signature="e#16224#16472#0" expanded="true" />
-            <element signature="e#16246#16454#0" expanded="true" />
-            <element signature="e#16342#16432#0" expanded="true" />
-            <element signature="e#16635#16944#0" expanded="true" />
-            <element signature="e#16694#16930#0" expanded="true" />
-            <element signature="e#16716#16912#0" expanded="true" />
-            <element signature="e#16800#16890#0" expanded="true" />
-            <element signature="e#17087#17162#0" expanded="true" />
-            <element signature="e#17253#17402#0" expanded="true" />
-            <element signature="n#!!block;n#del_selector#0" expanded="true" />
+            <element signature="n#!!block;n#get_alumnos#0" expanded="false" />
+            <element signature="e#10990#13363#0" expanded="false" />
+            <element signature="e#11411#13298#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/css/ver_clases_alumno.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="1" selection-start="2733" selection-end="2733" vertical-scroll-proportion="0.48633093" vertical-offset="2042" max-vertical-offset="2737">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/ver_clases_alumno.vista.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="55" selection-start="273" selection-end="273" vertical-scroll-proportion="0.15246637" vertical-offset="0" max-vertical-offset="669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_test2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="66" selection-start="72" selection-end="72" vertical-scroll-proportion="0.025411062" vertical-offset="0" max-vertical-offset="669">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/css/ver_notas_alumno.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="12" selection-start="2889" selection-end="2889" vertical-scroll-proportion="0.70647484" vertical-offset="1447" max-vertical-offset="2244">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_alumno/js/ver_notas_alumno.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="684" selection-end="684" vertical-scroll-proportion="0.6415094" vertical-offset="0" max-vertical-offset="4267">
+          <folding>
+            <element signature="e#33#681#0" expanded="false" />
+            <element signature="e#416#677#0" expanded="false" />
+            <element signature="n#!!block;n#get_establecimeintos#0" expanded="false" />
+            <element signature="e#794#1061#0" expanded="false" />
+            <element signature="e#976#1055#0" expanded="false" />
+            <element signature="e#1091#1506#0" expanded="false" />
+            <element signature="e#1217#1494#0" expanded="false" />
+            <element signature="e#1532#1571#0" expanded="false" />
+            <element signature="e#1599#1663#0" expanded="false" />
+            <element signature="n#!!block;n#get_asignaturas#0" expanded="false" />
+            <element signature="e#1793#2097#0" expanded="false" />
+            <element signature="e#2012#2091#0" expanded="false" />
+            <element signature="e#2127#5377#0" expanded="false" />
+            <element signature="e#2253#5216#0" expanded="false" />
+            <element signature="e#5403#5442#0" expanded="false" />
+            <element signature="e#5470#5534#0" expanded="false" />
+            <element signature="e#5666#5970#0" expanded="false" />
+            <element signature="e#5885#5964#0" expanded="false" />
+            <element signature="e#7323#7443#0" expanded="false" />
+            <element signature="e#7481#7520#0" expanded="false" />
+            <element signature="e#7548#7612#0" expanded="false" />
+            <element signature="e#7730#8028#0" expanded="false" />
+            <element signature="e#7943#8022#0" expanded="false" />
+            <element signature="e#8058#8730#0" expanded="false" />
+            <element signature="e#8184#8681#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+            <element signature="e#8823#8887#0" expanded="false" />
+            <element signature="n#!!block;n#get_calcular_promedio#0" expanded="false" />
+            <element signature="e#9044#10587#0" expanded="false" />
+            <element signature="e#9388#10580#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_apoderado/ver_notas_apoderado.selectores.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="50" selection-start="510" selection-end="510" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="340">
+          <folding>
+            <element signature="tag#div#1;tag#div#0" expanded="true" />
+            <element signature="tag#select#0;tag#div#1;tag#div#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="64" selection-start="70" selection-end="70" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="187">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_apoderado/ver_notas_apoderado.vista.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="68" selection-start="792" selection-end="792" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="459">
+          <folding>
+            <element signature="tag#div#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vistas/_apoderado/js/ver_notas_apoderado.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="17" selection-start="1498" selection-end="1498" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="5423">
+          <folding>
+            <element signature="e#33#696#0" expanded="true" />
+            <element signature="e#794#1061#0" expanded="true" />
+            <element signature="e#976#1055#0" expanded="true" />
+            <element signature="e#1534#1573#0" expanded="true" />
+            <element signature="e#1601#1665#0" expanded="true" />
+            <element signature="n#!!block;n#get_establecimeintos#0" expanded="true" />
+            <element signature="e#1784#2051#0" expanded="true" />
+            <element signature="e#1966#2045#0" expanded="true" />
+            <element signature="e#2081#2496#0" expanded="true" />
+            <element signature="e#2207#2484#0" expanded="true" />
+            <element signature="e#2522#2561#0" expanded="true" />
+            <element signature="e#2589#2653#0" expanded="true" />
+            <element signature="n#!!block;n#get_asignaturas#0" expanded="true" />
+            <element signature="e#2783#3087#0" expanded="true" />
+            <element signature="e#3002#3081#0" expanded="true" />
+            <element signature="e#3117#6367#0" expanded="true" />
+            <element signature="e#3243#6206#0" expanded="true" />
+            <element signature="e#6393#6432#0" expanded="true" />
+            <element signature="e#6460#6524#0" expanded="true" />
+            <element signature="n#!!block;n#get_evaluaciones#0" expanded="true" />
+            <element signature="e#6656#6960#0" expanded="true" />
+            <element signature="e#6875#6954#0" expanded="true" />
+            <element signature="e#6990#8445#0" expanded="true" />
+            <element signature="e#7144#8208#0" expanded="true" />
+            <element signature="e#8313#8433#0" expanded="true" />
+            <element signature="e#8471#8510#0" expanded="true" />
+            <element signature="e#8538#8602#0" expanded="true" />
+            <element signature="n#!!block;n#get_notas#0" expanded="true" />
+            <element signature="e#8720#9018#0" expanded="true" />
+            <element signature="e#8933#9012#0" expanded="true" />
+            <element signature="e#9048#9720#0" expanded="true" />
+            <element signature="e#9174#9671#0" expanded="true" />
+            <element signature="e#9746#9785#0" expanded="true" />
+            <element signature="e#9813#9877#0" expanded="true" />
+            <element signature="n#!!block;n#get_calcular_promedio#0" expanded="true" />
+            <element signature="e#10034#11577#0" expanded="true" />
+            <element signature="e#10565#11054#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/a9d0f5da/533e777f-9cb2-459a-b29f-0697feaf46b3/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="7" selection-start="0" selection-end="450" vertical-scroll-proportion="0.26741573" vertical-offset="0" max-vertical-offset="445">
+          <folding />
         </state>
       </provider>
     </entry>

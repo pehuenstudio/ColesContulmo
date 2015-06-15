@@ -29,12 +29,22 @@ if ($_SERVER["SERVER_NAME"] == "colescontulmo.local" || $_SERVER["SERVER_NAME"] 
     define("DB_NAME","coles_data");//NOMBRE DE LA BBDD
     define("DB_USER","coles_data");//NOMBRE DE USUARIO DE BBDD
     define("DB_PASS","martes 14 de abril");//CONTRASEÑA DE BBDD
+
+    define("DB_HOSTJOOMLA","localhost");//NOMBRE DEL SERVIDOR
+    define("DB_NAMEJOOMLA","coles_joom");//NOMBRE DE LA BBDD
+    define("DB_USERJOOMLA","coles_joom");//NOMBRE DE USUARIO DE BBDD
+    define("DB_PASSJOOMLA","martes 14 de abril");//CONTRASEÑA DE BBDD
 }else{
     //echo "ESTAS EN LOCALHOST"; //DATOS BBDD WEB
     define("DB_HOST","mysql.hostinger.com.ar");//NOMBRE DEL SERVIDOR
     define("DB_NAME","u549741940_data");//NOMBRE DE LA BBDD
     define("DB_USER","u549741940_data");//NOMBRE DE USUARIO DE BBDD
     define("DB_PASS","martes 14 de abril");//CONTRASEÑA DE BBDD
+
+    define("DB_HOSTJOOMLA","mysql.hostinger.com.ar");//NOMBRE DEL SERVIDOR
+    define("DB_NAMEJOOMLA","u549741940_joom");//NOMBRE DE LA BBDD
+    define("DB_USERJOOMLA","u549741940_joom");//NOMBRE DE USUARIO DE BBDD
+    define("DB_PASSJOOMLA","martes 14 de abril");//CONTRASEÑA DE BBDD
 }
 ?>
  

@@ -1,21 +1,4 @@
-h1.titulo{
-    text-align: center;
-    background-color: #212121;
-    padding: 20px;
-    color: #ffffff;
 
-}
-
-#contenedor_selectores{
-    background-color: #EFEFEF !important;
-    margin-bottom: 10px !important;
-    float: left !important;
-    width: 100%;
-    z-index: 10;
-    padding-left: 2%;
-    padding-right: 2%;
-
-}
 #contenedor_selectores .grilla3{
     width: 32% !important;
     margin-right: 2% !important;
@@ -168,7 +151,7 @@ h1.titulo{
 
 .mes .semana .dia .contenedor_evaluaciones .evaluacion .coeficiente{
     width: 10%;
-    float: left;
+    float: right;
     background-color: #4C4C4C;
     color: #ffffff;
     text-align: center;

@@ -15,7 +15,7 @@ $id_funcion = $_POST["id_funcion"];
 
 switch($id_funcion){
     case "1":
-        get_clases_by_id_curso();
+        get_clases_by_id_curso(); 
         break;
     case "2":
         upd_clases_run_profesor_and_id_asignatura_by_id();
@@ -24,7 +24,10 @@ switch($id_funcion){
         get_clases_by_run_profe_and_id_cur_and_id_asig_and_id_dia();
         break;
     case "4":
-        get_matricula_by_run_alumno_and_rbd_esta_and_periodo();
+        get_clases_by_id_run_alumno_and_rbd_establecimiento();
+        break;
+    case "5":
+        get_clases_by_id_curso_group_by_id_asignatura();
         break;
     default:
         break;
@@ -33,7 +36,6 @@ switch($id_funcion){
 // SE USA DESDE carag_clases
 function get_clases_by_id_curso(){
     $id_curso = $_POST["id_curso"];
-    $periodo = date("Y");
     $matriz_clase = new ClaseMatriz();
     if($matriz_clase->db_get_clases_by_id_curso($id_curso) == "0"){
         $result = array(
@@ -159,9 +161,14 @@ function get_clases_by_run_profe_and_id_cur_and_id_asig_and_id_dia(){
     print_r(json_encode($clases, JSON_UNESCAPED_UNICODE));
 }
 
-function get_matricula_by_run_alumno_and_rbd_esta_and_periodo(){
+//SE USA DESDE ver_clases
+function get_clases_by_id_run_alumno_and_rbd_establecimiento(){
     //print_r($_POST);
     $periodo = date("Y");
+    if(date("n") == "1"){
+        $periodo -= 1;
+    }
+
 
     $matricula = new Matricula();
     $matricula->set_run_alumno($_POST["run_alumno"]);
@@ -172,9 +179,7 @@ function get_matricula_by_run_alumno_and_rbd_esta_and_periodo(){
 
     $matriz_clase = new ClaseMatriz();
     if($matriz_clase->db_get_clases_by_id_curso($matricula->get_id_curso()) == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;
@@ -202,6 +207,48 @@ function get_matricula_by_run_alumno_and_rbd_esta_and_periodo(){
     }
 
 
+    print_r(json_encode($clases, JSON_UNESCAPED_UNICODE));
+
+}
+
+//SE USA DESDE ver_notas
+function get_clases_by_id_curso_group_by_id_asignatura(){
+    //print_r($_POST);
+    $periodo = date("Y");
+    if(date("n") == "1"){
+        $periodo -= 1;
+    }
+
+    $matricula = new Matricula();
+    $matricula->set_run_alumno($_POST["run_alumno"]);
+    $matricula->set_rbd_establecimiento($_POST["rbd_establecimiento"]);
+    $matricula->set_periodo($periodo);
+    $matricula->db_get_matricula_by_run_alumno_and_rbd_esta_and_periodo();
+    //print_r($matricula);
+
+    $matriz_clase = new ClaseMatriz();
+    if($matriz_clase->db_get_clases_by_id_curso_group_by_id_asignatura($matricula->get_id_curso()) == "0"){
+        $result = array();
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+    $clases = $matriz_clase->get_matriz();
+    for($i = 0; $i < count($clases); $i++){
+        $profesor = new Profesor();
+        $profesor->set_run($clases[$i]["run_profesor"]);
+        $profesor->db_get_profesor_by_run();
+        $clases[$i]["nombre_profesor"] = $profesor->get_nombre1()." ".$profesor->get_nombre2()." ".$profesor->get_apellido2();
+
+        $asignatura = new Asignatura();
+        $asignatura->set_id_asignatura($clases[$i]["id_asignatura"]);
+        $asignatura->db_get_asignatura_by_id();
+        $clases[$i]["nombre_asignatura"] = $asignatura->get_nombre();
+        $clases[$i]["color1"] = $asignatura->get_color1();
+        $clases[$i]["color2"] = $asignatura->get_color2();
+    }
+
+    //array_multisort($clases,SORT_STRING);
     print_r(json_encode($clases, JSON_UNESCAPED_UNICODE));
 
 }

@@ -1,9 +1,11 @@
+
 <?php
 $run_alumno = "166890837";
 ?>
 <link rel="stylesheet" href="/_code/vistas/css/jquery-ui.css">
 <link rel="stylesheet" href="/_code/vistas/css/grillas.css">
 <link rel="stylesheet" href="/_code/vistas/css/load.css">
+<link rel="stylesheet" href="/_code/vistas/css/validaciones.css">
 <link rel="stylesheet" href="/_code/vistas/css/selectores.css">
 <link rel="stylesheet" href="/_code/vistas/_alumno/css/ver_notas_alumno.css">
 

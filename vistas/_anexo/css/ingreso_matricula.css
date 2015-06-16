@@ -32,37 +32,6 @@ h1{
     font-size: small;
 }
 
-#matricula_formulario div.error{
-    font-size:small !important;
-    /*font-style:italic !important;*/
-    color:#E65D65 !important;
-}
-
-#matricula_formulario div.error p{
-    margin: 0 !important;
-}
-
-#matricula_formulario strong{
-    color: #E65D65 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 0 !important;
-    height: 0 !important;
-}
-#matricula_formulario input.error, #matricula_formulario select.error{
-    background: #fbe3e4 !important;
-    border: 1px solid #fbc2c4 !important;
-    color: #8a1f11 !important;
-}
-#matricula_formulario input.error::-webkit-input-placeholder {
-    color: #dbbbb7 !important;
-}
-#matricula_formulario img{
-    height: 100px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
 #matricula_formulario #panel_loading{
     position: absolute;
     top: 0;
@@ -83,5 +52,9 @@ h1{
     border-style: solid;
     text-align: center;
     font-size: small;
+}
+#matricula_formulario img{
+    width: 100px;
+    height: 100px;
 }
 

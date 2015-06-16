@@ -87,29 +87,6 @@ class AsignaturaMatriz {
 
     }
 
-    public function get_asignaturas_by_id_curso($id_curso){
-        global $myPDO;
-        $sentencia = $myPDO->prepare("CALL get_asignaturas_by_id_curso(?)");
-        $sentencia->bindParam(1, $id_curso, \PDO::PARAM_INT);
-        $sentencia->execute();
 
-        $data = $sentencia->fetchAll(0);
-        foreach($data as $row){
-            $asignatura = new Asignatura();
-            $asignatura->set_id_asignatura($row["id_asignatura"]);
-            $asignatura->set_identidad(
-                $row["id_asignatura_tipo"],
-                $row["rbd_establecimiento"],
-                $row["nombre"],
-                $row["descripcion"]
-            );
-            $asignatura->set_color1($row["color1"]);
-            $asignatura->set_color2($row["color2"]);
-
-            $this->to_matriz($asignatura);
-        }
-
-        return $sentencia->rowCount();
-    }
 }
 ?>

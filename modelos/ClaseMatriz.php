@@ -98,5 +98,28 @@ class ClaseMatriz {
 
         $sentencia->rowCount();
     }
+
+    function db_get_clases_by_id_curso_group_by_id_asignatura($id_curso){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_clases_by_id_curso_group_by_id_asignatura(?)");
+        $sentencia->bindParam(1, $id_curso, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $clase = new Clase();
+            $clase->set_id_clase($row["id_clase"]);
+            $clase->set_identidad(
+                $row["id_curso"],
+                $row["id_asignatura"],
+                $row["id_bloque"]
+            );
+            $clase->set_run_profesor($row["run_profesor"]);
+
+            $this->to_matriz($clase);
+        }
+
+        $sentencia->rowCount();
+    }
 }
 ?>

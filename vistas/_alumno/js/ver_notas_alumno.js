@@ -5,8 +5,27 @@ jQuery(document).ready(function(){
     var contenedor_cartola = jQuery("#contenedor_cartola");
     var asignaturas = jQuery("#asignaturas");
     var asignaturas2 = asignaturas.clone();
+    var botones = jQuery(".botones").find("button");
 
-    get_establecimeintos(run_alumno.val());
+    get_establecimientos(run_alumno.val());
+
+    botones.click(function(){
+        var rol = jQuery(this).attr("data-rol");
+        jQuery(this)
+            .siblings()
+            .removeClass();
+        jQuery(this)
+            .removeClass()
+            .addClass("selected");
+        switch (rol){
+            case "ocultar":
+                jQuery(".asignatura").css("display","none");
+                break;
+            case "mostrar":
+                jQuery(".asignatura").css("display","block");
+                break;
+        }
+    });
 
     rbd_establecimiento.change(function(){
         jQuery("#asignaturas").remove();
@@ -14,6 +33,9 @@ jQuery(document).ready(function(){
 
 
         if(rbd_establecimiento.val() == "0"){
+            jQuery(".botones")
+                .css("visibility","hidden")
+            ;
             return null;
         }
 
@@ -24,14 +46,14 @@ jQuery(document).ready(function(){
 });
 
 
-function get_establecimeintos(run_alumno){
+function get_establecimientos(run_alumno){
     console.log("Cargando establecimientos...");
     jQuery.ajax({
         method: "POST",
         url: "/_code/controladores/establecimiento.controlador.php",
         data: {id_funcion: "3", run_alumno: run_alumno},
         beforeSend: function(){
-            //load_on("Cargando clases...", "#contenedor_bloques");
+            load_on("Cargando establecimientos...", "#contenedor_cartola");
         }
     })
         .done(function(data){
@@ -59,20 +81,24 @@ function get_asignaturas(run_alumno, rbd_establecimiento){
     console.log("Cargando asignaturas...");
     jQuery.ajax({
         method: "POST",
-        url: "/_code/controladores/asignatura.controlador.php",
-        data: {id_funcion: "3", run_alumno: run_alumno, rbd_establecimiento: rbd_establecimiento},
+        url: "/_code/controladores/clase.controlador.php",
+        data: {id_funcion: "5", run_alumno: run_alumno, rbd_establecimiento: rbd_establecimiento},
         beforeSend: function(){
-            //load_on("Cargando clases...", "#contenedor_bloques");
+            load_on("Cargando asignaturas...", "#contenedor_cartola");
         }
     })
         .done(function(data){
             //console.log(data);
             var data = jQuery.parseJSON(data);
             jQuery.each(data, function(i, v){
+
                 jQuery("#asignaturas")
                     .append(
                         jQuery("<h3></h3>")
-                            .text(data[i].nombre)
+                            .text(data[i].nombre_asignatura+" - Prof. "+data[i].nombre_profesor)
+                            .attr({
+                                "data-id_asignatura":data[i].id_asignatura
+                            })
                     )
                     .append(
                         jQuery("<div></div>")
@@ -130,16 +156,22 @@ function get_asignaturas(run_alumno, rbd_establecimiento){
 
                             )
                     )
+                jQuery("head").append(
+                    jQuery("<style></style>")
+                        .html(".ui-accordion-header[data-id_asignatura="+data[i].id_asignatura+"]{" +
+                            "color:red;" +
+                            "}")
+                );
 
+                //jQuery.style.insertRule(".ui-accordion-header[data-id_asignatura="+data[i].id_asignatura+"]", 'color:red;')
             });
-            //jQuery("#asignaturas").accordion({ active: false, collapsible: true });
             get_evaluaciones(run_alumno, rbd_establecimiento);
         })
         .fail(function(){
             alert("ERROR");
         })
         .always(function(){
-            setTimeout(function(){load_off();},500);
+            //setTimeout(function(){load_off();},500);
         })
     ;
 }
@@ -151,7 +183,8 @@ function get_evaluaciones(run_alumno, rbd_establecimiento){
         url: "/_code/controladores/evaluacion.controlador.php",
         data: {id_funcion: "8", run_alumno: run_alumno, rbd_establecimiento: rbd_establecimiento},
         beforeSend: function(){
-            //load_on("Cargando clases...", "#contenedor_bloques");
+            load_off();
+            load_on("Cargando evaluaciones...", "#contenedor_cartola");
         }
     })
         .done(function(data){
@@ -183,17 +216,13 @@ function get_evaluaciones(run_alumno, rbd_establecimiento){
             });
 
             get_notas(run_alumno, rbd_establecimiento);
-            jQuery("#asignaturas").accordion({
-                active: false,
-                collapsible: true,
-                heightStyle: "content"
-            });
+
         })
         .fail(function(){
             alert("ERROR");
         })
         .always(function(){
-            setTimeout(function(){load_off();},500);
+            //setTimeout(function(){load_off();},500);
         })
     ;
 }
@@ -205,7 +234,8 @@ function get_notas(run_alumno, rbd_establecimiento){
         url: "/_code/controladores/nota.controlador.php",
         data: {id_funcion: "3", run_alumno: run_alumno, rbd_establecimiento: rbd_establecimiento},
         beforeSend: function(){
-            //load_on("Cargando clases...", "#contenedor_bloques");
+            load_off();
+            load_on("Cargando notas...", "#contenedor_cartola");
         }
     })
         .done(function(data){
@@ -224,7 +254,7 @@ function get_notas(run_alumno, rbd_establecimiento){
                         jQuery("<p></p>")
                             .text(data[i].valor)
                             .addClass(clase)
-                        )
+                    )
             });
             get_calcular_promedio();
         })
@@ -232,7 +262,7 @@ function get_notas(run_alumno, rbd_establecimiento){
             alert("ERROR");
         })
         .always(function(){
-            setTimeout(function(){load_off();},500);
+            //setTimeout(function(){load_off();},500);
         })
     ;
 }
@@ -247,7 +277,6 @@ function get_calcular_promedio(){
                 .append("<p>No hay evaluaciones para esta asignatura, para más información contacte al profesor que la imparte.</p>")
             ;
         }else{
-            console.log("notas de esta asignatura");
             var sumatoria_notas = 0;
             var sumatoria_coeficientes = 0;
             jQuery.each(evaluaciones, function(i,v){
@@ -256,8 +285,6 @@ function get_calcular_promedio(){
                 var coeficiente = jQuery(evaluaciones[i]).find(".coeficiente").text();
 
                 if(!isNaN(parseFloat(nota).toFixed(1))){
-                    console.log(nota);
-                    console.log(coeficiente);
                     sumatoria_notas += parseFloat(nota*coeficiente);
                     sumatoria_coeficientes += parseFloat(coeficiente);
                 }
@@ -280,4 +307,16 @@ function get_calcular_promedio(){
         }
 
     });
+    jQuery("#asignaturas")
+        .accordion({
+            active: false,
+            collapsible: true,
+            heightStyle: "content"
+        })
+        .css("visibility","visible")
+    ;
+    jQuery(".botones")
+        .css("visibility","visible")
+    ;
+    load_off();
 }

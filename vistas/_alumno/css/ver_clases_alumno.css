@@ -1,10 +1,3 @@
-h1.titulo{
-    text-align: center;
-    background-color: #212121;
-    padding: 20px;
-    color: #ffffff;
-
-}
 .contenedor_grillas {
     width: 90% !important;
 }
@@ -98,14 +91,6 @@ h1.titulo{
 }
 
 
-#contenedor_selectores .grilla10.center{
-    text-align: center;
-}
-#contenedor_selectores .grilla10.center input{
-    width: 30% !important;
-    margin: auto !important;
-}
-
 #contenedor_bloques #bloques #panel_loading{
     position: absolute;
     top: 0;
@@ -117,39 +102,3 @@ h1.titulo{
     text-align: center;
 
 }
-#contenedor_selectores {
-
-    background-color: #EFEFEF !important;
-    margin-bottom: 10px !important;
-    float: left !important;
-    width: 100%;
-    z-index: 10;
-    padding-left: 2%;
-    padding-right: 2%;
-    vertical-align: middle;
-
-
-
-}
-
-#contenedor_selectores input, #contenedor_selectores select, #contenedor_selectores textarea{
-    width:100% !important;
-    height:35px !important;
-    margin:0 !important;
-    border-radius: 4px;
-    font-size: small;
-}
-
-
-#contenedor_selectores #panel_loading{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    background-color: rgba(0,0,0,0.5);
-
-}
-
-

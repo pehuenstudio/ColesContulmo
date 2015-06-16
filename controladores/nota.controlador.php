@@ -9,9 +9,9 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Nota.php";
 $id_funcion = $_POST["id_funcion"];
 
 switch($id_funcion){
-    case "1":
+    case "1": 
         ins_notas();
-        break;
+        break; 
     case "2":
         get_notas_by_id_curso_and_id_asignatura();
         break;
@@ -26,6 +26,7 @@ function ins_notas(){
     //print_r($_POST);
     $fecha_creacion = date("Y-m-d");
     $alumnos = $_POST["alumnos"];
+    $result = "3";
     for($i = 0; $i < count($alumnos); $i++){
         //print_r($alumnos[$i]["run_alumno"]."\n");
         $notas_array = $alumnos[$i]["notas"];
@@ -40,18 +41,27 @@ function ins_notas(){
             if($nota->get_valor() != "") {
                 $matriz_notas = new NotaMatriz();
                 if($matriz_notas->db_get_notas_by_id_evaluacion_and_run_alumno($nota->get_id_evaluacion(), $nota->get_run_alumno()) == "0"){
-                    $nota->db_ins_nota();
-                    print_r("ingreso \n");
+                    if(!$nota->db_ins_nota()){
+                        $result = "1";
+                    }
+                    //print_r("ingreso \n");
                 }else{
-                    $nota->db_upd_nota_by_id_evaluacion_and_run_alumno();
-                    print("actualizacion \n");
+                    if(!$nota->db_upd_nota_by_id_evaluacion_and_run_alumno()){
+                        $result = "1";
+                    }
+                    //print("actualizacion \n");
                 }
             }else{
-                $nota->db_del_nota_by_id_evaluacion_and_run_alumno();
-                print_r("borrado \n");
+                if(!$nota->db_del_nota_by_id_evaluacion_and_run_alumno()){
+                    $result = "1";
+                }
+                //print_r("borrado \n");
             }
         }
     }
+
+    $result = array("result"=>$result);
+    print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
 
 }
 
@@ -76,7 +86,9 @@ function get_notas_by_run_alumno_and_id_curso(){
     $run_alumno = $_POST["run_alumno"];
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $periodo = date("Y");
-
+    if(date("n") == "1"){
+        $periodo -= 1;
+    }
     $matricula = new Matricula();
     $matricula->set_run_alumno($run_alumno);
     $matricula->set_rbd_establecimiento($rbd_establecimiento);

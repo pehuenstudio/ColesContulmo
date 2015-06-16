@@ -1,25 +1,7 @@
-h1.titulo{
-    text-align: center;
-    background-color: #212121;
-    padding: 20px;
-    color: #ffffff;
-
-}
-
 #cartola{
     display: none !important;
 }
 
-#contenedor_selectores{
-    background-color: #EFEFEF !important;
-    margin-bottom: 10px !important;
-    float: left !important;
-    width: 100%;
-    z-index: 10;
-    padding-left: 2%;
-    padding-right: 2%;
-
-}
 #contenedor_selectores .grilla3{
     width: 32% !important;
     margin-right: 2% !important;
@@ -252,4 +234,18 @@ h1.titulo{
 #contenedor_cartola #cartola .contenedor_registros .registro .promedio.ultimo p{
     text-align: center;
     height: 28px;
+}
+#contenedor_cartola .contenedor_boton {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    margin-top: 40px;
+}
+
+#contenedor_cartola .contenedor_boton #actualizar{
+    background-color: #02B59F;
+    color: #ffffff;
+    font-size: x-large;
+    height: auto;
+    text-shadow: 1px 1px 1px #0A0A0A;
 }

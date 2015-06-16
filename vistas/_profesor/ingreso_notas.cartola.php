@@ -14,7 +14,8 @@
         <div class="empty"></div><div class="header_fechas"></div>
         <div class="contenedor_registros"></div>
         <div class="empty"></div><div class="booter_fechas"></div>
-        <input type="submit" value="Actualizar">
+        <div class="contenedor_boton">
+            <button type="submit" id="actualizar">Actualizar</button>
+        </div>
     </div>
-
 </form>

@@ -74,5 +74,39 @@ class AlumnoMatriz {
 
         return $sentencia->rowCount();
     }
+
+    public function db_get_alumnos_by_run_apoderado_and_periodo($run_apoderado, $periodo){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_alumnos_by_run_apoderado_and_periodo(?,?)");
+        $sentencia->bindParam(1, $run_apoderado, \PDO::PARAM_STR, 9);
+        $sentencia->bindParam(2, $periodo, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $alumno = new Alumno();
+            $alumno->set_identidad(
+                $row["run_alumno"],
+                $row["nombre1"],
+                $row["nombre2"],
+                $row["apellido1"],
+                $row["apellido2"],
+                $row["sexo"],
+                $row["email"]
+            );
+            $alumno->set_id_direccion($row["id_direccion"]);
+            $alumno->set_avatar($row["avatar"]);
+            $alumno->set_fecha_nacimiento($row["fecha_nacimiento"]);
+            $alumno->set_pde($row["pde"]);
+            $alumno->set_id_religion($row["id_religion"]);
+            $alumno->set_grado_educacional_padre($row["grado_educacional_padre"]);
+            $alumno->set_grado_educacional_madre($row["grado_educacional_padre"]);
+            $alumno->set_persona_vive($row["persona_vive"]);
+
+            $this->to_matriz($alumno);
+        }
+
+        return $sentencia->rowCount();
+    }
 }
 ?>

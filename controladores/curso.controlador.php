@@ -8,7 +8,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/CursoMatriz.php";
 $id_funcion = $_POST["id_funcion"];
 
 
-switch($id_funcion){
+switch($id_funcion){ 
     case "1":
         get_cursos_by_rbd_esta_and_id_tipo_ense_and_id_grado_and_periodo();
         break;
@@ -48,6 +48,9 @@ function get_cursos_by_rbd_establecimiento_and_id_ciclo_and_periodo(){
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $id_ciclo = $_POST["id_ciclo"];
     $periodo = date("Y");
+    if(date("n") == "1"){
+        $periodo -= 1;
+    }
     $matriz_curso = new CursoMatriz();
     if($matriz_curso->db_get_cursos_by_rbd_establecimiento_and_id_ciclo_and_periodo($rbd_establecimiento, $id_ciclo, $periodo) == "0"){
         $result = array(
@@ -78,7 +81,9 @@ function get_cursos_by_run_profesor_and_rbd_establecimiento_and_periodo(){
     $run_profesor = $_POST["run_profesor"];
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $periodo = date("Y");
-
+    if(date("n") == "1"){
+        $periodo -= 1;
+    }
     $matriz_curso = new CursoMatriz();
     if($matriz_curso->db_get_cursos_by_run_profesor_and_rbd_establecimiento_and_periodo($run_profesor, $rbd_establecimiento, $periodo)== "0"){
         $result = array();

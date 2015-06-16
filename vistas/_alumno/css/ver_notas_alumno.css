@@ -1,6 +1,29 @@
 #contenedor_cartola{
     width: 100%;
     float: left;
+    min-height: 500px;
+}
+#contenedor_cartola .botones{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    visibility: hidden;
+}
+#contenedor_cartola .botones button{
+    height: auto;
+    border: 1px dashed #02B59F;
+    font-size: x-large;
+    margin-right: 4px;
+    color: #02B59F;
+}
+#contenedor_cartola .botones button.selected{
+    background-color: #02B59F;
+    color: #ffffff;
+    border: 1px solid #02B59F;
+}
+
+#contenedor_cartola #asignaturas{
+    visibility: hidden;
 }
 
 #contenedor_cartola #asignaturas .contenedor_evaluaciones{

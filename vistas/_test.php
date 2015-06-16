@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/_apoderado/ver_notas_apoderado.vista.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/_administrador/carga_clases.vista.php";
 //echo __FILE__."<br/>";
 
 ?>
- 
+  

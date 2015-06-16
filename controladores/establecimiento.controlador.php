@@ -7,7 +7,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/EstablecimientoMatriz.php
 
 $id_funcion = $_POST["id_funcion"];
 
-switch($id_funcion){
+switch($id_funcion){ 
     case "1":
         get_establecimientos();
         break;
@@ -55,6 +55,9 @@ function get_establecimientos_by_run_profesor(){
 function get_establecimientos_by_run_alumno_and_periodo(){
     $run_alumno = $_POST["run_alumno"];
     $periodo = date("Y");
+    if(date("n") == "1"){
+        $periodo -= 1;
+    }
     $matriz_establecimiento = new EstablecimientoMatriz();
     if($matriz_establecimiento->db_get_establecimientos_by_run_alumno_and_periodo($run_alumno, $periodo)== "0"){
         $result = array();

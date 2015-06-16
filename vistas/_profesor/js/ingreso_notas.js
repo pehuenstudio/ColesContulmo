@@ -39,6 +39,7 @@ jQuery(document).ready(function(){
         jQuery("#cartola").attr("style","display: table !important");
         id_asignatura.prop("disabled", false);
         get_alumnos(run_profesor.val(), id_curso.val());
+        setTimeout(function(){get_asignaturas(run_profesor.val(), id_curso.val());},600);
 
     });
 
@@ -53,6 +54,7 @@ jQuery(document).ready(function(){
         ;
         if(id_asignatura.val() == "0"){return null; }
         get_evaluaciones(id_curso.val(), id_asignatura.val())
+        setTimeout(function(){get_notas(id_curso.val(), id_asignatura.val())},600);
     });
 
     formulario_notas.on("keyup","input",function(e){
@@ -158,6 +160,10 @@ jQuery(document).ready(function(){
 
     formulario_notas.submit(function(){
         event.preventDefault();
+        if(id_asignatura.val() == "0"){
+            mostrar_dialogo("2","Para actualizar las notas debe seleccionar una asignatura primero.");
+            return null;
+        }
         var registros = jQuery(this).find(".registro");
         var alumnos = [];
         jQuery.each(registros, function(i, value){
@@ -179,17 +185,44 @@ jQuery(document).ready(function(){
                 });
             }
         });
-
+        if(alumnos.length < 1){
+            mostrar_dialogo("2","Para actualizar debe realizar algún cambio en la cartola de notas.");
+            return null;
+        }
         jQuery.ajax({
             method: "POST",
             url: "/_code/controladores/nota.controlador.php",
-            data: {id_funcion: "1", alumnos: alumnos}
+            data: {id_funcion: "1", alumnos: alumnos},
+            beforeSend: function(){
+                load_on("Cargando actualizando notas...", "#contenedor_cartola");
+            }
         })
             .done(function(data){
                 console.log(data);
+                var data = jQuery.parseJSON(data);
+                switch (data.result){
+                    case "3":
+                        jQuery("#dialog").html("<p>Las notas fuero actualizadas correctamente.</p>")
+                            .dialog({
+                                modal:true,
+                                dialogClass: "exito-ui",
+                                title: "Operacion Exitosa",
+                                width: "auto"
+                            }).dialog("open");
+                        setTimeout(function(){jQuery("#dialog").dialog("close");},2000);
+                        break;
+                    default :
+                        console.log(data.result);
+                        break;
+
+
+                }
             })
             .fail(function(){
                 alert("ERROR");
+            })
+            .always(function(){
+                setTimeout(function(){load_off();},500);
             })
         ;
     });
@@ -202,7 +235,7 @@ function get_establecimientos(run_profesor){
         url: "/_code/controladores/establecimiento.controlador.php",
         data: {id_funcion: "2", run_profesor: run_profesor},
         beforeSend: function(){
-            //load_on("Cargando establecimientos...", "#contenedor_fechas");
+            load_on("Cargando establecimientos...", "#contenedor_cartola");
         }
     })
         .done(function(data){
@@ -237,7 +270,7 @@ function get_cursos(run_profesor, rbd_establecimiento){
         url: "/_code/controladores/curso.controlador.php",
         data: {id_funcion: "3", run_profesor: run_profesor, rbd_establecimiento: rbd_establecimiento},
         beforeSend: function(){
-            //load_on("Cargando establecimientos...", "#contenedor_fechas");
+            load_on("Cargando cursos...", "#contenedor_cartola");
         }
     })
         .done(function(data){
@@ -272,7 +305,7 @@ function get_asignaturas(run_profesor, id_curso){
         url: "/_code/controladores/asignatura.controlador.php",
         data: {id_funcion: "2", run_profesor: run_profesor, id_curso: id_curso},
         beforeSend: function(){
-            //load_on("Cargando establecimientos...", "#contenedor_fechas");
+            load_on("Cargando asignaturas...", "#contenedor_cartola");
         }
     })
         .done(function(data){
@@ -308,7 +341,7 @@ function get_alumnos(run_profesor, id_curso){
         url: "/_code/controladores/alumno.controlador.php",
         data: {id_funcion: "4", id_curso: id_curso},
         beforeSend: function(){
-            //load_on("Cargando establecimientos...", "#contenedor_fechas");
+            load_on("Cargando lista de alumnos...", "#contenedor_cartola");
         }
     })
         .done(function(data){
@@ -359,7 +392,7 @@ function get_alumnos(run_profesor, id_curso){
                     )
                 ;
             });
-            get_asignaturas(run_profesor, id_curso);
+
         })
         .fail(function(){
             alert("ERROR");
@@ -378,12 +411,16 @@ function get_evaluaciones(id_curso, id_asignatura){
         url: "/_code/controladores/evaluacion.controlador.php",
         data: {id_funcion: "6", id_curso: id_curso, id_asignatura: id_asignatura},
         beforeSend: function(){
-
+            load_on("Cargando evaluaciones...", "#contenedor_cartola");
         }
     })
         .done(function(data){
             //console.log(data);
             var data = jQuery.parseJSON(data);
+            if(data.length < 1){
+                mostrar_dialogo("2", "Este curso no cuenta con evaluaciones agentadas.");
+                return null;
+            }
             var clase = ""
             jQuery(".empty")
                 .css({
@@ -444,13 +481,13 @@ function get_evaluaciones(id_curso, id_asignatura){
                     )
                 ;
             });
-            setTimeout(function(){get_notas(id_curso, id_asignatura)},500);
+
         })
         .fail(function(){
             alert("ERROR");
         })
         .always(function(){
-
+            setTimeout(function(){load_off();},500);
         })
     ;
 }
@@ -462,12 +499,15 @@ function get_notas(id_curso, id_asignatura){
         url: "/_code/controladores/nota.controlador.php",
         data: {id_funcion: "2", id_curso: id_curso, id_asignatura: id_asignatura},
         beforeSend: function(){
-
+            load_on("Cargando notas...", "#contenedor_cartola");
         }
     })
         .done(function(data){
             //console.log(data);
             var data = jQuery.parseJSON(data);
+            if(data.length < 1){
+                return null;
+            }
             jQuery.each(data, function(i, value){
                 if(data[i].valor != ""){
                     if(data[i].valor < 4){
@@ -493,7 +533,7 @@ function get_notas(id_curso, id_asignatura){
             alert("ERROR");
         })
         .always(function(){
-
+            setTimeout(function(){load_off();},500);
         })
     ;
 }

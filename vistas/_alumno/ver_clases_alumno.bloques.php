@@ -4,7 +4,7 @@
         <div class="header">Lunes</div>
     </div>
     <div class="dia" id="dia2">
-        <div class="header">Martes</div>
+        <div class="header">Martes</div> 
     </div>
     <div class="dia" id="dia3">
         <div class="header">Miercoles</div>

@@ -7,7 +7,9 @@ $hoy = "2015-05-06";
 <link rel="stylesheet" href="/_code/vistas/css/jquery-ui.css">
 <link rel="stylesheet" href="/_code/vistas/css/grillas.css">
 <link rel="stylesheet" href="/_code/vistas/css/load.css">
-<link rel="stylesheet" href="/_code/vistas/css/_ingreso_notas.css">
+<link rel="stylesheet" href="/_code/vistas/css/validaciones.css">
+<link rel="stylesheet" href="/_code/vistas/css/selectores.css">
+<link rel="stylesheet" href="/_code/vistas/_profesor/css/ingreso_notas.css">
 
 
 <script src="/_code/vistas/js/jquery.min.js"></script>
@@ -16,13 +18,13 @@ $hoy = "2015-05-06";
 <script src="/_code/vistas/js/sticky.js"></script>
 <script src="/_code/vistas/js/validaciones.js"></script>
 <script src="/_code/vistas/js/load.js"></script>
-<script src="/_code/vistas/js/_ingreso_notas.js"></script>
+<script src="/_code/vistas/_profesor/js/ingreso_notas.js"></script>
 
 <h1 class="titulo">Panel De Ingreso De Notas</h1>
 <div id="contenedor_selectores">
-    <?php require_once "/_code/vistas/ingreso_notas.selectores.php"?>
+    <?php require_once "/_code/vistas/_profesor/ingreso_notas.selectores.php"?>
 </div>
 <div id="contenedor_cartola">
-    <?php require_once "/_code/vistas/ingreso_notas.cartola.php"?>
+    <?php require_once "/_code/vistas/_profesor/ingreso_notas.cartola.php"?>
 </div>
 <div id="dialog"></div>

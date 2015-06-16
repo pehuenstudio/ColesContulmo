@@ -14,7 +14,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/GradoRepetido.php";
 
 $id_funcion = $_POST["id_funcion"];
 
-switch($id_funcion){
+switch($id_funcion){ 
     case "1":
         get_alumno_by_run();
         break;
@@ -26,6 +26,9 @@ switch($id_funcion){
         break;
     case "4":
         get_alumnos_by_id_curso();
+        break;
+    case "5":
+        get_alumnos_by_run_apoderado_and_periodo();
         break;
     default:
         break;
@@ -303,5 +306,30 @@ function get_alumnos_by_id_curso(){
 
 }
 
+function get_alumnos_by_run_apoderado_and_periodo(){
+    $run_apoderado = $_POST["run_apoderado"];
+    $periodo = date("Y");
+    if(date("n") == "1"){
+        $periodo -= 1;
+    }
 
+
+    $matriz_alumno = new AlumnoMatriz();
+    if($matriz_alumno->db_get_alumnos_by_run_apoderado_and_periodo($run_apoderado, $periodo) == "0"){
+        $result = array();
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+
+    print_r($matriz_alumno->to_json());
+}
+/*
+if( == "0"){
+        $result = array();
+
+        print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
+        return null;
+    }
+*/
 ?>

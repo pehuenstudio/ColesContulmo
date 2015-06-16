@@ -20,7 +20,20 @@ jQuery(document).ready(function(){
     var mes_actual = (hoy.getMonth() + 1);
     var ano_actual = hoy.getFullYear();
 
-    cargar_botones(meses, mes_actual);
+    if(mes_actual == 1){
+        ano_actual -= 1;
+        mes_actual = 3;
+    }
+    if(mes_actual == 2){
+        mes_actual = 3;
+    }
+
+
+    if (mes_actual <= 3) {
+        jQuery("#boton_atras").css("visibility", "hidden");
+    }
+
+    cargar_botones(meses, mes_actual, ano_actual);
     get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
     get_establecimientos(run_profesor_ins.val());
 
@@ -31,7 +44,7 @@ jQuery(document).ready(function(){
         del_selector(id_clase_ins, "Seleccione Una Clase");
 
         mes_actual = (mes_actual - 1);
-        cargar_botones(meses, mes_actual);
+        cargar_botones(meses, mes_actual, ano_actual);
 
         console.log(mes_actual+" "+meses[mes_actual]);
         if(mes_actual <=12){jQuery("#boton_siguiente").css("visibility","visible")}
@@ -46,7 +59,7 @@ jQuery(document).ready(function(){
         del_selector(id_clase_ins, "Seleccione Una Clase");
 
         mes_actual = (mes_actual + 1);
-        cargar_botones(meses, mes_actual);
+        cargar_botones(meses, mes_actual, ano_actual);
 
         console.log(mes_actual);
         if(mes_actual >= 3){jQuery("#boton_atras").css("visibility","visible")}
@@ -318,12 +331,12 @@ jQuery(document).ready(function(){
 
 });
 
-function cargar_botones(meses, mes_actual){
+function cargar_botones(meses, mes_actual, ano_actual){
     var mes_anterior = (mes_actual - 1);
     var mes_siguiente = (mes_actual + 1);
     jQuery("#boton_atras").val(meses[mes_anterior]);
     jQuery("#boton_siguiente").val(meses[mes_siguiente]);
-    jQuery("#mes_actual").text(meses[mes_actual]);
+    jQuery("#mes_actual").text(meses[mes_actual]+" "+ano_actual);
 }
 
 function get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual){

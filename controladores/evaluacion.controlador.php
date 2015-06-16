@@ -14,7 +14,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Matricula.php";
 
 $id_funcion = $_POST["id_funcion"];
 
-switch($id_funcion){
+switch($id_funcion){  
     case "1":
         ins_evaluacion();
         break;
@@ -239,6 +239,9 @@ function get_evaluaciones_by_id_curso_and_id_asignatura(){
 
 function get_evaluaciones_by_id_curso_and_mes_actual(){
     $periodo = date("Y");
+    if(date("n") == "1"){
+        $periodo -= 1;
+    }
     $matricula = new Matricula();
     $matricula->set_run_alumno($_POST["run_alumno"]);
     $matricula->set_rbd_establecimiento($_POST["rbd_establecimiento"]);
@@ -286,7 +289,9 @@ function get_evaluaciones_by_id_curso(){
     $run_alumno = $_POST["run_alumno"];
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $periodo = date("Y");
-
+    if(date("n") == "1"){
+        $periodo -= 1;
+    }
     $matricula = new Matricula();
     $matricula->set_run_alumno($run_alumno);
     $matricula->set_rbd_establecimiento($rbd_establecimiento);

@@ -4,30 +4,35 @@ jQuery(document).ready(function() {
     var contenedor_calendario = jQuery("#contenedor_calendario");
     var calendario = jQuery("#calendario");
     var calendario2 = calendario.clone();
-    var rbd_establecimiento = jQuery("#rbd_establecimiento");/*
-    var id_curso = jQuery("#id_curso");
-    var id_asignatura = jQuery("#id_asignatura");
-    var id_clase_ins = jQuery("#id_clase_ins");
-    var bloqueos = jQuery(".dia").find(".bloqueo");
-    var coeficiente_ins = jQuery("#coeficiente_ins");
-    var run_profesor_ins = jQuery("#run_profesor_ins");
-    var boton_upd = jQuery("#boton_upd");
-    var boton_del = jQuery("#boton_del");*/
+    var rbd_establecimiento = jQuery("#rbd_establecimiento");
     var meses = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     var dias_semana = ["", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
     var hoy = new Date();
     var mes_actual = (hoy.getMonth() + 1);
     var ano_actual = hoy.getFullYear();
-    console.log(mes_actual+" "+ano_actual);
 
-    cargar_botones(meses, mes_actual);
+    if(mes_actual == 1){
+        ano_actual -= 1;
+        mes_actual = 3;
+    }
+    if(mes_actual == 2){
+        mes_actual = 3;
+    }
+
+
+    if (mes_actual <= 3) {
+        jQuery("#boton_atras").css("visibility", "hidden");
+    }
+
+
+    cargar_botones(meses, mes_actual, ano_actual);
     get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual);
     get_establecimientos(run_alumno.val());
 
 
     jQuery("#boton_atras").click(function () {
         mes_actual = (mes_actual - 1);
-        cargar_botones(meses, mes_actual);
+        cargar_botones(meses, mes_actual, ano_actual);
 
         console.log(mes_actual+" "+meses[mes_actual]);
         if (mes_actual <= 12) {
@@ -44,7 +49,7 @@ jQuery(document).ready(function() {
     jQuery("#boton_siguiente").click(function () {
 
         mes_actual = (mes_actual + 1);
-        cargar_botones(meses, mes_actual);
+        cargar_botones(meses, mes_actual, ano_actual);
 
         console.log(mes_actual);
         if (mes_actual >= 3) {
@@ -69,12 +74,12 @@ jQuery(document).ready(function() {
 
 });
 
-function cargar_botones(meses, mes_actual){
+function cargar_botones(meses, mes_actual, ano_actual){
     var mes_anterior = (mes_actual - 1);
     var mes_siguiente = (mes_actual + 1);
     jQuery("#boton_atras").val(meses[mes_anterior]);
     jQuery("#boton_siguiente").val(meses[mes_siguiente]);
-    jQuery("#mes_actual").text(meses[mes_actual]);
+    jQuery("#mes_actual").text(meses[mes_actual]+" "+ano_actual);
 }
 
 function get_calendario(contenedor_calendario, calendario2, mes_actual, ano_actual){

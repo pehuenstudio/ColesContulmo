@@ -20,9 +20,7 @@ function get_ciclos_by_rbd_establecimiento(){
     $rbd_establecimiento = $_POST["rbd_establecimiento"];
     $matriz_ciclo = new CicloMatriz();
     if($matriz_ciclo->db_get_ciclos_by_rbd_establecimiento($rbd_establecimiento) == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

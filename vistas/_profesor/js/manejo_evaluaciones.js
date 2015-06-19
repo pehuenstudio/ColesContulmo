@@ -206,11 +206,17 @@ jQuery(document).ready(function(){
             data: miFormData,
             contentType: false,
             cache: false,
-            processData:false
+            processData:false,
+            beforeSend:function(){
+                load_on("Ingresando nueva evaluacion...", "#contenedor_calendario");
+                jQuery("#contenedor_formulario_ins").dialog("close");
+            }
         })
             .done(function(data){
-                //console.log(data);
+                console.log(data);
                 var data = jQuery.parseJSON(data);
+
+
                 switch (data.result){
                     case "3":
                         dia.find(".contenedor_evaluaciones").append(
@@ -234,7 +240,6 @@ jQuery(document).ready(function(){
 
                         );
                         jQuery("#descripcion_ins").val("");
-                        jQuery("#contenedor_formulario_ins").dialog("close");
                         break;
                 }
 
@@ -244,7 +249,7 @@ jQuery(document).ready(function(){
                 alert("ERROR")
             })
             .always(function(){
-
+                load_off();
             })
         ;
     });

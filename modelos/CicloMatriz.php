@@ -36,7 +36,6 @@ class CicloMatriz {
         $sentencia->execute();
 
         $data = $sentencia->fetchAll(0);
-
         foreach($data as $row){
             $ciclo = new Ciclo();
             $ciclo->set_id_ciclo($row["id_ciclo"]);

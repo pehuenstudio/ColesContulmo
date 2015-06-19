@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/_profesor/ingreso_notas.vista.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/vistas/_profesor/manejo_notas.vista.php";
 /*
 $html =
 "

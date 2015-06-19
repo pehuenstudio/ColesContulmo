@@ -123,6 +123,32 @@ class CursoMatriz {
         return $sentencia->rowCount();
     }
 
+    public function db_get_cursos_by_rbd_establecimiento_and_periodo($rbd_establecimiento, $periodo){
+        global $myPDO;
+        $sentencia = $myPDO->prepare("CALL get_cursos_by_rbd_establecimiento_and_periodo(?,?)");
+        $sentencia->bindParam(1, $rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $periodo, \PDO::PARAM_INT);
+
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        foreach($data as $row){
+            $curso = new Curso();
+            $curso->set_id_curso($row["id_curso"]);
+            $curso->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["run_profesor_jefe"],
+                $row["id_grado"],
+                $row["id_tipo_ensenanza"],
+                $row["id_ciclo"],
+                $row["grupo"]
+            );
+            $curso->set_periodo($row["periodo"]);
+            $this->to_matriz($curso);
+        }
+
+        return $sentencia->rowCount();
+    }
 
 }
 

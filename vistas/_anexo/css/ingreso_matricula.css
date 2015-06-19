@@ -24,6 +24,9 @@ h1{
     font-weight: 300 !important;
     color: #454545;
 }
+
+
+
 #matricula_formulario input, #matricula_formulario select, #matricula_formulario textarea{
     width:100% !important;
     height:35px !important;

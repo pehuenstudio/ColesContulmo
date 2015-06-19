@@ -217,7 +217,7 @@ function get_ciclos(rbd_establecimiento){
         data: {id_funcion: "1", rbd_establecimiento: rbd_establecimiento}
     })
         .done(function(data){
-            //console.log(data);
+            console.log(data);
             var data = jQuery.parseJSON(data);
             if(data.result == false){
                 return null;

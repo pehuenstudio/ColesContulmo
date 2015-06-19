@@ -1,0 +1,9 @@
+#contenedor_ingreso .grilla5{
+    background-color: #EFEFEF;
+    padding: 5px !important;
+}
+
+.grilla5 .grilla10 input, .grilla5 input{
+    width: 100%;
+    height: 32px;
+}

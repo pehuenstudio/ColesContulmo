@@ -125,23 +125,23 @@
             </tr>
             <tr>
                 <td class="label1" id="load_ingreso_sistema1_label">&nbsp;</td>
-                <td id="load_ingreso_sistema1"></td>
-                <td id="msg_ingreso_sistema1">&nbsp;</td>
+                <td class="label2" id="load_ingreso_sistema1"></td>
+                <td class="label3" id="msg_ingreso_sistema1">&nbsp;</td>
             </tr>
             <tr>
                 <td class="label1" id="load_ingreso_apoderado_label">&nbsp;</td>
-                <td id="load_ingreso_apoderado"></td>
-                <td id="msg_ingreso_apoderado">&nbsp;</td>
+                <td class="label2" id="load_ingreso_apoderado"></td>
+                <td class="label3"  id="msg_ingreso_apoderado">&nbsp;</td>
             </tr>
             <tr>
                 <td class="label1" id="load_ingreso_sistema2_label">&nbsp;</td>
-                <td id="load_ingreso_sistema2"></td>
-                <td id="msg_ingreso_sistema2">&nbsp;</td>
+                <td class="label2" id="load_ingreso_sistema2"></td>
+                <td class="label3"  id="msg_ingreso_sistema2">&nbsp;</td>
             </tr>
             <tr class="last">
                 <td class="label1" id="load_ingreso_matricula_label">&nbsp;</td>
-                <td id="load_ingreso_matricula"></td>
-                <td id="msg_ingreso_matricula">&nbsp;</td>
+                <td class="label2" id="load_ingreso_matricula"></td>
+                <td class="label3"  id="msg_ingreso_matricula">&nbsp;</td>
             </tr>
         </table>
 

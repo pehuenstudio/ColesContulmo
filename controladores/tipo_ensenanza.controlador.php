@@ -21,9 +21,7 @@ function get_tipos_ensenanza_by_rbd_establecimiento(){
 
     $matriz_tipo_ensenanza = new TipoEnsenanzaMatriz();
     if($matriz_tipo_ensenanza->db_get_tipos_ensenanza_by_rbd_establecimiento($rbd_establecimiento) == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

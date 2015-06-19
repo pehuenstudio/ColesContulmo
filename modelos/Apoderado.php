@@ -37,7 +37,7 @@ class Apoderado extends Persona{
     }
     public function validar_telefono_celular(){
         global $v;
-        if(!$v->validar_formato_numero($this->telefono_celular,9,9)){
+        if(!$v->validar_formato_numero($this->telefono_celular,8,9)){
             //echo ERRORCITO.CLASE_APODERADO." TELEFONO CELULAR MUY CORTO O MUY LARGO O CONTIENE CARACTERES NO PERMITIDOS<br/>";
             $this->telefono_celular = null;
             return false;

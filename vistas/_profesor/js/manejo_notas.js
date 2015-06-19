@@ -37,9 +37,8 @@ jQuery(document).ready(function(){
         }
         cartola2.clone().insertAfter("#run_profesor");
         jQuery("#cartola").attr("style","display: table !important");
-        id_asignatura.prop("disabled", false);
         get_alumnos(run_profesor.val(), id_curso.val());
-        setTimeout(function(){get_asignaturas(run_profesor.val(), id_curso.val());},600);
+
 
     });
 
@@ -315,6 +314,7 @@ function get_asignaturas(run_profesor, id_curso){
                 mostrar_dialogo("2", "Este curso no cuenta con ninguna clase asociada. Por favor contacta al administrador para obtener más información.");
                 return null;
             }
+            jQuery("#id_asignatura").prop("disabled", false);
             jQuery.each(data, function(i, value){
                 jQuery("#id_asignatura")
                     .append(
@@ -392,7 +392,7 @@ function get_alumnos(run_profesor, id_curso){
                     )
                 ;
             });
-
+            setTimeout(function(){get_asignaturas(run_profesor, id_curso);},600);
         })
         .fail(function(){
             alert("ERROR");

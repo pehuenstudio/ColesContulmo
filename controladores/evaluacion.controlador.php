@@ -3,8 +3,10 @@ header('Content-Type: text/html; charset=utf-8');
 date_default_timezone_set("America/Argentina/Buenos_Aires");
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Mail.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Evaluacion.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/EvaluacionMatriz.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/ApoderadoMatriz.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Clase.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Asignatura.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/modelos/Profesor.php";
@@ -45,17 +47,53 @@ switch($id_funcion){
 }
 //SE USA DESDE carga_evaluaciones
 function ins_evaluacion(){
-
+    //print_r($_POST);
     $evaluacion = new Evaluacion();
     $evaluacion->set_id_clase($_POST["id_clase"]);
     $evaluacion->set_fecha($_POST["fecha"]);
     $evaluacion->set_coeficiente($_POST["coeficiente"]);
     $evaluacion->set_descripcion($_POST["descripcion"]);
+    $meses = ["","enero","febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+    $dias = ["", "lunes", "martes", "miercoles", "jueves", "viernes"];
+
+    $fecha = $dias[date("N", strtotime($evaluacion->get_fecha()))]. " " .
+             date("j", strtotime($evaluacion->get_fecha())). " de " .
+             $meses[date("n", strtotime($evaluacion->get_fecha()))]
+    ;
 
     if($evaluacion->db_get_evaluacion_by_id_clase_and_fecha() > "0"){
         $result = array("result" => "2");
     }else{
         if($evaluacion->db_ins_evaluacion()){
+
+            $clase = new Clase();
+            $clase->set_id_clase($evaluacion->get_id_clase());
+            $clase->db_get_clase_by_id();
+
+            $profesor = new Profesor();
+            $profesor->set_run($clase->get_run_profesor());
+            $profesor->db_get_profesor_by_run();
+
+            $matriz_apoderado = new ApoderadoMatriz();
+            $matriz_apoderado->db_get_apoderados_by_id_curso($clase->get_id_curso());
+            $apoderados = $matriz_apoderado->get_matriz();
+            for($i = 0; $i < count($apoderados); $i++){
+
+                $mail = new Mail();
+                $mail->nueva_evaluacion(
+                    $apoderados[$i]["nombre1"]." ".$apoderados[$i]["nombre2"],
+                    "",
+                    $profesor->get_nombre1()." ".$profesor->get_apellido1(),
+                    $fecha,
+                    $evaluacion->get_coeficiente()
+                );
+
+
+                $mail->enviar($apoderados[$i]["email"], "Nueva Evaluacion");
+            }
+
+
+
             $result = array("result" => "3", "id_evaluacion" => $evaluacion->get_id_evaluacion());
         }else{
             $result = array("result" => "1");

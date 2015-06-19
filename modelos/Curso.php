@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_config.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/_conexion.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/_code/includes/Validacion.php";
 //echo __FILE__."<br/>";
 class Curso {
     private $id_curso;
@@ -127,6 +128,17 @@ class Curso {
         //echo INFO.CLASE_CURSO. "GRUPO ENSENANZA CORRECTAMENTE <br/>";
         return true;
     }
+    function validar_periodo(){
+        global $v;
+        if(!$v->validar_formato_numero($this->periodo,4,4)){
+            ////echo ERRORCITO.CLASE_CURSO. "GRUPO INGRESADO INCORRECTAMENTE <br/>";
+            $this->grupo = null;
+            return false;
+        }
+        //echo INFO.CLASE_CURSO. "GRUPO ENSENANZA CORRECTAMENTE <br/>";
+        return true;
+    }
+
     public function validar(){
         $result = true;
 
@@ -134,6 +146,7 @@ class Curso {
         if(!$this->validar_id_grado()){$result = false;}
         if(!$this->validar_id_tipo_ensenanza()){$result = false;}
         if(!$this->validar_grupo()){$result = false;}
+        if(!$this->validar_periodo()){$result = false;}
 
         return $result;
     }
@@ -200,6 +213,48 @@ class Curso {
         return $sentencia->rowCount();
     }
 
+    public function db_ins_curso(){
+        global $myPDO;
+
+        $sentencia = $myPDO->prepare("CALL ins_curso(?,?,?,?,?,?)");
+        $sentencia->bindParam(1, $this->rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $this->id_grado, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $this->id_tipo_ensenanza, \PDO::PARAM_INT);
+        $sentencia->bindParam(4, $this->id_ciclo, \PDO::PARAM_INT);
+        $sentencia->bindParam(5, $this->grupo, \PDO::PARAM_STR, 1);
+        $sentencia->bindParam(6, $this->periodo, \PDO::PARAM_INT);
+        $result = $sentencia->execute();
+
+        return $result;
+    }
+
+    public function db_get_curso_by_rbd_esta_and_id_grad_and_id_tip_and_grup_and_per(){
+        global $myPDO;
+
+        $sentencia = $myPDO->prepare("CALL get_curso_by_rbd_esta_and_id_grad_and_id_tip_and_grup_and_per(?,?,?,?,?)");
+        $sentencia->bindParam(1, $this->rbd_establecimiento, \PDO::PARAM_INT);
+        $sentencia->bindParam(2, $this->id_grado, \PDO::PARAM_INT);
+        $sentencia->bindParam(3, $this->id_tipo_ensenanza, \PDO::PARAM_INT);
+        $sentencia->bindParam(4, $this->grupo, \PDO::PARAM_STR, 1);
+        $sentencia->bindParam(5, $this->periodo, \PDO::PARAM_INT);
+        $sentencia->execute();
+
+        $data = $sentencia->fetchAll(0);
+        //print_r($data);
+        foreach($data as $row){
+            $this->set_identidad(
+                $row["rbd_establecimiento"],
+                $row["run_profesor_jefe"],
+                $row["id_grado"],
+                $row["id_tipo_ensenanza"],
+                $row["id_ciclo"],
+                $row["grupo"]
+            );
+
+        }
+
+        return $sentencia->rowCount();
+    }
 
 
 }

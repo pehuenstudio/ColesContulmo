@@ -96,7 +96,6 @@ function ins_apoderado(){
     );
 
 
-
     $validacion = true;
     if(!$apoderado->validar()){$validacion = false;}
     if(!$direccion->validar()){$validacion = false;}

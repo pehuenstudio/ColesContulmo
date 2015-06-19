@@ -1,0 +1,57 @@
+.contenedor_formulario{
+    width: 100%;
+    background-color: #EFEFEF;
+    height: auto;
+    padding: 1%;
+    float: left;
+}
+.contenedor_formulario h3{
+    background-color: #4C4C4C;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 1% 0;
+    padding: 1%;
+}
+
+.contenedor_formulario .fila{width: 100%; float: left; margin: 0 0 1% 0; padding: 1%}
+.contenedor_formulario .fila.ultima{margin: 0;}
+
+.contenedor_formulario .columna{margin: 0 1% 1% 0; float: left;}
+.contenedor_formulario .columna.ultima{margin: 0 0 1% 0;}
+.contenedor_formulario .columna.n100{width: 100%;}
+.contenedor_formulario .columna.n25{width: 24.25%;}
+.contenedor_formulario .columna.n30{width: 32.66%;}
+.contenedor_formulario .columna.n50{width: 49.5%;}
+
+.contenedor_formulario .celda{margin-right: 1%; float: left;}
+.contenedor_formulario .celda.ultima{margin-right: 0;}
+.contenedor_formulario .celda.n10{width: 10%;}
+.contenedor_formulario .celda.n20{width: 20%;}
+.contenedor_formulario .celda.n30{width: 30%;}
+.contenedor_formulario .celda.n40{width: 40%;}
+.contenedor_formulario .celda.n50{width: 49.5%;}
+.contenedor_formulario .celda.n60{width: 59%;}
+.contenedor_formulario .celda.n70{width: 69%;}
+.contenedor_formulario .celda.n80{width: 79%;}
+.contenedor_formulario .celda.n90{width: 89%;}
+.contenedor_formulario .celda.n100{width: 100%;}
+.contenedor_formulario .celda.error{color: #D4555E; font-style: italic;}
+
+.contenedor_formulario input, .contenedor_formulario select{
+    width: 100%;
+    height: 30px;
+    border: 1px solid #cccccc;
+    margin: 0;
+}
+
+.contenedor_formulario label strong{
+    color: #D4555E;
+
+}
+
+.contenedor_formulario input[type=submit]{
+    border:  1px solid #00C3AB;
+    background-color: #00C3AB;
+    color: #ffffff;
+    border-radius: 0;
+}

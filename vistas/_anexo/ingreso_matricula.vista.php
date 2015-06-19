@@ -1,5 +1,13 @@
 <?php
-$rbd_establecimiento = 51543;
+$user = JFactory::getUser();
+if($user->username){
+    $rbd_establecimiento = preg_split("/[ane_]+/", $user->username);
+    $rbd_establecimiento = $rbd_establecimiento[0];
+}else{
+    $rbd_establecimiento = 51543;
+}
+
+date_default_timezone_set("America/Argentina/Buenos_Aires");
 ?>
 <!--<link rel="stylesheet" href="/_code/vistas/css/normalize.css">-->
 <link rel="stylesheet" href="/_code/vistas/css/main.css">

@@ -1,5 +1,11 @@
 <?php
-$run_alumno = "166890837";
+$user = JFactory::getUser();
+if($user->username){
+    $run_alumno = $user->username;
+}else{
+    $run_alumno = "166890837";
+}
+date_default_timezone_set("America/Argentina/Buenos_Aires");
 ?>
 <link rel="stylesheet" href="/_code/vistas/css/jquery-ui.css">
 <link rel="stylesheet" href="/_code/vistas/css/grillas.css">

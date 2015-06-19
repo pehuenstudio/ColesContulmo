@@ -22,9 +22,7 @@ function get_grados_by_rbd_establecimiento_and_id_tipo_ensenanza(){
 
     $matriz_grado = new GradoMatriz();
     if($matriz_grado->db_get_grados_by_rbd_establecimiento_and_id_tipo_ensenanza($rbd_establecimiento, $id_tipo_ensenanza) == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;
@@ -34,9 +32,7 @@ function get_grados_by_rbd_establecimiento_and_id_tipo_ensenanza(){
 }
 /*
 if( == "0"){
-        $result = array(
-            "result" => false
-        );
+        $result = array();
 
         print_r(json_encode($result, JSON_UNESCAPED_UNICODE));
         return null;

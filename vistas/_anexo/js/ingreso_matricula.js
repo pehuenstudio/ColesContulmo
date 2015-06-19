@@ -703,7 +703,7 @@ function get_tipos_ensenanza(select, contenedor, rbd_establecimiento){
         .done(function(data){
             //console.log(data);
             var data = jQuery.parseJSON(data);
-            if(data.result == false){
+            if(data.length < 1){
                 return null;
             }
             jQuery.each(data, function(i, value){
@@ -737,7 +737,7 @@ function get_grados(select, contenedor, rbd_establecimiento, id_tipo_ensenanza){
         .done(function(data){
             //console.log(data);
             var data = jQuery.parseJSON(data);
-            if(data.result == false){
+            if(data.length < 1){
                 return null;
             }
             jQuery.each(data, function(i, value){
@@ -870,7 +870,7 @@ function ins_apoderado(formData){
         }
     })
         .done(function(data){
-            //console.log(data);
+            console.log(data);
             var data = jQuery.parseJSON(data);
             setTimeout(function(){
                 load_matricula_off("#load_ingreso_apoderado", "#msg_ingreso_apoderado", data.msg, data.result);
